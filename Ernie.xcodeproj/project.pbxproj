@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C188354E1FA3DFF80034EE3B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C188354D1FA3DFF80034EE3B /* AppDelegate.swift */; };
+		C18835501FA3DFF80034EE3B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C188354F1FA3DFF80034EE3B /* ViewController.swift */; };
+		C18835531FA3DFF80034EE3B /* Ernie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C18835511FA3DFF80034EE3B /* Ernie.xcdatamodeld */; };
+		C18835551FA3DFF80034EE3B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C18835541FA3DFF80034EE3B /* Assets.xcassets */; };
+		C18835581FA3DFF80034EE3B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C18835561FA3DFF80034EE3B /* Main.storyboard */; };
+		C18835631FA3DFF80034EE3B /* ErnieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18835621FA3DFF80034EE3B /* ErnieTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C188355F1FA3DFF80034EE3B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C18835421FA3DFF80034EE3B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C18835491FA3DFF80034EE3B;
+			remoteInfo = Ernie;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C188354A1FA3DFF80034EE3B /* Ernie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ernie.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C188354D1FA3DFF80034EE3B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C188354F1FA3DFF80034EE3B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C18835521FA3DFF80034EE3B /* Ernie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ernie.xcdatamodel; sourceTree = "<group>"; };
+		C18835541FA3DFF80034EE3B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C18835571FA3DFF80034EE3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C18835591FA3DFF80034EE3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C188355E1FA3DFF80034EE3B /* ErnieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ErnieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C18835621FA3DFF80034EE3B /* ErnieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErnieTests.swift; sourceTree = "<group>"; };
+		C18835641FA3DFF80034EE3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C18835471FA3DFF80034EE3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C188355B1FA3DFF80034EE3B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C18835411FA3DFF80034EE3B = {
+			isa = PBXGroup;
+			children = (
+				C188354C1FA3DFF80034EE3B /* Ernie */,
+				C18835611FA3DFF80034EE3B /* ErnieTests */,
+				C188354B1FA3DFF80034EE3B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C188354B1FA3DFF80034EE3B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C188354A1FA3DFF80034EE3B /* Ernie.app */,
+				C188355E1FA3DFF80034EE3B /* ErnieTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C188354C1FA3DFF80034EE3B /* Ernie */ = {
+			isa = PBXGroup;
+			children = (
+				C188354D1FA3DFF80034EE3B /* AppDelegate.swift */,
+				C188354F1FA3DFF80034EE3B /* ViewController.swift */,
+				C18835541FA3DFF80034EE3B /* Assets.xcassets */,
+				C18835561FA3DFF80034EE3B /* Main.storyboard */,
+				C18835591FA3DFF80034EE3B /* Info.plist */,
+				C18835511FA3DFF80034EE3B /* Ernie.xcdatamodeld */,
+			);
+			path = Ernie;
+			sourceTree = "<group>";
+		};
+		C18835611FA3DFF80034EE3B /* ErnieTests */ = {
+			isa = PBXGroup;
+			children = (
+				C18835621FA3DFF80034EE3B /* ErnieTests.swift */,
+				C18835641FA3DFF80034EE3B /* Info.plist */,
+			);
+			path = ErnieTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C18835491FA3DFF80034EE3B /* Ernie */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C18835671FA3DFF80034EE3B /* Build configuration list for PBXNativeTarget "Ernie" */;
+			buildPhases = (
+				C18835461FA3DFF80034EE3B /* Sources */,
+				C18835471FA3DFF80034EE3B /* Frameworks */,
+				C18835481FA3DFF80034EE3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ernie;
+			productName = Ernie;
+			productReference = C188354A1FA3DFF80034EE3B /* Ernie.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C188355D1FA3DFF80034EE3B /* ErnieTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C188356A1FA3DFF80034EE3B /* Build configuration list for PBXNativeTarget "ErnieTests" */;
+			buildPhases = (
+				C188355A1FA3DFF80034EE3B /* Sources */,
+				C188355B1FA3DFF80034EE3B /* Frameworks */,
+				C188355C1FA3DFF80034EE3B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C18835601FA3DFF80034EE3B /* PBXTargetDependency */,
+			);
+			name = ErnieTests;
+			productName = ErnieTests;
+			productReference = C188355E1FA3DFF80034EE3B /* ErnieTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C18835421FA3DFF80034EE3B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Randy Haid";
+				TargetAttributes = {
+					C18835491FA3DFF80034EE3B = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+					C188355D1FA3DFF80034EE3B = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C18835491FA3DFF80034EE3B;
+					};
+				};
+			};
+			buildConfigurationList = C18835451FA3DFF80034EE3B /* Build configuration list for PBXProject "Ernie" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C18835411FA3DFF80034EE3B;
+			productRefGroup = C188354B1FA3DFF80034EE3B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C18835491FA3DFF80034EE3B /* Ernie */,
+				C188355D1FA3DFF80034EE3B /* ErnieTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C18835481FA3DFF80034EE3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C18835551FA3DFF80034EE3B /* Assets.xcassets in Resources */,
+				C18835581FA3DFF80034EE3B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C188355C1FA3DFF80034EE3B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C18835461FA3DFF80034EE3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C18835501FA3DFF80034EE3B /* ViewController.swift in Sources */,
+				C188354E1FA3DFF80034EE3B /* AppDelegate.swift in Sources */,
+				C18835531FA3DFF80034EE3B /* Ernie.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C188355A1FA3DFF80034EE3B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C18835631FA3DFF80034EE3B /* ErnieTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C18835601FA3DFF80034EE3B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C18835491FA3DFF80034EE3B /* Ernie */;
+			targetProxy = C188355F1FA3DFF80034EE3B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C18835561FA3DFF80034EE3B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C18835571FA3DFF80034EE3B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C18835651FA3DFF80034EE3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C18835661FA3DFF80034EE3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		C18835681FA3DFF80034EE3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Ernie/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = WalmartLabs.Ernie;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		C18835691FA3DFF80034EE3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Ernie/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = WalmartLabs.Ernie;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		C188356B1FA3DFF80034EE3B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ErnieTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = WalmartLabs.ErnieTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ernie.app/Contents/MacOS/Ernie";
+			};
+			name = Debug;
+		};
+		C188356C1FA3DFF80034EE3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ErnieTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = WalmartLabs.ErnieTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ernie.app/Contents/MacOS/Ernie";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C18835451FA3DFF80034EE3B /* Build configuration list for PBXProject "Ernie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C18835651FA3DFF80034EE3B /* Debug */,
+				C18835661FA3DFF80034EE3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C18835671FA3DFF80034EE3B /* Build configuration list for PBXNativeTarget "Ernie" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C18835681FA3DFF80034EE3B /* Debug */,
+				C18835691FA3DFF80034EE3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C188356A1FA3DFF80034EE3B /* Build configuration list for PBXNativeTarget "ErnieTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C188356B1FA3DFF80034EE3B /* Debug */,
+				C188356C1FA3DFF80034EE3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C18835511FA3DFF80034EE3B /* Ernie.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C18835521FA3DFF80034EE3B /* Ernie.xcdatamodel */,
+			);
+			currentVersion = C18835521FA3DFF80034EE3B /* Ernie.xcdatamodel */;
+			path = Ernie.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C18835421FA3DFF80034EE3B /* Project object */;
+}
