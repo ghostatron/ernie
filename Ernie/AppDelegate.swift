@@ -9,15 +9,15 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
-
-
-
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
+class AppDelegate: NSObject, NSApplicationDelegate
+{
+    func applicationDidFinishLaunching(_ aNotification: Notification)
+    {
         // Insert code here to initialize your application
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
+    func applicationWillTerminate(_ aNotification: Notification)
+    {
         // Insert code here to tear down your application
     }
 
@@ -34,7 +34,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error {
                 // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                // fatalError() causes the application to generate a crash log and terminate.
+                // You should not use this function in a shipping application, although it
+                // may be useful during development.
                  
                 /*
                  Typical reasons for an error here include:
@@ -52,17 +54,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // MARK: - Core Data Saving and Undo support
 
-    @IBAction func saveAction(_ sender: AnyObject?) {
-        // Performs the save action for the application, which is to send the save: message to the application's managed object context. Any encountered errors are presented to the user.
+    @IBAction func saveAction(_ sender: AnyObject?)
+    {
+        // Performs the save action for the application, which is to send the save:
+        // message to the application's managed object context. Any encountered
+        // errors are presented to the user.
         let context = persistentContainer.viewContext
 
-        if !context.commitEditing() {
+        if !context.commitEditing()
+        {
             NSLog("\(NSStringFromClass(type(of: self))) unable to commit editing before saving")
         }
-        if context.hasChanges {
-            do {
+        if context.hasChanges
+        {
+            do
+            {
                 try context.save()
-            } catch {
+            }
+            catch
+            {
                 // Customize this code block to include application-specific recovery steps.
                 let nserror = error as NSError
                 NSApplication.shared.presentError(nserror)
@@ -70,32 +80,41 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    func windowWillReturnUndoManager(window: NSWindow) -> UndoManager? {
-        // Returns the NSUndoManager for the application. In this case, the manager returned is that of the managed object context for the application.
+    func windowWillReturnUndoManager(window: NSWindow) -> UndoManager?
+    {
+        // Returns the NSUndoManager for the application. In this case, the manager
+        // returned is that of the managed object context for the application.
         return persistentContainer.viewContext.undoManager
     }
 
-    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
+    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply
+    {
         // Save changes in the application's managed object context before the application terminates.
         let context = persistentContainer.viewContext
         
-        if !context.commitEditing() {
+        if !context.commitEditing()
+        {
             NSLog("\(NSStringFromClass(type(of: self))) unable to commit editing to terminate")
             return .terminateCancel
         }
         
-        if !context.hasChanges {
+        if !context.hasChanges
+        {
             return .terminateNow
         }
         
-        do {
+        do
+        {
             try context.save()
-        } catch {
+        }
+        catch
+        {
             let nserror = error as NSError
 
             // Customize this code block to include application-specific recovery steps.
             let result = sender.presentError(nserror)
-            if (result) {
+            if (result)
+            {
                 return .terminateCancel
             }
             
@@ -110,7 +129,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             alert.addButton(withTitle: cancelButton)
             
             let answer = alert.runModal()
-            if answer == .alertSecondButtonReturn {
+            if answer == .alertSecondButtonReturn
+            {
                 return .terminateCancel
             }
         }

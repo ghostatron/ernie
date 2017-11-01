@@ -13,6 +13,9 @@
 		C1C774D61FA3E28300AD269F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1C774D51FA3E28300AD269F /* Assets.xcassets */; };
 		C1C774D91FA3E28300AD269F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1C774D71FA3E28300AD269F /* Main.storyboard */; };
 		C1C774E51FA3E28300AD269F /* ErnieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774E41FA3E28300AD269F /* ErnieTests.swift */; };
+		C1C774F11FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774F01FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift */; };
+		C1C774F31FA3EC5E00AD269F /* NodeJSRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774F21FA3EC5E00AD269F /* NodeJSRequirement.swift */; };
+		C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774F41FA3ECFB00AD269F /* CommandLineHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,9 @@
 		C1C774E01FA3E28300AD269F /* ErnieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ErnieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C774E41FA3E28300AD269F /* ErnieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErnieTests.swift; sourceTree = "<group>"; };
 		C1C774E61FA3E28300AD269F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1C774F01FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentRequirementDelegate.swift; sourceTree = "<group>"; };
+		C1C774F21FA3EC5E00AD269F /* NodeJSRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeJSRequirement.swift; sourceTree = "<group>"; };
+		C1C774F41FA3ECFB00AD269F /* CommandLineHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +84,10 @@
 		C1C774CD1FA3E28300AD269F /* Ernie */ = {
 			isa = PBXGroup;
 			children = (
+				C1C774EF1FA3E9F800AD269F /* Environment Requirements */,
 				C1C774CE1FA3E28300AD269F /* AppDelegate.swift */,
 				C1C774D01FA3E28300AD269F /* ViewController.swift */,
+				C1C774F41FA3ECFB00AD269F /* CommandLineHelper.swift */,
 				C1C774D51FA3E28300AD269F /* Assets.xcassets */,
 				C1C774D71FA3E28300AD269F /* Main.storyboard */,
 				C1C774DA1FA3E28300AD269F /* Info.plist */,
@@ -96,6 +104,15 @@
 				C1C774E61FA3E28300AD269F /* Info.plist */,
 			);
 			path = ErnieTests;
+			sourceTree = "<group>";
+		};
+		C1C774EF1FA3E9F800AD269F /* Environment Requirements */ = {
+			isa = PBXGroup;
+			children = (
+				C1C774F01FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift */,
+				C1C774F21FA3EC5E00AD269F /* NodeJSRequirement.swift */,
+			);
+			path = "Environment Requirements";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,7 +217,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1C774F11FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift in Sources */,
+				C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */,
 				C1C774D11FA3E28300AD269F /* ViewController.swift in Sources */,
+				C1C774F31FA3EC5E00AD269F /* NodeJSRequirement.swift in Sources */,
 				C1C774CF1FA3E28300AD269F /* AppDelegate.swift in Sources */,
 				C1C774D41FA3E28300AD269F /* Ernie.xcdatamodeld in Sources */,
 			);
