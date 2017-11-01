@@ -16,7 +16,7 @@ class ViewController: NSViewController
 
         // Do any additional setup after loading the view.
         let nodeTest = NodeJSRequirement()
-        let version = nodeTest.currentInstalledVersion()
+        let version = nodeTest.currentlyInstalledVersion()
         print(version ?? "oops")
         if nodeTest.isCurrentlyInstalledVersionCompatible()
         {

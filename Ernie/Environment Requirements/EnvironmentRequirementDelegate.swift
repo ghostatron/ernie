@@ -13,7 +13,7 @@ protocol EnvironmentRequirementDelegate
     /**
      Returns a string that indicates the version that is currently installed.  Returns nil if not installed.
      */
-    func currentInstalledVersion() -> String?
+    func currentlyInstalledVersion() -> String?
     
     /**
      Indicates whether or not the currently installed version is compatible for use with Electrode.

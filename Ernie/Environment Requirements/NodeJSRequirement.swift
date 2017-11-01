@@ -8,12 +8,72 @@
 
 import Foundation
 
+extension String
+{
+    func intByRemovingNonDigits(defaultValue: Int? = nil) -> Int?
+    {
+        let onlyDigits = String(self.filter { "01234567890.".contains($0) })
+        if onlyDigits.isEmpty
+        {
+            return defaultValue
+        }
+        else
+        {
+            return Int(onlyDigits)
+        }
+    }
+    
+    func parseIntoVersionsArray(separator: String = ".") -> [Int?]
+    {
+        var versionArray: [Int?] = []
+        
+        let versionComponents = self.components(separatedBy: separator)
+        for subversion in versionComponents
+        {
+            versionArray.append(subversion.intByRemovingNonDigits())
+        }
+        
+        return versionArray
+    }
+    
+    func compareToVersionArray(otherVersionComponents: [Int]) -> ComparisonResult
+    {
+        let myVersionComponents = self.parseIntoVersionsArray()
+        let maxSubVersions = max(myVersionComponents.count, otherVersionComponents.count)
+        for index in 0..<maxSubVersions
+        {
+            var mySubversion = 0
+            if index < myVersionComponents.count
+            {
+                mySubversion = myVersionComponents[index] ?? 0
+            }
+            
+            var otherSubversion = 0
+            if index < otherVersionComponents.count
+            {
+                otherSubversion = otherVersionComponents[index]
+            }
+            
+            if mySubversion > otherSubversion
+            {
+                return .orderedDescending
+            }
+            else if mySubversion < otherSubversion
+            {
+                return .orderedAscending
+            }
+        }
+
+        return  .orderedSame
+    }
+}
+
 class NodeJSRequirement : EnvironmentRequirementDelegate
 {
     /**
      Returns a string that indicates the version that is currently installed.  Returns nil if not installed.
      */
-    func currentInstalledVersion() -> String?
+    func currentlyInstalledVersion() -> String?
     {
         let response = CommandLineHelper.executeCommandLineAndWait(command: "/usr/local/bin/node", arguments: ["-v"])
         return response.output
@@ -24,68 +84,76 @@ class NodeJSRequirement : EnvironmentRequirementDelegate
      */
     func isCurrentlyInstalledVersionCompatible() -> Bool
     {
-        guard let currentVersion = self.currentInstalledVersion() else
+        guard let currentVersion = self.currentlyInstalledVersion() else
         {
             return false
         }
         
-        // The format of the version for Node is "v[int].[int].[int]". e.g. v6.11.4
         // The min version is currently 4.5.
-        let minMajorVersion = 4
-        let minMinorVersion = 5
-        let minPatchVersion = 0
+        return currentVersion.compareToVersionArray(otherVersionComponents: [4, 5]) != .orderedAscending
         
-        // First check the major version.
-        let versionComponents = currentVersion.components(separatedBy: ".")
-        var majorVersionInt = 0
-        if versionComponents.count > 0
-        {
-            var majorVersion = versionComponents[0]
-            if majorVersion.first == "v"
-            {
-                majorVersion.remove(at: majorVersion.startIndex)
-                majorVersionInt = Int(majorVersion) ?? 0
-            }
-        }
-        if majorVersionInt < minMajorVersion
-        {
-            return false
-        }
-        else if majorVersionInt > minMajorVersion
-        {
-            return true
-        }
-        else
-        {
-            // The major version matches the min major version exactly, so check the minor version.
-        }
-        
-        // Check the minor version.
-        var minorVersionInt = 0
-        if versionComponents.count > 1
-        {
-            minorVersionInt = Int(versionComponents[1]) ?? 0
-        }
-        if minorVersionInt < minMinorVersion
-        {
-            return false
-        }
-        else if minorVersionInt > minMinorVersion
-        {
-            return true
-        }
-        else
-        {
-            // The minor version matches the min minor version exactly, so check the patch version.
-        }
-        
-        // Check the patch version.
-        var patchVersionInt = 0
-        if versionComponents.count > 2
-        {
-            patchVersionInt = Int(versionComponents[2]) ?? 0
-        }
-        return patchVersionInt >= minPatchVersion
+//        let xyz = currentVersion.parseIntoVersionsArray()
+//        print(xyz)
+//        let res = currentVersion.compareToVersionArray(otherVersionComponents: [4, 5, 0])
+//        print("\(res)")
+//
+//        // The format of the version for Node is "v[int].[int].[int]". e.g. v6.11.4
+//        // The min version is currently 4.5.
+//        let minMajorVersion = 4
+//        let minMinorVersion = 5
+//        let minPatchVersion = 0
+//
+//        // First check the major version.
+//        let versionComponents = currentVersion.components(separatedBy: ".")
+//        var majorVersionInt = 0
+//        if versionComponents.count > 0
+//        {
+//            var majorVersion = versionComponents[0]
+//            if majorVersion.first == "v"
+//            {
+//                majorVersion = String(majorVersion.dropFirst())
+//            }
+//            majorVersionInt = Int(majorVersion) ?? 0
+//        }
+//        if majorVersionInt < minMajorVersion
+//        {
+//            return false
+//        }
+//        else if majorVersionInt > minMajorVersion
+//        {
+//            return true
+//        }
+//        else
+//        {
+//            // The major version matches the min major version exactly, so check the minor version.
+//        }
+//
+//        // Check the minor version.
+//        var minorVersionInt = 0
+//        if versionComponents.count > 1
+//        {
+//            minorVersionInt = Int(versionComponents[1]) ?? 0
+//        }
+//        if minorVersionInt < minMinorVersion
+//        {
+//            return false
+//        }
+//        else if minorVersionInt > minMinorVersion
+//        {
+//            return true
+//        }
+//        else
+//        {
+//            // The minor version matches the min minor version exactly, so check the patch version.
+//        }
+//
+//        // Check the patch version.
+//        var patchVersionInt = 0
+//        if versionComponents.count > 2
+//        {
+//            patchVersionInt = Int(versionComponents[2]) ?? 0
+//        }
+//        return patchVersionInt >= minPatchVersion
     }
     
     /**
