@@ -11,18 +11,21 @@ import Foundation
 protocol EnvironmentRequirementDelegate
 {
     /**
-     Returns a string that indicates the version that is currently installed.  Returns nil if not installed.
+     Requirements get executed via command line and require a full path to the executable file.
+     e.g. /bin/echo
      */
-    func currentlyInstalledVersion() -> String?
+    var fullPathExecutable: String { get }
     
     /**
-     Indicates whether or not the currently installed version is compatible for use with Electrode.
+     In order to check the version of an executable, the entity at fullPathExecutable will be executed
+     with the arguments listed in argumentsForVersionCheck.
      */
-    func isCurrentlyInstalledVersionCompatible() -> Bool
+    var argumentsForVersionCheck: [String] { get }
     
     /**
-     Installs the latest version and calls |completeion| with the String that indicates the version installed.
-     |completion| will be called with nil if the installation fails.
+     Version information is typically broken up in some kind of dot notation, such as 1.2.3, where the
+     numbers might refer to "major", "minor", and "patch" releases.  minVersionComponents is simply
+     the number portions of that release version, going left to right.
      */
-    func installLatestVersion(completion: @escaping (String?) -> ())
+    var minVersionComponents: [Int] { get }
 }

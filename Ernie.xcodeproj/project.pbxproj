@@ -16,6 +16,7 @@
 		C1C774F11FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774F01FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift */; };
 		C1C774F31FA3EC5E00AD269F /* NodeJSRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774F21FA3EC5E00AD269F /* NodeJSRequirement.swift */; };
 		C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774F41FA3ECFB00AD269F /* CommandLineHelper.swift */; };
+		C1E96C2A1FAA90AB00A460EA /* EnvironmentRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E96C291FAA90AB00A460EA /* EnvironmentRequirement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		C1C774F01FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentRequirementDelegate.swift; sourceTree = "<group>"; };
 		C1C774F21FA3EC5E00AD269F /* NodeJSRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeJSRequirement.swift; sourceTree = "<group>"; };
 		C1C774F41FA3ECFB00AD269F /* CommandLineHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineHelper.swift; sourceTree = "<group>"; };
+		C1E96C291FAA90AB00A460EA /* EnvironmentRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentRequirement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				C1C774F01FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift */,
+				C1E96C291FAA90AB00A460EA /* EnvironmentRequirement.swift */,
 				C1C774F21FA3EC5E00AD269F /* NodeJSRequirement.swift */,
 			);
 			path = "Environment Requirements";
@@ -221,6 +224,7 @@
 				C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */,
 				C1C774D11FA3E28300AD269F /* ViewController.swift in Sources */,
 				C1C774F31FA3EC5E00AD269F /* NodeJSRequirement.swift in Sources */,
+				C1E96C2A1FAA90AB00A460EA /* EnvironmentRequirement.swift in Sources */,
 				C1C774CF1FA3E28300AD269F /* AppDelegate.swift in Sources */,
 				C1C774D41FA3E28300AD269F /* Ernie.xcdatamodeld in Sources */,
 			);
