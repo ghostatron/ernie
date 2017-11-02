@@ -38,7 +38,10 @@ fileprivate extension String
         var versionArray: [Int?] = []
         
         // Split this String by |separator| and convert each element to an Int.
-        let versionComponents = self.components(separatedBy: separator)
+        let separators = NSMutableCharacterSet()
+        separators.formUnion(with: .newlines)
+        separators.addCharacters(in: separator)
+        let versionComponents = self.components(separatedBy: separators as CharacterSet)
         for subversion in versionComponents
         {
             versionArray.append(subversion.intByRemovingNonDigits())

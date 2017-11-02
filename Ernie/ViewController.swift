@@ -14,7 +14,7 @@ class ViewController: NSViewController
     {
         super.viewDidLoad()
 
-        let reqTest = NPMRequirement()
+        let reqTest = XcodeRequirement()
         let version = reqTest.currentlyInstalledVersion()
         print(version ?? "oops")
         if reqTest.isCurrentlyInstalledVersionCompatible()
