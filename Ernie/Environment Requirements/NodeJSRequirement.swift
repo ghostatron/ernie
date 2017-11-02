@@ -12,14 +12,10 @@ class NodeJSRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
 {
     // MARK:- Init Methods
     
-    init()
+    override init()
     {
-        super.init(delegate: self)
-    }
-    
-    override private init(delegate: EnvironmentRequirementDelegate)
-    {
-            super.init(delegate: delegate)
+        super.init()
+        self.delegate = self
     }
     
     // MARK:- EnvironmentRequirementDelegate

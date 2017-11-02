@@ -83,16 +83,11 @@ fileprivate extension String
 
 class EnvironmentRequirement
 {
-    /// Provides information specific to a given requirement, such as paths and arguments.
-    private var delegate: EnvironmentRequirementDelegate
-    
     /**
-     Creates an EnvironmentRequirement object that will use the given |delegate| for details.
+     Provides information specific to a given requirement, such as paths and arguments.  Inheriting classes
+     MUST set this, probably by overriding init, or crashes will almost certainly result.
      */
-    init(delegate: EnvironmentRequirementDelegate)
-    {
-        self.delegate = delegate
-    }
+    var delegate: EnvironmentRequirementDelegate!
     
     /**
      Returns a string that indicates the version that is currently installed.  Returns nil if not installed.
