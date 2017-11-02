@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */; };
 		C1C774CF1FA3E28300AD269F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774CE1FA3E28300AD269F /* AppDelegate.swift */; };
 		C1C774D11FA3E28300AD269F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774D01FA3E28300AD269F /* ViewController.swift */; };
 		C1C774D41FA3E28300AD269F /* Ernie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1C774D21FA3E28300AD269F /* Ernie.xcdatamodeld */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPMRequirement.swift; sourceTree = "<group>"; };
 		C1C774CB1FA3E28300AD269F /* Ernie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ernie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C774CE1FA3E28300AD269F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1C774D01FA3E28300AD269F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				C1C774F01FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift */,
 				C1E96C291FAA90AB00A460EA /* EnvironmentRequirement.swift */,
 				C1C774F21FA3EC5E00AD269F /* NodeJSRequirement.swift */,
+				C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */,
 			);
 			path = "Environment Requirements";
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				C1C774F11FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift in Sources */,
 				C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */,
 				C1C774D11FA3E28300AD269F /* ViewController.swift in Sources */,
+				C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */,
 				C1C774F31FA3EC5E00AD269F /* NodeJSRequirement.swift in Sources */,
 				C1E96C2A1FAA90AB00A460EA /* EnvironmentRequirement.swift in Sources */,
 				C1C774CF1FA3E28300AD269F /* AppDelegate.swift in Sources */,

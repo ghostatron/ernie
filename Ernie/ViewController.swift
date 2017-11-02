@@ -13,12 +13,11 @@ class ViewController: NSViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        let nodeTest = NodeJSRequirement()
-        let version = nodeTest.currentlyInstalledVersion()
+
+        let reqTest = NPMRequirement()
+        let version = reqTest.currentlyInstalledVersion()
         print(version ?? "oops")
-        if nodeTest.isCurrentlyInstalledVersionCompatible()
+        if reqTest.isCurrentlyInstalledVersionCompatible()
         {
             print("yay")
         }

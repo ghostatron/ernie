@@ -17,14 +17,15 @@ fileprivate extension String
      */
     func intByRemovingNonDigits(defaultValue: Int? = nil) -> Int?
     {
+        // Remove anything that isn't a number digit and try to turn whatever is left into an Int.
         let onlyDigits = String(self.filter { "01234567890.".contains($0) })
-        if onlyDigits.isEmpty
+        if let intValue = Int(onlyDigits)
         {
-            return defaultValue
+            return intValue
         }
         else
         {
-            return Int(onlyDigits)
+            return defaultValue
         }
     }
     
@@ -36,6 +37,7 @@ fileprivate extension String
     {
         var versionArray: [Int?] = []
         
+        // Split this String by |separator| and convert each element to an Int.
         let versionComponents = self.components(separatedBy: separator)
         for subversion in versionComponents
         {
@@ -51,22 +53,29 @@ fileprivate extension String
      */
     func compareToVersionArray(otherVersionComponents: [Int]) -> ComparisonResult
     {
+        // Get my components, for comparing to |otherVersionComponents|.
         let myVersionComponents = self.parseIntoVersionsArray()
+        
+        // Compare the component in each array at matching indexes.  If one array is shorter
+        // than the other, then the shorter one is assumed to have zero for the missing ones.
         let maxSubVersions = max(myVersionComponents.count, otherVersionComponents.count)
         for index in 0..<maxSubVersions
         {
+            // My component version at the current index.
             var mySubversion = 0
             if index < myVersionComponents.count
             {
                 mySubversion = myVersionComponents[index] ?? 0
             }
             
+            // The other components version at the current index.
             var otherSubversion = 0
             if index < otherVersionComponents.count
             {
                 otherSubversion = otherVersionComponents[index]
             }
             
+            // We can leave early if they are not the same.
             if mySubversion > otherSubversion
             {
                 return .orderedDescending
@@ -88,6 +97,36 @@ class EnvironmentRequirement
      MUST set this, probably by overriding init, or crashes will almost certainly result.
      */
     var delegate: EnvironmentRequirementDelegate!
+    
+    // MARK:- Init
+    
+    /**
+     Configures the command line environment to hopefully make things work fairly smoothly.  It's designed
+     to only run once during the application's lifetime.
+     */
+    private func setupEnvironmentOnce()
+    {
+        struct ErnieEnvironment
+        {
+            static var configure : Void = {
+                let envVars = ProcessInfo.processInfo.environment
+                let pathVar = envVars["PATH"] ?? ""
+                let erniePath = "\(pathVar):/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+                setenv("PATH", erniePath, 1)
+            }()
+        }
+        let _ = ErnieEnvironment.configure
+    }
+
+    /**
+     Creates an EnvironmentRequirement object.
+     */
+    init()
+    {
+        self.setupEnvironmentOnce()
+    }
+    
+    // MARK:- Version Methods
     
     /**
      Returns a string that indicates the version that is currently installed.  Returns nil if not installed.
