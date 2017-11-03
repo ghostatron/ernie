@@ -14,9 +14,9 @@ class ViewController: NSViewController
     {
         super.viewDidLoad()
 
-        let reqTest = XcodeRequirement()
+        let reqTest = ElectrodeRequirement()
         let version = reqTest.currentlyInstalledVersion()
-        print(version ?? "oops")
+        print("version: \(version ?? "oops")")
         if reqTest.isCurrentlyInstalledVersionCompatible()
         {
             print("yay")

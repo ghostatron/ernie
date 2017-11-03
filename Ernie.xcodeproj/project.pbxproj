@@ -10,6 +10,7 @@
 		C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */; };
 		C190D4531FABD61B002EFA5B /* YarnRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4521FABD61B002EFA5B /* YarnRequirement.swift */; };
 		C190D4551FABD803002EFA5B /* XcodeRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4541FABD803002EFA5B /* XcodeRequirement.swift */; };
+		C190D4571FACD3FA002EFA5B /* ElectrodeRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4561FACD3FA002EFA5B /* ElectrodeRequirement.swift */; };
 		C1C774CF1FA3E28300AD269F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774CE1FA3E28300AD269F /* AppDelegate.swift */; };
 		C1C774D11FA3E28300AD269F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774D01FA3E28300AD269F /* ViewController.swift */; };
 		C1C774D41FA3E28300AD269F /* Ernie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1C774D21FA3E28300AD269F /* Ernie.xcdatamodeld */; };
@@ -36,6 +37,7 @@
 		C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPMRequirement.swift; sourceTree = "<group>"; };
 		C190D4521FABD61B002EFA5B /* YarnRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YarnRequirement.swift; sourceTree = "<group>"; };
 		C190D4541FABD803002EFA5B /* XcodeRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeRequirement.swift; sourceTree = "<group>"; };
+		C190D4561FACD3FA002EFA5B /* ElectrodeRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrodeRequirement.swift; sourceTree = "<group>"; };
 		C1C774CB1FA3E28300AD269F /* Ernie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ernie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C774CE1FA3E28300AD269F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1C774D01FA3E28300AD269F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -117,12 +119,13 @@
 		C1C774EF1FA3E9F800AD269F /* Environment Requirements */ = {
 			isa = PBXGroup;
 			children = (
-				C1C774F01FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift */,
+				C190D4561FACD3FA002EFA5B /* ElectrodeRequirement.swift */,
 				C1E96C291FAA90AB00A460EA /* EnvironmentRequirement.swift */,
+				C1C774F01FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift */,
 				C1C774F21FA3EC5E00AD269F /* NodeJSRequirement.swift */,
 				C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */,
-				C190D4521FABD61B002EFA5B /* YarnRequirement.swift */,
 				C190D4541FABD803002EFA5B /* XcodeRequirement.swift */,
+				C190D4521FABD61B002EFA5B /* YarnRequirement.swift */,
 			);
 			path = "Environment Requirements";
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C190D4571FACD3FA002EFA5B /* ElectrodeRequirement.swift in Sources */,
 				C1C774F11FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift in Sources */,
 				C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */,
 				C1C774D11FA3E28300AD269F /* ViewController.swift in Sources */,

@@ -136,8 +136,17 @@ class EnvironmentRequirement
      */
     func currentlyInstalledVersion() -> String?
     {
+        // Grab the raw output from the command line request for the version.
         let response = CommandLineHelper.executeCommandLineAndWait(command: self.delegate.fullPathExecutable, arguments: self.delegate.argumentsForVersionCheck)
-        return response.output
+        
+        // That raw output can have some noise:  Parse it into a version array, and then remove nil entries.
+        var versionString: String?
+        if let versionComponents = response.output?.parseIntoVersionsArray().filter({ $0 != nil })
+        {
+            let stringVersionComponents: [String] = versionComponents.map { String(describing: $0!) }
+            versionString = stringVersionComponents.joined(separator: ".")
+        }
+        return versionString
     }
     
     /**
@@ -145,12 +154,11 @@ class EnvironmentRequirement
      */
     func isCurrentlyInstalledVersionCompatible() -> Bool
     {
+        // Grab our current version and compare it against the minimum required version.
         guard let currentVersion = self.currentlyInstalledVersion() else
         {
             return false
         }
-        
-        // The min version is currently 4.5.
         return currentVersion.compareToVersionArray(otherVersionComponents: self.delegate.minVersionComponents) != .orderedAscending
     }
     
