@@ -169,6 +169,7 @@ class EnvironmentRequirement
     func installLatestVersion(completion: @escaping (String?) -> ())
     {
         CommandLineHelper.executeCommandLine(command: "", arguments: nil) { (response) in
+            // TODO: Not even sure I want to do this, but perhaps instead simply provide directions on how to install.
             completion(nil)
         }
     }

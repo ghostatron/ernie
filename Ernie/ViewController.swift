@@ -14,17 +14,19 @@ class ViewController: NSViewController
     {
         super.viewDidLoad()
 
-        let reqTest = ElectrodeRequirement()
-        let version = reqTest.currentlyInstalledVersion()
-        print("version: \(version ?? "oops")")
-        if reqTest.isCurrentlyInstalledVersionCompatible()
-        {
-            print("yay")
-        }
-        else
-        {
-            print("uh oh")
-        }
+//        let reqTest = ElectrodeRequirement()
+//        let version = reqTest.currentlyInstalledVersion()
+//        print("version: \(version ?? "oops")")
+//        if reqTest.isCurrentlyInstalledVersionCompatible()
+//        {
+//            print("yay")
+//        }
+//        else
+//        {
+//            print("uh oh")
+//        }
+        
+        CommandLineHelper.executeCommandsAsShellScript(scriptLines: ["echo hello world"])
     }
 
     override var representedObject: Any?

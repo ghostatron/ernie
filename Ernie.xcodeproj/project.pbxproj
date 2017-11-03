@@ -73,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C190D4581FACEBDE002EFA5B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				C1C774F41FA3ECFB00AD269F /* CommandLineHelper.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		C1C774C21FA3E28300AD269F = {
 			isa = PBXGroup;
 			children = (
@@ -95,9 +103,9 @@
 			isa = PBXGroup;
 			children = (
 				C1C774EF1FA3E9F800AD269F /* Environment Requirements */,
+				C190D4581FACEBDE002EFA5B /* Utilities */,
 				C1C774CE1FA3E28300AD269F /* AppDelegate.swift */,
 				C1C774D01FA3E28300AD269F /* ViewController.swift */,
-				C1C774F41FA3ECFB00AD269F /* CommandLineHelper.swift */,
 				C1C774D51FA3E28300AD269F /* Assets.xcassets */,
 				C1C774D71FA3E28300AD269F /* Main.storyboard */,
 				C1C774DA1FA3E28300AD269F /* Info.plist */,
