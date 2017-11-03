@@ -11,6 +11,7 @@
 		C190D4531FABD61B002EFA5B /* YarnRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4521FABD61B002EFA5B /* YarnRequirement.swift */; };
 		C190D4551FABD803002EFA5B /* XcodeRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4541FABD803002EFA5B /* XcodeRequirement.swift */; };
 		C190D4571FACD3FA002EFA5B /* ElectrodeRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4561FACD3FA002EFA5B /* ElectrodeRequirement.swift */; };
+		C190D45B1FAD21EC002EFA5B /* ErnWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D45A1FAD21EC002EFA5B /* ErnWrapper.swift */; };
 		C1C774CF1FA3E28300AD269F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774CE1FA3E28300AD269F /* AppDelegate.swift */; };
 		C1C774D11FA3E28300AD269F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774D01FA3E28300AD269F /* ViewController.swift */; };
 		C1C774D41FA3E28300AD269F /* Ernie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1C774D21FA3E28300AD269F /* Ernie.xcdatamodeld */; };
@@ -38,6 +39,7 @@
 		C190D4521FABD61B002EFA5B /* YarnRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YarnRequirement.swift; sourceTree = "<group>"; };
 		C190D4541FABD803002EFA5B /* XcodeRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeRequirement.swift; sourceTree = "<group>"; };
 		C190D4561FACD3FA002EFA5B /* ElectrodeRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElectrodeRequirement.swift; sourceTree = "<group>"; };
+		C190D45A1FAD21EC002EFA5B /* ErnWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErnWrapper.swift; sourceTree = "<group>"; };
 		C1C774CB1FA3E28300AD269F /* Ernie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ernie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C774CE1FA3E28300AD269F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1C774D01FA3E28300AD269F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,14 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		C190D4591FAD21CA002EFA5B /* Tool Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				C190D45A1FAD21EC002EFA5B /* ErnWrapper.swift */,
+			);
+			path = "Tool Wrappers";
+			sourceTree = "<group>";
+		};
 		C1C774C21FA3E28300AD269F = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +112,7 @@
 		C1C774CD1FA3E28300AD269F /* Ernie */ = {
 			isa = PBXGroup;
 			children = (
+				C190D4591FAD21CA002EFA5B /* Tool Wrappers */,
 				C1C774EF1FA3E9F800AD269F /* Environment Requirements */,
 				C190D4581FACEBDE002EFA5B /* Utilities */,
 				C1C774CE1FA3E28300AD269F /* AppDelegate.swift */,
@@ -241,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C190D4571FACD3FA002EFA5B /* ElectrodeRequirement.swift in Sources */,
+				C190D45B1FAD21EC002EFA5B /* ErnWrapper.swift in Sources */,
 				C1C774F11FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift in Sources */,
 				C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */,
 				C1C774D11FA3E28300AD269F /* ViewController.swift in Sources */,

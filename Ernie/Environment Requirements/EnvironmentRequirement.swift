@@ -101,34 +101,6 @@ class EnvironmentRequirement
      */
     var delegate: EnvironmentRequirementDelegate!
     
-    // MARK:- Init
-    
-    /**
-     Configures the command line environment to hopefully make things work fairly smoothly.  It's designed
-     to only run once during the application's lifetime.
-     */
-    private func setupEnvironmentOnce()
-    {
-        struct ErnieEnvironment
-        {
-            static var configure : Void = {
-                let envVars = ProcessInfo.processInfo.environment
-                let pathVar = envVars["PATH"] ?? ""
-                let erniePath = "\(pathVar):/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
-                setenv("PATH", erniePath, 1)
-            }()
-        }
-        let _ = ErnieEnvironment.configure
-    }
-
-    /**
-     Creates an EnvironmentRequirement object.
-     */
-    init()
-    {
-        self.setupEnvironmentOnce()
-    }
-    
     // MARK:- Version Methods
     
     /**

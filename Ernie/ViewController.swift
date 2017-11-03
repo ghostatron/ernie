@@ -26,7 +26,27 @@ class ViewController: NSViewController
 //            print("uh oh")
 //        }
         
-        CommandLineHelper.executeCommandsAsShellScript(scriptLines: ["echo hello world"])
+//        let res = CommandLineHelper.executeCommandsAsShellScript(scriptLines: ["echo hello world"])
+//        print("res = \(res.output ?? "")")
+        
+//        ErnWrapper.createMiniApp(parentFolderFullPath: "/Users/r0h00re/Projects/blah", createFolderIfNeeded: true, appName: "TestAppREH") { (response) in
+//            print("hi")
+//        }
+    }
+    
+    @IBAction func buttonPressed(_ sender: NSButton)
+    {
+        let reqTest = ElectrodeRequirement()
+        let version = reqTest.currentlyInstalledVersion()
+        print("version: \(version ?? "oops")")
+        if reqTest.isCurrentlyInstalledVersionCompatible()
+        {
+            print("yay")
+        }
+        else
+        {
+            print("uh oh")
+        }
     }
 
     override var representedObject: Any?
