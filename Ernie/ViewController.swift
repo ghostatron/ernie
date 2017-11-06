@@ -36,17 +36,21 @@ class ViewController: NSViewController
     
     @IBAction func buttonPressed(_ sender: NSButton)
     {
-        let reqTest = ElectrodeRequirement()
-        let version = reqTest.currentlyInstalledVersion()
-        print("version: \(version ?? "oops")")
-        if reqTest.isCurrentlyInstalledVersionCompatible()
-        {
-            print("yay")
-        }
-        else
-        {
-            print("uh oh")
-        }
+//        ErnWrapper.launchMiniApp(miniAppFolderPath: "/Users/r0h00re/Projects/blah/TestAppREH") { (response) in
+//
+//        }
+        
+//        let reqTest = ElectrodeRequirement()
+//        let version = reqTest.currentlyInstalledVersion()
+//        print("version: \(version ?? "oops")")
+//        if reqTest.isCurrentlyInstalledVersionCompatible()
+//        {
+//            print("yay")
+//        }
+//        else
+//        {
+//            print("uh oh")
+//        }
     }
 
     override var representedObject: Any?
