@@ -59,4 +59,15 @@ class ErnWrapper
             completion(response)
         }
     }
+    
+    // install brew
+    // use brew to install yarn and node
+    
+    // list versions (auto include 1000.0.0 (ern platform list)
+    
+    // current version (ern platform current)
+    
+    // switch to version (ern platform use 1000.0.0)
+    
+    // install latest version (npm i -g electrode-native)
 }

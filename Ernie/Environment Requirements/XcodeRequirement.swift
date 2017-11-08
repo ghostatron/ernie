@@ -25,4 +25,12 @@ class XcodeRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     var argumentsForVersionCheck: [String] { get { return ["-version"] } }
     
     var minVersionComponents: [Int] { get { return [8, 3, 2] } }
+    
+    var fullPathInstallExecutable: String { get { return "" } }
+    
+    var argumentsForInstall: [String] { get { return [""] } }
+    
+    var fullPathUpdateExecutable: String { get { return "" } }
+    
+    var argumentsForUpdate: [String] { get { return [""] } }
 }

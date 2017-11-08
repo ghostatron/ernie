@@ -25,4 +25,12 @@ class NodeJSRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     var argumentsForVersionCheck: [String] { get { return ["-v"] } }
 
     var minVersionComponents: [Int] { get { return [4, 5] } }
+    
+    var fullPathInstallExecutable: String { get { return "" } }
+    
+    var argumentsForInstall: [String] { get { return [""] } }
+    
+    var fullPathUpdateExecutable: String { get { return "" } }
+    
+    var argumentsForUpdate: [String] { get { return [""] } }
 }

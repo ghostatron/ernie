@@ -16,6 +16,20 @@ protocol EnvironmentRequirementDelegate
      */
     var fullPathExecutable: String { get }
     
+    // MARK:- Install
+    
+    var fullPathInstallExecutable: String { get }
+    
+    var argumentsForInstall: [String] { get }
+    
+    // MARK:- Update
+    
+    var fullPathUpdateExecutable: String { get }
+
+    var argumentsForUpdate: [String] { get }
+    
+    // MARK:- Version
+    
     /**
      In order to check the version of an executable, the entity at fullPathExecutable will be executed
      with the arguments listed in argumentsForVersionCheck.

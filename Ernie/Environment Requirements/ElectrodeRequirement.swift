@@ -25,4 +25,12 @@ class ElectrodeRequirement : EnvironmentRequirement, EnvironmentRequirementDeleg
     var argumentsForVersionCheck: [String] { get { return ["platform", "current"] } }
     
     var minVersionComponents: [Int] { get { return [0] } }
+    
+    var fullPathInstallExecutable: String { get { return "" } }
+    
+    var argumentsForInstall: [String] { get { return [""] } }
+    
+    var fullPathUpdateExecutable: String { get { return "" } }
+    
+    var argumentsForUpdate: [String] { get { return [""] } }
 }

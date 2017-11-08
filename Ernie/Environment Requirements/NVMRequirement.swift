@@ -1,14 +1,14 @@
 //
-//  YarnRequirement.swift
+//  NVMRequirement.swift
 //  Ernie
 //
-//  Created by Randy Haid on 11/2/17.
+//  Created by Randy Haid on 11/6/17.
 //  Copyright © 2017 Randy Haid. All rights reserved.
 //
 
 import Foundation
 
-class YarnRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
+class NVMRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
 {
     // MARK:- Init Methods
     
@@ -20,9 +20,9 @@ class YarnRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     
     // MARK:- EnvironmentRequirementDelegate
     
-    var fullPathExecutable: String { get { return "/usr/local/bin/yarn" } }
+    var fullPathExecutable: String { get { return "" } }
     
-    var argumentsForVersionCheck: [String] { get { return ["-v"] } }
+    var argumentsForVersionCheck: [String] { get { return [""] } }
     
     var minVersionComponents: [Int] { get { return [1] } }
     

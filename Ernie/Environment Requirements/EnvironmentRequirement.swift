@@ -135,14 +135,22 @@ class EnvironmentRequirement
     }
     
     /**
-     Installs the latest version and calls |completeion| with the String that indicates the version installed.
-     |completion| will be called with nil if the installation fails.
+     Installs the product and calls |completeion| with the command line result..
      */
-    func installLatestVersion(completion: @escaping (String?) -> ())
+    func install(completion: @escaping (CommandLineResponse?) -> ())
     {
         CommandLineHelper.executeCommandLine(command: "", arguments: nil) { (response) in
-            // TODO: Not even sure I want to do this, but perhaps instead simply provide directions on how to install.
-            completion(nil)
+            completion(response)
+        }
+    }
+    
+    /**
+     Updates the product and calls |completeion| with the command line result..
+     */
+    func updateToLatestVersion(completion: @escaping (CommandLineResponse?) -> ())
+    {
+        CommandLineHelper.executeCommandLine(command: "", arguments: nil) { (response) in
+            completion(response)
         }
     }
 }
