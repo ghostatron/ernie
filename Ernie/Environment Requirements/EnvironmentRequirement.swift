@@ -139,7 +139,7 @@ class EnvironmentRequirement
      */
     func install(completion: @escaping (CommandLineResponse?) -> ())
     {
-        CommandLineHelper.executeCommandLine(command: "", arguments: nil) { (response) in
+        CommandLineHelper.executeCommandLine(command: self.delegate.fullPathInstallExecutable, arguments: self.delegate.argumentsForInstall) { (response) in
             completion(response)
         }
     }
@@ -149,7 +149,7 @@ class EnvironmentRequirement
      */
     func updateToLatestVersion(completion: @escaping (CommandLineResponse?) -> ())
     {
-        CommandLineHelper.executeCommandLine(command: "", arguments: nil) { (response) in
+        CommandLineHelper.executeCommandLine(command: self.delegate.fullPathUpdateExecutable, arguments: self.delegate.argumentsForUpdate) { (response) in
             completion(response)
         }
     }

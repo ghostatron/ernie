@@ -20,11 +20,13 @@ class NVMRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     
     // MARK:- EnvironmentRequirementDelegate
     
-    var fullPathExecutable: String { get { return "" } }
+    var setupScriptLines: [String]? { get { return nil } }
+
+    var fullPathExecutable: String { get { return "nvm" } }
     
-    var argumentsForVersionCheck: [String] { get { return [""] } }
+    var argumentsForVersionCheck: [String] { get { return ["--version"] } }
     
-    var minVersionComponents: [Int] { get { return [1] } }
+    var minVersionComponents: [Int] { get { return [0] } }
     
     var fullPathInstallExecutable: String { get { return "" } }
     
@@ -34,3 +36,8 @@ class NVMRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     
     var argumentsForUpdate: [String] { get { return [""] } }
 }
+
+//export NVM_DIR="$HOME/.nvm"
+//[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+//[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+

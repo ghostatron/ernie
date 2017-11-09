@@ -20,17 +20,20 @@ class YarnRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     
     // MARK:- EnvironmentRequirementDelegate
     
+    var setupScriptLines: [String]? { get { return nil } }
+    
     var fullPathExecutable: String { get { return "/usr/local/bin/yarn" } }
     
-    var argumentsForVersionCheck: [String] { get { return ["-v"] } }
+    var argumentsForVersionCheck: [String] { get { return ["--version"] } }
     
     var minVersionComponents: [Int] { get { return [1] } }
     
-    var fullPathInstallExecutable: String { get { return "" } }
+    var fullPathInstallExecutable: String { get { return "/usr/local/bin/brew" } }
     
-    var argumentsForInstall: [String] { get { return [""] } }
+    // Yarn wants to install NodeJS by default, but we don't want that.
+    var argumentsForInstall: [String] { get { return ["install", "yarn", "--without-node"] } }
     
-    var fullPathUpdateExecutable: String { get { return "" } }
+    var fullPathUpdateExecutable: String { get { return "/usr/local/bin/brew" } }
     
-    var argumentsForUpdate: [String] { get { return [""] } }
+    var argumentsForUpdate: [String] { get { return ["upgrade", "yarn"] } }
 }

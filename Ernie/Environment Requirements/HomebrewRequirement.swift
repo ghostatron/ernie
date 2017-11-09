@@ -20,6 +20,8 @@ class HomeBrewRequiremewnt : EnvironmentRequirement, EnvironmentRequirementDeleg
     
     // MARK:- EnvironmentRequirementDelegate
     
+    var setupScriptLines: [String]? { get { return nil } }
+
     var fullPathExecutable: String { get { return "" } }
     
     var argumentsForVersionCheck: [String] { get { return [""] } }

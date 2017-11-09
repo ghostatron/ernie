@@ -40,17 +40,17 @@ class ViewController: NSViewController
 //
 //        }
         
-//        let reqTest = ElectrodeRequirement()
-//        let version = reqTest.currentlyInstalledVersion()
-//        print("version: \(version ?? "oops")")
-//        if reqTest.isCurrentlyInstalledVersionCompatible()
-//        {
-//            print("yay")
-//        }
-//        else
-//        {
-//            print("uh oh")
-//        }
+        let reqTest = NVMRequirement()
+        let version = reqTest.currentlyInstalledVersion()
+        print("version: \(version ?? "oops")")
+        if reqTest.isCurrentlyInstalledVersionCompatible()
+        {
+            print("yay")
+        }
+        else
+        {
+            print("uh oh")
+        }
     }
 
     override var representedObject: Any?

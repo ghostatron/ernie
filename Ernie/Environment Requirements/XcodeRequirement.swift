@@ -20,17 +20,23 @@ class XcodeRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     
     // MARK:- EnvironmentRequirementDelegate
     
+    var setupScriptLines: [String]? { get { return nil } }
+
     var fullPathExecutable: String { get { return "/usr/bin/xcodebuild" } }
     
     var argumentsForVersionCheck: [String] { get { return ["-version"] } }
     
     var minVersionComponents: [Int] { get { return [8, 3, 2] } }
     
-    var fullPathInstallExecutable: String { get { return "" } }
+    var fullPathInstallExecutable: String { get { return "/usr/bin/open" } }
     
-    var argumentsForInstall: [String] { get { return [""] } }
+    // TODO:- I'd like to launch directly into the app store, or better yet, download via command line.
+    // For now, launching to Xcode in Safari.
+    var argumentsForInstall: [String] { get { return ["-a", "safari", "https://www.apple.com/us/search/xcode"] } }
     
-    var fullPathUpdateExecutable: String { get { return "" } }
+    var fullPathUpdateExecutable: String { get { return "/usr/bin/open" } }
     
-    var argumentsForUpdate: [String] { get { return [""] } }
+    // TODO:- I'd like to launch directly into the app store, or better yet, download via command line.
+    // For now, launching to Xcode in Safari.
+    var argumentsForUpdate: [String] { get { return ["-a", "safari", "https://www.apple.com/us/search/xcode"] } }
 }

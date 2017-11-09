@@ -20,6 +20,8 @@ class NPMRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     
     // MARK:- EnvironmentRequirementDelegate
     
+    var setupScriptLines: [String]? { get { return nil } }
+
     var fullPathExecutable: String { get { return "/usr/local/bin/npm" } }
     
     var argumentsForVersionCheck: [String] { get { return ["-v"] } }

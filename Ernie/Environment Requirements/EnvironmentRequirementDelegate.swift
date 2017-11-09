@@ -11,6 +11,12 @@ import Foundation
 protocol EnvironmentRequirementDelegate
 {
     /**
+     Some requirements need a little more info about their environment whenever their executable
+     is run.  If supplied, setupScriptLines will always be run before triggering this requirement's executable.
+     */
+    var setupScriptLines: [String]? { get }
+
+    /**
      Requirements get executed via command line and require a full path to the executable file.
      e.g. /bin/echo
      */
@@ -18,14 +24,30 @@ protocol EnvironmentRequirementDelegate
     
     // MARK:- Install
     
+    /**
+     Requirements get installed via command line and require a full path to the executable file.
+     e.g. /bin/echo
+     */
     var fullPathInstallExecutable: String { get }
     
+    /**
+     In order to install the requirement, the entity at fullPathInstallExecutable will be executed
+     with the arguments listed in argumentsForInstall.
+     */
     var argumentsForInstall: [String] { get }
     
     // MARK:- Update
     
+    /**
+     Requirements get updated via command line and require a full path to the executable file.
+     e.g. /bin/echo
+     */
     var fullPathUpdateExecutable: String { get }
 
+    /**
+     In order to update the requirement, the entity at fullPathUpdateExecutable will be executed
+     with the arguments listed in argumentsForUpdate.
+     */
     var argumentsForUpdate: [String] { get }
     
     // MARK:- Version
