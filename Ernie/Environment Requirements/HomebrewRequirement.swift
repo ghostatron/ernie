@@ -39,3 +39,5 @@ class HomeBrewRequiremewnt : EnvironmentRequirement, EnvironmentRequirementDeleg
     
 
     //ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+// vagrant init jhcook/macos-sierra; vagrant up
