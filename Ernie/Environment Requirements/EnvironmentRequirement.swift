@@ -109,7 +109,15 @@ class EnvironmentRequirement
     func currentlyInstalledVersion() -> String?
     {
         // Grab the raw output from the command line request for the version.
-        let response = CommandLineHelper.executeCommandLineAndWait(command: self.delegate.fullPathExecutable, arguments: self.delegate.argumentsForVersionCheck)
+        var response: CommandLineResponse!
+        if let scriptLines = self.delegate.scriptLinesForVersion
+        {
+            response = CommandLineHelper.executeCommandsAsShellScriptAndWait(scriptLines: scriptLines)
+        }
+        else
+        {
+            response = CommandLineHelper.executeCommandLineAndWait(command: self.delegate.fullPathVersionExecutable, arguments: self.delegate.argumentsForVersion)
+        }
         
         // That raw output can have some noise:  Parse it into a version array, and then remove nil entries.
         var versionString: String?
@@ -139,8 +147,15 @@ class EnvironmentRequirement
      */
     func install(completion: @escaping (CommandLineResponse?) -> ())
     {
-        CommandLineHelper.executeCommandLine(command: self.delegate.fullPathInstallExecutable, arguments: self.delegate.argumentsForInstall) { (response) in
-            completion(response)
+        if let scriptLines = self.delegate.scriptLinesForInstall
+        {
+            CommandLineHelper.executeCommandsAsShellScriptAndWait(scriptLines: scriptLines)
+        }
+        else
+        {
+            CommandLineHelper.executeCommandLine(command: self.delegate.fullPathInstallExecutable, arguments: self.delegate.argumentsForInstall) { (response) in
+                completion(response)
+            }
         }
     }
     
@@ -149,8 +164,15 @@ class EnvironmentRequirement
      */
     func updateToLatestVersion(completion: @escaping (CommandLineResponse?) -> ())
     {
-        CommandLineHelper.executeCommandLine(command: self.delegate.fullPathUpdateExecutable, arguments: self.delegate.argumentsForUpdate) { (response) in
-            completion(response)
+        if let scriptLines = self.delegate.scriptLinesForInstall
+        {
+            CommandLineHelper.executeCommandsAsShellScriptAndWait(scriptLines: scriptLines)
+        }
+        else
+        {
+            CommandLineHelper.executeCommandLine(command: self.delegate.fullPathUpdateExecutable, arguments: self.delegate.argumentsForUpdate) { (response) in
+                completion(response)
+            }
         }
     }
 }

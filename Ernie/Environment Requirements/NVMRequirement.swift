@@ -19,29 +19,27 @@ class NVMRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     }
     
     // MARK:- EnvironmentRequirementDelegate
-    
-    var setupScriptLines: [String]?
+
+    var fullPathVersionExecutable: String { get { return "nvm" } }
+    var argumentsForVersion: [String] { get { return ["--version"] } }
+    var scriptLinesForVersion: [String]?
     {
         get
         {
             return [
                 "export NVM_DIR=\"$HOME/.nvm\"",
                 "[ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\"",
-                "[ -s \"$NVM_DIR/bash_completion\" ] && \\. \"$NVM_DIR/bash_completion\""]
+                "[ -s \"$NVM_DIR/bash_completion\" ] && \\. \"$NVM_DIR/bash_completion\"",
+                "nvm --version"]
         }
     }
-
-    var fullPathExecutable: String { get { return "nvm" } }
-    
-    var argumentsForVersionCheck: [String] { get { return ["--version"] } }
-    
     var minVersionComponents: [Int] { get { return [0] } }
     
     var fullPathInstallExecutable: String { get { return "" } }
-    
     var argumentsForInstall: [String] { get { return [""] } }
-    
+    var scriptLinesForInstall: [String]? { get { return ["usr/bin/curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash"] } }
+
     var fullPathUpdateExecutable: String { get { return "" } }
-    
     var argumentsForUpdate: [String] { get { return [""] } }
+    var scriptLinesForUpdate: [String]? { get { return self.scriptLinesForInstall } }
 }

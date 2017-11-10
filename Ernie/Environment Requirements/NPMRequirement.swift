@@ -20,19 +20,13 @@ class NPMRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     
     // MARK:- EnvironmentRequirementDelegate
     
-    var setupScriptLines: [String]? { get { return nil } }
-
-    var fullPathExecutable: String { get { return "/usr/local/bin/npm" } }
-    
-    var argumentsForVersionCheck: [String] { get { return ["-v"] } }
-    
+    var fullPathVersionExecutable: String { get { return "/usr/local/bin/npm" } }
+    var argumentsForVersion: [String] { get { return ["-v"] } }
     var minVersionComponents: [Int] { get { return [3] } }
     
     var fullPathInstallExecutable: String { get { return "" } }
-    
     var argumentsForInstall: [String] { get { return [""] } }
     
     var fullPathUpdateExecutable: String { get { return "" } }
-    
     var argumentsForUpdate: [String] { get { return [""] } }
 }

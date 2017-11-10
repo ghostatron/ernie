@@ -11,16 +11,12 @@ import Foundation
 protocol EnvironmentRequirementDelegate
 {
     /**
+     OPTIONAL
      Some requirements need a little more info about their environment whenever their executable
-     is run.  If supplied, setupScriptLines will always be run before triggering this requirement's executable.
+     is run.  If supplied, scriptLinesForSetup will always be run before triggering this requirement's executable.
+     (Also note that if supplied, all commands will be run as scripts instead of straight command line.)
      */
-    var setupScriptLines: [String]? { get }
-
-    /**
-     Requirements get executed via command line and require a full path to the executable file.
-     e.g. /bin/echo
-     */
-    var fullPathExecutable: String { get }
+    var scriptLinesForSetup: [String]? { get }
     
     // MARK:- Install
     
@@ -36,6 +32,14 @@ protocol EnvironmentRequirementDelegate
      */
     var argumentsForInstall: [String] { get }
     
+    /**
+     OPTIONAL
+     Sometimes the command line for installing a requirement is too complex to be a one-liner
+     (Using pipes is a great example).  If that's the case, then implement scriptLinesForInstall
+     instead of fullPathInstallExecutable and argumentsForInstall.
+     */
+    var scriptLinesForInstall: [String]? { get }
+    
     // MARK:- Update
     
     /**
@@ -50,13 +54,27 @@ protocol EnvironmentRequirementDelegate
      */
     var argumentsForUpdate: [String] { get }
     
+    /**
+     OPTIONAL
+     Sometimes the command line for installing a requirement is too complex to be a one-liner
+     (Using pipes is a great example).  If that's the case, then implement scriptLinesForUpdate
+     instead of fullPathUpdateExecutable and argumentsForUpdate.
+     */
+    var scriptLinesForUpdate: [String]? { get }
+    
     // MARK:- Version
+    
+    /**
+     Requirements get version checked via command line and require a full path to the executable file.
+     e.g. /bin/echo
+     */
+    var fullPathVersionExecutable: String { get }
     
     /**
      In order to check the version of an executable, the entity at fullPathExecutable will be executed
      with the arguments listed in argumentsForVersionCheck.
      */
-    var argumentsForVersionCheck: [String] { get }
+    var argumentsForVersion: [String] { get }
     
     /**
      Version information is typically broken up in some kind of dot notation, such as 1.2.3, where the
@@ -64,4 +82,25 @@ protocol EnvironmentRequirementDelegate
      the number portions of that release version, going left to right.
      */
     var minVersionComponents: [Int] { get }
+    
+    /**
+     OPTIONAL
+     Sometimes the command line for installing a requirement is too complex to be a one-liner
+     (Using pipes is a great example).  If that's the case, then implement scriptLinesForVersion
+     instead of fullPathVersionExecutable and argumentsForVersionCheck.
+     */
+    var scriptLinesForVersion: [String]? { get }
+}
+
+extension EnvironmentRequirementDelegate
+{
+    //
+    // Returning nil for these effectively makes them optional in the protocol.  When these properties return
+    // nil, the application logic will switch over and use the more efficient fullPath* and argumentsFor* properties.
+    //
+    
+    var scriptLinesForSetup: [String]? { get { return nil } }
+    var scriptLinesForInstall: [String]? { get { return nil } }
+    var scriptLinesForUpdate: [String]? { get { return nil } }
+    var scriptLinesForVersion: [String]? { get { return nil } }
 }
