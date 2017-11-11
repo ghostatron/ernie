@@ -23,10 +23,24 @@ class NPMRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     var fullPathVersionExecutable: String { get { return "/usr/local/bin/npm" } }
     var argumentsForVersion: [String] { get { return ["-v"] } }
     var minVersionComponents: [Int] { get { return [3] } }
-    
-    var fullPathInstallExecutable: String { get { return "" } }
-    var argumentsForInstall: [String] { get { return [""] } }
+
+    // NPM is installed as part of NodeJS.
+    var nodeRequirement = NodeJSRequirement()
+    var fullPathInstallExecutable: String { get { return self.nodeRequirement.fullPathInstallExecutable } }
+    var argumentsForInstall: [String] { get { return self.nodeRequirement.argumentsForInstall } }
+    var scriptLinesForInstall: [String]? { get { return self.nodeRequirement.scriptLinesForInstall } }
     
     var fullPathUpdateExecutable: String { get { return "" } }
     var argumentsForUpdate: [String] { get { return [""] } }
+    var scriptLinesForUpdate: [String]?
+    {
+        get
+        {
+            return [
+                "export NVM_DIR=\"$HOME/.nvm\"",
+                "[ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\"",
+                "[ -s \"$NVM_DIR/bash_completion\" ] && \\. \"$NVM_DIR/bash_completion\"",
+                "npm install npm@latest -g"]
+        }
+    }
 }

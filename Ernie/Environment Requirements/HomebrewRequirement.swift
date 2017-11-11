@@ -20,18 +20,13 @@ class HomeBrewRequiremewnt : EnvironmentRequirement, EnvironmentRequirementDeleg
     
     // MARK:- EnvironmentRequirementDelegate
     
-    var fullPathVersionExecutable: String { get { return "" } }
-    var argumentsForVersion: [String] { get { return [""] } }
+    var fullPathVersionExecutable: String { get { return "/usr/local/bin/brew" } }
+    var argumentsForVersion: [String] { get { return ["config"] } }
     var minVersionComponents: [Int] { get { return [1] } }
     
-    var fullPathInstallExecutable: String { get { return "" } }
-    var argumentsForInstall: [String] { get { return [""] } }
+    var fullPathInstallExecutable: String { get { return "/usr/bin/ruby" } }
+    var argumentsForInstall: [String] { get { return ["-e", "\"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""] } }
     
-    var fullPathUpdateExecutable: String { get { return "" } }
-    var argumentsForUpdate: [String] { get { return [""] } }
+    var fullPathUpdateExecutable: String { get { return "/usr/local/bin/brew" } }
+    var argumentsForUpdate: [String] { get { return ["update"] } }
 }
-    
-
-    //ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-// vagrant init jhcook/macos-sierra; vagrant up

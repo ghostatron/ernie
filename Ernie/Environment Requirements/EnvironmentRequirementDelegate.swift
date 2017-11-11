@@ -12,6 +12,15 @@ protocol EnvironmentRequirementDelegate
 {
     /**
      OPTIONAL
+     If a requirement requires other requirements in order to be installed/updated/used, then they should
+     be listed in |prerequisites|.  This is an empty array by default.
+     */
+    var prerequisites: [EnvironmentRequirement] { get }
+    
+    // MARK:- Setup
+    
+    /**
+     OPTIONAL
      Some requirements need a little more info about their environment whenever their executable
      is run.  If supplied, scriptLinesForSetup will always be run before triggering this requirement's executable.
      (Also note that if supplied, all commands will be run as scripts instead of straight command line.)
@@ -94,6 +103,8 @@ protocol EnvironmentRequirementDelegate
 
 extension EnvironmentRequirementDelegate
 {
+    var prerequisites: [EnvironmentRequirement] { get { return [] } }
+    
     //
     // Returning nil for these effectively makes them optional in the protocol.  When these properties return
     // nil, the application logic will switch over and use the more efficient fullPath* and argumentsFor* properties.

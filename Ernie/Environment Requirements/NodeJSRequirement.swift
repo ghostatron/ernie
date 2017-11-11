@@ -24,9 +24,9 @@ class NodeJSRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     var argumentsForVersion: [String] { get { return ["-v"] } }
     var minVersionComponents: [Int] { get { return [4, 5] } }
     
-    var fullPathInstallExecutable: String { get { return "" } }
-    var argumentsForInstall: [String] { get { return [""] } }
+    var fullPathInstallExecutable: String { get { return "/usr/local/bin/brew" } }
+    var argumentsForInstall: [String] { get { return ["install", "node"] } }
     
-    var fullPathUpdateExecutable: String { get { return "" } }
-    var argumentsForUpdate: [String] { get { return [""] } }
+    var fullPathUpdateExecutable: String { get { return "/usr/local/bin/brew" } }
+    var argumentsForUpdate: [String] { get { return ["upgrade", "node"] } }
 }
