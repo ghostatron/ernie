@@ -19,7 +19,9 @@ class YarnRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     }
     
     // MARK:- EnvironmentRequirementDelegate
-        
+    
+    var prerequisites: [EnvironmentRequirement] { get { return [HomeBrewRequiremewnt()] } }
+
     var fullPathVersionExecutable: String { get { return "/usr/local/bin/yarn" } }
     var argumentsForVersion: [String] { get { return ["--version"] } }
     var minVersionComponents: [Int] { get { return [1] } }

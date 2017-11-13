@@ -20,6 +20,8 @@ class NodeJSRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     
     // MARK:- EnvironmentRequirementDelegate
     
+    var prerequisites: [EnvironmentRequirement] { get { return [HomeBrewRequiremewnt()] } }
+
     var fullPathVersionExecutable: String { get { return "/usr/local/bin/node" } }
     var argumentsForVersion: [String] { get { return ["-v"] } }
     var minVersionComponents: [Int] { get { return [4, 5] } }

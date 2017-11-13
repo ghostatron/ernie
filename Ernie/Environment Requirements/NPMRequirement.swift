@@ -20,6 +20,8 @@ class NPMRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     
     // MARK:- EnvironmentRequirementDelegate
     
+    var prerequisites: [EnvironmentRequirement] { get { return [NVMRequirement()] } }
+
     var fullPathVersionExecutable: String { get { return "/usr/local/bin/npm" } }
     var argumentsForVersion: [String] { get { return ["-v"] } }
     var minVersionComponents: [Int] { get { return [3] } }

@@ -20,13 +20,48 @@ class ElectrodeRequirement : EnvironmentRequirement, EnvironmentRequirementDeleg
     
     // MARK:- EnvironmentRequirementDelegate
     
-    var fullPathVersionExecutable: String { get { return "/usr/local/bin/ern" } }
-    var argumentsForVersion: [String] { get { return ["platform", "current"] } }
+    var prerequisites: [EnvironmentRequirement] { get { return [NodeJSRequirement(), NPMRequirement()] } }
+    
+    var fullPathVersionExecutable: String { get { return "" } }
+    var argumentsForVersion: [String] { get { return [""] } }
     var minVersionComponents: [Int] { get { return [0] } }
+    var scriptLinesForVersion: [String]?
+    {
+        get
+        {
+            return [
+                "export NVM_DIR=\"$HOME/.nvm\"",
+                "[ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\"",
+                "[ -s \"$NVM_DIR/bash_completion\" ] && \\. \"$NVM_DIR/bash_completion\"",
+                "npm list -g --depth=0 | grep electrode"]
+        }
+    }
     
     var fullPathInstallExecutable: String { get { return "" } }
     var argumentsForInstall: [String] { get { return [""] } }
-    
+    var scriptLinesForInstall: [String]?
+    {
+        get
+        {
+            return [
+                "export NVM_DIR=\"$HOME/.nvm\"",
+                "[ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\"",
+                "[ -s \"$NVM_DIR/bash_completion\" ] && \\. \"$NVM_DIR/bash_completion\"",
+                "npm install -g electrode-native && ern"]
+        }
+    }
+
     var fullPathUpdateExecutable: String { get { return "" } }
     var argumentsForUpdate: [String] { get { return [""] } }
+    var scriptLinesForUpdate: [String]?
+    {
+        get
+        {
+            return [
+                "export NVM_DIR=\"$HOME/.nvm\"",
+                "[ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\"",
+                "[ -s \"$NVM_DIR/bash_completion\" ] && \\. \"$NVM_DIR/bash_completion\"",
+                "npm install -g electrode-native"]
+        }
+    }
 }
