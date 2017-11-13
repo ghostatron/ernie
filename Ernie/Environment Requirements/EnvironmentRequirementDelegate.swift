@@ -10,6 +10,9 @@ import Foundation
 
 protocol EnvironmentRequirementDelegate
 {
+    var name: String { get }
+    var description: String { get }
+
     /**
      OPTIONAL
      If a requirement requires other requirements in order to be installed/updated/used, then they should
@@ -103,6 +106,8 @@ protocol EnvironmentRequirementDelegate
 
 extension EnvironmentRequirementDelegate
 {
+    var description: String { get { return self.name } }
+
     var prerequisites: [EnvironmentRequirement] { get { return [] } }
     
     //

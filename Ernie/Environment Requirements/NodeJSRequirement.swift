@@ -20,6 +20,9 @@ class NodeJSRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     
     // MARK:- EnvironmentRequirementDelegate
     
+    var name: String { get { return "Node JS" } }
+    var description: String { get { return "Multi-platform server framework built on  JavaScript." } }
+    
     var prerequisites: [EnvironmentRequirement] { get { return [HomeBrewRequiremewnt()] } }
 
     var fullPathVersionExecutable: String { get { return "/usr/local/bin/node" } }

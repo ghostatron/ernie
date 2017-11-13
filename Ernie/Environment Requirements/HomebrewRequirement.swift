@@ -20,6 +20,9 @@ class HomeBrewRequiremewnt : EnvironmentRequirement, EnvironmentRequirementDeleg
     
     // MARK:- EnvironmentRequirementDelegate
     
+    var name: String { get { return "Homebrew" } }
+    var description: String { get { return "Command line tool used for managing packages." } }
+    
     var fullPathVersionExecutable: String { get { return "/usr/local/bin/brew" } }
     var argumentsForVersion: [String] { get { return ["config"] } }
     var minVersionComponents: [Int] { get { return [1] } }

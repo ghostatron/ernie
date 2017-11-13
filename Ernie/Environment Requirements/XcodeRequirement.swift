@@ -20,6 +20,9 @@ class XcodeRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     
     // MARK:- EnvironmentRequirementDelegate
     
+    var name: String { get { return "Xcode" } }
+    var description: String { get { return "IDE that allows mini-apps to target the iOS platform generate containers targeting iOS mobile applications." } }
+    
     var fullPathVersionExecutable: String { get { return "/usr/bin/xcodebuild" } }
     var argumentsForVersion: [String] { get { return ["-version"] } }
     var minVersionComponents: [Int] { get { return [8, 3, 2] } }

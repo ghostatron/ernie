@@ -20,6 +20,9 @@ class YarnRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     
     // MARK:- EnvironmentRequirementDelegate
     
+    var name: String { get { return "Yarn" } }
+    var description: String { get { return "Command line tool used for managing packages." } }
+    
     var prerequisites: [EnvironmentRequirement] { get { return [HomeBrewRequiremewnt()] } }
 
     var fullPathVersionExecutable: String { get { return "/usr/local/bin/yarn" } }

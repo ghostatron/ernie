@@ -19,6 +19,9 @@ class NVMRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     }
     
     // MARK:- EnvironmentRequirementDelegate
+    
+    var name: String { get { return "NVM" } }
+    var description: String { get { return "Command line tool for Node JS that manages its versions." } }
 
     var fullPathVersionExecutable: String { get { return "nvm" } }
     var argumentsForVersion: [String] { get { return ["--version"] } }

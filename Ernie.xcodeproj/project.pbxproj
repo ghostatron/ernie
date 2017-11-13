@@ -14,6 +14,7 @@
 		C190D45B1FAD21EC002EFA5B /* ErnWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D45A1FAD21EC002EFA5B /* ErnWrapper.swift */; };
 		C190D45D1FB0FD6D002EFA5B /* NVMRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D45C1FB0FD6D002EFA5B /* NVMRequirement.swift */; };
 		C190D45F1FB0FD80002EFA5B /* HomebrewRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D45E1FB0FD80002EFA5B /* HomebrewRequirement.swift */; };
+		C19E0F681FBA1ED400EC727B /* AndroidStudioRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19E0F671FBA1ED400EC727B /* AndroidStudioRequirement.swift */; };
 		C1C774CF1FA3E28300AD269F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774CE1FA3E28300AD269F /* AppDelegate.swift */; };
 		C1C774D11FA3E28300AD269F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774D01FA3E28300AD269F /* ViewController.swift */; };
 		C1C774D41FA3E28300AD269F /* Ernie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1C774D21FA3E28300AD269F /* Ernie.xcdatamodeld */; };
@@ -44,6 +45,7 @@
 		C190D45A1FAD21EC002EFA5B /* ErnWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErnWrapper.swift; sourceTree = "<group>"; };
 		C190D45C1FB0FD6D002EFA5B /* NVMRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NVMRequirement.swift; sourceTree = "<group>"; };
 		C190D45E1FB0FD80002EFA5B /* HomebrewRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomebrewRequirement.swift; sourceTree = "<group>"; };
+		C19E0F671FBA1ED400EC727B /* AndroidStudioRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndroidStudioRequirement.swift; sourceTree = "<group>"; };
 		C1C774CB1FA3E28300AD269F /* Ernie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ernie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C774CE1FA3E28300AD269F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1C774D01FA3E28300AD269F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 		C1C774EF1FA3E9F800AD269F /* Environment Requirements */ = {
 			isa = PBXGroup;
 			children = (
+				C19E0F671FBA1ED400EC727B /* AndroidStudioRequirement.swift */,
 				C190D4561FACD3FA002EFA5B /* ElectrodeRequirement.swift */,
 				C1E96C291FAA90AB00A460EA /* EnvironmentRequirement.swift */,
 				C1C774F01FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift */,
@@ -264,6 +267,7 @@
 				C1C774D11FA3E28300AD269F /* ViewController.swift in Sources */,
 				C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */,
 				C190D4531FABD61B002EFA5B /* YarnRequirement.swift in Sources */,
+				C19E0F681FBA1ED400EC727B /* AndroidStudioRequirement.swift in Sources */,
 				C1C774F31FA3EC5E00AD269F /* NodeJSRequirement.swift in Sources */,
 				C190D45F1FB0FD80002EFA5B /* HomebrewRequirement.swift in Sources */,
 				C1E96C2A1FAA90AB00A460EA /* EnvironmentRequirement.swift in Sources */,
