@@ -22,7 +22,8 @@ class ElectrodeRequirement : EnvironmentRequirement, EnvironmentRequirementDeleg
     
     var name: String { get { return "Electrode" } }
     var description: String { get { return "The platform used for building mini-apps.  It's the 'E' in 'Ernie', so yeah, kinda the whole reason you're here." } }
-    
+    var iconName: String { get { return "Electrode_Native_icon" } }
+
     var prerequisites: [EnvironmentRequirement] { get { return [NodeJSRequirement(), NPMRequirement()] } }
     
     var fullPathVersionExecutable: String { get { return "" } }

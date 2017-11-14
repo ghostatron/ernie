@@ -12,6 +12,7 @@ protocol EnvironmentRequirementDelegate
 {
     var name: String { get }
     var description: String { get }
+    var iconName: String { get }
 
     /**
      OPTIONAL

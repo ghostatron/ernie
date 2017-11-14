@@ -688,9 +688,9 @@
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="600" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <value key="minSize" type="size" width="480" height="270"/>
+                        <value key="minSize" type="size" width="600" height="270"/>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
@@ -718,7 +718,7 @@
                                     <rect key="frame" x="1" y="23" width="408" height="228"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="70" rowSizeStyle="automatic" headerView="vEN-ch-0NJ" viewBased="YES" id="ba6-9R-Zmg">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="70" rowSizeStyle="automatic" headerView="vEN-ch-0NJ" viewBased="YES" id="ba6-9R-Zmg" userLabel="Requirements Table View">
                                             <rect key="frame" x="0.0" y="0.0" width="408" height="228"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -742,41 +742,40 @@
                                                             <rect key="frame" x="1" y="1" width="405" height="70"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pNH-ZC-zGw" userLabel="Name Label">
-                                                                    <rect key="frame" x="58" y="50" width="115" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yAR-m6-tHk" userLabel="Requiremnt Icon">
+                                                                    <rect key="frame" x="5" y="11" width="48" height="48"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="48" id="QlV-o0-zB0"/>
+                                                                        <constraint firstAttribute="width" constant="48" id="fVz-Xr-S31"/>
+                                                                    </constraints>
+                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSInfo" id="hyb-g0-86c"/>
+                                                                </imageView>
+                                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pNH-ZC-zGw" userLabel="Name Label">
+                                                                    <rect key="frame" x="56" y="48" width="67" height="17"/>
                                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Req Name" id="axq-Sg-ORZ">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x0h-Jm-zwe" userLabel="Version Label">
-                                                                    <rect key="frame" x="180" y="50" width="101" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="x0h-Jm-zwe" userLabel="Version Label">
+                                                                    <rect key="frame" x="124" y="48" width="50" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Version" id="SUK-jT-yrY">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I7n-aU-yip" userLabel="Description Label">
-                                                                    <rect key="frame" x="58" y="19" width="92" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="400" translatesAutoresizingMaskIntoConstraints="NO" id="I7n-aU-yip" userLabel="Description Label">
+                                                                    <rect key="frame" x="56" y="26" width="74" height="17"/>
                                                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Description" id="BGH-e4-LsC">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yAR-m6-tHk" userLabel="Requiremnt Icon">
-                                                                    <rect key="frame" x="5" y="5" width="48" height="48"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSInfo" id="hyb-g0-86c"/>
-                                                                </imageView>
-                                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DGU-wt-ooF" userLabel="Install Button">
-                                                                    <rect key="frame" x="320" y="32" width="81" height="32"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DGU-wt-ooF" userLabel="Install Button">
+                                                                    <rect key="frame" x="316" y="32" width="85" height="32"/>
                                                                     <buttonCell key="cell" type="push" title="Install" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DvS-KW-R3w">
                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" metaFont="system"/>
@@ -785,9 +784,8 @@
                                                                         <action selector="installButtonPressed:" target="S2Y-sS-5TU" id="gnU-pI-ZJH"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yz2-cY-mep" userLabel="Update Button">
-                                                                    <rect key="frame" x="320" y="-1" width="81" height="32"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yz2-cY-mep" userLabel="Update Button">
+                                                                    <rect key="frame" x="316" y="3" width="85" height="32"/>
                                                                     <buttonCell key="cell" type="push" title="Update" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4lH-CA-knT">
                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" metaFont="system"/>
@@ -797,6 +795,23 @@
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="x0h-Jm-zwe" firstAttribute="top" secondItem="S2Y-sS-5TU" secondAttribute="top" constant="5" id="0wC-qe-L8p"/>
+                                                                <constraint firstItem="pNH-ZC-zGw" firstAttribute="top" secondItem="S2Y-sS-5TU" secondAttribute="top" constant="5" id="1wh-wd-6rG"/>
+                                                                <constraint firstItem="DGU-wt-ooF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="x0h-Jm-zwe" secondAttribute="trailing" constant="20" id="4vw-r1-7xZ"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Yz2-cY-mep" secondAttribute="trailing" constant="10" id="5WP-4A-wRR"/>
+                                                                <constraint firstItem="Yz2-cY-mep" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="I7n-aU-yip" secondAttribute="trailing" constant="20" id="8vb-vS-G88"/>
+                                                                <constraint firstAttribute="trailing" secondItem="DGU-wt-ooF" secondAttribute="trailing" constant="10" id="Ehx-7z-Vlk"/>
+                                                                <constraint firstItem="I7n-aU-yip" firstAttribute="leading" secondItem="yAR-m6-tHk" secondAttribute="trailing" constant="5" id="Qtd-tv-mMM"/>
+                                                                <constraint firstItem="yAR-m6-tHk" firstAttribute="centerY" secondItem="S2Y-sS-5TU" secondAttribute="centerY" id="Swm-DH-Nfc"/>
+                                                                <constraint firstItem="x0h-Jm-zwe" firstAttribute="leading" secondItem="pNH-ZC-zGw" secondAttribute="trailing" constant="5" id="lE0-QX-zwl"/>
+                                                                <constraint firstItem="DGU-wt-ooF" firstAttribute="width" secondItem="Yz2-cY-mep" secondAttribute="width" id="nb9-OP-mSr"/>
+                                                                <constraint firstAttribute="bottom" secondItem="Yz2-cY-mep" secondAttribute="bottom" constant="10" id="oLE-1c-okb"/>
+                                                                <constraint firstItem="I7n-aU-yip" firstAttribute="top" secondItem="pNH-ZC-zGw" secondAttribute="bottom" constant="5" id="rMd-Zk-2lA"/>
+                                                                <constraint firstItem="yAR-m6-tHk" firstAttribute="leading" secondItem="S2Y-sS-5TU" secondAttribute="leading" constant="5" id="sg8-Pw-EgQ"/>
+                                                                <constraint firstItem="DGU-wt-ooF" firstAttribute="top" secondItem="S2Y-sS-5TU" secondAttribute="top" constant="10" id="tNx-FP-mhJ"/>
+                                                                <constraint firstItem="pNH-ZC-zGw" firstAttribute="leading" secondItem="yAR-m6-tHk" secondAttribute="trailing" constant="5" id="v2F-8o-81i"/>
+                                                            </constraints>
                                                             <connections>
                                                                 <outlet property="installButton" destination="DGU-wt-ooF" id="Qhr-2X-vwB"/>
                                                                 <outlet property="requirementDescription" destination="I7n-aU-yip" id="3Yq-R7-AMO"/>

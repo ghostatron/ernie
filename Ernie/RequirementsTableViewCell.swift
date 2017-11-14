@@ -24,8 +24,9 @@ class RequirementsTableViewCell: NSTableCellView
     func configureForRequirement(_ requirement: EnvironmentRequirementDelegate)
     {
         self.requirement = requirement
+        self.requirementIcon.image = NSImage(imageLiteralResourceName: requirement.iconName)
         self.requirementName.stringValue = requirement.name
-        self.requirementVersion.stringValue = "9999"
+        self.requirementVersion.stringValue = "v. 9999"
         self.requirementDescription.stringValue = requirement.description
     }
     
@@ -33,11 +34,11 @@ class RequirementsTableViewCell: NSTableCellView
     
     @IBAction func installButtonPressed(_ sender: NSButton)
     {
-        print("\(self.requirement?.name)")
+        print("\(String(describing: self.requirement?.name))")
     }
     
     @IBAction func updateButtonPressed(_ sender: NSButton)
     {
-        print("\(self.requirement?.description)")
+        print("\(String(describing: self.requirement?.description))")
     }
 }

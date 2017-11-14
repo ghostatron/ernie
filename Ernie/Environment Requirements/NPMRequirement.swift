@@ -22,7 +22,8 @@ class NPMRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
     
     var name: String { get { return "NPM" } }
     var description: String { get { return "Command line package manager associated with Node JS." } }
-    
+    var iconName: String { get { return "NPM_icon" } }
+
     var prerequisites: [EnvironmentRequirement] { get { return [NVMRequirement()] } }
 
     var fullPathVersionExecutable: String { get { return "/usr/local/bin/npm" } }

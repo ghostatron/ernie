@@ -22,6 +22,7 @@ class AndroidStudioRequirement : EnvironmentRequirement, EnvironmentRequirementD
     
     var name: String { get { return "Android Studio" } }
     var description: String { get { return "IDE that allows mini-apps to target the Android platform generate containers targeting Android mobile applications." } }
+    var iconName: String { get { return "Android_Studio_icon" } }
 
     var prerequisites: [EnvironmentRequirement] { get { return [HomeBrewRequirement()] } }
     
