@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HomeBrewRequiremewnt : EnvironmentRequirement, EnvironmentRequirementDelegate
+class HomeBrewRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
 {
     // MARK:- Init Methods
     

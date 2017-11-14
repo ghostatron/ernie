@@ -15,8 +15,9 @@
 		C190D45D1FB0FD6D002EFA5B /* NVMRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D45C1FB0FD6D002EFA5B /* NVMRequirement.swift */; };
 		C190D45F1FB0FD80002EFA5B /* HomebrewRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D45E1FB0FD80002EFA5B /* HomebrewRequirement.swift */; };
 		C19E0F681FBA1ED400EC727B /* AndroidStudioRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19E0F671FBA1ED400EC727B /* AndroidStudioRequirement.swift */; };
+		C19E0F6A1FBA562E00EC727B /* RequirementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19E0F691FBA562E00EC727B /* RequirementsViewController.swift */; };
+		C19E0F6C1FBA611B00EC727B /* RequirementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19E0F6B1FBA611B00EC727B /* RequirementsTableViewCell.swift */; };
 		C1C774CF1FA3E28300AD269F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774CE1FA3E28300AD269F /* AppDelegate.swift */; };
-		C1C774D11FA3E28300AD269F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774D01FA3E28300AD269F /* ViewController.swift */; };
 		C1C774D41FA3E28300AD269F /* Ernie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1C774D21FA3E28300AD269F /* Ernie.xcdatamodeld */; };
 		C1C774D61FA3E28300AD269F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1C774D51FA3E28300AD269F /* Assets.xcassets */; };
 		C1C774D91FA3E28300AD269F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1C774D71FA3E28300AD269F /* Main.storyboard */; };
@@ -46,9 +47,10 @@
 		C190D45C1FB0FD6D002EFA5B /* NVMRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NVMRequirement.swift; sourceTree = "<group>"; };
 		C190D45E1FB0FD80002EFA5B /* HomebrewRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomebrewRequirement.swift; sourceTree = "<group>"; };
 		C19E0F671FBA1ED400EC727B /* AndroidStudioRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndroidStudioRequirement.swift; sourceTree = "<group>"; };
+		C19E0F691FBA562E00EC727B /* RequirementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementsViewController.swift; sourceTree = "<group>"; };
+		C19E0F6B1FBA611B00EC727B /* RequirementsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementsTableViewCell.swift; sourceTree = "<group>"; };
 		C1C774CB1FA3E28300AD269F /* Ernie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ernie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C774CE1FA3E28300AD269F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C1C774D01FA3E28300AD269F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C1C774D31FA3E28300AD269F /* Ernie.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ernie.xcdatamodel; sourceTree = "<group>"; };
 		C1C774D51FA3E28300AD269F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1C774D81FA3E28300AD269F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -122,7 +124,8 @@
 				C1C774EF1FA3E9F800AD269F /* Environment Requirements */,
 				C190D4581FACEBDE002EFA5B /* Utilities */,
 				C1C774CE1FA3E28300AD269F /* AppDelegate.swift */,
-				C1C774D01FA3E28300AD269F /* ViewController.swift */,
+				C19E0F691FBA562E00EC727B /* RequirementsViewController.swift */,
+				C19E0F6B1FBA611B00EC727B /* RequirementsTableViewCell.swift */,
 				C1C774D51FA3E28300AD269F /* Assets.xcassets */,
 				C1C774D71FA3E28300AD269F /* Main.storyboard */,
 				C1C774DA1FA3E28300AD269F /* Info.plist */,
@@ -264,14 +267,15 @@
 				C190D45B1FAD21EC002EFA5B /* ErnWrapper.swift in Sources */,
 				C1C774F11FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift in Sources */,
 				C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */,
-				C1C774D11FA3E28300AD269F /* ViewController.swift in Sources */,
 				C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */,
 				C190D4531FABD61B002EFA5B /* YarnRequirement.swift in Sources */,
 				C19E0F681FBA1ED400EC727B /* AndroidStudioRequirement.swift in Sources */,
 				C1C774F31FA3EC5E00AD269F /* NodeJSRequirement.swift in Sources */,
+				C19E0F6C1FBA611B00EC727B /* RequirementsTableViewCell.swift in Sources */,
 				C190D45F1FB0FD80002EFA5B /* HomebrewRequirement.swift in Sources */,
 				C1E96C2A1FAA90AB00A460EA /* EnvironmentRequirement.swift in Sources */,
 				C1C774CF1FA3E28300AD269F /* AppDelegate.swift in Sources */,
+				C19E0F6A1FBA562E00EC727B /* RequirementsViewController.swift in Sources */,
 				C190D45D1FB0FD6D002EFA5B /* NVMRequirement.swift in Sources */,
 				C1C774D41FA3E28300AD269F /* Ernie.xcdatamodeld in Sources */,
 				C190D4551FABD803002EFA5B /* XcodeRequirement.swift in Sources */,

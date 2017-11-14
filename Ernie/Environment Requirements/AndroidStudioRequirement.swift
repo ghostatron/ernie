@@ -23,7 +23,7 @@ class AndroidStudioRequirement : EnvironmentRequirement, EnvironmentRequirementD
     var name: String { get { return "Android Studio" } }
     var description: String { get { return "IDE that allows mini-apps to target the Android platform generate containers targeting Android mobile applications." } }
 
-    var prerequisites: [EnvironmentRequirement] { get { return [HomeBrewRequiremewnt()] } }
+    var prerequisites: [EnvironmentRequirement] { get { return [HomeBrewRequirement()] } }
     
     // TODO: This is clearly not correct, but I'm hiding from Android for now...
     var fullPathVersionExecutable: String { get { return "/bin/echo" } }
