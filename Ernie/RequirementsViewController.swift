@@ -11,7 +11,7 @@ import Cocoa
 
 class RequirementsViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate
 {
-    let allRequirements: [EnvironmentRequirementDelegate] = [
+    let allRequirements: [(EnvironmentRequirement & EnvironmentRequirementDelegate)] = [
         AndroidStudioRequirement(),
         ElectrodeRequirement(),
         HomeBrewRequirement(),

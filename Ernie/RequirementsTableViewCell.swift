@@ -20,13 +20,13 @@ class RequirementsTableViewCell: NSTableCellView
     @IBOutlet private weak var updateButton: NSButton!
     @IBOutlet private weak var requirementIcon: NSImageView!
     
-    var requirement: EnvironmentRequirementDelegate?
-    func configureForRequirement(_ requirement: EnvironmentRequirementDelegate)
+    var requirement: (EnvironmentRequirement & EnvironmentRequirementDelegate)?
+    func configureForRequirement(_ requirement: (EnvironmentRequirement & EnvironmentRequirementDelegate))
     {
         self.requirement = requirement
         self.requirementIcon.image = NSImage(imageLiteralResourceName: requirement.iconName)
         self.requirementName.stringValue = requirement.name
-        self.requirementVersion.stringValue = "v. 9999"
+        self.requirementVersion.stringValue = "v. \(requirement.currentlyInstalledVersion() ?? "Not Installed")"
         self.requirementDescription.stringValue = requirement.description
     }
     
