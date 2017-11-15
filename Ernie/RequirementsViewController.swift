@@ -27,6 +27,12 @@ class RequirementsViewController: NSViewController, NSTableViewDataSource, NSTab
         super.viewDidLoad()
     }
     
+    override func viewDidAppear()
+    {
+        super.viewDidAppear()
+        self.view.window?.title = "Requirements"
+    }
+    
     func numberOfRows(in tableView: NSTableView) -> Int
     {
         // One row per requirement.

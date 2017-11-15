@@ -26,9 +26,20 @@ class NPMRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
 
     var prerequisites: [EnvironmentRequirement] { get { return [NVMRequirement()] } }
 
-    var fullPathVersionExecutable: String { get { return "/usr/local/bin/npm" } }
-    var argumentsForVersion: [String] { get { return ["-v"] } }
+    var fullPathVersionExecutable: String { get { return "" } }
+    var argumentsForVersion: [String] { get { return [""] } }
     var minVersionComponents: [Int] { get { return [3] } }
+    var scriptLinesForVersion: [String]?
+    {
+        get
+        {
+            return [
+                "export NVM_DIR=\"$HOME/.nvm\"",
+                "[ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\"",
+                "[ -s \"$NVM_DIR/bash_completion\" ] && \\. \"$NVM_DIR/bash_completion\"",
+                "npm -v"]
+        }
+    }
 
     // NPM is installed as part of NodeJS.
     var nodeRequirement = NodeJSRequirement()

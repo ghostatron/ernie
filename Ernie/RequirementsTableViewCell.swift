@@ -26,8 +26,29 @@ class RequirementsTableViewCell: NSTableCellView
         self.requirement = requirement
         self.requirementIcon.image = NSImage(imageLiteralResourceName: requirement.iconName)
         self.requirementName.stringValue = requirement.name
-        self.requirementVersion.stringValue = "v. \(requirement.currentlyInstalledVersion() ?? "Not Installed")"
         self.requirementDescription.stringValue = requirement.description
+        
+        self.installButton.isEnabled = false
+        self.updateButton.isEnabled = false
+        self.requirementVersion.stringValue = "(Checking version...)"
+        
+        DispatchQueue.global().async {
+            
+            let version = requirement.currentlyInstalledVersion()
+            
+            DispatchQueue.main.async {
+                if let version = version
+                {
+                    self.requirementVersion.stringValue = "v. \(version)"
+                    self.updateButton.isEnabled = true
+                }
+                else
+                {
+                    self.requirementVersion.stringValue = "(Not Installed)"
+                    self.installButton.isEnabled = true
+                }
+            }
+        }
     }
     
     // MARK:- Event Handlers

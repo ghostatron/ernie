@@ -26,9 +26,21 @@ class YarnRequirement : EnvironmentRequirement, EnvironmentRequirementDelegate
 
     var prerequisites: [EnvironmentRequirement] { get { return [HomeBrewRequirement()] } }
 
-    var fullPathVersionExecutable: String { get { return "/usr/local/bin/yarn" } }
-    var argumentsForVersion: [String] { get { return ["--version"] } }
+    var fullPathVersionExecutable: String { get { return "" } }
+    var argumentsForVersion: [String] { get { return [""] } }
     var minVersionComponents: [Int] { get { return [1] } }
+    var scriptLinesForVersion: [String]?
+    {
+        get
+        {
+            // Yarn requires environment info regarding NVM in order to execute.
+            return [
+                "export NVM_DIR=\"$HOME/.nvm\"",
+                "[ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\"",
+                "[ -s \"$NVM_DIR/bash_completion\" ] && \\. \"$NVM_DIR/bash_completion\"",
+                "/usr/local/bin/yarn --version"]
+        }
+    }
     
     var fullPathInstallExecutable: String { get { return "/usr/local/bin/brew" } }
     // Yarn wants to install NodeJS by default, but we don't want that.

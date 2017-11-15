@@ -25,7 +25,7 @@ class HomeBrewRequirement : EnvironmentRequirement, EnvironmentRequirementDelega
     var iconName: String { get { return "Homebrew_icon" } }
 
     var fullPathVersionExecutable: String { get { return "/usr/local/bin/brew" } }
-    var argumentsForVersion: [String] { get { return ["config"] } }
+    var argumentsForVersion: [String] { get { return ["-v"] } }
     var minVersionComponents: [Int] { get { return [1] } }
     
     var fullPathInstallExecutable: String { get { return "/usr/bin/ruby" } }
