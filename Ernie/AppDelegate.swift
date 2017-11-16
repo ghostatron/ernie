@@ -23,6 +23,12 @@ class AppDelegate: NSObject, NSApplicationDelegate
     }
 
     // MARK: - Core Data stack
+    
+    class func mainManagedObjectContext() -> NSManagedObjectContext
+    {
+        let appDelegate = NSApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
 
     lazy var persistentContainer: NSPersistentContainer = {
         /*

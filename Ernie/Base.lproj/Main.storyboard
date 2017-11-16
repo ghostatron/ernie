@@ -338,6 +338,31 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Projects" id="ObI-XL-eLa">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Projects" id="yLc-4f-Pbv">
+                                    <items>
+                                        <menuItem title="Native Apps..." id="gav-6h-YSv">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <segue destination="TKQ-1p-SGe" kind="show" id="sSw-G4-V4n"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Mini Apps..." id="N9o-yK-Cm0">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Containers..." id="oNH-Gy-KHH">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Requirements..." id="wsR-AY-ll1">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <segue destination="56v-tt-hTC" kind="show" id="lWd-RP-3yp"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="Format" id="jxT-CU-nIS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Format" id="GEO-Iw-cKr">
@@ -701,7 +726,20 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113" y="243"/>
+            <point key="canvasLocation" x="-507" y="144"/>
+        </scene>
+        <!--Native Apps-->
+        <scene sceneID="X3G-Hw-oRf">
+            <objects>
+                <viewController title="Native Apps" id="TKQ-1p-SGe" customClass="NativeAppsViewController" customModule="Ernie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="TLD-kH-rmd">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="tVX-zi-JhA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="194" y="467"/>
         </scene>
         <!--Requirements-->
         <scene sceneID="NKC-3d-Ped">
@@ -849,10 +887,13 @@
                 </viewController>
                 <customObject id="iHo-aZ-jt9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113" y="682"/>
+            <point key="canvasLocation" x="-297" y="641"/>
         </scene>
     </scenes>
     <resources>
         <image name="NSInfo" width="32" height="32"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="6TE-11-odS"/>
+    </inferredMetricsTieBreakers>
 </document>

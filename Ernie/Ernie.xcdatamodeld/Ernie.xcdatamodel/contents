@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B48" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Container" representedClassName="Container" syncable="YES" codeGenerationType="class">
+        <attribute name="containerDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="containerFolder" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="containerName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="miniApps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MiniApp" inverseName="containers" inverseEntity="MiniApp" syncable="YES"/>
+        <relationship name="nativeApps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NativeApp" inverseName="container" inverseEntity="NativeApp" syncable="YES"/>
+    </entity>
+    <entity name="MiniApp" representedClassName="MiniApp" syncable="YES" codeGenerationType="class">
+        <attribute name="miniAppDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="miniAppFolder" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="miniAppName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="containers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Container" inverseName="miniApps" inverseEntity="Container" syncable="YES"/>
+    </entity>
+    <entity name="NativeApp" representedClassName="NativeApp" syncable="YES" codeGenerationType="class">
+        <attribute name="appDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appFolder" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="appName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="container" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Container" inverseName="nativeApps" inverseEntity="Container" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="NativeApp" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Container" positionX="-54" positionY="18" width="128" height="120"/>
+        <element name="MiniApp" positionX="-36" positionY="54" width="128" height="105"/>
+    </elements>
 </model>
