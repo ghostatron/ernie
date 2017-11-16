@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C101C15C1FBD021600AE02C6 /* NativeAppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C15B1FBD021600AE02C6 /* NativeAppsViewController.swift */; };
+		C101C19C1FBE243F00AE02C6 /* NativeAppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C19B1FBE243F00AE02C6 /* NativeAppTableViewCell.swift */; };
 		C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */; };
 		C190D4531FABD61B002EFA5B /* YarnRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4521FABD61B002EFA5B /* YarnRequirement.swift */; };
 		C190D4551FABD803002EFA5B /* XcodeRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4541FABD803002EFA5B /* XcodeRequirement.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		C101C15B1FBD021600AE02C6 /* NativeAppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAppsViewController.swift; sourceTree = "<group>"; };
+		C101C19B1FBE243F00AE02C6 /* NativeAppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAppTableViewCell.swift; sourceTree = "<group>"; };
 		C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPMRequirement.swift; sourceTree = "<group>"; };
 		C190D4521FABD61B002EFA5B /* YarnRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YarnRequirement.swift; sourceTree = "<group>"; };
 		C190D4541FABD803002EFA5B /* XcodeRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeRequirement.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				C19E0F691FBA562E00EC727B /* RequirementsViewController.swift */,
 				C19E0F6B1FBA611B00EC727B /* RequirementsTableViewCell.swift */,
 				C101C15B1FBD021600AE02C6 /* NativeAppsViewController.swift */,
+				C101C19B1FBE243F00AE02C6 /* NativeAppTableViewCell.swift */,
 				C1C774D51FA3E28300AD269F /* Assets.xcassets */,
 				C1C774D71FA3E28300AD269F /* Main.storyboard */,
 				C1C774DA1FA3E28300AD269F /* Info.plist */,
@@ -268,6 +271,7 @@
 			files = (
 				C190D4571FACD3FA002EFA5B /* ElectrodeRequirement.swift in Sources */,
 				C190D45B1FAD21EC002EFA5B /* ErnWrapper.swift in Sources */,
+				C101C19C1FBE243F00AE02C6 /* NativeAppTableViewCell.swift in Sources */,
 				C1C774F11FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift in Sources */,
 				C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */,
 				C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */,

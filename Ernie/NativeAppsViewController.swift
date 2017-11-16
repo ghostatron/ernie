@@ -13,6 +13,8 @@ class NativeAppsViewController: NSViewController, NSTableViewDataSource, NSTable
 {
     private var nativeApps: [NativeApp]!
     
+    // MARK:- View Lifecycle
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -25,18 +27,15 @@ class NativeAppsViewController: NSViewController, NSTableViewDataSource, NSTable
         self.view.window?.title = "Native Apps"
     }
     
-    func allNativeApps() -> [NativeApp]?
-    {
-        let request: NSFetchRequest<NativeApp> = NativeApp.fetchRequest()
-        let nativeApps = try? AppDelegate.mainManagedObjectContext().fetch(request)
-        return nativeApps
-    }
+    // MARK:- NSTableViewDataSource
     
     func numberOfRows(in tableView: NSTableView) -> Int
     {
         // One row per native app.
         return self.nativeApps.count
     }
+    
+    // MARK:- NSTableViewDelegate
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView?
     {
@@ -46,16 +45,28 @@ class NativeAppsViewController: NSViewController, NSTableViewDataSource, NSTable
             return nil
         }
         
-        return nil
-        
         // Instantiate a view for the cell.
-//        guard let requirementsCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "requirementRow"), owner: self) as? RequirementsTableViewCell else
-//        {
-//            return nil
-//        }
-//
-//        // Configure the view and return it.
-//        requirementsCell.configureForRequirement(self.allRequirements[row])
-//        return requirementsCell
+        guard let nativeAppCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "nativeAppRow"), owner: self) as? NativeAppTableViewCell else
+        {
+            return nil
+        }
+        
+        // Configure the view and return it.
+        nativeAppCell.configureForNativeApp(self.nativeApps[row])
+        return nativeAppCell
+    }
+    
+    // MARK:- Event Handlers
+    
+    @IBAction func registerButtonPressed(_ sender: NSButton)
+    {
+    }
+    
+    
+    func allNativeApps() -> [NativeApp]?
+    {
+        let request: NSFetchRequest<NativeApp> = NativeApp.fetchRequest()
+        let nativeApps = try? AppDelegate.mainManagedObjectContext().fetch(request)
+        return nativeApps
     }
 }

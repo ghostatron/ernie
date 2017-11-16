@@ -33,11 +33,15 @@ class RequirementsViewController: NSViewController, NSTableViewDataSource, NSTab
         self.view.window?.title = "Requirements"
     }
     
+    // MARK:- NSTableViewDataSource
+
     func numberOfRows(in tableView: NSTableView) -> Int
     {
         // One row per requirement.
         return self.allRequirements.count
     }
+    
+    // MARK:- NSTableViewDelegate
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView?
     {
