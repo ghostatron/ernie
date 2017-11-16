@@ -792,6 +792,7 @@
                                                                     </buttonCell>
                                                                     <connections>
                                                                         <action selector="detailsButtonPressed:" target="eqG-I4-eUr" id="zdB-9W-iM4"/>
+                                                                        <segue destination="6px-9b-vf9" kind="modal" id="RIh-xk-nGT"/>
                                                                     </connections>
                                                                 </button>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bI0-uA-PPq">
@@ -862,6 +863,7 @@
                                 </buttonCell>
                                 <connections>
                                     <action selector="registerButtonPressed:" target="TKQ-1p-SGe" id="rq6-Jr-JEb"/>
+                                    <segue destination="Ka1-bE-VMX" kind="modal" id="VI6-Ig-peh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -879,6 +881,32 @@
                 <customObject id="tVX-zi-JhA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="202" y="641"/>
+        </scene>
+        <!--Register Native App View Controller-->
+        <scene sceneID="XvX-Lb-z3x">
+            <objects>
+                <viewController id="Ka1-bE-VMX" customClass="RegisterNativeAppViewController" customModule="Ernie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="SAO-Cg-2ds">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="Ihn-Gd-KMo" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-34" y="1162"/>
+        </scene>
+        <!--Native App Details View Controller-->
+        <scene sceneID="8th-Py-Zz1">
+            <objects>
+                <viewController id="6px-9b-vf9" customClass="NativeAppDetailsViewController" customModule="Ernie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="kZ0-Dh-AIc">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="Uwo-FD-dgG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="522" y="1162"/>
         </scene>
         <!--Requirements-->
         <scene sceneID="NKC-3d-Ped">

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C101C15C1FBD021600AE02C6 /* NativeAppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C15B1FBD021600AE02C6 /* NativeAppsViewController.swift */; };
 		C101C19C1FBE243F00AE02C6 /* NativeAppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C19B1FBE243F00AE02C6 /* NativeAppTableViewCell.swift */; };
+		C101C1A11FBE490900AE02C6 /* RegisterNativeAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C1A01FBE490900AE02C6 /* RegisterNativeAppViewController.swift */; };
+		C101C1A31FBE491E00AE02C6 /* NativeAppDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C1A21FBE491E00AE02C6 /* NativeAppDetailsViewController.swift */; };
 		C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */; };
 		C190D4531FABD61B002EFA5B /* YarnRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4521FABD61B002EFA5B /* YarnRequirement.swift */; };
 		C190D4551FABD803002EFA5B /* XcodeRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4541FABD803002EFA5B /* XcodeRequirement.swift */; };
@@ -43,6 +45,8 @@
 /* Begin PBXFileReference section */
 		C101C15B1FBD021600AE02C6 /* NativeAppsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAppsViewController.swift; sourceTree = "<group>"; };
 		C101C19B1FBE243F00AE02C6 /* NativeAppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAppTableViewCell.swift; sourceTree = "<group>"; };
+		C101C1A01FBE490900AE02C6 /* RegisterNativeAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNativeAppViewController.swift; sourceTree = "<group>"; };
+		C101C1A21FBE491E00AE02C6 /* NativeAppDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAppDetailsViewController.swift; sourceTree = "<group>"; };
 		C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPMRequirement.swift; sourceTree = "<group>"; };
 		C190D4521FABD61B002EFA5B /* YarnRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YarnRequirement.swift; sourceTree = "<group>"; };
 		C190D4541FABD803002EFA5B /* XcodeRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeRequirement.swift; sourceTree = "<group>"; };
@@ -87,6 +91,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C101C19D1FBE489F00AE02C6 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C101C19F1FBE48BC00AE02C6 /* Native Apps */,
+				C101C19E1FBE48B000AE02C6 /* Requirements */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		C101C19E1FBE48B000AE02C6 /* Requirements */ = {
+			isa = PBXGroup;
+			children = (
+				C19E0F691FBA562E00EC727B /* RequirementsViewController.swift */,
+				C19E0F6B1FBA611B00EC727B /* RequirementsTableViewCell.swift */,
+			);
+			path = Requirements;
+			sourceTree = "<group>";
+		};
+		C101C19F1FBE48BC00AE02C6 /* Native Apps */ = {
+			isa = PBXGroup;
+			children = (
+				C101C15B1FBD021600AE02C6 /* NativeAppsViewController.swift */,
+				C101C19B1FBE243F00AE02C6 /* NativeAppTableViewCell.swift */,
+				C101C1A01FBE490900AE02C6 /* RegisterNativeAppViewController.swift */,
+				C101C1A21FBE491E00AE02C6 /* NativeAppDetailsViewController.swift */,
+			);
+			path = "Native Apps";
+			sourceTree = "<group>";
+		};
 		C190D4581FACEBDE002EFA5B /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,14 +157,11 @@
 		C1C774CD1FA3E28300AD269F /* Ernie */ = {
 			isa = PBXGroup;
 			children = (
-				C190D4591FAD21CA002EFA5B /* Tool Wrappers */,
 				C1C774EF1FA3E9F800AD269F /* Environment Requirements */,
+				C190D4591FAD21CA002EFA5B /* Tool Wrappers */,
+				C101C19D1FBE489F00AE02C6 /* UI */,
 				C190D4581FACEBDE002EFA5B /* Utilities */,
 				C1C774CE1FA3E28300AD269F /* AppDelegate.swift */,
-				C19E0F691FBA562E00EC727B /* RequirementsViewController.swift */,
-				C19E0F6B1FBA611B00EC727B /* RequirementsTableViewCell.swift */,
-				C101C15B1FBD021600AE02C6 /* NativeAppsViewController.swift */,
-				C101C19B1FBE243F00AE02C6 /* NativeAppTableViewCell.swift */,
 				C1C774D51FA3E28300AD269F /* Assets.xcassets */,
 				C1C774D71FA3E28300AD269F /* Main.storyboard */,
 				C1C774DA1FA3E28300AD269F /* Info.plist */,
@@ -272,6 +302,7 @@
 				C190D4571FACD3FA002EFA5B /* ElectrodeRequirement.swift in Sources */,
 				C190D45B1FAD21EC002EFA5B /* ErnWrapper.swift in Sources */,
 				C101C19C1FBE243F00AE02C6 /* NativeAppTableViewCell.swift in Sources */,
+				C101C1A11FBE490900AE02C6 /* RegisterNativeAppViewController.swift in Sources */,
 				C1C774F11FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift in Sources */,
 				C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */,
 				C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */,
@@ -284,6 +315,7 @@
 				C1C774CF1FA3E28300AD269F /* AppDelegate.swift in Sources */,
 				C19E0F6A1FBA562E00EC727B /* RequirementsViewController.swift in Sources */,
 				C190D45D1FB0FD6D002EFA5B /* NVMRequirement.swift in Sources */,
+				C101C1A31FBE491E00AE02C6 /* NativeAppDetailsViewController.swift in Sources */,
 				C101C15C1FBD021600AE02C6 /* NativeAppsViewController.swift in Sources */,
 				C1C774D41FA3E28300AD269F /* Ernie.xcdatamodeld in Sources */,
 				C190D4551FABD803002EFA5B /* XcodeRequirement.swift in Sources */,
