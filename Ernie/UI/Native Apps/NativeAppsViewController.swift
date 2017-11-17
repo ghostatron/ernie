@@ -13,6 +13,8 @@ class NativeAppsViewController: NSViewController, NSTableViewDataSource, NSTable
 {
     private var nativeApps: [NativeApp]!
     
+    @IBOutlet weak var nativeAppTableView: NSTableView!
+    
     // MARK:- View Lifecycle
     
     override func viewDidLoad()
@@ -27,11 +29,21 @@ class NativeAppsViewController: NSViewController, NSTableViewDataSource, NSTable
         self.view.window?.title = "Native Apps"
     }
     
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?)
+    {
+        if let registerVC = segue.destinationController as? RegisterNativeAppViewController
+        {
+            registerVC.delegate = self
+        }
+    }
+    
     // MARK:- ModalDialogDelegate
     
     func dismissedWithOK()
     {
         // Reload the table.
+        self.nativeApps = self.allNativeApps() ?? []
+        self.nativeAppTableView.reloadData()
     }
     
     func dismissedWithCancel()
@@ -69,10 +81,6 @@ class NativeAppsViewController: NSViewController, NSTableViewDataSource, NSTable
     }
     
     // MARK:- Event Handlers
-    
-    @IBAction func registerButtonPressed(_ sender: NSButton)
-    {
-    }
     
     func allNativeApps() -> [NativeApp]?
     {

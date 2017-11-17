@@ -862,7 +862,6 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="registerButtonPressed:" target="TKQ-1p-SGe" id="rq6-Jr-JEb"/>
                                     <segue destination="Ka1-bE-VMX" kind="modal" id="VI6-Ig-peh"/>
                                 </connections>
                             </button>
@@ -877,6 +876,9 @@
                             <constraint firstItem="rLT-Ou-waD" firstAttribute="top" secondItem="TLD-kH-rmd" secondAttribute="top" constant="20" id="siZ-8Y-yvz"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nativeAppTableView" destination="Lat-1p-Iga" id="W7o-Go-sHk"/>
+                    </connections>
                 </viewController>
                 <customObject id="tVX-zi-JhA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
