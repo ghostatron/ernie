@@ -21,7 +21,9 @@ class NativeAppTableViewCell: NSTableCellView
     
     func configureForNativeApp(_ app: NativeApp)
     {
-        
+        self.nativeAppName.stringValue = app.appName ?? ""
+        self.nativeAppDescription.stringValue = app.appDescription ?? ""
+        self.nativeAppFolder.stringValue = app.appFolder ?? ""
     }
     
     // MARK:- Event Handlers

@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-class NativeAppsViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate
+class NativeAppsViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, ModalDialogDelegate
 {
     private var nativeApps: [NativeApp]!
     
@@ -25,6 +25,18 @@ class NativeAppsViewController: NSViewController, NSTableViewDataSource, NSTable
     {
         super.viewDidAppear()
         self.view.window?.title = "Native Apps"
+    }
+    
+    // MARK:- ModalDialogDelegate
+    
+    func dismissedWithOK()
+    {
+        // Reload the table.
+    }
+    
+    func dismissedWithCancel()
+    {
+        // Don't care
     }
     
     // MARK:- NSTableViewDataSource
@@ -61,7 +73,6 @@ class NativeAppsViewController: NSViewController, NSTableViewDataSource, NSTable
     @IBAction func registerButtonPressed(_ sender: NSButton)
     {
     }
-    
     
     func allNativeApps() -> [NativeApp]?
     {
