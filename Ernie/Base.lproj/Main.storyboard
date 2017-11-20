@@ -1105,7 +1105,7 @@ Gw
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="" width="405" minWidth="40" maxWidth="1000" id="D9p-w6-s2n" userLabel="Mini Apps Row">
+                                                <tableColumn identifier="miniAppRow" width="405" minWidth="40" maxWidth="1000" id="D9p-w6-s2n" userLabel="Mini Apps Row">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" enabled="NO" borderStyle="border" title="Mini Apps">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1118,7 +1118,7 @@ Gw
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="qvu-aa-Zgv">
+                                                        <tableCellView id="qvu-aa-Zgv" customClass="NativeAppDetailTableViewCell" customModule="Ernie" customModuleProvider="target">
                                                             <rect key="frame" x="1" y="1" width="405" height="27"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -1147,7 +1147,8 @@ Gw
                                                                 <constraint firstItem="8pj-Rm-Lcj" firstAttribute="leading" secondItem="qvu-aa-Zgv" secondAttribute="leading" constant="5" id="um6-lB-Zrx"/>
                                                             </constraints>
                                                             <connections>
-                                                                <outlet property="textField" destination="8pj-Rm-Lcj" id="K0J-jg-G0z"/>
+                                                                <outlet property="miniAppDescriptionLabel" destination="udu-Kf-uZ2" id="7Y8-oh-LbR"/>
+                                                                <outlet property="miniAppNameLabel" destination="8pj-Rm-Lcj" id="Oid-Gd-jts"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>

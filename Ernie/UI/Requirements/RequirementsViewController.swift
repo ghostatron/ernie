@@ -57,7 +57,7 @@ class RequirementsViewController: NSViewController, NSTableViewDataSource, NSTab
             return nil
         }
         
-        // Configure the view and return it.
+        // Configure the cell and return it.
         requirementsCell.configureForRequirement(self.allRequirements[row])
         return requirementsCell
     }

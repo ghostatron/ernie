@@ -16,6 +16,24 @@ class NativeAppDetailsViewController: NSViewController, NSTableViewDelegate, NST
      This is the NativeApp that will be used to populate the UI elements.
      */
     var nativeApp: NativeApp?
+    {
+        didSet
+        {
+            if let miniAppsArray = nativeApp?.container?.miniApps?.allObjects as? [MiniApp]
+            {
+                self.miniAppsAlphabetized = miniAppsArray.sorted { $0.miniAppName ?? "" < $1.miniAppName ?? "" }
+            }
+            else
+            {
+                self.miniAppsAlphabetized = []
+            }
+        }
+    }
+    
+    /**
+     This is the data source for the mini apps table and it is derived from self.nativeApp.
+     */
+    private var miniAppsAlphabetized: [MiniApp] = []
 
     // MARK:- IBOutlet Properties
 
@@ -50,8 +68,6 @@ class NativeAppDetailsViewController: NSViewController, NSTableViewDelegate, NST
      */
     private func configureForNativeApp(_ nativeApp: NativeApp)
     {
-        self.nativeApp = nativeApp
-        
         self.nativeAppNameLabel.stringValue = nativeApp.appName ?? "<No Name>"
         self.nativeAppFolderLabel.stringValue = nativeApp.appFolder ?? "<No Folder>"
         self.nativeAppDescriptionLabel.stringValue = nativeApp.appDescription ?? ""
@@ -81,32 +97,27 @@ class NativeAppDetailsViewController: NSViewController, NSTableViewDelegate, NST
     func numberOfRows(in tableView: NSTableView) -> Int
     {
         // One row per native app.
-        return self.nativeApp?.container?.miniApps?.count ?? 0
+        return self.miniAppsAlphabetized.count
     }
     
     // MARK:- NSTableViewDelegate
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView?
     {
-        guard let nativeApp = self.nativeApp else
-        {
-            return nil
-        }
-        
         // No out-of-bounds crashes please.
-        guard row < (nativeApp.container?.miniApps?.count ?? 0) else
+        guard row < self.miniAppsAlphabetized.count else
         {
             return nil
         }
         
         // Instantiate a view for the cell.
-        guard let miniAppCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "nativeAppRow"), owner: self) as? NativeAppTableViewCell else
+        guard let miniAppCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "miniAppRow"), owner: self) as? NativeAppDetailTableViewCell else
         {
             return nil
         }
         
-        // Configure the view and return it.
-        //nativeAppCell.configureForNativeApp(self.nativeApps[row])
+        // Configure the cell and return it.
+        miniAppCell.configureForMiniApp(self.miniAppsAlphabetized[row])
         return miniAppCell
     }
 }

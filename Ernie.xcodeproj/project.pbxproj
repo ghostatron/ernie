@@ -12,6 +12,7 @@
 		C101C1A11FBE490900AE02C6 /* RegisterNativeAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C1A01FBE490900AE02C6 /* RegisterNativeAppViewController.swift */; };
 		C101C1A31FBE491E00AE02C6 /* NativeAppDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C1A21FBE491E00AE02C6 /* NativeAppDetailsViewController.swift */; };
 		C101C1A51FBE602E00AE02C6 /* ModalDialogDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C1A41FBE602E00AE02C6 /* ModalDialogDelegate.swift */; };
+		C101C1A91FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C1A81FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift */; };
 		C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */; };
 		C190D4531FABD61B002EFA5B /* YarnRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4521FABD61B002EFA5B /* YarnRequirement.swift */; };
 		C190D4551FABD803002EFA5B /* XcodeRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4541FABD803002EFA5B /* XcodeRequirement.swift */; };
@@ -49,6 +50,7 @@
 		C101C1A01FBE490900AE02C6 /* RegisterNativeAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterNativeAppViewController.swift; sourceTree = "<group>"; };
 		C101C1A21FBE491E00AE02C6 /* NativeAppDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAppDetailsViewController.swift; sourceTree = "<group>"; };
 		C101C1A41FBE602E00AE02C6 /* ModalDialogDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDialogDelegate.swift; sourceTree = "<group>"; };
+		C101C1A81FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAppDetailTableViewCell.swift; sourceTree = "<group>"; };
 		C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPMRequirement.swift; sourceTree = "<group>"; };
 		C190D4521FABD61B002EFA5B /* YarnRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YarnRequirement.swift; sourceTree = "<group>"; };
 		C190D4541FABD803002EFA5B /* XcodeRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeRequirement.swift; sourceTree = "<group>"; };
@@ -117,10 +119,27 @@
 			children = (
 				C101C15B1FBD021600AE02C6 /* NativeAppsViewController.swift */,
 				C101C19B1FBE243F00AE02C6 /* NativeAppTableViewCell.swift */,
-				C101C1A01FBE490900AE02C6 /* RegisterNativeAppViewController.swift */,
-				C101C1A21FBE491E00AE02C6 /* NativeAppDetailsViewController.swift */,
+				C101C1A71FC3834C00AE02C6 /* Details */,
+				C101C1A61FC3833600AE02C6 /* Register */,
 			);
 			path = "Native Apps";
+			sourceTree = "<group>";
+		};
+		C101C1A61FC3833600AE02C6 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				C101C1A01FBE490900AE02C6 /* RegisterNativeAppViewController.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		C101C1A71FC3834C00AE02C6 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				C101C1A21FBE491E00AE02C6 /* NativeAppDetailsViewController.swift */,
+				C101C1A81FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift */,
+			);
+			path = Details;
 			sourceTree = "<group>";
 		};
 		C190D4581FACEBDE002EFA5B /* Utilities */ = {
@@ -312,6 +331,7 @@
 				C190D4531FABD61B002EFA5B /* YarnRequirement.swift in Sources */,
 				C19E0F681FBA1ED400EC727B /* AndroidStudioRequirement.swift in Sources */,
 				C1C774F31FA3EC5E00AD269F /* NodeJSRequirement.swift in Sources */,
+				C101C1A91FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift in Sources */,
 				C19E0F6C1FBA611B00EC727B /* RequirementsTableViewCell.swift in Sources */,
 				C190D45F1FB0FD80002EFA5B /* HomebrewRequirement.swift in Sources */,
 				C101C1A51FBE602E00AE02C6 /* ModalDialogDelegate.swift in Sources */,
