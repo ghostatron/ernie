@@ -31,6 +31,8 @@
 		C1C774F11FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774F01FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift */; };
 		C1C774F31FA3EC5E00AD269F /* NodeJSRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774F21FA3EC5E00AD269F /* NodeJSRequirement.swift */; };
 		C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774F41FA3ECFB00AD269F /* CommandLineHelper.swift */; };
+		C1E854F71FC396FF00CE90DD /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854F61FC396FF00CE90DD /* ContainerViewController.swift */; };
+		C1E854F91FC3972D00CE90DD /* ContainersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854F81FC3972D00CE90DD /* ContainersTableViewCell.swift */; };
 		C1E96C2A1FAA90AB00A460EA /* EnvironmentRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E96C291FAA90AB00A460EA /* EnvironmentRequirement.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +76,8 @@
 		C1C774F01FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentRequirementDelegate.swift; sourceTree = "<group>"; };
 		C1C774F21FA3EC5E00AD269F /* NodeJSRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeJSRequirement.swift; sourceTree = "<group>"; };
 		C1C774F41FA3ECFB00AD269F /* CommandLineHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineHelper.swift; sourceTree = "<group>"; };
+		C1E854F61FC396FF00CE90DD /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		C1E854F81FC3972D00CE90DD /* ContainersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersTableViewCell.swift; sourceTree = "<group>"; };
 		C1E96C291FAA90AB00A460EA /* EnvironmentRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentRequirement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,9 +102,10 @@
 		C101C19D1FBE489F00AE02C6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				C101C1A41FBE602E00AE02C6 /* ModalDialogDelegate.swift */,
+				C101C1AA1FC394D300AE02C6 /* Containers */,
 				C101C19F1FBE48BC00AE02C6 /* Native Apps */,
 				C101C19E1FBE48B000AE02C6 /* Requirements */,
+				C101C1A41FBE602E00AE02C6 /* ModalDialogDelegate.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -140,6 +145,15 @@
 				C101C1A81FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift */,
 			);
 			path = Details;
+			sourceTree = "<group>";
+		};
+		C101C1AA1FC394D300AE02C6 /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				C1E854F61FC396FF00CE90DD /* ContainerViewController.swift */,
+				C1E854F81FC3972D00CE90DD /* ContainersTableViewCell.swift */,
+			);
+			path = Containers;
 			sourceTree = "<group>";
 		};
 		C190D4581FACEBDE002EFA5B /* Utilities */ = {
@@ -331,10 +345,12 @@
 				C190D4531FABD61B002EFA5B /* YarnRequirement.swift in Sources */,
 				C19E0F681FBA1ED400EC727B /* AndroidStudioRequirement.swift in Sources */,
 				C1C774F31FA3EC5E00AD269F /* NodeJSRequirement.swift in Sources */,
+				C1E854F91FC3972D00CE90DD /* ContainersTableViewCell.swift in Sources */,
 				C101C1A91FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift in Sources */,
 				C19E0F6C1FBA611B00EC727B /* RequirementsTableViewCell.swift in Sources */,
 				C190D45F1FB0FD80002EFA5B /* HomebrewRequirement.swift in Sources */,
 				C101C1A51FBE602E00AE02C6 /* ModalDialogDelegate.swift in Sources */,
+				C1E854F71FC396FF00CE90DD /* ContainerViewController.swift in Sources */,
 				C1E96C2A1FAA90AB00A460EA /* EnvironmentRequirement.swift in Sources */,
 				C1C774CF1FA3E28300AD269F /* AppDelegate.swift in Sources */,
 				C19E0F6A1FBA562E00EC727B /* RequirementsViewController.swift in Sources */,
