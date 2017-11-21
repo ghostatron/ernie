@@ -105,9 +105,9 @@ class NativeAppsViewController: NSViewController, NSTableViewDataSource, NSTable
         return nativeAppCell
     }
     
-    // MARK:- Event Handlers
+    // MARK:- Private Methods
     
-    func allNativeApps() -> [NativeApp]?
+    private func allNativeApps() -> [NativeApp]?
     {
         let request: NSFetchRequest<NativeApp> = NativeApp.fetchRequest()
         let nativeApps = try? AppDelegate.mainManagedObjectContext().fetch(request)

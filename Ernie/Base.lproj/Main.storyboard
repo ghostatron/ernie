@@ -901,6 +901,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="addContainerButtonPress:" target="fPP-1w-OCa" id="Mpt-nV-JCa"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NeP-5V-rct">
                                 <rect key="frame" x="39" y="262" width="70" height="17"/>
@@ -916,14 +919,14 @@
                                     <rect key="frame" x="1" y="1" width="212" height="231"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="gsY-Ad-p4n">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="gsY-Ad-p4n" userLabel="Containers Table View">
                                             <rect key="frame" x="0.0" y="0.0" width="212" height="231"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="" width="209" minWidth="40" maxWidth="1000" id="QhN-IL-3zw">
+                                                <tableColumn identifier="containerRow" width="209" minWidth="40" maxWidth="1000" id="QhN-IL-3zw" userLabel="Container Row">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -936,27 +939,35 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="V5L-Hn-QvB">
+                                                        <tableCellView id="V5L-Hn-QvB" customClass="ContainersTableViewCell" customModule="Ernie" customModuleProvider="target">
                                                             <rect key="frame" x="1" y="1" width="209" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xU2-Kk-Fcr">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="209" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="bNB-cX-2d2">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="xU2-Kk-Fcr" userLabel="Container Name Label">
+                                                                    <rect key="frame" x="3" y="0.0" width="102" height="17"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Container Name" id="bNB-cX-2d2">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xU2-Kk-Fcr" secondAttribute="trailing" constant="5" id="3lf-fH-dQJ"/>
+                                                                <constraint firstItem="xU2-Kk-Fcr" firstAttribute="leading" secondItem="V5L-Hn-QvB" secondAttribute="leading" constant="5" id="EQG-2c-8y2"/>
+                                                                <constraint firstItem="xU2-Kk-Fcr" firstAttribute="centerY" secondItem="V5L-Hn-QvB" secondAttribute="centerY" id="On1-y7-zvO"/>
+                                                            </constraints>
                                                             <connections>
-                                                                <outlet property="textField" destination="xU2-Kk-Fcr" id="wsM-nI-H7E"/>
+                                                                <outlet property="containerNameLabel" destination="xU2-Kk-Fcr" id="bJh-oC-pyi"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="fPP-1w-OCa" id="WK7-hE-fX1"/>
+                                                <outlet property="delegate" destination="fPP-1w-OCa" id="y7L-wT-sV0"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>
@@ -997,6 +1008,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="regenerateButtonPressed:" target="fPP-1w-OCa" id="KUG-SL-Kq2"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xnc-Bi-x2k">
                                 <rect key="frame" x="419" y="13" width="75" height="32"/>
@@ -1004,6 +1018,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="editButtonPressed:" target="fPP-1w-OCa" id="7DR-J2-Rut"/>
+                                </connections>
                             </button>
                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="kO7-ue-FZT">
                                 <rect key="frame" x="273" y="211" width="136" height="17"/>
@@ -1019,14 +1036,14 @@
                                     <rect key="frame" x="1" y="23" width="211" height="130"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" enabled="NO" rowSizeStyle="automatic" headerView="fcW-DV-3Ux" viewBased="YES" id="tNr-5o-OrT">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" enabled="NO" rowSizeStyle="automatic" headerView="fcW-DV-3Ux" viewBased="YES" id="tNr-5o-OrT" userLabel="Mini Apps Table View">
                                             <rect key="frame" x="0.0" y="0.0" width="211" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="" width="208" minWidth="40" maxWidth="1000" id="2LO-Xo-vJB">
+                                                <tableColumn identifier="miniAppRow" width="208" minWidth="40" maxWidth="1000" id="2LO-Xo-vJB" userLabel="Mini Apps Row">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" enabled="NO" borderStyle="border" title="Mini Apps">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1039,7 +1056,7 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="XDG-KR-Joj">
+                                                        <tableCellView id="XDG-KR-Joj" customClass="ContainersMiniAppTableViewCell" customModule="Ernie" customModuleProvider="target">
                                                             <rect key="frame" x="1" y="1" width="208" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -1060,6 +1077,10 @@
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="fPP-1w-OCa" id="buO-fr-jnl"/>
+                                                <outlet property="delegate" destination="fPP-1w-OCa" id="Wc2-lu-Xmb"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>
@@ -1110,6 +1131,13 @@
                             <constraint firstItem="kbX-dh-5E7" firstAttribute="top" secondItem="Fx3-xh-wpE" secondAttribute="bottom" constant="8" id="zYP-vf-x8G"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="containerDescriptionLabel" destination="kO7-ue-FZT" id="9ob-eU-owF"/>
+                        <outlet property="containerFolderLabel" destination="Zwe-jj-mgU" id="Ujk-7V-tFL"/>
+                        <outlet property="containerNameLabel" destination="BtH-2K-JSb" id="QXT-67-6Uw"/>
+                        <outlet property="containersTableView" destination="gsY-Ad-p4n" id="w0t-yP-EKx"/>
+                        <outlet property="miniAppsTableView" destination="tNr-5o-OrT" id="8xx-wI-5vN"/>
+                    </connections>
                 </viewController>
                 <customObject id="LRt-ee-cbG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

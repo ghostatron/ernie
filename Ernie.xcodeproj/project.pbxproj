@@ -33,6 +33,7 @@
 		C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774F41FA3ECFB00AD269F /* CommandLineHelper.swift */; };
 		C1E854F71FC396FF00CE90DD /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854F61FC396FF00CE90DD /* ContainerViewController.swift */; };
 		C1E854F91FC3972D00CE90DD /* ContainersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854F81FC3972D00CE90DD /* ContainersTableViewCell.swift */; };
+		C1E854FB1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854FA1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift */; };
 		C1E96C2A1FAA90AB00A460EA /* EnvironmentRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E96C291FAA90AB00A460EA /* EnvironmentRequirement.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		C1C774F41FA3ECFB00AD269F /* CommandLineHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineHelper.swift; sourceTree = "<group>"; };
 		C1E854F61FC396FF00CE90DD /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		C1E854F81FC3972D00CE90DD /* ContainersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersTableViewCell.swift; sourceTree = "<group>"; };
+		C1E854FA1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersMiniAppTableViewCell.swift; sourceTree = "<group>"; };
 		C1E96C291FAA90AB00A460EA /* EnvironmentRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentRequirement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +154,7 @@
 			children = (
 				C1E854F61FC396FF00CE90DD /* ContainerViewController.swift */,
 				C1E854F81FC3972D00CE90DD /* ContainersTableViewCell.swift */,
+				C1E854FA1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift */,
 			);
 			path = Containers;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 				C1E854F71FC396FF00CE90DD /* ContainerViewController.swift in Sources */,
 				C1E96C2A1FAA90AB00A460EA /* EnvironmentRequirement.swift in Sources */,
 				C1C774CF1FA3E28300AD269F /* AppDelegate.swift in Sources */,
+				C1E854FB1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift in Sources */,
 				C19E0F6A1FBA562E00EC727B /* RequirementsViewController.swift in Sources */,
 				C190D45D1FB0FD6D002EFA5B /* NVMRequirement.swift in Sources */,
 				C101C1A31FBE491E00AE02C6 /* NativeAppDetailsViewController.swift in Sources */,
