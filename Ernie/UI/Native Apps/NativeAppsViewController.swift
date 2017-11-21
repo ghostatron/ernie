@@ -63,14 +63,14 @@ class NativeAppsViewController: NSViewController, NSTableViewDataSource, NSTable
     
     // MARK:- ModalDialogDelegate
     
-    func dismissedWithOK()
+    func dismissedWithOK(dialog: NSViewController)
     {
         // Reload the table.
         self.nativeApps = self.allNativeApps() ?? []
         self.nativeAppTableView.reloadData()
     }
     
-    func dismissedWithCancel()
+    func dismissedWithCancel(dialog: NSViewController)
     {
         // Don't care
     }

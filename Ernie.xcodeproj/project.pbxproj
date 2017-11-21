@@ -34,6 +34,8 @@
 		C1E854F71FC396FF00CE90DD /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854F61FC396FF00CE90DD /* ContainerViewController.swift */; };
 		C1E854F91FC3972D00CE90DD /* ContainersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854F81FC3972D00CE90DD /* ContainersTableViewCell.swift */; };
 		C1E854FB1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854FA1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift */; };
+		C1E854FD1FC4D99D00CE90DD /* ContainerEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854FC1FC4D99D00CE90DD /* ContainerEditorViewController.swift */; };
+		C1E854FF1FC4E69F00CE90DD /* MiniAppSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854FE1FC4E69F00CE90DD /* MiniAppSelectionTableViewCell.swift */; };
 		C1E96C2A1FAA90AB00A460EA /* EnvironmentRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E96C291FAA90AB00A460EA /* EnvironmentRequirement.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,8 @@
 		C1E854F61FC396FF00CE90DD /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		C1E854F81FC3972D00CE90DD /* ContainersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersTableViewCell.swift; sourceTree = "<group>"; };
 		C1E854FA1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersMiniAppTableViewCell.swift; sourceTree = "<group>"; };
+		C1E854FC1FC4D99D00CE90DD /* ContainerEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerEditorViewController.swift; sourceTree = "<group>"; };
+		C1E854FE1FC4E69F00CE90DD /* MiniAppSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		C1E96C291FAA90AB00A460EA /* EnvironmentRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentRequirement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,6 +159,8 @@
 				C1E854F61FC396FF00CE90DD /* ContainerViewController.swift */,
 				C1E854F81FC3972D00CE90DD /* ContainersTableViewCell.swift */,
 				C1E854FA1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift */,
+				C1E854FC1FC4D99D00CE90DD /* ContainerEditorViewController.swift */,
+				C1E854FE1FC4E69F00CE90DD /* MiniAppSelectionTableViewCell.swift */,
 			);
 			path = Containers;
 			sourceTree = "<group>";
@@ -343,12 +349,14 @@
 				C101C19C1FBE243F00AE02C6 /* NativeAppTableViewCell.swift in Sources */,
 				C101C1A11FBE490900AE02C6 /* RegisterNativeAppViewController.swift in Sources */,
 				C1C774F11FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift in Sources */,
+				C1E854FF1FC4E69F00CE90DD /* MiniAppSelectionTableViewCell.swift in Sources */,
 				C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */,
 				C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */,
 				C190D4531FABD61B002EFA5B /* YarnRequirement.swift in Sources */,
 				C19E0F681FBA1ED400EC727B /* AndroidStudioRequirement.swift in Sources */,
 				C1C774F31FA3EC5E00AD269F /* NodeJSRequirement.swift in Sources */,
 				C1E854F91FC3972D00CE90DD /* ContainersTableViewCell.swift in Sources */,
+				C1E854FD1FC4D99D00CE90DD /* ContainerEditorViewController.swift in Sources */,
 				C101C1A91FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift in Sources */,
 				C19E0F6C1FBA611B00EC727B /* RequirementsTableViewCell.swift in Sources */,
 				C190D45F1FB0FD80002EFA5B /* HomebrewRequirement.swift in Sources */,

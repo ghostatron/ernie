@@ -11,8 +11,10 @@ import Cocoa
 
 class ContainersMiniAppTableViewCell: NSTableCellView
 {
+    @IBOutlet weak var miniAppNameLabel: NSTextField!
+    
     func configureForMiniApp(_ miniApp: MiniApp)
     {
-        
+        self.miniAppNameLabel.stringValue = miniApp.miniAppName ?? "<No Name>"
     }
 }

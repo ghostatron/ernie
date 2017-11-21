@@ -32,6 +32,7 @@ class ContainerViewController: NSViewController, NSTableViewDataSource, NSTableV
     {
         super.viewDidLoad()
         self.containersAlphabetized = self.allContainers() ?? []
+        self.configureViewForSelectedContainer()
     }
     
     override func viewDidAppear()
@@ -93,14 +94,14 @@ class ContainerViewController: NSViewController, NSTableViewDataSource, NSTableV
     // MARK:- ModalDialogDelegate
     
     // If the "Edit" or "Add" dialog returns with "OK", then we need to refresh the page.
-    func dismissedWithOK()
+    func dismissedWithOK(dialog: NSViewController)
     {
         // Reload the table.
         self.containersAlphabetized = self.allContainers() ?? []
         self.containersTableView.reloadData()
     }
     
-    func dismissedWithCancel()
+    func dismissedWithCancel(dialog: NSViewController)
     {
         // Don't care
     }

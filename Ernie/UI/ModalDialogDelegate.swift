@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import Cocoa
 
 protocol ModalDialogDelegate
 {
-    func dismissedWithOK()
-    func dismissedWithCancel()
+    func dismissedWithOK(dialog: NSViewController)
+    func dismissedWithCancel(dialog: NSViewController)
 }

@@ -47,7 +47,7 @@ class RegisterNativeAppViewController: NSViewController
     @IBAction func cancelButtonPressed(_ sender: NSButton)
     {
         // Let the delegate know we're canceled and then dismiss.
-        self.delegate?.dismissedWithCancel()
+        self.delegate?.dismissedWithCancel(dialog: self)
         self.dismiss(self)
     }
     
@@ -62,7 +62,7 @@ class RegisterNativeAppViewController: NSViewController
         
         // Save, let the delegate know we're dismissing with via the "OK" button.
         try? moc.save()
-        self.delegate?.dismissedWithOK()
+        self.delegate?.dismissedWithOK(dialog: self)
         self.dismiss(self)
     }
 }
