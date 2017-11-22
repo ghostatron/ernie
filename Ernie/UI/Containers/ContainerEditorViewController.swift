@@ -121,7 +121,7 @@ class ContainerEditorViewController: NSViewController, NSTableViewDataSource, NS
         }
         
         // Instantiate a view for the cell.
-        guard let miniAppCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "nativeAppRow"), owner: self) as? MiniAppSelectionTableViewCell else
+        guard let miniAppCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "selectMiniAppRow"), owner: self) as? MiniAppSelectionTableViewCell else
         {
             return nil
         }

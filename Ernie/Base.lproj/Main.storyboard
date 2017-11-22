@@ -1264,7 +1264,7 @@ Gw
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="" width="511" minWidth="40" maxWidth="1000" id="J2O-8v-gLW" userLabel="Mini Apps Row">
+                                                <tableColumn identifier="selectMiniAppRow" width="511" minWidth="40" maxWidth="1000" id="J2O-8v-gLW" userLabel="Mini Apps Row">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Mini Apps">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>

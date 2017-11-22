@@ -18,6 +18,9 @@ class ContainerViewController: NSViewController, NSTableViewDataSource, NSTableV
     private var containersAlphabetized: [Container] = []
     private var selectedContainerMiniAppsAlphabetized: [MiniApp] = []
     
+    /// The mode to use when launching the editor.  The user will ultimately choose this via the UI.
+    private var editorMode = ContainerEditorViewController.EditorMode.New
+    
     // MARK:- IBOutlet Properties
 
     @IBOutlet weak var containersTableView: NSTableView!
@@ -55,6 +58,17 @@ class ContainerViewController: NSViewController, NSTableViewDataSource, NSTableV
         self.view.window?.title = "Containers"
     }
     
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?)
+    {
+        if let editorVC = segue.destinationController as? ContainerEditorViewController
+        {
+            // We need to know when the register dialog is completed.
+            editorVC.mode = self.editorMode
+            editorVC.container = self.selectedContainer
+            editorVC.modalDelegate = self
+        }
+    }
+    
     // MARK:- Event Handlers
 
     @IBAction func regenerateButtonPressed(_ sender: NSButton)
@@ -63,10 +77,28 @@ class ContainerViewController: NSViewController, NSTableViewDataSource, NSTableV
     
     @IBAction func editButtonPressed(_ sender: NSButton)
     {
+        self.editorMode = .Edit
+        self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toContainerEditor"), sender: self)
     }
     
     @IBAction func addContainerButtonPress(_ sender: NSButton)
     {
+        let alert = NSAlert()
+        alert.addButton(withTitle: "Create New...")
+        alert.addButton(withTitle: "Register Existing...")
+        alert.addButton(withTitle: "Cancel")
+        alert.messageText = "Create New or Register Existing"
+        alert.informativeText = "You can create a NEW container and we'll get it started for you, or you can REGISTER an existing one by telling us about it."
+        switch alert.runModal()
+        {
+            case NSApplication.ModalResponse.alertFirstButtonReturn:
+                self.editorMode = .New
+            case NSApplication.ModalResponse.alertSecondButtonReturn:
+                self.editorMode = .Register
+            default:
+                return
+        }
+        self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toContainerEditor"), sender: self)
     }
     
     // MARK:- Private Methods
