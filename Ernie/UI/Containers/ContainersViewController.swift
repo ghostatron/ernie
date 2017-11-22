@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-class ContainerViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, ModalDialogDelegate
+class ContainersViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, ModalDialogDelegate
 {
     /// The container currently selected in the containers table view.
     private var selectedContainer: Container?
@@ -242,6 +242,7 @@ class ContainerViewController: NSViewController, NSTableViewDataSource, NSTableV
                 // No container selected, make sure to wipe out the mini-apps data source.
                 self.selectedContainer = nil
                 self.selectedContainerMiniAppsAlphabetized = []
+                self.regenerateButton.isEnabled = false
             }
             else
             {
@@ -251,6 +252,7 @@ class ContainerViewController: NSViewController, NSTableViewDataSource, NSTableV
                 {
                     self.selectedContainerMiniAppsAlphabetized = miniAppsArray.sorted { $0.miniAppName ?? "" < $1.miniAppName ?? "" }
                 }
+                self.regenerateButton.isEnabled = true
             }
             
             // Update the UI for that newly selected container.
