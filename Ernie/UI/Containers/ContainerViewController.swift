@@ -25,14 +25,28 @@ class ContainerViewController: NSViewController, NSTableViewDataSource, NSTableV
     @IBOutlet weak var containerNameLabel: NSTextField!
     @IBOutlet weak var containerFolderLabel: NSTextField!
     @IBOutlet weak var containerDescriptionLabel: NSTextField!
+    @IBOutlet weak var regenerateButton: NSButton!
+    @IBOutlet weak var editButton: NSButton!
     
     // MARK:- View Lifecycle
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
         self.containersAlphabetized = self.allContainers() ?? []
         self.configureViewForSelectedContainer()
+        
+        if self.containersAlphabetized.count > 0
+        {
+            self.regenerateButton.isEnabled = true
+            self.editButton.isEnabled = true
+        }
+        else
+        {
+            self.regenerateButton.isEnabled = false
+            self.editButton.isEnabled = false
+        }
     }
     
     override func viewDidAppear()

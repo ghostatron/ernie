@@ -1140,7 +1140,9 @@
                         <outlet property="containerFolderLabel" destination="Zwe-jj-mgU" id="Ujk-7V-tFL"/>
                         <outlet property="containerNameLabel" destination="BtH-2K-JSb" id="QXT-67-6Uw"/>
                         <outlet property="containersTableView" destination="gsY-Ad-p4n" id="w0t-yP-EKx"/>
+                        <outlet property="editButton" destination="Xnc-Bi-x2k" id="MSX-1n-2c1"/>
                         <outlet property="miniAppsTableView" destination="tNr-5o-OrT" id="8xx-wI-5vN"/>
+                        <outlet property="regenerateButton" destination="kbX-dh-5E7" id="nNm-aQ-Zte"/>
                         <segue destination="ytm-bU-xpF" kind="modal" identifier="toContainerEditor" id="LbS-T3-5Wy"/>
                     </connections>
                 </viewController>
@@ -1198,7 +1200,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="folderButtonPressed:" target="Ka1-bE-VMX" id="J5g-Dl-hKA"/>
+                                    <action selector="folderButtonPressed:" target="ytm-bU-xpF" id="HZt-JC-mxU"/>
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WDJ-vT-BLN">
@@ -1231,6 +1233,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="saveButtonPressed:" target="ytm-bU-xpF" id="4nu-pm-kzb"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wUE-Kz-fwI">
                                 <rect key="frame" x="370" y="13" width="82" height="32"/>
@@ -1241,6 +1246,9 @@
 Gw
 </string>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" target="ytm-bU-xpF" id="mda-Lv-wel"/>
+                                </connections>
                             </button>
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGy-eF-yuh">
                                 <rect key="frame" x="20" y="56" width="516" height="119"/>
@@ -1279,6 +1287,9 @@ Gw
                                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                         <font key="font" metaFont="system"/>
                                                                     </buttonCell>
+                                                                    <connections>
+                                                                        <action selector="miniAppCheckboxToggled:" target="o2E-v5-Rhp" id="rsy-nG-ouR"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="aCk-Q2-dMr">
                                                                     <rect key="frame" x="371" y="0.0" width="130" height="17"/>
@@ -1296,6 +1307,10 @@ Gw
                                                                 <constraint firstItem="h1Z-tR-N3R" firstAttribute="leading" secondItem="o2E-v5-Rhp" secondAttribute="leading" constant="12" id="lNI-BV-wK4"/>
                                                                 <constraint firstAttribute="trailing" secondItem="aCk-Q2-dMr" secondAttribute="trailing" constant="12" id="zec-nF-AiW"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <outlet property="miniAppCheckbox" destination="h1Z-tR-N3R" id="5RA-9E-XTX"/>
+                                                                <outlet property="miniAppDescriptionLabel" destination="aCk-Q2-dMr" id="LmG-oH-L7z"/>
+                                                            </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
@@ -1353,6 +1368,12 @@ Gw
                             <constraint firstItem="muA-Po-sBA" firstAttribute="leading" secondItem="yOn-f3-m5H" secondAttribute="trailing" constant="10" id="zHf-85-uhM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="containerDescriptionTextField" destination="4hj-yr-6sI" id="iY3-cp-n3D"/>
+                        <outlet property="containerFolderTextField" destination="Lf9-3S-taN" id="4k0-j9-KRu"/>
+                        <outlet property="containerNameTextField" destination="WDJ-vT-BLN" id="Xwm-gf-ESV"/>
+                        <outlet property="titleLabel" destination="mKD-oc-ffp" id="sKI-0a-P37"/>
+                    </connections>
                 </viewController>
                 <customObject id="fyM-re-gyf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
