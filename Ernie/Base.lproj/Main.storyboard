@@ -1036,7 +1036,7 @@
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fx3-xh-wpE">
                                 <rect key="frame" x="278" y="49" width="216" height="155"/>
                                 <clipView key="contentView" id="d3R-e1-jKx">
-                                    <rect key="frame" x="1" y="23" width="214" height="131"/>
+                                    <rect key="frame" x="1" y="0.0" width="214" height="154"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" enabled="NO" rowSizeStyle="automatic" headerView="fcW-DV-3Ux" viewBased="YES" id="tNr-5o-OrT" userLabel="Mini Apps Table View">
@@ -1162,12 +1162,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ykc-Qb-uAv">
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ykc-Qb-uAv" userLabel="New Mini App Button">
                                 <rect key="frame" x="20" y="260" width="13" height="21"/>
                                 <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSAddTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5iP-HM-KgX">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="addMiniAppButtonPressed:" target="m0P-0c-6E0" id="e9f-i9-G35"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SWI-83-Xna">
                                 <rect key="frame" x="372" y="13" width="64" height="32"/>
@@ -1175,6 +1178,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="editButtonPressed:" target="m0P-0c-6E0" id="Gp0-V7-PX7"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="L6f-rM-jAY">
                                 <rect key="frame" x="39" y="262" width="64" height="17"/>
@@ -1200,12 +1206,14 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Y9N-72-eos">
-                                <rect key="frame" x="223" y="12" width="5" height="276"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="1" id="NNd-Pu-2sV"/>
-                                </constraints>
-                            </box>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8wc-Ap-3bE">
+                                <rect key="frame" x="244" y="212" width="130" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Mini App Description" id="SK8-qq-PQ2">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5C9-i2-MD0">
                                 <rect key="frame" x="20" y="20" width="185" height="233"/>
                                 <clipView key="contentView" id="I1j-dA-yyK">
@@ -1261,7 +1269,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="iuF-eR-EIZ">
-                                    <rect key="frame" x="1" y="104.67521464824677" width="206.38668060302734" height="15"/>
+                                    <rect key="frame" x="1" y="104" width="206.38668060302734" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="QwA-vU-qRq">
@@ -1269,10 +1277,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Y9N-72-eos">
+                                <rect key="frame" x="223" y="12" width="5" height="276"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="1" id="NNd-Pu-2sV"/>
+                                </constraints>
+                            </box>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udc-dH-9jo">
                                 <rect key="frame" x="246" y="49" width="184" height="155"/>
                                 <clipView key="contentView" id="jVn-SW-Wsn">
-                                    <rect key="frame" x="1" y="23" width="182" height="131"/>
+                                    <rect key="frame" x="1" y="0.0" width="182" height="154"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="Xaw-MY-Znu" viewBased="YES" id="CcQ-S5-6Zc" userLabel="Containers Table View">
@@ -1324,7 +1338,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="s68-5j-If6">
-                                    <rect key="frame" x="1" y="118.85046273469925" width="237.66998672485352" height="15"/>
+                                    <rect key="frame" x="1" y="118" width="237.66998672485352" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Env-pI-5pr">
@@ -1336,14 +1350,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8wc-Ap-3bE">
-                                <rect key="frame" x="244" y="212" width="130" height="17"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Mini App Description" id="SK8-qq-PQ2">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="eGk-LD-HdH" firstAttribute="centerY" secondItem="Ykc-Qb-uAv" secondAttribute="centerY" id="2kT-iP-UGH"/>
@@ -1376,6 +1382,14 @@
                             <constraint firstItem="8wc-Ap-3bE" firstAttribute="top" secondItem="gZQ-bk-Tyv" secondAttribute="bottom" constant="8" id="vZ1-hY-Tg2"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="containersTableView" destination="CcQ-S5-6Zc" id="7Zb-RO-Swm"/>
+                        <outlet property="editButton" destination="SWI-83-Xna" id="DsP-W4-paH"/>
+                        <outlet property="miniAppDescriptionLabel" destination="8wc-Ap-3bE" id="NzS-FJ-Ds6"/>
+                        <outlet property="miniAppFolderLabel" destination="gZQ-bk-Tyv" id="5fd-fq-OIJ"/>
+                        <outlet property="miniAppNameLabel" destination="eGk-LD-HdH" id="IcG-EV-LFn"/>
+                        <outlet property="miniAppsTableView" destination="8xz-Fg-jwG" id="Rjo-TY-3rI"/>
+                    </connections>
                 </viewController>
                 <customObject id="Zae-u2-FOD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1484,7 +1498,7 @@ Gw
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGy-eF-yuh">
                                 <rect key="frame" x="20" y="53" width="516" height="118"/>
                                 <clipView key="contentView" id="HEw-E4-jWS">
-                                    <rect key="frame" x="1" y="23" width="514" height="94"/>
+                                    <rect key="frame" x="1" y="0.0" width="514" height="117"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="SU1-OL-6h0" viewBased="YES" id="TZ1-Gb-6j7" userLabel="Mini Apps Table View">
@@ -1553,7 +1567,7 @@ Gw
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="x2z-eu-im9">
-                                    <rect key="frame" x="1" y="80.474970042705536" width="152.97924423217773" height="15"/>
+                                    <rect key="frame" x="1" y="80" width="152.97924423217773" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Psg-5w-DzT">
