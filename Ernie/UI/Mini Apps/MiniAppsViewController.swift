@@ -47,12 +47,11 @@ class MiniAppsViewController: NSViewController, NSTableViewDataSource, NSTableVi
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?)
     {
-        if let editorVC = segue.destinationController as? ContainerEditorViewController
+        if let editorVC = segue.destinationController as? MiniAppEditorViewController
         {
             // We need to know when the register dialog is completed.
-//            editorVC.mode = self.editorMode
-//            editorVC.container = self.selectedContainer
-//            editorVC.modalDelegate = self
+            editorVC.miniApp = self.selectedMiniApp
+            editorVC.modalDelegate = self
         }
     }
     
@@ -98,10 +97,12 @@ class MiniAppsViewController: NSViewController, NSTableViewDataSource, NSTableVi
     
     @IBAction func addMiniAppButtonPressed(_ sender: NSButton)
     {
+        self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toMiniAppEditor"), sender: self)
     }
     
     @IBAction func editButtonPressed(_ sender: NSButton)
     {
+        self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toMiniAppEditor"), sender: self)
     }
     
     // MARK:- ModalDialogDelegate
@@ -153,7 +154,7 @@ class MiniAppsViewController: NSViewController, NSTableViewDataSource, NSTableVi
             }
             
             // Instantiate a view for the cell.
-            guard let miniAppCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "TODO"), owner: self) as? MiniAppsTableViewCell else
+            guard let miniAppCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "miniAppRow"), owner: self) as? MiniAppsTableViewCell else
             {
                 return nil
             }
@@ -171,7 +172,7 @@ class MiniAppsViewController: NSViewController, NSTableViewDataSource, NSTableVi
             }
             
             // Instantiate a view for the cell.
-            guard let containerCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "TODO"), owner: self) as? MiniAppsContainerTableViewCell else
+            guard let containerCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "containerMiniAppRow"), owner: self) as? MiniAppsContainerTableViewCell else
             {
                 return nil
             }
@@ -217,7 +218,6 @@ class MiniAppsViewController: NSViewController, NSTableViewDataSource, NSTableVi
             
             // Update the UI for that newly selected container.
             self.configureViewForSelectedMiniApp()
-            
         }
     }
 }

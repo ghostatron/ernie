@@ -1046,7 +1046,7 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="miniAppRow" width="211" minWidth="40" maxWidth="1000" id="2LO-Xo-vJB" userLabel="Mini Apps Row">
+                                                <tableColumn identifier="containerMiniAppRow" width="211" minWidth="40" maxWidth="1000" id="2LO-Xo-vJB" userLabel="Mini Apps Row">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" enabled="NO" borderStyle="border" title="Mini Apps">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1227,7 +1227,7 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="" width="180" minWidth="40" maxWidth="1000" id="D38-kg-Bf2" userLabel="Mini Apps Row">
+                                                <tableColumn identifier="miniAppRow" width="180" minWidth="40" maxWidth="1000" id="D38-kg-Bf2" userLabel="Mini Apps Row">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1240,22 +1240,26 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="kfE-1I-FFu">
+                                                        <tableCellView id="kfE-1I-FFu" customClass="MiniAppsTableViewCell" customModule="Ernie" customModuleProvider="target">
                                                             <rect key="frame" x="1" y="1" width="180" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jF1-kt-a4h">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="dON-Ql-YXN">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="jF1-kt-a4h">
+                                                                    <rect key="frame" x="3" y="0.0" width="96" height="17"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Mini App Name" id="dON-Ql-YXN">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="jF1-kt-a4h" secondAttribute="trailing" constant="5" id="2uG-ud-0UN"/>
+                                                                <constraint firstItem="jF1-kt-a4h" firstAttribute="leading" secondItem="kfE-1I-FFu" secondAttribute="leading" constant="5" id="EKx-vX-4MA"/>
+                                                                <constraint firstItem="jF1-kt-a4h" firstAttribute="centerY" secondItem="kfE-1I-FFu" secondAttribute="centerY" id="hm8-HN-f4e"/>
+                                                            </constraints>
                                                             <connections>
-                                                                <outlet property="textField" destination="jF1-kt-a4h" id="ZhP-fh-RV7"/>
+                                                                <outlet property="miniAppNameLabel" destination="jF1-kt-a4h" id="com-Jo-HPf"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
@@ -1289,42 +1293,46 @@
                                     <rect key="frame" x="1" y="0.0" width="182" height="154"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="Xaw-MY-Znu" viewBased="YES" id="CcQ-S5-6Zc" userLabel="Containers Table View">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" enabled="NO" rowSizeStyle="automatic" headerView="Xaw-MY-Znu" viewBased="YES" id="CcQ-S5-6Zc" userLabel="Containers Table View">
                                             <rect key="frame" x="0.0" y="0.0" width="182" height="131"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="" width="179" minWidth="40" maxWidth="1000" id="HH9-Id-yvp" userLabel="Containers Row">
-                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Included in Containers">
+                                                <tableColumn identifier="containerMiniAppRow" width="179" minWidth="40" maxWidth="1000" id="HH9-Id-yvp" userLabel="Containers Row">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" enabled="NO" borderStyle="border" title="Included in Containers">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
-                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="jof-ca-hE7">
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" enabled="NO" title="Text Cell" id="jof-ca-hE7">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="5hq-yh-0Ww">
+                                                        <tableCellView id="5hq-yh-0Ww" customClass="MiniAppsContainerTableViewCell" customModule="Ernie" customModuleProvider="target">
                                                             <rect key="frame" x="1" y="1" width="179" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bo0-WN-Cox">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="179" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="dDP-i5-jfH">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="bo0-WN-Cox">
+                                                                    <rect key="frame" x="3" y="0.0" width="102" height="17"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Container Name" id="dDP-i5-jfH">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="bo0-WN-Cox" firstAttribute="leading" secondItem="5hq-yh-0Ww" secondAttribute="leading" constant="5" id="HlK-qn-Fdu"/>
+                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bo0-WN-Cox" secondAttribute="trailing" constant="5" id="SAv-0S-Xwr"/>
+                                                                <constraint firstItem="bo0-WN-Cox" firstAttribute="centerY" secondItem="5hq-yh-0Ww" secondAttribute="centerY" id="ahJ-rS-QKc"/>
+                                                            </constraints>
                                                             <connections>
-                                                                <outlet property="textField" destination="bo0-WN-Cox" id="iEe-pF-jv4"/>
+                                                                <outlet property="containerNameLabel" destination="bo0-WN-Cox" id="G59-6J-0aG"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
@@ -1389,11 +1397,25 @@
                         <outlet property="miniAppFolderLabel" destination="gZQ-bk-Tyv" id="5fd-fq-OIJ"/>
                         <outlet property="miniAppNameLabel" destination="eGk-LD-HdH" id="IcG-EV-LFn"/>
                         <outlet property="miniAppsTableView" destination="8xz-Fg-jwG" id="Rjo-TY-3rI"/>
+                        <segue destination="34c-Sf-oWK" kind="modal" identifier="toMiniAppEditor" id="8gK-tB-NIU"/>
                     </connections>
                 </viewController>
                 <customObject id="Zae-u2-FOD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1335" y="641"/>
+        </scene>
+        <!--Mini App Editor View Controller-->
+        <scene sceneID="ZRc-OA-Gvy">
+            <objects>
+                <viewController id="34c-Sf-oWK" customClass="MiniAppEditorViewController" customModule="Ernie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="r1S-QB-rI5">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="7h5-MY-Lhd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1657" y="1162"/>
         </scene>
         <!--Container Editor View Controller-->
         <scene sceneID="5cw-3A-62h">

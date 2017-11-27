@@ -33,6 +33,8 @@
 		C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774F41FA3ECFB00AD269F /* CommandLineHelper.swift */; };
 		C1CD6FFF1FCC9ADA002C7CBB /* MiniAppsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD6FFE1FCC9ADA002C7CBB /* MiniAppsTableViewCell.swift */; };
 		C1CD70011FCC9AF8002C7CBB /* MiniAppsContainerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD70001FCC9AF8002C7CBB /* MiniAppsContainerTableViewCell.swift */; };
+		C1CD70041FCCA1C5002C7CBB /* MiniAppEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD70031FCCA1C5002C7CBB /* MiniAppEditorViewController.swift */; };
+		C1CD70061FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD70051FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift */; };
 		C1E854F71FC396FF00CE90DD /* ContainersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854F61FC396FF00CE90DD /* ContainersViewController.swift */; };
 		C1E854F91FC3972D00CE90DD /* ContainersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854F81FC3972D00CE90DD /* ContainersTableViewCell.swift */; };
 		C1E854FB1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854FA1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift */; };
@@ -84,6 +86,8 @@
 		C1C774F41FA3ECFB00AD269F /* CommandLineHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineHelper.swift; sourceTree = "<group>"; };
 		C1CD6FFE1FCC9ADA002C7CBB /* MiniAppsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppsTableViewCell.swift; sourceTree = "<group>"; };
 		C1CD70001FCC9AF8002C7CBB /* MiniAppsContainerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppsContainerTableViewCell.swift; sourceTree = "<group>"; };
+		C1CD70031FCCA1C5002C7CBB /* MiniAppEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppEditorViewController.swift; sourceTree = "<group>"; };
+		C1CD70051FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		C1E854F61FC396FF00CE90DD /* ContainersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersViewController.swift; sourceTree = "<group>"; };
 		C1E854F81FC3972D00CE90DD /* ContainersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersTableViewCell.swift; sourceTree = "<group>"; };
 		C1E854FA1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersMiniAppTableViewCell.swift; sourceTree = "<group>"; };
@@ -248,6 +252,15 @@
 			path = "Environment Requirements";
 			sourceTree = "<group>";
 		};
+		C1CD70021FCCA18F002C7CBB /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				C1CD70031FCCA1C5002C7CBB /* MiniAppEditorViewController.swift */,
+				C1CD70051FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
 		C1E855001FC633C100CE90DD /* Editor */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +273,7 @@
 		C1E855011FC633E300CE90DD /* Mini Apps */ = {
 			isa = PBXGroup;
 			children = (
+				C1CD70021FCCA18F002C7CBB /* Editor */,
 				C1E855021FC633FC00CE90DD /* MiniAppsViewController.swift */,
 				C1CD6FFE1FCC9ADA002C7CBB /* MiniAppsTableViewCell.swift */,
 				C1CD70001FCC9AF8002C7CBB /* MiniAppsContainerTableViewCell.swift */,
@@ -376,10 +390,12 @@
 				C1CD70011FCC9AF8002C7CBB /* MiniAppsContainerTableViewCell.swift in Sources */,
 				C1C774F11FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift in Sources */,
 				C1E854FF1FC4E69F00CE90DD /* MiniAppSelectionTableViewCell.swift in Sources */,
+				C1CD70041FCCA1C5002C7CBB /* MiniAppEditorViewController.swift in Sources */,
 				C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */,
 				C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */,
 				C190D4531FABD61B002EFA5B /* YarnRequirement.swift in Sources */,
 				C19E0F681FBA1ED400EC727B /* AndroidStudioRequirement.swift in Sources */,
+				C1CD70061FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift in Sources */,
 				C1C774F31FA3EC5E00AD269F /* NodeJSRequirement.swift in Sources */,
 				C1E855031FC633FC00CE90DD /* MiniAppsViewController.swift in Sources */,
 				C1E854F91FC3972D00CE90DD /* ContainersTableViewCell.swift in Sources */,

@@ -197,7 +197,7 @@ class ContainersViewController: NSViewController, NSTableViewDataSource, NSTable
             }
             
             // Instantiate a view for the cell.
-            guard let miniAppCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "miniAppRow"), owner: self) as? ContainersMiniAppTableViewCell else
+            guard let miniAppCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "containerMiniAppRow"), owner: self) as? ContainersMiniAppTableViewCell else
             {
                 return nil
             }
