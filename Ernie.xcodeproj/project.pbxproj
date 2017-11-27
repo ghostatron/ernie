@@ -31,6 +31,8 @@
 		C1C774F11FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774F01FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift */; };
 		C1C774F31FA3EC5E00AD269F /* NodeJSRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774F21FA3EC5E00AD269F /* NodeJSRequirement.swift */; };
 		C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C774F41FA3ECFB00AD269F /* CommandLineHelper.swift */; };
+		C1CD6FFF1FCC9ADA002C7CBB /* MiniAppsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD6FFE1FCC9ADA002C7CBB /* MiniAppsTableViewCell.swift */; };
+		C1CD70011FCC9AF8002C7CBB /* MiniAppsContainerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD70001FCC9AF8002C7CBB /* MiniAppsContainerTableViewCell.swift */; };
 		C1E854F71FC396FF00CE90DD /* ContainersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854F61FC396FF00CE90DD /* ContainersViewController.swift */; };
 		C1E854F91FC3972D00CE90DD /* ContainersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854F81FC3972D00CE90DD /* ContainersTableViewCell.swift */; };
 		C1E854FB1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854FA1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift */; };
@@ -80,6 +82,8 @@
 		C1C774F01FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentRequirementDelegate.swift; sourceTree = "<group>"; };
 		C1C774F21FA3EC5E00AD269F /* NodeJSRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeJSRequirement.swift; sourceTree = "<group>"; };
 		C1C774F41FA3ECFB00AD269F /* CommandLineHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandLineHelper.swift; sourceTree = "<group>"; };
+		C1CD6FFE1FCC9ADA002C7CBB /* MiniAppsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppsTableViewCell.swift; sourceTree = "<group>"; };
+		C1CD70001FCC9AF8002C7CBB /* MiniAppsContainerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppsContainerTableViewCell.swift; sourceTree = "<group>"; };
 		C1E854F61FC396FF00CE90DD /* ContainersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersViewController.swift; sourceTree = "<group>"; };
 		C1E854F81FC3972D00CE90DD /* ContainersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersTableViewCell.swift; sourceTree = "<group>"; };
 		C1E854FA1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersMiniAppTableViewCell.swift; sourceTree = "<group>"; };
@@ -257,6 +261,8 @@
 			isa = PBXGroup;
 			children = (
 				C1E855021FC633FC00CE90DD /* MiniAppsViewController.swift */,
+				C1CD6FFE1FCC9ADA002C7CBB /* MiniAppsTableViewCell.swift */,
+				C1CD70001FCC9AF8002C7CBB /* MiniAppsContainerTableViewCell.swift */,
 			);
 			path = "Mini Apps";
 			sourceTree = "<group>";
@@ -367,6 +373,7 @@
 				C190D45B1FAD21EC002EFA5B /* ErnWrapper.swift in Sources */,
 				C101C19C1FBE243F00AE02C6 /* NativeAppTableViewCell.swift in Sources */,
 				C101C1A11FBE490900AE02C6 /* RegisterNativeAppViewController.swift in Sources */,
+				C1CD70011FCC9AF8002C7CBB /* MiniAppsContainerTableViewCell.swift in Sources */,
 				C1C774F11FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift in Sources */,
 				C1E854FF1FC4E69F00CE90DD /* MiniAppSelectionTableViewCell.swift in Sources */,
 				C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */,
@@ -376,6 +383,7 @@
 				C1C774F31FA3EC5E00AD269F /* NodeJSRequirement.swift in Sources */,
 				C1E855031FC633FC00CE90DD /* MiniAppsViewController.swift in Sources */,
 				C1E854F91FC3972D00CE90DD /* ContainersTableViewCell.swift in Sources */,
+				C1CD6FFF1FCC9ADA002C7CBB /* MiniAppsTableViewCell.swift in Sources */,
 				C1E854FD1FC4D99D00CE90DD /* ContainerEditorViewController.swift in Sources */,
 				C101C1A91FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift in Sources */,
 				C19E0F6C1FBA611B00EC727B /* RequirementsTableViewCell.swift in Sources */,

@@ -39,17 +39,6 @@ class ContainersViewController: NSViewController, NSTableViewDataSource, NSTable
         
         self.containersAlphabetized = self.allContainers() ?? []
         self.configureViewForSelectedContainer()
-        
-        if self.containersAlphabetized.count > 0
-        {
-            self.regenerateButton.isEnabled = true
-            self.editButton.isEnabled = true
-        }
-        else
-        {
-            self.regenerateButton.isEnabled = false
-            self.editButton.isEnabled = false
-        }
     }
     
     override func viewDidAppear()
@@ -120,6 +109,8 @@ class ContainersViewController: NSViewController, NSTableViewDataSource, NSTable
             self.containerFolderLabel.isHidden = false
             self.containerDescriptionLabel.isHidden = false
             self.miniAppsTableView.isHidden = false
+            self.regenerateButton.isEnabled = true
+            self.editButton.isEnabled = true
             
             self.containerNameLabel.stringValue = container.containerName ?? "<No Name>"
             self.containerFolderLabel.stringValue = container.containerFolder ?? "<No Folder>"
@@ -132,6 +123,8 @@ class ContainersViewController: NSViewController, NSTableViewDataSource, NSTable
             self.containerFolderLabel.isHidden = true
             self.containerDescriptionLabel.isHidden = false
             self.miniAppsTableView.isHidden = true
+            self.regenerateButton.isEnabled = false
+            self.editButton.isEnabled = false
             
             self.containerDescriptionLabel.stringValue = "Select a container on the left to view it's mini apps."
         }
@@ -164,14 +157,7 @@ class ContainersViewController: NSViewController, NSTableViewDataSource, NSTable
             
         case self.miniAppsTableView:
             // One row per mini app for the selected container.
-            if let container = self.selectedContainer
-            {
-                return container.miniApps?.count ?? 0
-            }
-            else
-            {
-                return 0
-            }
+            return self.selectedContainerMiniAppsAlphabetized.count
             
         default:
             return 0
