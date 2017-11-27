@@ -47,6 +47,13 @@ class ContainerEditorViewController: NSViewController, NSTableViewDataSource, NS
     {
         super.viewDidLoad()
         
+        if let containerToEdit = self.container
+        {
+            self.containerNameTextField.stringValue = containerToEdit.containerName ?? "<No Name>"
+            self.containerFolderTextField.stringValue = containerToEdit.containerFolder ?? "<No Folder>"
+            self.containerDescriptionTextField.stringValue = containerToEdit.containerDescription ?? ""
+        }
+        
         switch self.mode
         {
             case .New:
@@ -72,7 +79,7 @@ class ContainerEditorViewController: NSViewController, NSTableViewDataSource, NS
     override func viewDidAppear()
     {
         super.viewDidAppear()
-        self.view.window?.title = "Container Editor"
+        self.view.window?.title = self.container?.containerName ?? "New Container"
     }
     
     private func configureForNewMode()
@@ -197,6 +204,7 @@ class ContainerEditorViewController: NSViewController, NSTableViewDataSource, NS
         containerToSave.mutableSetValue(forKey: "miniApps").removeAllObjects()
         containerToSave.mutableSetValue(forKey: "miniApps").addingObjects(from: self.selectedMiniApps.allObjects)
         
+        try? moc.save()
         self.modalDelegate?.dismissedWithOK(dialog: self)
         self.dismiss(self)
     }

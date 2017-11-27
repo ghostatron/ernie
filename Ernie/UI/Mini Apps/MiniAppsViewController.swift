@@ -20,6 +20,9 @@ class MiniAppsViewController: NSViewController, NSTableViewDataSource, NSTableVi
     /// The data source for the containers table.
     private var selectedMiniAppContainersAlphabetized: [Container] = []
     
+    /// The mode to use when launching the editor.  The user will ultimately choose this via the UI.
+    private var editorMode = MiniAppEditorViewController.EditorMode.New
+    
     // MARK:- IBOutlet Properties
 
     @IBOutlet weak var editButton: NSButton!
@@ -50,6 +53,7 @@ class MiniAppsViewController: NSViewController, NSTableViewDataSource, NSTableVi
         if let editorVC = segue.destinationController as? MiniAppEditorViewController
         {
             // We need to know when the register dialog is completed.
+            editorVC.mode = self.editorMode
             editorVC.miniApp = self.selectedMiniApp
             editorVC.modalDelegate = self
         }
@@ -97,6 +101,22 @@ class MiniAppsViewController: NSViewController, NSTableViewDataSource, NSTableVi
     
     @IBAction func addMiniAppButtonPressed(_ sender: NSButton)
     {
+        let alert = NSAlert()
+        alert.addButton(withTitle: "Create New...")
+        alert.addButton(withTitle: "Register Existing...")
+        alert.addButton(withTitle: "Cancel")
+        alert.messageText = "Create New or Register Existing"
+        alert.informativeText = "You can create a NEW mini app and we'll get it started for you, or you can REGISTER an existing one by telling us about it."
+        switch alert.runModal()
+        {
+        case NSApplication.ModalResponse.alertFirstButtonReturn:
+            self.editorMode = .New
+        case NSApplication.ModalResponse.alertSecondButtonReturn:
+            self.editorMode = .Register
+        default:
+            return
+        }
+        
         self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toMiniAppEditor"), sender: self)
     }
     
