@@ -13,6 +13,7 @@
 		C101C1A31FBE491E00AE02C6 /* NativeAppDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C1A21FBE491E00AE02C6 /* NativeAppDetailsViewController.swift */; };
 		C101C1A51FBE602E00AE02C6 /* ModalDialogDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C1A41FBE602E00AE02C6 /* ModalDialogDelegate.swift */; };
 		C101C1A91FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C1A81FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift */; };
+		C1341BE61FCCE336000A338F /* CauldronWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1341BE51FCCE336000A338F /* CauldronWrapper.swift */; };
 		C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */; };
 		C190D4531FABD61B002EFA5B /* YarnRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4521FABD61B002EFA5B /* YarnRequirement.swift */; };
 		C190D4551FABD803002EFA5B /* XcodeRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4541FABD803002EFA5B /* XcodeRequirement.swift */; };
@@ -35,6 +36,8 @@
 		C1CD70011FCC9AF8002C7CBB /* MiniAppsContainerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD70001FCC9AF8002C7CBB /* MiniAppsContainerTableViewCell.swift */; };
 		C1CD70041FCCA1C5002C7CBB /* MiniAppEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD70031FCCA1C5002C7CBB /* MiniAppEditorViewController.swift */; };
 		C1CD70061FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD70051FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift */; };
+		C1CD70091FCCDCD0002C7CBB /* CauldronHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD70081FCCDCD0002C7CBB /* CauldronHomeViewController.swift */; };
+		C1CD700B1FCCE14D002C7CBB /* CauldronAnalyzeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD700A1FCCE14D002C7CBB /* CauldronAnalyzeViewController.swift */; };
 		C1E854F71FC396FF00CE90DD /* ContainersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854F61FC396FF00CE90DD /* ContainersViewController.swift */; };
 		C1E854F91FC3972D00CE90DD /* ContainersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854F81FC3972D00CE90DD /* ContainersTableViewCell.swift */; };
 		C1E854FB1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854FA1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift */; };
@@ -61,6 +64,7 @@
 		C101C1A21FBE491E00AE02C6 /* NativeAppDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAppDetailsViewController.swift; sourceTree = "<group>"; };
 		C101C1A41FBE602E00AE02C6 /* ModalDialogDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDialogDelegate.swift; sourceTree = "<group>"; };
 		C101C1A81FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAppDetailTableViewCell.swift; sourceTree = "<group>"; };
+		C1341BE51FCCE336000A338F /* CauldronWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CauldronWrapper.swift; sourceTree = "<group>"; };
 		C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPMRequirement.swift; sourceTree = "<group>"; };
 		C190D4521FABD61B002EFA5B /* YarnRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YarnRequirement.swift; sourceTree = "<group>"; };
 		C190D4541FABD803002EFA5B /* XcodeRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeRequirement.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 		C1CD70001FCC9AF8002C7CBB /* MiniAppsContainerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppsContainerTableViewCell.swift; sourceTree = "<group>"; };
 		C1CD70031FCCA1C5002C7CBB /* MiniAppEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniAppEditorViewController.swift; sourceTree = "<group>"; };
 		C1CD70051FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		C1CD70081FCCDCD0002C7CBB /* CauldronHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CauldronHomeViewController.swift; sourceTree = "<group>"; };
+		C1CD700A1FCCE14D002C7CBB /* CauldronAnalyzeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CauldronAnalyzeViewController.swift; sourceTree = "<group>"; };
 		C1E854F61FC396FF00CE90DD /* ContainersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersViewController.swift; sourceTree = "<group>"; };
 		C1E854F81FC3972D00CE90DD /* ContainersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersTableViewCell.swift; sourceTree = "<group>"; };
 		C1E854FA1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersMiniAppTableViewCell.swift; sourceTree = "<group>"; };
@@ -118,8 +124,9 @@
 		C101C19D1FBE489F00AE02C6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				C1E855011FC633E300CE90DD /* Mini Apps */,
+				C1CD70071FCCDC6D002C7CBB /* Cauldron */,
 				C101C1AA1FC394D300AE02C6 /* Containers */,
+				C1E855011FC633E300CE90DD /* Mini Apps */,
 				C101C19F1FBE48BC00AE02C6 /* Native Apps */,
 				C101C19E1FBE48B000AE02C6 /* Requirements */,
 				C101C1A41FBE602E00AE02C6 /* ModalDialogDelegate.swift */,
@@ -187,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				C190D45A1FAD21EC002EFA5B /* ErnWrapper.swift */,
+				C1341BE51FCCE336000A338F /* CauldronWrapper.swift */,
 			);
 			path = "Tool Wrappers";
 			sourceTree = "<group>";
@@ -259,6 +267,15 @@
 				C1CD70051FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift */,
 			);
 			path = Editor;
+			sourceTree = "<group>";
+		};
+		C1CD70071FCCDC6D002C7CBB /* Cauldron */ = {
+			isa = PBXGroup;
+			children = (
+				C1CD700A1FCCE14D002C7CBB /* CauldronAnalyzeViewController.swift */,
+				C1CD70081FCCDCD0002C7CBB /* CauldronHomeViewController.swift */,
+			);
+			path = Cauldron;
 			sourceTree = "<group>";
 		};
 		C1E855001FC633C100CE90DD /* Editor */ = {
@@ -393,6 +410,8 @@
 				C1CD70041FCCA1C5002C7CBB /* MiniAppEditorViewController.swift in Sources */,
 				C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */,
 				C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */,
+				C1341BE61FCCE336000A338F /* CauldronWrapper.swift in Sources */,
+				C1CD70091FCCDCD0002C7CBB /* CauldronHomeViewController.swift in Sources */,
 				C190D4531FABD61B002EFA5B /* YarnRequirement.swift in Sources */,
 				C19E0F681FBA1ED400EC727B /* AndroidStudioRequirement.swift in Sources */,
 				C1CD70061FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift in Sources */,
@@ -409,6 +428,7 @@
 				C1E96C2A1FAA90AB00A460EA /* EnvironmentRequirement.swift in Sources */,
 				C1C774CF1FA3E28300AD269F /* AppDelegate.swift in Sources */,
 				C1E854FB1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift in Sources */,
+				C1CD700B1FCCE14D002C7CBB /* CauldronAnalyzeViewController.swift in Sources */,
 				C19E0F6A1FBA562E00EC727B /* RequirementsViewController.swift in Sources */,
 				C190D45D1FB0FD6D002EFA5B /* NVMRequirement.swift in Sources */,
 				C101C1A31FBE491E00AE02C6 /* NativeAppDetailsViewController.swift in Sources */,

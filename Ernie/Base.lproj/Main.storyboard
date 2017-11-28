@@ -362,6 +362,9 @@
                                         </menuItem>
                                         <menuItem title="Cauldrons..." id="CKj-Q7-Ot5">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <segue destination="EL8-0u-dth" kind="show" id="YBQ-T9-Bt4"/>
+                                            </connections>
                                         </menuItem>
                                         <menuItem title="Requirements..." id="wsR-AY-ll1">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -715,6 +718,89 @@
             </objects>
             <point key="canvasLocation" x="494" y="66"/>
         </scene>
+        <!--Analyze Cauldron-->
+        <scene sceneID="WRZ-tD-vnY">
+            <objects>
+                <viewController title="Analyze Cauldron" id="EL8-0u-dth" customClass="CauldronAnalyzeViewController" customModule="Ernie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="wpr-Ab-pwB">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Ud5-3v-LH2">
+                                <rect key="frame" x="21" y="125" width="408" height="51"/>
+                                <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="KmO-fn-YyQ">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">Cauldron is a pretty complex beast.  To improve your browsing experience, we start off by analyzing as much as possible up front and caching the information.</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yic-j4-MyL">
+                                <rect key="frame" x="196" y="19" width="59" height="16"/>
+                                <buttonCell key="cell" type="push" title="Analyze" bezelStyle="rounded" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IpB-Vw-4Pj">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="miniSystem"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="analyzeButtonPressed:" target="EL8-0u-dth" id="ghP-23-Vih"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cTn-Gl-nWV">
+                                <rect key="frame" x="372" y="19" width="59" height="16"/>
+                                <buttonCell key="cell" type="push" title="Skip" bezelStyle="rounded" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Uei-mC-ZF5">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="miniSystem"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="skipButtonPressed:" target="EL8-0u-dth" id="ohS-d8-h0y"/>
+                                </connections>
+                            </button>
+                            <progressIndicator wantsLayer="YES" maxValue="100" displayedWhenStopped="NO" indeterminate="YES" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="7e8-If-BpY">
+                                <rect key="frame" x="23" y="98" width="404" height="20"/>
+                            </progressIndicator>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="7e8-If-BpY" secondAttribute="trailing" constant="23" id="83w-ID-Cne"/>
+                            <constraint firstItem="yic-j4-MyL" firstAttribute="centerX" secondItem="wpr-Ab-pwB" secondAttribute="centerX" id="9iS-DO-suR"/>
+                            <constraint firstItem="7e8-If-BpY" firstAttribute="leading" secondItem="wpr-Ab-pwB" secondAttribute="leading" constant="23" id="AWp-fp-iBU"/>
+                            <constraint firstItem="yic-j4-MyL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7e8-If-BpY" secondAttribute="bottom" constant="20" id="N2K-wn-bhd"/>
+                            <constraint firstAttribute="bottom" secondItem="cTn-Gl-nWV" secondAttribute="bottom" constant="20" id="NrL-LH-k4L"/>
+                            <constraint firstItem="Ud5-3v-LH2" firstAttribute="centerX" secondItem="wpr-Ab-pwB" secondAttribute="centerX" id="Rpc-JA-hJf"/>
+                            <constraint firstAttribute="trailing" secondItem="cTn-Gl-nWV" secondAttribute="trailing" constant="20" id="X9L-qu-e8F"/>
+                            <constraint firstItem="7e8-If-BpY" firstAttribute="top" secondItem="Ud5-3v-LH2" secondAttribute="bottom" constant="8" id="XmP-MM-3LT"/>
+                            <constraint firstItem="Ud5-3v-LH2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wpr-Ab-pwB" secondAttribute="leading" constant="20" id="gtG-h4-oyk"/>
+                            <constraint firstItem="yic-j4-MyL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ud5-3v-LH2" secondAttribute="bottom" constant="20" id="iFP-SS-PdH"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ud5-3v-LH2" secondAttribute="trailing" constant="20" id="iFq-bu-zfu"/>
+                            <constraint firstAttribute="bottom" secondItem="yic-j4-MyL" secondAttribute="bottom" constant="20" id="ncy-jq-bYZ"/>
+                            <constraint firstItem="Ud5-3v-LH2" firstAttribute="centerY" secondItem="wpr-Ab-pwB" secondAttribute="centerY" id="rgz-8f-IFt"/>
+                            <constraint firstItem="yic-j4-MyL" firstAttribute="width" secondItem="cTn-Gl-nWV" secondAttribute="width" id="vJi-Ny-vYb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="analyzeButton" destination="yic-j4-MyL" id="btd-Cf-sqT"/>
+                        <outlet property="descriptionLabel" destination="Ud5-3v-LH2" id="fHr-GC-X1a"/>
+                        <outlet property="progressBar" destination="7e8-If-BpY" id="fCc-GW-s9N"/>
+                        <outlet property="skipButton" destination="cTn-Gl-nWV" id="WLg-Wl-H1x"/>
+                        <segue destination="rTI-3I-lzi" kind="show" identifier="toCauldronHome" id="vsm-oM-zyU"/>
+                    </connections>
+                </viewController>
+                <customObject id="Hey-Rd-ewA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1335" y="66"/>
+        </scene>
+        <!--Cauldron Home-->
+        <scene sceneID="luy-Un-yoj">
+            <objects>
+                <viewController title="Cauldron Home" id="rTI-3I-lzi" customClass="CauldronHomeViewController" customModule="Ernie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Jdw-9W-GZv">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="ZQn-NF-Mm7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1926" y="66"/>
+        </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
@@ -735,7 +821,7 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-507" y="144"/>
+            <point key="canvasLocation" x="-968" y="648"/>
         </scene>
         <!--Native Apps-->
         <scene sceneID="X3G-Hw-oRf">
