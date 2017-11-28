@@ -22,10 +22,10 @@ class CauldronWrapper
      Adds a new repository with the given |alias| located at |location|.  The |completion| block
      will be called with TRUE if the process succeeds.
      */
-    class func addRepository(_ alias: String, location: URL, completion: @escaping (Bool) -> ())
+    class func addRepository(_ alias: String, location: String, completion: @escaping (Bool) -> ())
     {
-        CommandLineHelper.executeCommandLine(command: "/usr/local/bin/ern", arguments: ["cauldron", "repo", "add", alias, location.absoluteString, "--current false"]) { (response) in
-            let successText = "Added Cauldron repository \(location.absoluteString) with alias \(alias)"
+        CommandLineHelper.executeCommandLine(command: "/usr/local/bin/ern", arguments: ["cauldron", "repo", "add", alias, location, "--current", "false"]) { (response) in
+            let successText = "Added Cauldron repository \(location) with alias \(alias)"
             completion(response.output?.contains(successText) ?? false)
         }
     }
@@ -100,7 +100,9 @@ class CauldronWrapper
             let aliasAndLocation = currentRepositoryLine.components(separatedBy: " ")
             if aliasAndLocation.count == 2
             {
-                currentRepository = (alias: aliasAndLocation[0], location: aliasAndLocation[1])
+                // The location comes out surrounded by square brackets that need to be removed.
+                let trimmedLocation = aliasAndLocation[1].trimmingCharacters(in: CharacterSet.init(charactersIn: "[]"))
+                currentRepository = (alias: aliasAndLocation[0], location: trimmedLocation)
             }
             completion(currentRepository)
         }
