@@ -760,6 +760,7 @@
                             </progressIndicator>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="cTn-Gl-nWV" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yic-j4-MyL" secondAttribute="trailing" constant="20" id="4kq-9E-lxM"/>
                             <constraint firstAttribute="trailing" secondItem="7e8-If-BpY" secondAttribute="trailing" constant="23" id="83w-ID-Cne"/>
                             <constraint firstItem="yic-j4-MyL" firstAttribute="centerX" secondItem="wpr-Ab-pwB" secondAttribute="centerX" id="9iS-DO-suR"/>
                             <constraint firstItem="7e8-If-BpY" firstAttribute="leading" secondItem="wpr-Ab-pwB" secondAttribute="leading" constant="23" id="AWp-fp-iBU"/>
@@ -1605,6 +1606,7 @@ Gw
                             <constraint firstAttribute="trailing" secondItem="QHo-fj-eik" secondAttribute="trailing" constant="20" id="Ru9-aR-7RB"/>
                             <constraint firstItem="dXy-SB-Qnl" firstAttribute="leading" secondItem="r1S-QB-rI5" secondAttribute="leading" constant="20" id="WBw-z9-YdM"/>
                             <constraint firstItem="QHo-fj-eik" firstAttribute="leading" secondItem="Ty6-KF-ME3" secondAttribute="trailing" constant="20" id="Xr0-yL-Qbk"/>
+                            <constraint firstItem="Ty6-KF-ME3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="r1S-QB-rI5" secondAttribute="leading" constant="20" id="YBx-73-KAk"/>
                             <constraint firstItem="AzD-ga-MNg" firstAttribute="leading" secondItem="r1S-QB-rI5" secondAttribute="leading" constant="20" id="Yop-3z-sZP"/>
                             <constraint firstItem="Ty6-KF-ME3" firstAttribute="centerY" secondItem="QHo-fj-eik" secondAttribute="centerY" id="abK-MS-T90"/>
                             <constraint firstAttribute="trailing" secondItem="2vm-jk-2Fe" secondAttribute="trailing" constant="20" id="btq-y9-Y8O"/>

@@ -7,13 +7,138 @@
 //
 
 import Foundation
+import CoreData
 
 class CauldronWrapper
 {
-    class func analyzeAndUpdateCache(completion: @escaping (CommandLineResponse) -> ())
+    // MARK:- Cauldron Analysis Methods
+    
+    class func analyzeAndUpdateCache(completion: @escaping (Bool) -> ())
     {
-        let response = CommandLineResponse()
-        completion(response)
+        // First wipe out all cauldron data in order to make our lives infinitely simpler.
+        self.deleteExistingCauldronCache()
+        
+        // Each repository is basically a cauldron in this case.
+        let waitGroup = DispatchGroup()
+        self.listOfRepositories { (repositoryList) in
+            for repositoryEntry in repositoryList ?? []
+            {
+                waitGroup.enter()
+                // Create the core data objects appropriate for this cauldron based on its JSON body.
+                self.cauldronJSONForRepositoryAt(repositoryEntry.location, completion: { (repoJSON) in
+                    self.buildCacheForCauldron(alias: repositoryEntry.alias, location: repositoryEntry.location, cauldronJSON: repoJSON)
+                    waitGroup.leave()
+                })
+            }
+        }
+        
+        // Wait for all the cache objects to be build before signaling the handler.
+        waitGroup.wait()
+        completion(true)
+    }
+    
+    private class func buildCacheForCauldron(alias: String, location: String, cauldronJSON: [String : Any])
+    {
+        // Create the parent Cauldron object.
+        let moc = AppDelegate.mainManagedObjectContext()
+        let cauldron = NSEntityDescription.insertNewObject(forEntityName: "Cauldron", into: moc) as! Cauldron
+        cauldron.alias = alias
+        cauldron.location = location
+        if let jsonData = try? JSONSerialization.data(withJSONObject: cauldronJSON)
+        {
+            cauldron.jsonBody = String(data: jsonData, encoding: String.Encoding.utf8)
+        }
+
+        // Build the native apps objects.
+        guard let nativeAppsArray = cauldronJSON["nativeApps"] as? [[String : Any]] else
+        {
+            return
+        }
+        for nativeAppJSON in nativeAppsArray
+        {
+            let nativeAppName = nativeAppJSON["name"] as? String
+            let platforms = nativeAppJSON["platforms"] as? [[String : Any]]
+            for platform in platforms ?? []
+            {
+                let platformName = platform["name"] as? String
+                let versions = platform["versions"] as? [[String : Any]]
+                for version in versions ?? []
+                {
+                    let versionName = version["name"] as? String
+                    let ernPlatformVersion = version["ernPlatformVersion"] as? String
+                    let isReleased = version["isReleased"] as? Bool
+                    if let miniApps = version["miniApps"] as?  [String : Any]
+                    {
+                        let container = miniApps["container"] as? [String]
+                        for miniAppEntry in container ?? []
+                        {
+                            
+                        }
+                        let codePushes = miniApps["codePush"] as? [[String]]
+                        for codePush in codePushes ?? []
+                        {
+                            for miniAppEntry in codePush ?? []
+                            {
+                                
+                            }
+                        }
+                    }
+                    let dependencies = version["nativeDeps"] as?  [String]
+                    for dependencyEntry in dependencies ?? []
+                    {
+                        
+                    }
+                }
+            }
+        }
+        
+//        try? moc.save()
+    }
+    
+    private class func cauldronJSONForRepositoryAt(_ location: String, completion: @escaping ([String : Any]) -> ())
+    {
+        // TODO: use the location variable instead of the hard coded URL I'm using for testing...
+        //https://gecgithub01.walmart.com/react-native/walmart-cauldron/blob/master/cauldron.json
+        let repoUrl = URL(string: "https://raw.githubusercontent.com/ghostatron/whatev-cauldron/master/cauldron.json")
+        var repoRequest = URLRequest(url: repoUrl!)
+        repoRequest.httpMethod = "GET"
+        let task = URLSession.shared.dataTask(with: repoRequest) { (data, response, error) in
+            let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
+            completion(json as! [String : Any])
+        }
+        task.resume()
+    }
+    //ernie-playground -> git@github.com:ghostatron/whatev-cauldron.git
+    //https://raw.githubusercontent.com/ghostatron/whatev-cauldron/master/cauldron.json
+    
+    @discardableResult private class func deleteExistingCauldronCache() -> Int
+    {
+        //
+        // We could use batch delete here, but it's not going to work well because of the cascade
+        // delete rules on the Cauldron relationships.  Batch delete would go directly to the store
+        // and ignore the cascade rules.
+        //
+        
+        // Create a request to get all Cauldron objects, but just their NSManagedObjectIDs.
+        let request: NSFetchRequest<Cauldron> = Cauldron.fetchRequest()
+        request.includesPropertyValues = false
+        
+        // Execute the request and bail if it fails.
+        var numberOfCauldronsDeleted = 0
+        let moc = AppDelegate.mainManagedObjectContext()
+        guard let cauldronsToDelete = try? moc.fetch(request) else
+        {
+            return numberOfCauldronsDeleted
+        }
+        numberOfCauldronsDeleted = cauldronsToDelete.count
+        
+        // Loop through and delete each cauldron.
+        for cauldron in cauldronsToDelete
+        {
+            moc.delete(cauldron)
+        }
+        try? moc.save()
+        return numberOfCauldronsDeleted
     }
     
     // MARK:- Repository Methods
