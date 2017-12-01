@@ -10,6 +10,7 @@
     </entity>
     <entity name="CauldronCodePush" representedClassName="CauldronCodePush" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sequenceNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="miniApps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CauldronMiniApp" inverseName="codePush" inverseEntity="CauldronMiniApp" syncable="YES"/>
         <relationship name="nativeAppVersion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CauldronNativeAppVersion" inverseName="codePushes" inverseEntity="CauldronNativeAppVersion" syncable="YES"/>
@@ -66,6 +67,6 @@
         <element name="CauldronNativeAppVersion" positionX="-54" positionY="54" width="128" height="180"/>
         <element name="CauldronMiniApp" positionX="-45" positionY="72" width="128" height="120"/>
         <element name="CauldronDependency" positionX="-36" positionY="81" width="128" height="90"/>
-        <element name="CauldronCodePush" positionX="-18" positionY="117" width="128" height="105"/>
+        <element name="CauldronCodePush" positionX="-18" positionY="117" width="128" height="120"/>
     </elements>
 </model>

@@ -107,31 +107,15 @@ class CauldronWrapper
                             }
                         }
                         
-                        // Dig through the nativeDeps section and generate mini app objects for this version object.
-                        let dependencies = version["nativeDeps"] as?  [String]
-                        for dependencyEntry in dependencies ?? []
-                        {
-                            let dependency = NSEntityDescription.insertNewObject(forEntityName: "CauldronDependency", into: moc) as! CauldronDependency
-                            dependency.nativeAppVersion = nativeAppVersion
-                            let trimmedDependencyEntry = dependencyEntry.trimmingCharacters(in: CharacterSet.init(charactersIn: "@"))
-                            let nameAndVersion = trimmedDependencyEntry.components(separatedBy: "@")
-                            if nameAndVersion.count == 2
-                            {
-                                dependency.name = nameAndVersion[0]
-                                dependency.version = nameAndVersion[1]
-                            }
-                            else
-                            {
-                                dependency.name = dependencyEntry
-                            }
-                        }
-                        
                         // Dig through the codePush section and generate mini app objects for this version object.
+                        var sequence = 0
                         let codePushes = miniApps["codePush"] as? [[String]]
                         for codePushArray in codePushes ?? []
                         {
                             let codePush = NSEntityDescription.insertNewObject(forEntityName: "CauldronCodePush", into: moc) as! CauldronCodePush
                             codePush.nativeAppVersion = nativeAppVersion
+                            codePush.sequenceNumber = Int64(sequence)
+                            sequence += 1
                             
                             for codePushEntry in codePushArray
                             {
@@ -150,6 +134,25 @@ class CauldronWrapper
                                     codePushMiniApp.name = codePushEntry
                                 }
                             }
+                        }
+                    }
+                    
+                    // Dig through the nativeDeps section and generate mini app objects for this version object.
+                    let dependencies = version["nativeDeps"] as?  [String]
+                    for dependencyEntry in dependencies ?? []
+                    {
+                        let dependency = NSEntityDescription.insertNewObject(forEntityName: "CauldronDependency", into: moc) as! CauldronDependency
+                        dependency.nativeAppVersion = nativeAppVersion
+                        let trimmedDependencyEntry = dependencyEntry.trimmingCharacters(in: CharacterSet.init(charactersIn: "@"))
+                        let nameAndVersion = trimmedDependencyEntry.components(separatedBy: "@")
+                        if nameAndVersion.count == 2
+                        {
+                            dependency.name = nameAndVersion[0]
+                            dependency.version = nameAndVersion[1]
+                        }
+                        else
+                        {
+                            dependency.name = dependencyEntry
                         }
                     }
                 }
