@@ -8,6 +8,12 @@
         <relationship name="nativeApp" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NativeApp" inverseName="cauldron" inverseEntity="NativeApp" syncable="YES"/>
         <relationship name="versions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CauldronNativeAppVersion" inverseName="cauldron" inverseEntity="CauldronNativeAppVersion" syncable="YES"/>
     </entity>
+    <entity name="CauldronCodePush" representedClassName="CauldronCodePush" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="miniApps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CauldronMiniApp" inverseName="codePush" inverseEntity="CauldronMiniApp" syncable="YES"/>
+        <relationship name="nativeAppVersion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CauldronNativeAppVersion" inverseName="codePushes" inverseEntity="CauldronNativeAppVersion" syncable="YES"/>
+    </entity>
     <entity name="CauldronDependency" representedClassName="CauldronDependency" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
@@ -16,15 +22,18 @@
     <entity name="CauldronMiniApp" representedClassName="CauldronMiniApp" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="version" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="codePush" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CauldronCodePush" inverseName="miniApps" inverseEntity="CauldronCodePush" syncable="YES"/>
         <relationship name="miniApp" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MiniApp" inverseName="cauldronMiniApp" inverseEntity="MiniApp" syncable="YES"/>
         <relationship name="nativeAppVersion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CauldronNativeAppVersion" inverseName="miniApps" inverseEntity="CauldronNativeAppVersion" syncable="YES"/>
     </entity>
     <entity name="CauldronNativeAppVersion" representedClassName="CauldronNativeAppVersion" syncable="YES" codeGenerationType="class">
         <attribute name="ernVersion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isReleased" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="nativeAppName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nativeAppVersion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="platform" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="cauldron" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cauldron" inverseName="versions" inverseEntity="Cauldron" syncable="YES"/>
+        <relationship name="codePushes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CauldronCodePush" inverseName="nativeAppVersion" inverseEntity="CauldronCodePush" syncable="YES"/>
         <relationship name="dependencies" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CauldronDependency" inverseName="nativeAppVersion" inverseEntity="CauldronDependency" syncable="YES"/>
         <relationship name="miniApps" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CauldronMiniApp" inverseName="nativeAppVersion" inverseEntity="CauldronMiniApp" syncable="YES"/>
     </entity>
@@ -54,8 +63,9 @@
         <element name="Container" positionX="-54" positionY="18" width="128" height="120"/>
         <element name="MiniApp" positionX="-36" positionY="54" width="128" height="120"/>
         <element name="NativeApp" positionX="-63" positionY="-18" width="128" height="120"/>
-        <element name="CauldronNativeAppVersion" positionX="-54" positionY="54" width="128" height="150"/>
-        <element name="CauldronMiniApp" positionX="-45" positionY="72" width="128" height="105"/>
+        <element name="CauldronNativeAppVersion" positionX="-54" positionY="54" width="128" height="180"/>
+        <element name="CauldronMiniApp" positionX="-45" positionY="72" width="128" height="120"/>
         <element name="CauldronDependency" positionX="-36" positionY="81" width="128" height="90"/>
+        <element name="CauldronCodePush" positionX="-18" positionY="117" width="128" height="105"/>
     </elements>
 </model>

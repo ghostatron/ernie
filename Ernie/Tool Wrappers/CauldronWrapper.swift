@@ -56,55 +56,105 @@ class CauldronWrapper
         }
         for nativeAppJSON in nativeAppsArray
         {
-            let nativeAppName = nativeAppJSON["name"] as? String
+            let nativeAppVersion = NSEntityDescription.insertNewObject(forEntityName: "CauldronNativeAppVersion", into: moc) as! CauldronNativeAppVersion
+            nativeAppVersion.cauldron = cauldron
+            nativeAppVersion.nativeAppName = nativeAppJSON["name"] as? String
             let platforms = nativeAppJSON["platforms"] as? [[String : Any]]
             for platform in platforms ?? []
             {
-                let platformName = platform["name"] as? String
+                nativeAppVersion.platform = platform["name"] as? String
                 let versions = platform["versions"] as? [[String : Any]]
                 for version in versions ?? []
                 {
-                    let versionName = version["name"] as? String
-                    let ernPlatformVersion = version["ernPlatformVersion"] as? String
-                    let isReleased = version["isReleased"] as? Bool
+                    nativeAppVersion.nativeAppVersion = version["name"] as? String
+                    nativeAppVersion.ernVersion = version["ernPlatformVersion"] as? String
+                    nativeAppVersion.isReleased = (version["isReleased"] as? Bool) ?? false
                     if let miniApps = version["miniApps"] as?  [String : Any]
                     {
                         let container = miniApps["container"] as? [String]
                         for miniAppEntry in container ?? []
                         {
-                            
+                            let miniApp = NSEntityDescription.insertNewObject(forEntityName: "CauldronMiniApp", into: moc) as! CauldronMiniApp
+                            miniApp.nativeAppVersion = nativeAppVersion
+                            let trimmedMiniAppEntry = miniAppEntry.trimmingCharacters(in: CharacterSet.init(charactersIn: "@"))
+                            let nameAndVersion = trimmedMiniAppEntry.components(separatedBy: "@")
+                            if nameAndVersion.count == 2
+                            {
+                                miniApp.name = nameAndVersion[0]
+                                miniApp.version = nameAndVersion[1]
+                            }
+                            else
+                            {
+                                miniApp.name = miniAppEntry
+                            }
                         }
                         let codePushes = miniApps["codePush"] as? [[String]]
-                        for codePush in codePushes ?? []
+                        for codePushArray in codePushes ?? []
                         {
-                            for miniAppEntry in codePush ?? []
+                            let codePush = NSEntityDescription.insertNewObject(forEntityName: "CauldronCodePush", into: moc) as! CauldronCodePush
+                            codePush.nativeAppVersion = nativeAppVersion
+                            
+                            for codePushEntry in codePushArray
                             {
-                                
+                                let codePushMiniApp = NSEntityDescription.insertNewObject(forEntityName: "CauldronMiniApp", into: moc) as! CauldronMiniApp
+                                codePushMiniApp.nativeAppVersion = nativeAppVersion
+                                codePushMiniApp.codePush = codePush
+                                let trimmedCodePushEntry = codePushEntry.trimmingCharacters(in: CharacterSet.init(charactersIn: "@"))
+                                let nameAndVersion = trimmedCodePushEntry.components(separatedBy: "@")
+                                if nameAndVersion.count == 2
+                                {
+                                    codePushMiniApp.name = nameAndVersion[0]
+                                    codePushMiniApp.version = nameAndVersion[1]
+                                }
+                                else
+                                {
+                                    codePushMiniApp.name = codePushEntry
+                                }
                             }
                         }
                     }
                     let dependencies = version["nativeDeps"] as?  [String]
                     for dependencyEntry in dependencies ?? []
                     {
-                        
+                        let dependency = NSEntityDescription.insertNewObject(forEntityName: "CauldronDependency", into: moc) as! CauldronDependency
+                        dependency.nativeAppVersion = nativeAppVersion
+                        let trimmedDependencyEntry = dependencyEntry.trimmingCharacters(in: CharacterSet.init(charactersIn: "@"))
+                        let nameAndVersion = trimmedDependencyEntry.components(separatedBy: "@")
+                        if nameAndVersion.count == 2
+                        {
+                            dependency.name = nameAndVersion[0]
+                            dependency.version = nameAndVersion[1]
+                        }
+                        else
+                        {
+                            dependency.name = dependencyEntry
+                        }
                     }
                 }
             }
         }
         
-//        try? moc.save()
+        try? moc.save()
     }
     
     private class func cauldronJSONForRepositoryAt(_ location: String, completion: @escaping ([String : Any]) -> ())
     {
         // TODO: use the location variable instead of the hard coded URL I'm using for testing...
         //https://gecgithub01.walmart.com/react-native/walmart-cauldron/blob/master/cauldron.json
-        let repoUrl = URL(string: "https://raw.githubusercontent.com/ghostatron/whatev-cauldron/master/cauldron.json")
+        let repoUrl = URL(string: "https://raw.githubusercontent.com/ghostatron/whatev-cauldron/master/cauldron2.json")
+//        let repoUrl = URL(string: "https://raw.githubusercontent.com/ghostatron/whatev-cauldron/master/cauldron.json")
         var repoRequest = URLRequest(url: repoUrl!)
         repoRequest.httpMethod = "GET"
         let task = URLSession.shared.dataTask(with: repoRequest) { (data, response, error) in
-            let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
-            completion(json as! [String : Any])
+            let statusCode = (response as? HTTPURLResponse)?.statusCode
+            print("response status: \(statusCode ?? 999)")
+//            let dataString = String(data: data!, encoding: String.Encoding.utf8)
+//            print(dataString!)
+            if let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
+            {
+                completion(json as! [String : Any])
+            }
+            completion([:])
         }
         task.resume()
     }
