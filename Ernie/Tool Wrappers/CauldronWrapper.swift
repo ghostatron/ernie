@@ -50,25 +50,43 @@ class CauldronWrapper
         }
 
         // Build the native apps objects.
+        // The JSON has a nativeApps array, which has a platforms array, which has a versions array.
+        // In our core data data model, we are more focused on the versions themselves.
         guard let nativeAppsArray = cauldronJSON["nativeApps"] as? [[String : Any]] else
         {
             return
         }
         for nativeAppJSON in nativeAppsArray
         {
-            let nativeAppVersion = NSEntityDescription.insertNewObject(forEntityName: "CauldronNativeAppVersion", into: moc) as! CauldronNativeAppVersion
-            nativeAppVersion.cauldron = cauldron
-            nativeAppVersion.nativeAppName = nativeAppJSON["name"] as? String
+            // Track the top level name as it will be assigned as the native app name for all
+            // version objects we create below.
+            let nativeAppName = nativeAppJSON["name"] as? String
+            
+            // The platforms array breaks the data into android and ios buckets.
             let platforms = nativeAppJSON["platforms"] as? [[String : Any]]
             for platform in platforms ?? []
             {
-                nativeAppVersion.platform = platform["name"] as? String
+                // Track the name as it will be assigned as the platform name for all version
+                // objects we create below.
+                let nativeAppPlatform = platform["name"] as? String
+                
+                // The versions array has entries for each release of the native app.  We need
+                // to dig through there and get the miniapps, dependencies, and codepush history
+                // for each version.
                 let versions = platform["versions"] as? [[String : Any]]
                 for version in versions ?? []
                 {
+                    // Create the native app version object for this version entry.
+                    let nativeAppVersion = NSEntityDescription.insertNewObject(forEntityName: "CauldronNativeAppVersion", into: moc) as! CauldronNativeAppVersion
+                    nativeAppVersion.cauldron = cauldron
+                    nativeAppVersion.nativeAppName = nativeAppName
+                    nativeAppVersion.platform = nativeAppPlatform
                     nativeAppVersion.nativeAppVersion = version["name"] as? String
                     nativeAppVersion.ernVersion = version["ernPlatformVersion"] as? String
                     nativeAppVersion.isReleased = (version["isReleased"] as? Bool) ?? false
+                    
+                    // Dig through the miniApps/container section and generate mini app
+                    // objects for this version object.
                     if let miniApps = version["miniApps"] as?  [String : Any]
                     {
                         let container = miniApps["container"] as? [String]
@@ -88,6 +106,27 @@ class CauldronWrapper
                                 miniApp.name = miniAppEntry
                             }
                         }
+                        
+                        // Dig through the nativeDeps section and generate mini app objects for this version object.
+                        let dependencies = version["nativeDeps"] as?  [String]
+                        for dependencyEntry in dependencies ?? []
+                        {
+                            let dependency = NSEntityDescription.insertNewObject(forEntityName: "CauldronDependency", into: moc) as! CauldronDependency
+                            dependency.nativeAppVersion = nativeAppVersion
+                            let trimmedDependencyEntry = dependencyEntry.trimmingCharacters(in: CharacterSet.init(charactersIn: "@"))
+                            let nameAndVersion = trimmedDependencyEntry.components(separatedBy: "@")
+                            if nameAndVersion.count == 2
+                            {
+                                dependency.name = nameAndVersion[0]
+                                dependency.version = nameAndVersion[1]
+                            }
+                            else
+                            {
+                                dependency.name = dependencyEntry
+                            }
+                        }
+                        
+                        // Dig through the codePush section and generate mini app objects for this version object.
                         let codePushes = miniApps["codePush"] as? [[String]]
                         for codePushArray in codePushes ?? []
                         {
@@ -111,23 +150,6 @@ class CauldronWrapper
                                     codePushMiniApp.name = codePushEntry
                                 }
                             }
-                        }
-                    }
-                    let dependencies = version["nativeDeps"] as?  [String]
-                    for dependencyEntry in dependencies ?? []
-                    {
-                        let dependency = NSEntityDescription.insertNewObject(forEntityName: "CauldronDependency", into: moc) as! CauldronDependency
-                        dependency.nativeAppVersion = nativeAppVersion
-                        let trimmedDependencyEntry = dependencyEntry.trimmingCharacters(in: CharacterSet.init(charactersIn: "@"))
-                        let nameAndVersion = trimmedDependencyEntry.components(separatedBy: "@")
-                        if nameAndVersion.count == 2
-                        {
-                            dependency.name = nameAndVersion[0]
-                            dependency.version = nameAndVersion[1]
-                        }
-                        else
-                        {
-                            dependency.name = dependencyEntry
                         }
                     }
                 }
