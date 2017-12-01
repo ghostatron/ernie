@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B1002" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Cauldron" representedClassName="Cauldron" syncable="YES" codeGenerationType="class">
-        <attribute name="alias" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="jsonBody" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="nativeAppName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="nativeApp" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NativeApp" inverseName="cauldron" inverseEntity="NativeApp" syncable="YES"/>
-        <relationship name="versions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CauldronNativeAppVersion" inverseName="cauldron" inverseEntity="CauldronNativeAppVersion" syncable="YES"/>
-    </entity>
     <entity name="CauldronCodePush" representedClassName="CauldronCodePush" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sequenceNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -33,10 +25,18 @@
         <attribute name="nativeAppName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nativeAppVersion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="platform" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="cauldron" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cauldron" inverseName="versions" inverseEntity="Cauldron" syncable="YES"/>
+        <relationship name="cauldronRepository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CauldronRepository" inverseName="versions" inverseEntity="CauldronRepository" syncable="YES"/>
         <relationship name="codePushes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CauldronCodePush" inverseName="nativeAppVersion" inverseEntity="CauldronCodePush" syncable="YES"/>
         <relationship name="dependencies" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CauldronDependency" inverseName="nativeAppVersion" inverseEntity="CauldronDependency" syncable="YES"/>
         <relationship name="miniApps" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CauldronMiniApp" inverseName="nativeAppVersion" inverseEntity="CauldronMiniApp" syncable="YES"/>
+    </entity>
+    <entity name="CauldronRepository" representedClassName="CauldronRepository" syncable="YES" codeGenerationType="class">
+        <attribute name="alias" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="jsonBody" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nativeAppName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="nativeApp" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NativeApp" inverseName="cauldronRepository" inverseEntity="NativeApp" syncable="YES"/>
+        <relationship name="versions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CauldronNativeAppVersion" inverseName="cauldronRepository" inverseEntity="CauldronNativeAppVersion" syncable="YES"/>
     </entity>
     <entity name="Container" representedClassName="Container" syncable="YES" codeGenerationType="class">
         <attribute name="containerDescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -56,11 +56,11 @@
         <attribute name="appDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="appFolder" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="appName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="cauldron" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cauldron" inverseName="nativeApp" inverseEntity="Cauldron" syncable="YES"/>
+        <relationship name="cauldronRepository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CauldronRepository" inverseName="nativeApp" inverseEntity="CauldronRepository" syncable="YES"/>
         <relationship name="container" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Container" inverseName="nativeApps" inverseEntity="Container" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Cauldron" positionX="-54" positionY="54" width="128" height="135"/>
+        <element name="CauldronRepository" positionX="-54" positionY="54" width="128" height="135"/>
         <element name="Container" positionX="-54" positionY="18" width="128" height="120"/>
         <element name="MiniApp" positionX="-36" positionY="54" width="128" height="120"/>
         <element name="NativeApp" positionX="-63" positionY="-18" width="128" height="120"/>

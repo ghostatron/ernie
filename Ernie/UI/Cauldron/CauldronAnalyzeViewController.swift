@@ -40,10 +40,12 @@ class CauldronAnalyzeViewController: NSViewController
         self.progressBar.startAnimation(self)
         
         // Kick off the analyze process and go to the home page when done.
-        CauldronWrapper.analyzeAndUpdateCache { (response) in
-            DispatchQueue.main.async {
-                self.progressBar.stopAnimation(self)
-                self.goToCauldronHome()
+        DispatchQueue.global().async {
+            CauldronWrapper.analyzeAndUpdateCache { (response) in
+                DispatchQueue.main.async {
+                    self.progressBar.stopAnimation(self)
+                    self.goToCauldronHome()
+                }
             }
         }
     }

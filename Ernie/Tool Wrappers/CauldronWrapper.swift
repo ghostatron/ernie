@@ -41,12 +41,12 @@ class CauldronWrapper
     {
         // Create the parent Cauldron object.
         let moc = AppDelegate.mainManagedObjectContext()
-        let cauldron = NSEntityDescription.insertNewObject(forEntityName: "Cauldron", into: moc) as! Cauldron
-        cauldron.alias = alias
-        cauldron.location = location
+        let cauldronRepo = NSEntityDescription.insertNewObject(forEntityName: "CauldronRepository", into: moc) as! CauldronRepository
+        cauldronRepo.alias = alias
+        cauldronRepo.location = location
         if let jsonData = try? JSONSerialization.data(withJSONObject: cauldronJSON)
         {
-            cauldron.jsonBody = String(data: jsonData, encoding: String.Encoding.utf8)
+            cauldronRepo.jsonBody = String(data: jsonData, encoding: String.Encoding.utf8)
         }
 
         // Build the native apps objects.
@@ -78,7 +78,7 @@ class CauldronWrapper
                 {
                     // Create the native app version object for this version entry.
                     let nativeAppVersion = NSEntityDescription.insertNewObject(forEntityName: "CauldronNativeAppVersion", into: moc) as! CauldronNativeAppVersion
-                    nativeAppVersion.cauldron = cauldron
+                    nativeAppVersion.cauldronRepository = cauldronRepo
                     nativeAppVersion.nativeAppName = nativeAppName
                     nativeAppVersion.platform = nativeAppPlatform
                     nativeAppVersion.nativeAppVersion = version["name"] as? String
@@ -195,7 +195,7 @@ class CauldronWrapper
         //
         
         // Create a request to get all Cauldron objects, but just their NSManagedObjectIDs.
-        let request: NSFetchRequest<Cauldron> = Cauldron.fetchRequest()
+        let request: NSFetchRequest<CauldronRepository> = CauldronRepository.fetchRequest()
         request.includesPropertyValues = false
         
         // Execute the request and bail if it fails.
