@@ -25,18 +25,17 @@
         <attribute name="nativeAppName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nativeAppVersion" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="platform" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="cauldronRepository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CauldronRepository" inverseName="versions" inverseEntity="CauldronRepository" syncable="YES"/>
+        <relationship name="cauldronRepository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CauldronRepository" syncable="YES"/>
         <relationship name="codePushes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CauldronCodePush" inverseName="nativeAppVersion" inverseEntity="CauldronCodePush" syncable="YES"/>
         <relationship name="dependencies" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CauldronDependency" inverseName="nativeAppVersion" inverseEntity="CauldronDependency" syncable="YES"/>
         <relationship name="miniApps" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CauldronMiniApp" inverseName="nativeAppVersion" inverseEntity="CauldronMiniApp" syncable="YES"/>
+        <relationship name="nativeApp" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NativeApp" inverseName="cauldronNativeApp" inverseEntity="NativeApp" syncable="YES"/>
     </entity>
     <entity name="CauldronRepository" representedClassName="CauldronRepository" syncable="YES" codeGenerationType="class">
         <attribute name="alias" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="jsonBody" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="nativeAppName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="nativeApp" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NativeApp" inverseName="cauldronRepository" inverseEntity="NativeApp" syncable="YES"/>
-        <relationship name="versions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CauldronNativeAppVersion" inverseName="cauldronRepository" inverseEntity="CauldronNativeAppVersion" syncable="YES"/>
+        <relationship name="nativeApps" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CRNativeApp" inverseName="repository" inverseEntity="CRNativeApp" syncable="YES"/>
     </entity>
     <entity name="Container" representedClassName="Container" syncable="YES" codeGenerationType="class">
         <attribute name="containerDescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -44,6 +43,45 @@
         <attribute name="containerName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="miniApps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MiniApp" inverseName="containers" inverseEntity="MiniApp" syncable="YES"/>
         <relationship name="nativeApps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="NativeApp" inverseName="container" inverseEntity="NativeApp" syncable="YES"/>
+    </entity>
+    <entity name="CRCodePush" representedClassName="CRCodePush" syncable="YES" codeGenerationType="class">
+        <attribute name="sequenceNumber" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="lineItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CRCodePushLineItem" inverseName="codePush" inverseEntity="CRCodePushLineItem" syncable="YES"/>
+        <relationship name="version" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CRVersion" inverseName="codePushes" inverseEntity="CRVersion" syncable="YES"/>
+    </entity>
+    <entity name="CRCodePushLineItem" representedClassName="CRCodePushLineItem" syncable="YES" codeGenerationType="class">
+        <attribute name="codePushName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="codePushVersion" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="codePush" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CRCodePush" inverseName="lineItems" inverseEntity="CRCodePush" syncable="YES"/>
+    </entity>
+    <entity name="CRDependency" representedClassName="CRDependency" syncable="YES" codeGenerationType="class">
+        <attribute name="dependencyName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dependencyVersion" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="version" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CRVersion" inverseName="dependencies" inverseEntity="CRVersion" syncable="YES"/>
+    </entity>
+    <entity name="CRMiniApp" representedClassName="CRMiniApp" syncable="YES" codeGenerationType="class">
+        <attribute name="miniAppName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="miniAppVersion" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="version" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CRVersion" inverseName="miniApps" inverseEntity="CRVersion" syncable="YES"/>
+    </entity>
+    <entity name="CRNativeApp" representedClassName="CRNativeApp" syncable="YES" codeGenerationType="class">
+        <attribute name="nativeAppName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="platforms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CRPlatform" inverseName="nativeApp" inverseEntity="CRPlatform" syncable="YES"/>
+        <relationship name="repository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CauldronRepository" inverseName="nativeApps" inverseEntity="CauldronRepository" syncable="YES"/>
+    </entity>
+    <entity name="CRPlatform" representedClassName="CRPlatform" syncable="YES" codeGenerationType="class">
+        <attribute name="platformName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="nativeApp" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CRNativeApp" inverseName="platforms" inverseEntity="CRNativeApp" syncable="YES"/>
+        <relationship name="versions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CRVersion" inverseName="platform" inverseEntity="CRVersion" syncable="YES"/>
+    </entity>
+    <entity name="CRVersion" representedClassName="CRVersion" syncable="YES" codeGenerationType="class">
+        <attribute name="appVersion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ernVersion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isReleased" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="codePushes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CRCodePush" inverseName="version" inverseEntity="CRCodePush" syncable="YES"/>
+        <relationship name="dependencies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CRDependency" inverseName="version" inverseEntity="CRDependency" syncable="YES"/>
+        <relationship name="miniApps" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CRMiniApp" inverseName="version" inverseEntity="CRMiniApp" syncable="YES"/>
+        <relationship name="platform" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CRPlatform" inverseName="versions" inverseEntity="CRPlatform" syncable="YES"/>
     </entity>
     <entity name="MiniApp" representedClassName="MiniApp" syncable="YES" codeGenerationType="class">
         <attribute name="miniAppDescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -56,17 +94,24 @@
         <attribute name="appDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="appFolder" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="appName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="cauldronRepository" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CauldronRepository" inverseName="nativeApp" inverseEntity="CauldronRepository" syncable="YES"/>
+        <relationship name="cauldronNativeApp" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CauldronNativeAppVersion" inverseName="nativeApp" inverseEntity="CauldronNativeAppVersion" syncable="YES"/>
         <relationship name="container" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Container" inverseName="nativeApps" inverseEntity="Container" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CauldronRepository" positionX="-54" positionY="54" width="128" height="135"/>
+        <element name="CauldronRepository" positionX="-54" positionY="54" width="128" height="105"/>
         <element name="Container" positionX="-54" positionY="18" width="128" height="120"/>
         <element name="MiniApp" positionX="-36" positionY="54" width="128" height="120"/>
         <element name="NativeApp" positionX="-63" positionY="-18" width="128" height="120"/>
-        <element name="CauldronNativeAppVersion" positionX="-54" positionY="54" width="128" height="180"/>
+        <element name="CauldronNativeAppVersion" positionX="-54" positionY="54" width="128" height="195"/>
         <element name="CauldronMiniApp" positionX="-45" positionY="72" width="128" height="120"/>
         <element name="CauldronDependency" positionX="-36" positionY="81" width="128" height="90"/>
         <element name="CauldronCodePush" positionX="-18" positionY="117" width="128" height="120"/>
+        <element name="CRNativeApp" positionX="-9" positionY="135" width="128" height="90"/>
+        <element name="CRPlatform" positionX="0" positionY="144" width="128" height="90"/>
+        <element name="CRVersion" positionX="27" positionY="153" width="128" height="150"/>
+        <element name="CRDependency" positionX="-27" positionY="108" width="128" height="90"/>
+        <element name="CRMiniApp" positionX="-18" positionY="117" width="128" height="90"/>
+        <element name="CRCodePush" positionX="-9" positionY="135" width="128" height="90"/>
+        <element name="CRCodePushLineItem" positionX="0" positionY="144" width="128" height="90"/>
     </elements>
 </model>
