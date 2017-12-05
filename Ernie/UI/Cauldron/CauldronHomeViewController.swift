@@ -185,6 +185,12 @@ class CauldronHomeViewController: NSViewController, NSOutlineViewDataSource, NSO
 {
     private var dataSource = CHVCDataSource()
     
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        self.buildDataSource()
+    }
+    
     func buildDataSource()
     {
         let moc = AppDelegate.mainManagedObjectContext()
@@ -204,17 +210,81 @@ class CauldronHomeViewController: NSViewController, NSOutlineViewDataSource, NSO
     
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int
     {
-        return 0
+        if let repository = item as? CHVCRepository
+        {
+            return repository.nativeApps.count
+        }
+        else if let nativeApp = item as? CHVCNativeApp
+        {
+            return nativeApp.platforms.count
+        }
+        else if let _ = item as? CHVCVersion
+        {
+            return 3
+        }
+        else if let codePush = item as? CHVCCodePush
+        {
+            return codePush.lineItems.count
+        }
+        else
+        {
+            return 0
+        }
     }
     
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any
     {
-        return "hi"
+        var arrayWithItem: [Any] = []
+        
+        if let repository = item as? CHVCRepository
+        {
+            arrayWithItem = repository.nativeApps
+        }
+        else if let nativeApp = item as? CHVCNativeApp
+        {
+            arrayWithItem = nativeApp.platforms
+        }
+        else if let _ = item as? CHVCVersion
+        {
+            arrayWithItem = ["Mini Apps", "Dependencies", "Code Pushes"]
+        }
+        else if let codePush = item as? CHVCCodePush
+        {
+            arrayWithItem = codePush.lineItems
+        }
+        
+        if index < arrayWithItem.count
+        {
+            return arrayWithItem[index]
+        }
+        else
+        {
+            return NSNull()
+        }
     }
     
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool
     {
-        return true
+        if let repository = item as? CHVCRepository
+        {
+            return repository.nativeApps.count > 0
+        }
+        else if let nativeApp = item as? CHVCNativeApp
+        {
+            return nativeApp.platforms.count > 0
+        }
+        else if let _ = item as? CHVCVersion
+        {
+            return true
+        }
+        else if let codePush = item as? CHVCCodePush
+        {
+            return codePush.lineItems.count > 0
+        }
+        else
+        {
+            return false
+        }
     }
     
     // MARK:- NSOutlineViewDelegate
