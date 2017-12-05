@@ -49,9 +49,7 @@ class CauldronWrapper
             cauldronRepo.jsonBody = String(data: jsonData, encoding: String.Encoding.utf8)
         }
 
-        // Build the native apps objects.
-        // The JSON has a nativeApps array, which has a platforms array, which has a versions array.
-        // In our core data data model, we are more focused on the versions themselves.
+        // Parse the JSON and build the native apps objects.
         guard let nativeAppsArray = cauldronJSON["nativeApps"] as? [[String : Any]] else
         {
             return
