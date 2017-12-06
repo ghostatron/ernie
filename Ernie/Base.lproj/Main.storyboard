@@ -879,8 +879,8 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
-                                                <outlet property="dataSource" destination="rTI-3I-lzi" id="VUC-xK-rjG"/>
-                                                <outlet property="delegate" destination="rTI-3I-lzi" id="1EX-Lx-ZXf"/>
+                                                <outlet property="dataSource" destination="rTI-3I-lzi" id="ZzJ-Yu-Lcz"/>
+                                                <outlet property="delegate" destination="rTI-3I-lzi" id="TDv-Is-P7v"/>
                                             </connections>
                                         </outlineView>
                                     </subviews>
@@ -900,6 +900,9 @@
                             </scrollView>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="browserOutlineView" destination="6oe-DJ-6S9" id="QZw-2V-dpd"/>
+                    </connections>
                 </viewController>
                 <customObject id="ZQn-NF-Mm7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -195,11 +195,13 @@ private class CHVCCodePushLineItem
 class CauldronHomeViewController: NSViewController, NSOutlineViewDataSource, NSOutlineViewDelegate
 {
     private var dataSource = CHVCDataSource()
+    @IBOutlet weak var browserOutlineView: NSOutlineView!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         self.buildDataSource()
+        self.browserOutlineView.reloadData()
     }
     
     func buildDataSource()
@@ -221,7 +223,11 @@ class CauldronHomeViewController: NSViewController, NSOutlineViewDataSource, NSO
     
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int
     {
-        if let repository = item as? CHVCRepository
+        if item == nil
+        {
+            return self.dataSource.repositories.count
+        }
+        else if let repository = item as? CHVCRepository
         {
             return repository.nativeApps.count
         }
@@ -256,7 +262,11 @@ class CauldronHomeViewController: NSViewController, NSOutlineViewDataSource, NSO
     {
         var arrayWithItem: [Any] = []
         
-        if let repository = item as? CHVCRepository
+        if item == nil
+        {
+            arrayWithItem =  self.dataSource.repositories
+        }
+        else if let repository = item as? CHVCRepository
         {
             arrayWithItem = repository.nativeApps
         }
@@ -392,7 +402,7 @@ class CauldronHomeViewController: NSViewController, NSOutlineViewDataSource, NSO
             case "nameColumn":
                 cell?.titleLabel.stringValue = itemArray.title
             case "versionColumn":
-                cell?.titleLabel.stringValue = "\(itemArray.array.count)"
+                cell?.titleLabel.stringValue = "count = \(itemArray.array.count)"
             default:
                 cell?.titleLabel.stringValue = "<Invalid>"
             }
@@ -428,7 +438,7 @@ class CauldronHomeViewController: NSViewController, NSOutlineViewDataSource, NSO
             case "nameColumn":
                 cell?.titleLabel.stringValue = "Code Pushes"
             case "versionColumn":
-                cell?.titleLabel.stringValue = "\(codePush.codePush.lineItems?.count ?? 0)"
+                cell?.titleLabel.stringValue = "count = \(codePush.codePush.lineItems?.count ?? 0)"
             default:
                 cell?.titleLabel.stringValue = "<Invalid>"
             }
