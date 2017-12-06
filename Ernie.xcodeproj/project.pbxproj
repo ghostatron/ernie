@@ -14,6 +14,7 @@
 		C101C1A51FBE602E00AE02C6 /* ModalDialogDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C1A41FBE602E00AE02C6 /* ModalDialogDelegate.swift */; };
 		C101C1A91FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C1A81FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift */; };
 		C1341BE61FCCE336000A338F /* CauldronWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1341BE51FCCE336000A338F /* CauldronWrapper.swift */; };
+		C187C7DB1FD7632B00C26311 /* CauldronHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C187C7DA1FD7632B00C26311 /* CauldronHomeTableViewCell.swift */; };
 		C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */; };
 		C190D4531FABD61B002EFA5B /* YarnRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4521FABD61B002EFA5B /* YarnRequirement.swift */; };
 		C190D4551FABD803002EFA5B /* XcodeRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4541FABD803002EFA5B /* XcodeRequirement.swift */; };
@@ -65,6 +66,7 @@
 		C101C1A41FBE602E00AE02C6 /* ModalDialogDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDialogDelegate.swift; sourceTree = "<group>"; };
 		C101C1A81FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAppDetailTableViewCell.swift; sourceTree = "<group>"; };
 		C1341BE51FCCE336000A338F /* CauldronWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CauldronWrapper.swift; sourceTree = "<group>"; };
+		C187C7DA1FD7632B00C26311 /* CauldronHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CauldronHomeTableViewCell.swift; sourceTree = "<group>"; };
 		C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPMRequirement.swift; sourceTree = "<group>"; };
 		C190D4521FABD61B002EFA5B /* YarnRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YarnRequirement.swift; sourceTree = "<group>"; };
 		C190D4541FABD803002EFA5B /* XcodeRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodeRequirement.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			children = (
 				C1CD700A1FCCE14D002C7CBB /* CauldronAnalyzeViewController.swift */,
 				C1CD70081FCCDCD0002C7CBB /* CauldronHomeViewController.swift */,
+				C187C7DA1FD7632B00C26311 /* CauldronHomeTableViewCell.swift */,
 			);
 			path = Cauldron;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				C1E854FB1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift in Sources */,
 				C1CD700B1FCCE14D002C7CBB /* CauldronAnalyzeViewController.swift in Sources */,
 				C19E0F6A1FBA562E00EC727B /* RequirementsViewController.swift in Sources */,
+				C187C7DB1FD7632B00C26311 /* CauldronHomeTableViewCell.swift in Sources */,
 				C190D45D1FB0FD6D002EFA5B /* NVMRequirement.swift in Sources */,
 				C101C1A31FBE491E00AE02C6 /* NativeAppDetailsViewController.swift in Sources */,
 				C101C15C1FBD021600AE02C6 /* NativeAppsViewController.swift in Sources */,

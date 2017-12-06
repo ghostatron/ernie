@@ -130,6 +130,17 @@ private class CHVCVersion
     }
 }
 
+private class CHVCArrayWithTitle
+{
+    var title: String
+    var array: [Any]
+    init(title: String, array: [Any])
+    {
+        self.title = title
+        self.array = array
+    }
+}
+
 private class CHVCMiniApp
 {
     var miniApp: CRMiniApp
@@ -218,9 +229,18 @@ class CauldronHomeViewController: NSViewController, NSOutlineViewDataSource, NSO
         {
             return nativeApp.platforms.count
         }
+        else if let platform = item as? CHVCPlatform
+        {
+            return platform.versions.count
+        }
         else if let _ = item as? CHVCVersion
         {
+            // A version object has 3 arrays for children: mini-apps, dependencies, and code pushes.
             return 3
+        }
+        else if let itemArray = item as? CHVCArrayWithTitle
+        {
+            return itemArray.array.count
         }
         else if let codePush = item as? CHVCCodePush
         {
@@ -244,9 +264,20 @@ class CauldronHomeViewController: NSViewController, NSOutlineViewDataSource, NSO
         {
             arrayWithItem = nativeApp.platforms
         }
-        else if let _ = item as? CHVCVersion
+        else if let platform = item as? CHVCPlatform
         {
-            arrayWithItem = ["Mini Apps", "Dependencies", "Code Pushes"]
+            arrayWithItem = platform.versions
+        }
+        else if let version = item as? CHVCVersion
+        {
+            arrayWithItem = [
+                CHVCArrayWithTitle(title: "Mini Apps", array: version.miniApps),
+                CHVCArrayWithTitle(title: "Dependencies", array: version.dependencies),
+                CHVCArrayWithTitle(title: "Code Pushes", array: version.codePushes)]
+        }
+        else if let itemArray = item as? CHVCArrayWithTitle
+        {
+            arrayWithItem = itemArray.array
         }
         else if let codePush = item as? CHVCCodePush
         {
@@ -273,9 +304,17 @@ class CauldronHomeViewController: NSViewController, NSOutlineViewDataSource, NSO
         {
             return nativeApp.platforms.count > 0
         }
+        else if let platform = item as? CHVCPlatform
+        {
+            return platform.versions.count > 0
+        }
         else if let _ = item as? CHVCVersion
         {
             return true
+        }
+        else if let itemArray = item as? CHVCArrayWithTitle
+        {
+            return itemArray.array.count > 0
         }
         else if let codePush = item as? CHVCCodePush
         {
@@ -291,8 +330,123 @@ class CauldronHomeViewController: NSViewController, NSOutlineViewDataSource, NSO
     
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView?
     {
-        var view: NSTableCellView?
-        return view
+        guard let columnIdentifier = tableColumn?.identifier.rawValue else
+        {
+            return nil
+        }
+        
+        let cell = outlineView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "cauldronHomeTableViewCell"), owner: self) as? CauldronHomeTableViewCell
+        
+        if let repository = item as? CHVCRepository
+        {
+            switch columnIdentifier
+            {
+            case "nameColumn":
+                cell?.titleLabel.stringValue = repository.repository.alias ?? "<No Value>"
+            case "versionColumn":
+                cell?.titleLabel.stringValue = "Repository"
+            default:
+                cell?.titleLabel.stringValue = "<Invalid>"
+            }
+        }
+        else if let nativeApp = item as? CHVCNativeApp
+        {
+            switch columnIdentifier
+            {
+            case "nameColumn":
+                cell?.titleLabel.stringValue = nativeApp.nativeApp.nativeAppName ?? "<No Value>"
+            case "versionColumn":
+                cell?.titleLabel.stringValue = "Native App"
+            default:
+                cell?.titleLabel.stringValue = "<Invalid>"
+            }
+        }
+        else if let platform = item as? CHVCPlatform
+        {
+            switch columnIdentifier
+            {
+            case "nameColumn":
+                cell?.titleLabel.stringValue = platform.platform.platformName ?? "<No Value>"
+            case "versionColumn":
+                cell?.titleLabel.stringValue = "Platform"
+            default:
+                cell?.titleLabel.stringValue = "<Invalid>"
+            }
+        }
+        else if let version = item as? CHVCVersion
+        {
+            switch columnIdentifier
+            {
+            case "nameColumn":
+                cell?.titleLabel.stringValue = version.version.appVersion ?? "<No Value>"
+            case "versionColumn":
+                cell?.titleLabel.stringValue = "Version"
+            default:
+                cell?.titleLabel.stringValue = "<Invalid>"
+            }
+        }
+        else if let itemArray = item as? CHVCArrayWithTitle
+        {
+            switch columnIdentifier
+            {
+            case "nameColumn":
+                cell?.titleLabel.stringValue = itemArray.title
+            case "versionColumn":
+                cell?.titleLabel.stringValue = "\(itemArray.array.count)"
+            default:
+                cell?.titleLabel.stringValue = "<Invalid>"
+            }
+        }
+        else if let miniApp = item as? CHVCMiniApp
+        {
+            switch columnIdentifier
+            {
+            case "nameColumn":
+                cell?.titleLabel.stringValue = miniApp.miniApp.miniAppName ?? "<No Value>"
+            case "versionColumn":
+                cell?.titleLabel.stringValue = miniApp.miniApp.miniAppVersion ?? "<No Value"
+            default:
+                cell?.titleLabel.stringValue = "<Invalid>"
+            }
+        }
+        else if let dependency = item as? CHVCDependency
+        {
+            switch columnIdentifier
+            {
+            case "nameColumn":
+                cell?.titleLabel.stringValue = dependency.dependency.dependencyName ?? "<No Value>"
+            case "versionColumn":
+                cell?.titleLabel.stringValue = dependency.dependency.dependencyVersion ?? "<No Value"
+            default:
+                cell?.titleLabel.stringValue = "<Invalid>"
+            }
+        }
+        else if let codePush = item as? CHVCCodePush
+        {
+            switch columnIdentifier
+            {
+            case "nameColumn":
+                cell?.titleLabel.stringValue = "Code Pushes"
+            case "versionColumn":
+                cell?.titleLabel.stringValue = "\(codePush.codePush.lineItems?.count ?? 0)"
+            default:
+                cell?.titleLabel.stringValue = "<Invalid>"
+            }
+        }
+        else if let codePushLineItem = item as? CHVCCodePushLineItem
+        {
+            switch columnIdentifier
+            {
+            case "nameColumn":
+                cell?.titleLabel.stringValue = codePushLineItem.lineItem.codePushName ?? "<No Value>"
+            case "versionColumn":
+                cell?.titleLabel.stringValue = codePushLineItem.lineItem.codePushVersion ?? "<No Value"
+            default:
+                cell?.titleLabel.stringValue = "<Invalid>"
+            }
+        }
+        
+        return cell
     }
     
     func outlineViewSelectionDidChange(_ notification: Notification)
@@ -303,14 +457,30 @@ class CauldronHomeViewController: NSViewController, NSOutlineViewDataSource, NSO
         }
 
         let selectedIndex = outlineView.selectedRow
-//        if let feedItem = outlineView.item(atRow: selectedIndex) as? FeedItem {
-//            //3
-//            let url = URL(string: feedItem.url)
-//            //4
-//            if let url = url {
-//                //5
-//                self.webView.mainFrame.load(URLRequest(url: url))
-//            }
-//        }
+        let selectedItem = outlineView.item(atRow: selectedIndex)
+        if let repository = selectedItem as? CHVCRepository
+        {
+        }
+        else if let nativeApp = selectedItem as? CHVCNativeApp
+        {
+        }
+        else if let platform = selectedItem as? CHVCPlatform
+        {
+        }
+        else if let version = selectedItem as? CHVCVersion
+        {
+        }
+        else if let miniApp = selectedItem as? CHVCMiniApp
+        {
+        }
+        else if let dependency = selectedItem as? CHVCDependency
+        {
+        }
+        else if let codePush = selectedItem as? CHVCCodePush
+        {
+        }
+        else if let lineItem = selectedItem as? CHVCCodePushLineItem
+        {
+        }
     }
 }

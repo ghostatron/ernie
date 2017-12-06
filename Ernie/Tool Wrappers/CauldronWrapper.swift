@@ -41,119 +41,122 @@ class CauldronWrapper
     {
         // Create the parent Cauldron object.
         let moc = AppDelegate.mainManagedObjectContext()
-        let cauldronRepo = NSEntityDescription.insertNewObject(forEntityName: "CauldronRepository", into: moc) as! CauldronRepository
-        cauldronRepo.alias = alias
-        cauldronRepo.location = location
-        if let jsonData = try? JSONSerialization.data(withJSONObject: cauldronJSON)
-        {
-            cauldronRepo.jsonBody = String(data: jsonData, encoding: String.Encoding.utf8)
-        }
-
-        // Parse the JSON and build the native apps objects.
-        guard let nativeAppsArray = cauldronJSON["nativeApps"] as? [[String : Any]] else
-        {
-            return
-        }
-        for nativeAppJSON in nativeAppsArray
-        {
-            let repoNativeApp = NSEntityDescription.insertNewObject(forEntityName: "CRNativeApp", into: moc) as! CRNativeApp
-            repoNativeApp.repository = cauldronRepo
-            repoNativeApp.nativeAppName = nativeAppJSON["name"] as? String
-            
-            // The platforms array breaks the data into android and ios buckets.
-            let platforms = nativeAppJSON["platforms"] as? [[String : Any]]
-            for platform in platforms ?? []
+        moc.performAndWait {
+        
+            let cauldronRepo = NSEntityDescription.insertNewObject(forEntityName: "CauldronRepository", into: moc) as! CauldronRepository
+            cauldronRepo.alias = alias
+            cauldronRepo.location = location
+            if let jsonData = try? JSONSerialization.data(withJSONObject: cauldronJSON)
             {
-                let nativeAppPlatform = NSEntityDescription.insertNewObject(forEntityName: "CRPlatform", into: moc) as! CRPlatform
-                nativeAppPlatform.nativeApp = repoNativeApp
-                nativeAppPlatform.platformName = platform["name"] as? String
+                cauldronRepo.jsonBody = String(data: jsonData, encoding: String.Encoding.utf8)
+            }
+            
+            // Parse the JSON and build the native apps objects.
+            guard let nativeAppsArray = cauldronJSON["nativeApps"] as? [[String : Any]] else
+            {
+                return
+            }
+            for nativeAppJSON in nativeAppsArray
+            {
+                let repoNativeApp = NSEntityDescription.insertNewObject(forEntityName: "CRNativeApp", into: moc) as! CRNativeApp
+                repoNativeApp.repository = cauldronRepo
+                repoNativeApp.nativeAppName = nativeAppJSON["name"] as? String
                 
-                // The versions array has entries for each release of the native app.  We need
-                // to dig through there and get the miniapps, dependencies, and codepush history
-                // for each version.
-                let versions = platform["versions"] as? [[String : Any]]
-                for version in versions ?? []
+                // The platforms array breaks the data into android and ios buckets.
+                let platforms = nativeAppJSON["platforms"] as? [[String : Any]]
+                for platform in platforms ?? []
                 {
-                    let nativeAppVersion = NSEntityDescription.insertNewObject(forEntityName: "CRVersion", into: moc) as! CRVersion
-                    nativeAppVersion.platform = nativeAppPlatform
-                    nativeAppVersion.appVersion = version["name"] as? String
-                    nativeAppVersion.ernVersion = version["ernPlatformVersion"] as? String
-                    nativeAppVersion.isReleased = (version["isReleased"] as? Bool) ?? false
+                    let nativeAppPlatform = NSEntityDescription.insertNewObject(forEntityName: "CRPlatform", into: moc) as! CRPlatform
+                    nativeAppPlatform.nativeApp = repoNativeApp
+                    nativeAppPlatform.platformName = platform["name"] as? String
                     
-                    // Dig through the miniApps/container section and generate mini app
-                    // objects for this version object.
-                    if let miniApps = version["miniApps"] as?  [String : Any]
+                    // The versions array has entries for each release of the native app.  We need
+                    // to dig through there and get the miniapps, dependencies, and codepush history
+                    // for each version.
+                    let versions = platform["versions"] as? [[String : Any]]
+                    for version in versions ?? []
                     {
-                        let container = miniApps["container"] as? [String]
-                        for miniAppEntry in container ?? []
-                        {
-                            let miniApp = NSEntityDescription.insertNewObject(forEntityName: "CRMiniApp", into: moc) as! CRMiniApp
-                            miniApp.version = nativeAppVersion
-                            let trimmedMiniAppEntry = miniAppEntry.trimmingCharacters(in: CharacterSet.init(charactersIn: "@"))
-                            let nameAndVersion = trimmedMiniAppEntry.components(separatedBy: "@")
-                            if nameAndVersion.count == 2
-                            {
-                                miniApp.miniAppName = nameAndVersion[0]
-                                miniApp.miniAppVersion = nameAndVersion[1]
-                            }
-                            else
-                            {
-                                miniApp.miniAppName = miniAppEntry
-                            }
-                        }
+                        let nativeAppVersion = NSEntityDescription.insertNewObject(forEntityName: "CRVersion", into: moc) as! CRVersion
+                        nativeAppVersion.platform = nativeAppPlatform
+                        nativeAppVersion.appVersion = version["name"] as? String
+                        nativeAppVersion.ernVersion = version["ernPlatformVersion"] as? String
+                        nativeAppVersion.isReleased = (version["isReleased"] as? Bool) ?? false
                         
-                        // Dig through the codePush section and generate mini app objects for this version object.
-                        var sequence = 0
-                        let codePushes = miniApps["codePush"] as? [[String]]
-                        for codePushArray in codePushes ?? []
+                        // Dig through the miniApps/container section and generate mini app
+                        // objects for this version object.
+                        if let miniApps = version["miniApps"] as?  [String : Any]
                         {
-                            let codePush = NSEntityDescription.insertNewObject(forEntityName: "CRCodePush", into: moc) as! CRCodePush
-                            codePush.version = nativeAppVersion
-                            codePush.sequenceNumber = Int64(sequence)
-                            sequence += 1
-                            
-                            for codePushEntry in codePushArray
+                            let container = miniApps["container"] as? [String]
+                            for miniAppEntry in container ?? []
                             {
-                                let codePushLineItem = NSEntityDescription.insertNewObject(forEntityName: "CRCodePushLineItem", into: moc) as! CRCodePushLineItem
-                                codePushLineItem.codePush = codePush
-                                let trimmedCodePushEntry = codePushEntry.trimmingCharacters(in: CharacterSet.init(charactersIn: "@"))
-                                let nameAndVersion = trimmedCodePushEntry.components(separatedBy: "@")
+                                let miniApp = NSEntityDescription.insertNewObject(forEntityName: "CRMiniApp", into: moc) as! CRMiniApp
+                                miniApp.version = nativeAppVersion
+                                let trimmedMiniAppEntry = miniAppEntry.trimmingCharacters(in: CharacterSet.init(charactersIn: "@"))
+                                let nameAndVersion = trimmedMiniAppEntry.components(separatedBy: "@")
                                 if nameAndVersion.count == 2
                                 {
-                                    codePushLineItem.codePushName = nameAndVersion[0]
-                                    codePushLineItem.codePushVersion = nameAndVersion[1]
+                                    miniApp.miniAppName = nameAndVersion[0]
+                                    miniApp.miniAppVersion = nameAndVersion[1]
                                 }
                                 else
                                 {
-                                    codePushLineItem.codePushName = codePushEntry
+                                    miniApp.miniAppName = miniAppEntry
+                                }
+                            }
+                            
+                            // Dig through the codePush section and generate mini app objects for this version object.
+                            var sequence = 0
+                            let codePushes = miniApps["codePush"] as? [[String]]
+                            for codePushArray in codePushes ?? []
+                            {
+                                let codePush = NSEntityDescription.insertNewObject(forEntityName: "CRCodePush", into: moc) as! CRCodePush
+                                codePush.version = nativeAppVersion
+                                codePush.sequenceNumber = Int64(sequence)
+                                sequence += 1
+                                
+                                for codePushEntry in codePushArray
+                                {
+                                    let codePushLineItem = NSEntityDescription.insertNewObject(forEntityName: "CRCodePushLineItem", into: moc) as! CRCodePushLineItem
+                                    codePushLineItem.codePush = codePush
+                                    let trimmedCodePushEntry = codePushEntry.trimmingCharacters(in: CharacterSet.init(charactersIn: "@"))
+                                    let nameAndVersion = trimmedCodePushEntry.components(separatedBy: "@")
+                                    if nameAndVersion.count == 2
+                                    {
+                                        codePushLineItem.codePushName = nameAndVersion[0]
+                                        codePushLineItem.codePushVersion = nameAndVersion[1]
+                                    }
+                                    else
+                                    {
+                                        codePushLineItem.codePushName = codePushEntry
+                                    }
                                 }
                             }
                         }
-                    }
-                    
-                    // Dig through the nativeDeps section and generate mini app objects for this version object.
-                    let dependencies = version["nativeDeps"] as?  [String]
-                    for dependencyEntry in dependencies ?? []
-                    {
-                        let dependency = NSEntityDescription.insertNewObject(forEntityName: "CRDependency", into: moc) as! CRDependency
-                        dependency.version = nativeAppVersion
-                        let trimmedDependencyEntry = dependencyEntry.trimmingCharacters(in: CharacterSet.init(charactersIn: "@"))
-                        let nameAndVersion = trimmedDependencyEntry.components(separatedBy: "@")
-                        if nameAndVersion.count == 2
+                        
+                        // Dig through the nativeDeps section and generate mini app objects for this version object.
+                        let dependencies = version["nativeDeps"] as?  [String]
+                        for dependencyEntry in dependencies ?? []
                         {
-                            dependency.dependencyName = nameAndVersion[0]
-                            dependency.dependencyVersion = nameAndVersion[1]
-                        }
-                        else
-                        {
-                            dependency.dependencyName = dependencyEntry
+                            let dependency = NSEntityDescription.insertNewObject(forEntityName: "CRDependency", into: moc) as! CRDependency
+                            dependency.version = nativeAppVersion
+                            let trimmedDependencyEntry = dependencyEntry.trimmingCharacters(in: CharacterSet.init(charactersIn: "@"))
+                            let nameAndVersion = trimmedDependencyEntry.components(separatedBy: "@")
+                            if nameAndVersion.count == 2
+                            {
+                                dependency.dependencyName = nameAndVersion[0]
+                                dependency.dependencyVersion = nameAndVersion[1]
+                            }
+                            else
+                            {
+                                dependency.dependencyName = dependencyEntry
+                            }
                         }
                     }
                 }
             }
+            
+            try? moc.save()
         }
-        
-        try? moc.save()
     }
     
     private class func cauldronJSONForRepositoryAt(_ location: String, completion: @escaping ([String : Any]) -> ())
@@ -165,15 +168,15 @@ class CauldronWrapper
         var repoRequest = URLRequest(url: repoUrl!)
         repoRequest.httpMethod = "GET"
         let task = URLSession.shared.dataTask(with: repoRequest) { (data, response, error) in
-            let statusCode = (response as? HTTPURLResponse)?.statusCode
-            print("response status: \(statusCode ?? 999)")
-//            let dataString = String(data: data!, encoding: String.Encoding.utf8)
-//            print(dataString!)
+//            let statusCode = (response as? HTTPURLResponse)?.statusCode
             if let json = try? JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
             {
                 completion(json as! [String : Any])
             }
-            completion([:])
+            else
+            {
+                completion([:])
+            }
         }
         task.resume()
     }
