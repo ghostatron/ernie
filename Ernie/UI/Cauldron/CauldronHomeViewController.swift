@@ -436,7 +436,7 @@ class CauldronHomeViewController: NSViewController, NSOutlineViewDataSource, NSO
             switch columnIdentifier
             {
             case "nameColumn":
-                cell?.titleLabel.stringValue = "Code Pushes"
+                cell?.titleLabel.stringValue = "#\(codePush.codePush.sequenceNumber)"
             case "versionColumn":
                 cell?.titleLabel.stringValue = "count = \(codePush.codePush.lineItems?.count ?? 0)"
             default:
