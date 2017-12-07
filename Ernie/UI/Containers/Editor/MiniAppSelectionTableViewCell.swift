@@ -23,10 +23,26 @@ class MiniAppSelectionTableViewCell: NSTableCellView
     // The entity interested in knowing when the check box button in the cell is toggled.
     var selectionDelegate: MiniAppSelectionDelegate?
     
+    // Helps decide how the checkbox button should appear initially.
+    var initialCheckState = NSControl.StateValue.off
+    var initialCheckStatHasBeenSet = false
+    
     // MARK:- IBOutlet Properties
 
     @IBOutlet weak var miniAppCheckbox: NSButton!
     @IBOutlet weak var miniAppDescriptionLabel: NSTextField!
+    
+    // MARK:- View Lifecycle
+    
+    override func layout()
+    {
+        super.layout()
+        if !self.initialCheckStatHasBeenSet
+        {
+            self.miniAppCheckbox.state = self.initialCheckState
+            self.initialCheckStatHasBeenSet = true
+        }
+    }
     
     // MARK:- Event Handlers
     
@@ -56,7 +72,8 @@ class MiniAppSelectionTableViewCell: NSTableCellView
     func configureForMiniApp(_ miniApp: MiniApp, isSelected: Bool)
     {
         self.cellMiniApp = miniApp
-        self.miniAppCheckbox.state = (isSelected ? NSControl.StateValue.on : NSControl.StateValue.off)
+        self.initialCheckStatHasBeenSet = false
+        self.initialCheckState =  (isSelected ? NSControl.StateValue.on : NSControl.StateValue.off)
         self.miniAppCheckbox.stringValue = miniApp.miniAppName ?? "<No Name>"
         self.miniAppDescriptionLabel.stringValue = miniApp.miniAppName ?? "<No Description>"
     }

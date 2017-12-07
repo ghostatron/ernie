@@ -140,9 +140,12 @@ class ContainersViewController: NSViewController, NSTableViewDataSource, NSTable
         if let selectedContainer = self.selectedContainer
         {
             AppDelegate.mainManagedObjectContext().refresh(selectedContainer, mergeChanges: false)
+            let selectedRow = self.containersTableView.selectedRow
+            self.containersTableView.reloadData()
+            let selectedRowIndex = NSIndexSet(index: selectedRow) as IndexSet
+            self.containersTableView.selectRowIndexes(selectedRowIndex, byExtendingSelection: false)
             self.configureViewForSelectedContainer()
         }
-        self.containersTableView.reloadData()
     }
     
     func dismissedWithCancel(dialog: NSViewController)
