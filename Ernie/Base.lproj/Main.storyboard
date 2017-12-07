@@ -1916,8 +1916,8 @@ Gw
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
-                                                <outlet property="dataSource" destination="ytm-bU-xpF" id="Rwo-jU-zDq"/>
-                                                <outlet property="delegate" destination="ytm-bU-xpF" id="c9p-BC-dgn"/>
+                                                <outlet property="dataSource" destination="ytm-bU-xpF" id="tTo-dA-xYx"/>
+                                                <outlet property="delegate" destination="ytm-bU-xpF" id="ilA-dT-WCk"/>
                                             </connections>
                                         </tableView>
                                     </subviews>

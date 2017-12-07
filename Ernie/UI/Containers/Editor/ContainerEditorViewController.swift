@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-class ContainerEditorViewController: NSViewController, NSTableViewDataSource, NSTabViewDelegate, MiniAppSelectionDelegate
+class ContainerEditorViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, MiniAppSelectionDelegate
 {
     enum EditorMode
     {
@@ -201,8 +201,11 @@ class ContainerEditorViewController: NSViewController, NSTableViewDataSource, NS
         containerToSave.containerDescription = self.containerDescriptionTextField.stringValue
         
         // Remove all of this container's old miniApps and then add the ones that are now selected.
-        containerToSave.mutableSetValue(forKey: "miniApps").removeAllObjects()
-        containerToSave.mutableSetValue(forKey: "miniApps").addingObjects(from: self.selectedMiniApps.allObjects)
+        if let previousMiniApps = containerToSave.miniApps
+        {
+            containerToSave.removeFromMiniApps(previousMiniApps)
+        }
+        containerToSave.addToMiniApps(self.selectedMiniApps)
         
         try? moc.save()
         self.modalDelegate?.dismissedWithOK(dialog: self)

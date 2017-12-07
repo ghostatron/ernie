@@ -137,6 +137,11 @@ class ContainersViewController: NSViewController, NSTableViewDataSource, NSTable
     {
         // Reload the table.
         self.containersAlphabetized = self.allContainers() ?? []
+        if let selectedContainer = self.selectedContainer
+        {
+            AppDelegate.mainManagedObjectContext().refresh(selectedContainer, mergeChanges: false)
+            self.configureViewForSelectedContainer()
+        }
         self.containersTableView.reloadData()
     }
     
