@@ -27,7 +27,7 @@ class SwaggerObjectModel
         func generateSwaggerSection() -> [String : Any]
         {
             var swaggerBody: [String : Any] = [:]
-            swaggerBody["type"] = "" // TODO
+            swaggerBody["schema"] = self.propertyDataType.generateSwaggerSchemaSection(objectName: nil, arrayType: nil) // TODO
             swaggerBody["format"] = self.propertyFormat?.stringValue()
             swaggerBody["description"] = self.propertyDescription
             return swaggerBody

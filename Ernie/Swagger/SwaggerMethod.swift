@@ -51,44 +51,33 @@ class SwaggerMethod
             var argumentJson: [String : Any] = [:]
             argumentJson["name"] = self.argumentName
             argumentJson["description"] = self.argumentDescription
-            argumentJson["in"] = ""
-            argumentJson["schema"] = self.generateSwaggerSchemaSection()
+            argumentJson["in"] = "body"
+            argumentJson["schema"] = self.argumentType.generateSwaggerSchemaSection(objectName: nil, arrayType: nil) // TODO
             argumentJson["format"] = self.argumentFormat?.stringValue()
             return argumentJson
-        }
-        
-        private func generateSwaggerSchemaSection() -> [String : Any]
-        {
-            var schemaJson: [String : Any] = [:]
-            switch self.argumentType
-            {
-            case .Array:
-                schemaJson["type"] = self.argumentType.stringValue()
-                if let objectName = self.argumentTypeObjectName
-                {
-                    schemaJson["items"] = ["$ref" : "#/definitions/\(objectName)"]
-                }
-            case .Object:
-                if let objectName = self.argumentTypeObjectName
-                {
-                    schemaJson["$ref"] = "#/definitions/\(objectName)"
-                }
-            default:
-                schemaJson["type"] = self.argumentType.stringValue()
-            }
-            return schemaJson
         }
     }
     
     class SwaggerResponse
     {
-        var responseHttpCode: String = "200"
-        var responseDataType = SwaggerDataTypeEnum.Boolean
+        var responseHttpCode: String
+        var responseDataType: SwaggerDataTypeEnum
         var responseDescription: String?
+        
+        init(code: String, type: SwaggerDataTypeEnum)
+        {
+            self.responseHttpCode = code
+            self.responseDataType = type
+        }
         
         func generateSwaggerJson() -> [String : Any]
         {
             var swaggerBody: [String : Any] = [:]
+            swaggerBody["schema"] = self.responseDataType.generateSwaggerSchemaSection(objectName: nil, arrayType: nil) // TODO
+            if let description = self.responseDescription
+            {
+                swaggerBody["description"] = description
+            }
             return swaggerBody
         }
     }

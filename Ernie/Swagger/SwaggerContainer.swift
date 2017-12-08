@@ -29,24 +29,40 @@ enum SwaggerDataTypeEnum
         }
     }
     
-//    func generateSwaggerSchemaSection(objectName: String? = nil) -> [String : Any]
-//    {
-//        var schemaJson: [String : Any] = [:]
-//        switch self
-//        {
-//        case .Array:
-//            schemaJson["type"] = self.stringValue()
-//            schemaJson["items"] = ""
-//        case .Object:
-//            if let objectName = objectName
-//            {
-//                schemaJson["$ref"] = "#/definitions/\(objectName)"
-//            }
-//        default:
-//            schemaJson["type"] = self.stringValue()
-//        }
-//        return schemaJson
-//    }
+    /**
+     Generates a schema swagger section for this data type.
+     
+     - note: If this is anything other than an Object or Array, then both parameters are ignored.
+     
+     - parameters:
+     - objectName: Has dual meaning: If this is an Object, then this method needs to know the name of the object.
+     If this is an Array, and its contents are Objects, then this method needs to know the name of that object type.
+     - arrayType: If this is an Array, then this method needs to know what types are in the array.
+     */
+    // TODO: instead of object name, pass an optional model
+    func generateSwaggerSchemaSection(objectName: String?, arrayType: SwaggerDataTypeEnum?) -> [String : Any]
+    {
+        var schemaJson: [String : Any] = [:]
+        
+        switch self
+        {
+        case .Array:
+            schemaJson["type"] = "array"
+            if let arrayType = arrayType
+            {
+                schemaJson["items"] = arrayType.generateSwaggerSchemaSection(objectName: objectName, arrayType: nil)
+            }
+        case .Object:
+            if let objectName = objectName
+            {
+                schemaJson["$ref"] = "#/definitions/\(objectName)"
+            }
+        default:
+            schemaJson["type"] = self.stringValue()
+        }
+
+        return schemaJson
+    }
 }
 
 enum SwaggerDataTypeFormatEnum
