@@ -131,6 +131,7 @@ class SwaggerContainer
     
     private func generateSwaggerPathsSection() -> [String : Any]
     {
+        // The "paths" section defines all the methods.
         var methodsForSection: [String : Any] = [:]
         for method in self.containerMethods
         {
@@ -141,10 +142,11 @@ class SwaggerContainer
     
     private func generateSwaggerDefinitionsSection() -> [String : Any]
     {
+        // The "definitions" section defines all the complex objects.
         var definitionsForSection: [String : Any] = [:]
         for definition in self.containerModels
         {
-            definitionsForSection[""] = definition.generateSwaggerSection()
+            definitionsForSection[definition.objectName] = definition.generateSwaggerSection()
         }
         return definitionsForSection
     }
