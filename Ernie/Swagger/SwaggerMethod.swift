@@ -10,11 +10,6 @@ import Foundation
 
 class SwaggerMethod
 {
-    enum SwaggerDataType
-    {
-        case Integer, String, Boolean, Array, Object
-    }
-    
     enum SwaggerMethodType
     {
         case GET, POST, PUT, EVENT
@@ -23,20 +18,55 @@ class SwaggerMethod
     class SwaggerMethodArgument
     {
         var argumentName: String
-        var argumentType: SwaggerDataType
+        var argumentType: SwaggerDataTypeEnum
+        var argumentTypeObjectName: String?
+        var argumentFormat: SwaggerDataTypeFormatEnum?
         var isArgumentRequired = false
         var argumentDescription: String?
-        init(name: String, type: SwaggerDataType)
+        init(name: String, type: SwaggerDataTypeEnum)
         {
             self.argumentName = name
             self.argumentType = type
+        }
+        
+        func generateSwaggerJson() -> [String : Any]
+        {
+            var argumentJson: [String : Any] = [:]
+            argumentJson["name"] = self.argumentName
+            argumentJson["description"] = self.argumentDescription
+            argumentJson["in"] = ""
+            argumentJson["schema"] = self.generateSwaggerSchemaSection()
+            argumentJson["format"] = self.argumentFormat?.stringValue()
+            return argumentJson
+        }
+        
+        private func generateSwaggerSchemaSection() -> [String : Any]
+        {
+            var schemaJson: [String : Any] = [:]
+            switch self.argumentType
+            {
+            case .Array:
+                schemaJson["type"] = self.argumentType.stringValue()
+                if let objectName = self.argumentTypeObjectName
+                {
+                    schemaJson["items"] = ["$ref" : "#/definitions/\(objectName)"]
+                }
+            case .Object:
+                if let objectName = self.argumentTypeObjectName
+                {
+                    schemaJson["$ref"] = "#/definitions/\(objectName)"
+                }
+            default:
+                schemaJson["type"] = self.argumentType.stringValue()
+            }
+            return schemaJson
         }
     }
     
     class SwaggerResponse
     {
         var responseHttpCode: Int = 200
-        var responseDataType = SwaggerDataType.Boolean
+        var responseDataType = SwaggerDataTypeEnum.Boolean
         var responseDescription: String?
     }
     
@@ -67,8 +97,8 @@ class SwaggerMethod
         self.methodOperationId = name
     }
     
-    func generateSwaggerBodyForMethod() -> String?
+    func generateSwaggerSection() -> [String : Any]
     {
-        return nil
+        return [:]
     }
 }

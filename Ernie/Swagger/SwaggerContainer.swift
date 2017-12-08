@@ -1,0 +1,151 @@
+//
+//  SwaggerContainer.swift
+//  Ernie
+//
+//  Created by Randy Haid on 12/7/17.
+//  Copyright © 2017 Randy Haid. All rights reserved.
+//
+
+import Foundation
+
+enum SwaggerDataTypeEnum
+{
+    case Integer, String, Boolean, Array, Object
+    
+    func stringValue() -> String
+    {
+        switch self
+        {
+        case .Integer:
+            return "integer"
+        case .String:
+            return "string"
+        case .Boolean:
+            return "boolean"
+        case .Array:
+            return "array"
+        case .Object:
+            return "#/definitions/???"
+        }
+    }
+    
+//    func generateSwaggerSchemaSection(objectName: String? = nil) -> [String : Any]
+//    {
+//        var schemaJson: [String : Any] = [:]
+//        switch self
+//        {
+//        case .Array:
+//            schemaJson["type"] = self.stringValue()
+//            schemaJson["items"] = ""
+//        case .Object:
+//            if let objectName = objectName
+//            {
+//                schemaJson["$ref"] = "#/definitions/\(objectName)"
+//            }
+//        default:
+//            schemaJson["type"] = self.stringValue()
+//        }
+//        return schemaJson
+//    }
+}
+
+enum SwaggerDataTypeFormatEnum
+{
+    case Float, Double, Int32, Int64, DateTime, Date, Password
+    
+    func stringValue() -> String
+    {
+        switch self
+        {
+        case .Float:
+            return "float"
+        case .Double:
+            return "double"
+        case .Int32:
+            return "int32"
+        case .Int64:
+            return "int64"
+        case .DateTime:
+            return "date-time"
+        case .Date:
+            return "date"
+        case .Password:
+            return "password"
+        }
+    }
+}
+
+enum SwaggerProductEnum
+{
+    case JSON, PNG, GIF, JPG, PDF
+    
+    func stringValue() -> String
+    {
+        switch self
+        {
+        case .JSON:
+            return "application/json"
+        case .PNG:
+            return "image/png"
+        case .GIF:
+            return "image/gif"
+        case .JPG:
+            return "image/jpeg"
+        case .PDF:
+            return "image/pdf"
+        }
+    }
+}
+
+class SwaggerContainer
+{
+    var containerDescription: String?
+    var containerTitle: String?
+    var containerOwner: String?
+    var containerMethods: [SwaggerMethod] = []
+    var containerModels: [SwaggerObjectModel] = []
+    
+    func generateSwaggerJson() -> [String : Any]
+    {
+        // The top level has a swagger version, plus sections for "info", "paths", and "definitions".
+        var swaggerJson: [String : Any] = [:]
+        swaggerJson["swagger"] = "2.0"
+        swaggerJson["info"] = self.generateSwaggerInfoSection()
+        swaggerJson["paths"] = self.generateSwaggerPathsSection()
+        swaggerJson["definitions"] = self.generateSwaggerDefinitionsSection()
+        return swaggerJson
+    }
+    
+    private func generateSwaggerInfoSection() -> [String : Any]
+    {
+        // The "info" section has a title, description, and contact/owner.
+        var infoJson: [String : Any] = [:]
+        infoJson["title"] = self.containerTitle ?? ""
+        infoJson["description"] = self.containerDescription ?? ""
+        if let owner = self.containerOwner
+        {
+            infoJson["contact"] = ["name" : owner]
+        }
+        return infoJson
+    }
+    
+    private func generateSwaggerPathsSection() -> [String : Any]
+    {
+        var methodsForSection: [String : Any] = [:]
+        for method in self.containerMethods
+        {
+            methodsForSection[method.methodName] = method.generateSwaggerSection()
+        }
+        return methodsForSection
+    }
+    
+    private func generateSwaggerDefinitionsSection() -> [String : Any]
+    {
+        var definitionsForSection: [String : Any] = [:]
+        for definition in self.containerModels
+        {
+            definitionsForSection[""] = definition.generateSwaggerSection()
+        }
+        return definitionsForSection
+    }
+}
