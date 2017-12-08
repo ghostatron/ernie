@@ -10,83 +10,11 @@ import Foundation
 
 class SwaggerMethod
 {
-    enum SwaggerMethodType
-    {
-        case GET, POST, PUT, DELETE, EVENT
-        
-        func toString() -> String
-        {
-            switch self
-            {
-            case .GET:
-                return "get"
-            case .POST:
-                return "post"
-            case .PUT:
-                return "put"
-            case .DELETE:
-                return "delete"
-            case .EVENT:
-                return "event"
-            }
-        }
-    }
-    
-    class SwaggerMethodArgument
-    {
-        var argumentName: String
-        var argumentType: SwaggerDataTypeEnum
-        var argumentTypeObjectName: String?
-        var argumentFormat: SwaggerDataTypeFormatEnum?
-        var isArgumentRequired = false
-        var argumentDescription: String?
-        init(name: String, type: SwaggerDataTypeEnum)
-        {
-            self.argumentName = name
-            self.argumentType = type
-        }
-        
-        func generateSwaggerJson() -> [String : Any]
-        {
-            var argumentJson: [String : Any] = [:]
-            argumentJson["name"] = self.argumentName
-            argumentJson["description"] = self.argumentDescription
-            argumentJson["in"] = "body"
-            argumentJson["schema"] = self.argumentType.generateSwaggerSchemaSection(objectName: nil, arrayType: nil) // TODO
-            argumentJson["format"] = self.argumentFormat?.stringValue()
-            return argumentJson
-        }
-    }
-    
-    class SwaggerResponse
-    {
-        var responseHttpCode: String
-        var responseDataType: SwaggerDataTypeEnum
-        var responseDescription: String?
-        
-        init(code: String, type: SwaggerDataTypeEnum)
-        {
-            self.responseHttpCode = code
-            self.responseDataType = type
-        }
-        
-        func generateSwaggerJson() -> [String : Any]
-        {
-            var swaggerBody: [String : Any] = [:]
-            swaggerBody["schema"] = self.responseDataType.generateSwaggerSchemaSection(objectName: nil, arrayType: nil) // TODO
-            if let description = self.responseDescription
-            {
-                swaggerBody["description"] = description
-            }
-            return swaggerBody
-        }
-    }
-    
     /// The name of the method.
     var methodName: String
     
     /// Indicates what kind of method this is in the HTTP world.
-    var methodType = SwaggerMethodType.GET
+    var methodType = SwaggerMethodTypeEnum.GET
     
     /// An array of descriptive tags for the method.
     var methodTags: [String] = []

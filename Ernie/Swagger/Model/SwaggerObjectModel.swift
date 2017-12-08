@@ -10,30 +10,6 @@ import Foundation
 
 class SwaggerObjectModel
 {
-    class SwaggerModelProperty
-    {
-        var propertyName: String
-        var propertyDataType: SwaggerDataTypeEnum
-        var propertyIsRequired = false
-        var propertyDescription: String?
-        var propertyFormat: SwaggerDataTypeFormatEnum?
-
-        init(name: String, dataType: SwaggerDataTypeEnum)
-        {
-            self.propertyName = name
-            self.propertyDataType = dataType
-        }
-        
-        func generateSwaggerSection() -> [String : Any]
-        {
-            var swaggerBody: [String : Any] = [:]
-            swaggerBody["schema"] = self.propertyDataType.generateSwaggerSchemaSection(objectName: nil, arrayType: nil) // TODO
-            swaggerBody["format"] = self.propertyFormat?.stringValue()
-            swaggerBody["description"] = self.propertyDescription
-            return swaggerBody
-        }
-    }
-    
     var objectName: String
     var properties: [SwaggerModelProperty] = []
     

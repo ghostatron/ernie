@@ -856,7 +856,7 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView identifier="cauldronHomeTableViewCell" id="wxX-Nl-lVj" customClass="CauldronHomeTableViewCell" customModule="Ernie" customModuleProvider="target">
+                                                        <tableCellView identifier="cauldronHomeTableViewCell2" id="wxX-Nl-lVj" customClass="CauldronHomeTableViewCell" customModule="Ernie" customModuleProvider="target">
                                                             <rect key="frame" x="120" y="1" width="61" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
