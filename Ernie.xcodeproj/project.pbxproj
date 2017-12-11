@@ -209,8 +209,8 @@
 		C144CEAB1FDB5B1300E47EED /* Method */ = {
 			isa = PBXGroup;
 			children = (
-				C144CE9F1FDB59DD00E47EED /* SwaggerMethodArgument.swift */,
 				C1ECBDE11FD9CAE400C273C1 /* SwaggerMethod.swift */,
+				C144CE9F1FDB59DD00E47EED /* SwaggerMethodArgument.swift */,
 				C144CE9D1FDB599B00E47EED /* SwaggerMethodTypeEnum.swift */,
 			);
 			path = Method;

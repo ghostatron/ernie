@@ -14,7 +14,7 @@ class SwaggerMethod
     var methodName: String
     
     /// Indicates what kind of method this is in the HTTP world.
-    var methodType = SwaggerMethodTypeEnum.GET
+    var methodType: SwaggerMethodTypeEnum
     
     /// An array of descriptive tags for the method.
     var methodTags: [String] = []
@@ -37,10 +37,21 @@ class SwaggerMethod
     /// A list of the type of files that can be accepted/created with this method.
     var methodProducts: [SwaggerProductEnum] = []
     
-    init(name: String)
+    init(name: String, type: SwaggerMethodTypeEnum)
     {
         self.methodName = name
         self.methodOperationId = name
+        self.methodType = type
+    }
+    
+    class func generateSwaggerSection(methods: [SwaggerMethod]) -> [String : Any]
+    {
+        var swaggerBody: [String : Any] = [:]
+        for method in methods
+        {
+            swaggerBody[method.methodType.toString()] = method.generateSwaggerSection()
+        }
+        return swaggerBody
     }
     
     func generateSwaggerSection() -> [String : Any]
@@ -98,6 +109,6 @@ class SwaggerMethod
         }
         swaggerBody["responses"] = responsesSection
 
-        return swaggerBody
+        return [self.methodType.toString() : swaggerBody]
     }
 }

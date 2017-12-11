@@ -66,10 +66,39 @@ class SwaggerContainer
     {
         // The "paths" section defines all the methods.
         var methodsForSection: [String : Any] = [:]
+        
+        // A method could be given multiple times if it has multiple types (GET, POST, DELETE, etc.)
+        // We need to first bundle them together by method name if they exist.
+        var bundledMethods: [String : [SwaggerMethod]] = [:]
         for method in self.containerMethods
         {
-            methodsForSection[method.methodName] = method.generateSwaggerSection()
+            if var existingArray = bundledMethods[method.methodName]
+            {
+                existingArray.append(method)
+            }
+            else
+            {
+                bundledMethods[method.methodName] = [method]
+            }
         }
+        
+        // Now call the correct swagger generator based on whether each method has 1
+        // or more than 1 type.
+        for methodArray in bundledMethods.values
+        {
+            if let method = methodArray.first
+            {
+                if methodArray.count == 1
+                {
+                    methodsForSection[method.methodName] = method.generateSwaggerSection()
+                }
+                else
+                {
+                    methodsForSection[method.methodName] = SwaggerMethod.generateSwaggerSection(methods: methodArray)
+                }
+            }
+        }
+
         return methodsForSection
     }
     
