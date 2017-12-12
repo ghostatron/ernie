@@ -52,5 +52,17 @@ class SwaggerTests: XCTestCase
         XCTAssert(propertyJson["description"] as? String == "Just a simple string property formatted for a password")
         XCTAssert(propertyJson["format"] as? String == "password")
         XCTAssertNotNil(propertyJson["schema"] as? [String : Any])
+        
+        let boolType = SwaggerDataType(primitiveType: .Boolean)
+        let boolProperty = SwaggerModelProperty(name: "AmICool", dataType: boolType)
+        boolProperty.propertyDescription = "Please be yes, please be yes"
+        boolProperty.propertyIsRequired = true
+        let model = SwaggerObjectModel(name: "TestModel")
+        model.properties = [passwordProperty, boolProperty]
+        let modelJson = model.generateSwaggerSection()
+        XCTAssert(modelJson.count == 3)
+        XCTAssert(modelJson["type"] as? String == "object")
+        XCTAssertNotNil(modelJson["required"] as? [String])
+        XCTAssertNotNil(modelJson["properties"] as? [String : Any])
     }
 }
