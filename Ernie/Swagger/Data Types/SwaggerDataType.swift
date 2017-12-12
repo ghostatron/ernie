@@ -35,17 +35,18 @@ class SwaggerDataType
     {
         var schemaJson: [String : Any] = [:]
         
-        if let primitiveType = self.primitiveDataType
+        if let arrayType = self.arrayDataType
         {
-            schemaJson["type"] = primitiveType.stringValue()
+            schemaJson["type"] = "array"
+            schemaJson["items"] = arrayType.generateSwaggerSchemaSection()
         }
         else if let model = self.objectModel
         {
             schemaJson["$ref"] = "#/definitions/\(model.objectName)"
         }
-        else if let arrayType = self.arrayDataType
+        else if let primitiveType = self.primitiveDataType
         {
-            schemaJson["items"] = arrayType.generateSwaggerSchemaSection()
+            schemaJson["type"] = primitiveType.stringValue()
         }
         
         return schemaJson

@@ -13,6 +13,7 @@
 		C101C1A31FBE491E00AE02C6 /* NativeAppDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C1A21FBE491E00AE02C6 /* NativeAppDetailsViewController.swift */; };
 		C101C1A51FBE602E00AE02C6 /* ModalDialogDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C1A41FBE602E00AE02C6 /* ModalDialogDelegate.swift */; };
 		C101C1A91FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C1A81FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift */; };
+		C118CC671FDF4C71008C4DB5 /* SwaggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118CC661FDF4C71008C4DB5 /* SwaggerTests.swift */; };
 		C1341BE61FCCE336000A338F /* CauldronWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1341BE51FCCE336000A338F /* CauldronWrapper.swift */; };
 		C144CE981FD9D44400E47EED /* SwaggerObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144CE971FD9D44400E47EED /* SwaggerObjectModel.swift */; };
 		C144CE9A1FD9D82500E47EED /* SwaggerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144CE991FD9D82500E47EED /* SwaggerContainer.swift */; };
@@ -76,6 +77,7 @@
 		C101C1A21FBE491E00AE02C6 /* NativeAppDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAppDetailsViewController.swift; sourceTree = "<group>"; };
 		C101C1A41FBE602E00AE02C6 /* ModalDialogDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDialogDelegate.swift; sourceTree = "<group>"; };
 		C101C1A81FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAppDetailTableViewCell.swift; sourceTree = "<group>"; };
+		C118CC661FDF4C71008C4DB5 /* SwaggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerTests.swift; sourceTree = "<group>"; };
 		C1341BE51FCCE336000A338F /* CauldronWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CauldronWrapper.swift; sourceTree = "<group>"; };
 		C144CE971FD9D44400E47EED /* SwaggerObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerObjectModel.swift; sourceTree = "<group>"; };
 		C144CE991FD9D82500E47EED /* SwaggerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerContainer.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				C1C774E41FA3E28300AD269F /* ErnieTests.swift */,
+				C118CC661FDF4C71008C4DB5 /* SwaggerTests.swift */,
 				C1C774E61FA3E28300AD269F /* Info.plist */,
 			);
 			path = ErnieTests;
@@ -530,6 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C118CC671FDF4C71008C4DB5 /* SwaggerTests.swift in Sources */,
 				C1C774E51FA3E28300AD269F /* ErnieTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
