@@ -80,4 +80,15 @@ class SwaggerTests: XCTestCase
         XCTAssert(argumentJson["required"] as? Bool == false)
         XCTAssert(argumentJson["in"] as? String == "body")
     }
+    
+    func testSwaggerResponse()
+    {
+        let boolType = SwaggerDataType(primitiveType: .Boolean)
+        let response = SwaggerResponse(code: "200", type: boolType)
+        response.responseDescription = "It's all good"
+        let responseJson = response.generateSwaggerJson()
+        XCTAssert(responseJson.count == 2)
+        XCTAssert(responseJson["description"] as? String == "It's all good")
+        XCTAssertNotNil(responseJson["schema"] as? [String : Any])
+    }
 }
