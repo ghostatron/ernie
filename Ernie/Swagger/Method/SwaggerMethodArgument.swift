@@ -12,7 +12,6 @@ class SwaggerMethodArgument
 {
     var argumentName: String
     var argumentType: SwaggerDataType
-    var argumentTypeObjectName: String?
     var argumentFormat: SwaggerDataTypeFormatEnum?
     var isArgumentRequired = false
     var argumentDescription: String?
@@ -27,6 +26,7 @@ class SwaggerMethodArgument
         var argumentJson: [String : Any] = [:]
         argumentJson["name"] = self.argumentName
         argumentJson["description"] = self.argumentDescription
+        argumentJson["required"] = self.isArgumentRequired
         argumentJson["in"] = "body"
         argumentJson["schema"] = self.argumentType.generateSwaggerSchemaSection()
         argumentJson["format"] = self.argumentFormat?.stringValue()

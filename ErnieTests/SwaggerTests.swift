@@ -65,4 +65,19 @@ class SwaggerTests: XCTestCase
         XCTAssertNotNil(modelJson["required"] as? [String])
         XCTAssertNotNil(modelJson["properties"] as? [String : Any])
     }
+    
+    func testSwaggerMethodArgument()
+    {
+        let stringType = SwaggerDataType(primitiveType: .String)
+        let argument = SwaggerMethodArgument(name: "arg1", type: stringType)
+        argument.argumentDescription = "The first argument for the method"
+        argument.argumentFormat = SwaggerDataTypeFormatEnum.DateTime
+        let argumentJson = argument.generateSwaggerJson()
+        XCTAssert(argumentJson.count == 6)
+        XCTAssert(argumentJson["description"] as? String == "The first argument for the method")
+        XCTAssert(argumentJson["name"] as? String == "arg1")
+        XCTAssert(argumentJson["format"] as? String == "date-time")
+        XCTAssert(argumentJson["required"] as? Bool == false)
+        XCTAssert(argumentJson["in"] as? String == "body")
+    }
 }
