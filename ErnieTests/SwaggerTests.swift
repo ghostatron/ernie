@@ -49,8 +49,8 @@ class SwaggerTests: XCTestCase
         passwordProperty.propertyFormat = SwaggerDataTypeFormatEnum.Password
         let propertyJson = passwordProperty.generateSwaggerSection()
         XCTAssert(propertyJson.count == 3)
-        XCTAssert(propertyJson["description"] as? String == "Just a simple string property formatted for a password")
-        XCTAssert(propertyJson["format"] as? String == "password")
+        XCTAssert(propertyJson["description"] as? String == passwordProperty.propertyDescription)
+        XCTAssert(propertyJson["format"] as? String == passwordProperty.propertyFormat?.stringValue())
         XCTAssertNotNil(propertyJson["schema"] as? [String : Any])
         
         let boolType = SwaggerDataType(primitiveType: .Boolean)
@@ -74,9 +74,9 @@ class SwaggerTests: XCTestCase
         argument.argumentFormat = SwaggerDataTypeFormatEnum.DateTime
         let argumentJson = argument.generateSwaggerJson()
         XCTAssert(argumentJson.count == 6)
-        XCTAssert(argumentJson["description"] as? String == "The first argument for the method")
-        XCTAssert(argumentJson["name"] as? String == "arg1")
-        XCTAssert(argumentJson["format"] as? String == "date-time")
+        XCTAssert(argumentJson["description"] as? String == argument.argumentDescription)
+        XCTAssert(argumentJson["name"] as? String == argument.argumentName)
+        XCTAssert(argumentJson["format"] as? String == argument.argumentFormat?.stringValue())
         XCTAssert(argumentJson["required"] as? Bool == false)
         XCTAssert(argumentJson["in"] as? String == "body")
     }
@@ -88,7 +88,32 @@ class SwaggerTests: XCTestCase
         response.responseDescription = "It's all good"
         let responseJson = response.generateSwaggerJson()
         XCTAssert(responseJson.count == 2)
-        XCTAssert(responseJson["description"] as? String == "It's all good")
+        XCTAssert(responseJson["description"] as? String == response.responseDescription)
         XCTAssertNotNil(responseJson["schema"] as? [String : Any])
+    }
+    
+    func testSwaggerMethod()
+    {
+        let method = SwaggerMethod(name: "MyGetMethod", type: .GET)
+        method.methodTags = ["awesome", "cool", "getonmylevel"]
+        method.methodDescription = "Simple method for unit testing"
+        method.methodSummary = "Yeah, so, like the description pretty much says it all...but the summary can be more detailed. You're welcome."
+        let stringType = SwaggerDataType(primitiveType: .String)
+        let argument = SwaggerMethodArgument(name: "arg1", type: stringType)
+        method.methodArguments = [argument]
+        
+        let methodJson = method.generateSwaggerSection()
+        guard let getSection = methodJson["get"] as? [String : Any] else
+        {
+            return
+        }
+        
+        XCTAssert(getSection.count == 7)
+        XCTAssert(getSection["operationId"] as? String == method.methodOperationId)
+        XCTAssert(getSection["description"] as? String == method.methodDescription)
+        XCTAssert(getSection["summary"] as? String == method.methodSummary)
+        XCTAssertNotNil(getSection["produces"] as? [String])
+        XCTAssertNotNil(getSection["responses"] as? [String : Any])
+        XCTAssertNotNil(getSection["parameters"] as? [[String : Any]])
     }
 }
