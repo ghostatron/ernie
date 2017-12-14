@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum SwaggerMethodTypeEnum
+enum SwaggerMethodTypeEnum: String
 {
     case GET, POST, PUT, DELETE, EVENT
     

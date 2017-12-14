@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum SwaggerDataTypeEnum
+enum SwaggerDataTypeEnum: String
 {
     case Integer, String, Boolean, Array, Object
     

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B1003" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17C88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CauldronRepository" representedClassName="CauldronRepository" syncable="YES" codeGenerationType="class">
         <attribute name="alias" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="jsonBody" optional="YES" attributeType="String" syncable="YES"/>
@@ -68,6 +68,62 @@
         <relationship name="cauldronNativeApp" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CRNativeApp" inverseName="nativeApp" inverseEntity="CRNativeApp" syncable="YES"/>
         <relationship name="container" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Container" inverseName="nativeApps" inverseEntity="Container" syncable="YES"/>
     </entity>
+    <entity name="SWContainer" representedClassName="SWContainer" syncable="YES" codeGenerationType="class">
+        <attribute name="containerDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="containerName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="containerOwner" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="containerMethods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SWMethod" inverseName="methodContainer" inverseEntity="SWMethod" syncable="YES"/>
+        <relationship name="containerModels" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SWObjectModel" inverseName="modelContainer" inverseEntity="SWObjectModel" syncable="YES"/>
+    </entity>
+    <entity name="SWDataType" representedClassName="SWDataType" syncable="YES" codeGenerationType="class">
+        <attribute name="primitiveDataType" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="dataTypeArrayDataType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWDataType" inverseName="parentDataType" inverseEntity="SWDataType" syncable="YES"/>
+        <relationship name="parentDataType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWDataType" inverseName="dataTypeArrayDataType" inverseEntity="SWDataType" syncable="YES"/>
+        <relationship name="parentMethodArg" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWMethodArgument" inverseName="argType" inverseEntity="SWMethodArgument" syncable="YES"/>
+        <relationship name="parentModel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWObjectModel" inverseName="dataTypeReferences" inverseEntity="SWObjectModel" syncable="YES"/>
+        <relationship name="parentProperty" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWModelProperty" inverseName="propertyDataType" inverseEntity="SWModelProperty" syncable="YES"/>
+        <relationship name="parentResponse" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWResponse" inverseName="responseType" inverseEntity="SWResponse" syncable="YES"/>
+    </entity>
+    <entity name="SWMethod" representedClassName="SWMethod" syncable="YES" codeGenerationType="class">
+        <attribute name="methodDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="methodName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="methodOperationId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="methodProducts" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="methodSummary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="methodTags" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="methodType" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="methodArguments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SWMethodArgument" inverseName="argMethod" inverseEntity="SWMethodArgument" syncable="YES"/>
+        <relationship name="methodContainer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWContainer" inverseName="containerMethods" inverseEntity="SWContainer" syncable="YES"/>
+        <relationship name="methodResponse" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWResponse" inverseName="parentMethod" inverseEntity="SWResponse" syncable="YES"/>
+    </entity>
+    <entity name="SWMethodArgument" representedClassName="SWMethodArgument" syncable="YES" codeGenerationType="class">
+        <attribute name="argDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="argFormat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="argIsRequired" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="argName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="argMethod" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWMethod" inverseName="methodArguments" inverseEntity="SWMethod" syncable="YES"/>
+        <relationship name="argType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWDataType" inverseName="parentMethodArg" inverseEntity="SWDataType" syncable="YES"/>
+    </entity>
+    <entity name="SWModelProperty" representedClassName="SWModelProperty" syncable="YES" codeGenerationType="class">
+        <attribute name="propertyDesciption" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="propertyFormat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="propertyIsRequired" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="propertyName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="parentModel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWObjectModel" inverseName="modelProperties" inverseEntity="SWObjectModel" syncable="YES"/>
+        <relationship name="propertyDataType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWDataType" inverseName="parentProperty" inverseEntity="SWDataType" syncable="YES"/>
+    </entity>
+    <entity name="SWObjectModel" representedClassName="SWObjectModel" syncable="YES" codeGenerationType="class">
+        <attribute name="modelName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="dataTypeReferences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SWDataType" inverseName="parentModel" inverseEntity="SWDataType" syncable="YES"/>
+        <relationship name="modelContainer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWContainer" inverseName="containerModels" inverseEntity="SWContainer" syncable="YES"/>
+        <relationship name="modelProperties" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SWModelProperty" inverseName="parentModel" inverseEntity="SWModelProperty" syncable="YES"/>
+    </entity>
+    <entity name="SWResponse" representedClassName="SWResponse" syncable="YES" codeGenerationType="class">
+        <attribute name="responseCode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="responseDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="parentMethod" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWMethod" inverseName="methodResponse" inverseEntity="SWMethod" syncable="YES"/>
+        <relationship name="responseType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWDataType" inverseName="parentResponse" inverseEntity="SWDataType" syncable="YES"/>
+    </entity>
     <elements>
         <element name="CauldronRepository" positionX="-54" positionY="54" width="128" height="105"/>
         <element name="Container" positionX="-54" positionY="18" width="128" height="120"/>
@@ -80,5 +136,12 @@
         <element name="CRVersion" positionX="27" positionY="153" width="128" height="150"/>
         <element name="MiniApp" positionX="-36" positionY="54" width="128" height="120"/>
         <element name="NativeApp" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="SWDataType" positionX="-27" positionY="126" width="128" height="150"/>
+        <element name="SWObjectModel" positionX="-18" positionY="135" width="128" height="105"/>
+        <element name="SWModelProperty" positionX="-9" positionY="144" width="128" height="135"/>
+        <element name="SWMethodArgument" positionX="0" positionY="153" width="128" height="135"/>
+        <element name="SWMethod" positionX="9" positionY="162" width="128" height="195"/>
+        <element name="SWResponse" positionX="18" positionY="180" width="128" height="105"/>
+        <element name="SWContainer" positionX="36" positionY="189" width="128" height="120"/>
     </elements>
 </model>

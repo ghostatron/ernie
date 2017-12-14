@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum SwaggerProductEnum
+enum SwaggerProductEnum: String
 {
     case JSON, PNG, GIF, JPG, PDF
     

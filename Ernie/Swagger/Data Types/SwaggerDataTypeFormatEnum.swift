@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum SwaggerDataTypeFormatEnum
+enum SwaggerDataTypeFormatEnum: String
 {
     case Float, Double, Int32, Int64, DateTime, Date, Password
     
