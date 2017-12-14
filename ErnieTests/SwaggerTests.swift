@@ -116,4 +116,37 @@ class SwaggerTests: XCTestCase
         XCTAssertNotNil(getSection["responses"] as? [String : Any])
         XCTAssertNotNil(getSection["parameters"] as? [[String : Any]])
     }
+    
+    func testSwaggerContainer()
+    {
+        let container = SwaggerContainer()
+        container.containerTitle = "THE Container"
+        container.containerDescription = "This is my mega awesome unit test container"
+        container.containerOwner = "Me. Duh."
+        
+        let method = SwaggerMethod(name: "MyGetMethod", type: .GET)
+        method.methodTags = ["awesome", "cool", "getonmylevel"]
+        method.methodDescription = "Simple method for unit testing"
+        method.methodSummary = "Yeah, so, like the description pretty much says it all...but the summary can be more detailed. You're welcome."
+        let stringType = SwaggerDataType(primitiveType: .String)
+        let argument = SwaggerMethodArgument(name: "arg1", type: stringType)
+        method.methodArguments = [argument]
+        container.containerMethods = [method]
+        
+        let boolType = SwaggerDataType(primitiveType: .Boolean)
+        let boolProperty = SwaggerModelProperty(name: "AmICool", dataType: boolType)
+        boolProperty.propertyDescription = "Please be yes, please be yes"
+        boolProperty.propertyIsRequired = true
+        let model = SwaggerObjectModel(name: "TestModel")
+        model.properties = [boolProperty]
+        container.containerModels = [model]
+        
+        let containerJson = container.generateSwaggerJson()
+        XCTAssert(containerJson.count == 5)
+        XCTAssert(containerJson["swagger"] as? String == "2.0")
+        XCTAssertNotNil(containerJson["info"] as? [String : Any])
+        XCTAssertNotNil(containerJson["paths"] as? [String : Any])
+        XCTAssertNotNil(containerJson["produces"] as? [String])
+        XCTAssertNotNil(containerJson["definitions"] as? [String : Any])
+    }
 }
