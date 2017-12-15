@@ -94,7 +94,7 @@
         <attribute name="methodType" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="methodArguments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SWMethodArgument" inverseName="argMethod" inverseEntity="SWMethodArgument" syncable="YES"/>
         <relationship name="methodContainer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWContainer" inverseName="containerMethods" inverseEntity="SWContainer" syncable="YES"/>
-        <relationship name="methodResponse" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWResponse" inverseName="parentMethod" inverseEntity="SWResponse" syncable="YES"/>
+        <relationship name="methodResponses" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SWResponse" inverseName="parentMethod" inverseEntity="SWResponse" syncable="YES"/>
     </entity>
     <entity name="SWMethodArgument" representedClassName="SWMethodArgument" syncable="YES" codeGenerationType="class">
         <attribute name="argDescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -121,7 +121,7 @@
     <entity name="SWResponse" representedClassName="SWResponse" syncable="YES" codeGenerationType="class">
         <attribute name="responseCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="responseDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="parentMethod" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWMethod" inverseName="methodResponse" inverseEntity="SWMethod" syncable="YES"/>
+        <relationship name="parentMethod" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWMethod" inverseName="methodResponses" inverseEntity="SWMethod" syncable="YES"/>
         <relationship name="responseType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWDataType" inverseName="parentResponse" inverseEntity="SWDataType" syncable="YES"/>
     </entity>
     <elements>

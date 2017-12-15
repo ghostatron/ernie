@@ -11,6 +11,8 @@ import CoreData
 
 protocol CoreDataAvatarDelegate
 {
-    init?(avatarOf: NSManagedObject)
+    /**
+     Saves the data associated with this object to core data.
+     */
     func saveToCoreData()
 }

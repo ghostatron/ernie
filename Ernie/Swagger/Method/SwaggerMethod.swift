@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SwaggerMethod
+class SwaggerMethod: CoreDataAvatarDelegate
 {
     /// The name of the method.
     var methodName: String
@@ -37,6 +37,15 @@ class SwaggerMethod
     /// A list of the type of files that can be accepted/created with this method.
     var methodProducts: [SwaggerProductEnum] = []
     
+    private(set) var avatarOf: SWMethod?
+    
+    private let parsingDelimiter = ";;"
+    
+    // MARK:- Initializers
+    
+    /**
+     Creates a SwaggerMethod with the given |name| and |type|.
+     */
     init(name: String, type: SwaggerMethodTypeEnum)
     {
         self.methodName = name
@@ -44,6 +53,57 @@ class SwaggerMethod
         self.methodType = type
     }
     
+    /**
+     Creates a SWMethod that populates itself based on the data in the
+     given SWMethodArgument object.
+     */
+    convenience init?(avatarOf: SWMethod)
+    {
+        // Create the object using the standard init.
+        guard
+            let methodName = avatarOf.methodName,
+            let swMethodType = avatarOf.methodType,
+            let methodType = SwaggerMethodTypeEnum(rawValue: swMethodType) else
+        {
+            return nil
+        }
+        self.init(name: methodName, type: methodType)
+        self.avatarOf = avatarOf
+        
+        // Copy each property over.
+        self.methodSummary = avatarOf.methodSummary
+        self.methodDescription = avatarOf.methodDescription
+        self.methodOperationId = avatarOf.methodOperationId ?? self.methodName
+        for swArgument in avatarOf.methodArguments?.allObjects as? [SWMethodArgument] ?? []
+        {
+            if let argument = SwaggerMethodArgument(avatarOf: swArgument)
+            {
+                self.methodArguments.append(argument)
+            }
+        }
+        for swResponse in avatarOf.methodResponses?.allObjects as? [SWResponse] ?? []
+        {
+            if let response = SwaggerResponse(avatarOf: swResponse)
+            {
+                self.methodResponses.append(response)
+            }
+        }
+        self.methodTags = avatarOf.methodTags?.components(separatedBy: self.parsingDelimiter) ?? []
+        for productString in avatarOf.methodProducts?.components(separatedBy: self.parsingDelimiter) ?? []
+        {
+            if let product = SwaggerProductEnum(rawValue: productString)
+            {
+                self.methodProducts.append(product)
+            }
+        }
+    }
+    
+    // MARK:- Swagger Generation
+    
+    /**
+     Generates a dictionary that represents the given |methods| merged together
+     in a format appropriate for Electrode Native's swagger/json implementation.
+     */
     class func generateSwaggerSection(methods: [SwaggerMethod]) -> [String : Any]
     {
         var swaggerBody: [String : Any] = [:]
@@ -53,7 +113,11 @@ class SwaggerMethod
         }
         return swaggerBody
     }
-    
+
+    /**
+     Generates a dictionary that represents this object in a format appropriate for Electrode
+     Native's swagger/json implementation.
+     */
     func generateSwaggerSection() -> [String : Any]
     {
         // Create the return object with the simple properties assigned.
@@ -110,5 +174,12 @@ class SwaggerMethod
         swaggerBody["responses"] = responsesSection
 
         return [self.methodType.toString() : swaggerBody]
+    }
+    
+    // MARK:- CoreDataAvatarDelegate
+    
+    func saveToCoreData()
+    {
+        
     }
 }

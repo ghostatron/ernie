@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SwaggerContainer
+class SwaggerContainer: CoreDataAvatarDelegate
 {
     var containerDescription: String?
     var containerTitle: String?
@@ -19,6 +19,46 @@ class SwaggerContainer
     /// A list of the type of files that can be created with by the methods in this container.
     var containerProducts: [SwaggerProductEnum] = []
 
+    private(set) var avatarOf: SWContainer?
+    
+    // MARK:- Initializers
+    
+    /**
+     Creates a SwaggerContainer that populates itself based on the data in the
+     given SWContainer object.
+     */
+    convenience init?(avatarOf: SWContainer)
+    {
+        // Create the object using the standard init.
+        self.init()
+        self.avatarOf = avatarOf
+        
+        // Copy the properties over.
+        self.containerDescription = avatarOf.containerDescription
+        self.containerTitle = avatarOf.containerName
+        self.containerOwner = avatarOf.containerOwner
+        for swMethod in avatarOf.containerMethods?.allObjects as? [SWMethod] ?? []
+        {
+            if let method = SwaggerMethod(avatarOf: swMethod)
+            {
+                self.containerMethods.append(method)
+            }
+        }
+        for swModel in avatarOf.containerModels?.allObjects as? [SWObjectModel] ?? []
+        {
+            if let model = SwaggerObjectModel(avatarOf: swModel)
+            {
+                self.containerModels.append(model)
+            }
+        }
+    }
+
+    // MARK:- Swagger Generation
+    
+    /**
+     Generates a dictionary that represents this object in a format appropriate for Electrode
+     Native's swagger/json implementation.
+     */
     func generateSwaggerJson() -> [String : Any]
     {
         // The top level has a swagger version, plus sections for "info", "paths", and "definitions".
@@ -31,6 +71,10 @@ class SwaggerContainer
         return swaggerJson
     }
     
+    /**
+     Generates a dictionary that represents this object's Info section in a format
+     appropriate for Electrode Native's swagger/json implementation.
+     */
     private func generateSwaggerInfoSection() -> [String : Any]
     {
         // The "info" section has a title, description, and contact/owner.
@@ -44,6 +88,10 @@ class SwaggerContainer
         return infoJson
     }
     
+    /**
+     Generates a dictionary that represents this object's Produces section in a format
+     appropriate for Electrode Native's swagger/json implementation.
+     */
     private func generateSwaggerProducesSection() -> [String]
     {
         // The "produces" section is simply an array of strings where each string is an output type.
@@ -62,6 +110,10 @@ class SwaggerContainer
         }
     }
     
+    /**
+     Generates a dictionary that represents this object's Paths section in a format
+     appropriate for Electrode Native's swagger/json implementation.
+     */
     private func generateSwaggerPathsSection() -> [String : Any]
     {
         // The "paths" section defines all the methods.
@@ -102,6 +154,10 @@ class SwaggerContainer
         return methodsForSection
     }
     
+    /**
+     Generates a dictionary that represents this object's Definitions section in a format
+     appropriate for Electrode Native's swagger/json implementation.
+     */
     private func generateSwaggerDefinitionsSection() -> [String : Any]
     {
         // The "definitions" section defines all the complex objects.
@@ -111,5 +167,12 @@ class SwaggerContainer
             definitionsForSection[definition.objectName] = definition.generateSwaggerSection()
         }
         return definitionsForSection
+    }
+    
+    // MARK:- CoreDataAvatarDelegate
+    
+    func saveToCoreData()
+    {
+        
     }
 }

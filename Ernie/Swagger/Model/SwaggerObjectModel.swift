@@ -13,12 +13,48 @@ class SwaggerObjectModel: CoreDataAvatarDelegate
 {
     var objectName: String
     var properties: [SwaggerModelProperty] = []
+    private(set) var avatarOf: SWObjectModel?
+
+    // MARK:- Initializers
     
+    /**
+     Creates a SwaggerObjectModel with the given |name|.
+     */
     init(name: String)
     {
         self.objectName = name
     }
     
+    /**
+     Creates a SwaggerObjectModel that populates itself based on the data in the
+     given SWObjectModel object.
+     */
+    convenience init?(avatarOf: SWObjectModel)
+    {
+        // Create the object using the standard init.
+        guard let modelName = avatarOf.modelName else
+        {
+            return nil
+        }
+        self.init(name: modelName)
+        self.avatarOf = avatarOf
+
+        // Copy each property over.
+        for swProperty in avatarOf.modelProperties?.allObjects as? [SWModelProperty] ?? []
+        {
+            if let property = SwaggerModelProperty(avatarOf: swProperty)
+            {
+                self.properties.append(property)
+            }
+        }
+    }
+    
+    // MARK:- Swagger Generation
+    
+    /**
+     Generates a dictionary that represents this object in a format appropriate for Electrode
+     Native's swagger/json implementation.
+     */
     func generateSwaggerSection() -> [String : Any]
     {
         // Start off with a body that has the object's type in it.
@@ -45,25 +81,6 @@ class SwaggerObjectModel: CoreDataAvatarDelegate
     }
     
     // MARK:- CoreDataAvatarDelegate
-    
-    var avatarOf: SWObjectModel?
-    
-    required convenience init?(avatarOf: NSManagedObject)
-    {
-        guard let avatarOf = avatarOf as? SWObjectModel, let modelName = avatarOf.modelName else
-        {
-            return nil
-        }
-        
-        self.init(name: modelName)
-        for swProperty in avatarOf.modelProperties?.allObjects as? [SWModelProperty] ?? []
-        {
-            if let property = SwaggerModelProperty(avatarOf: swProperty)
-            {
-                self.properties.append(property)
-            }
-        }
-    }
     
     func saveToCoreData()
     {

@@ -8,19 +8,58 @@
 
 import Foundation
 
-class SwaggerMethodArgument
+class SwaggerMethodArgument: CoreDataAvatarDelegate
 {
     var argumentName: String
     var argumentType: SwaggerDataType
     var argumentFormat: SwaggerDataTypeFormatEnum?
     var isArgumentRequired = false
     var argumentDescription: String?
+    private(set) var avatarOf: SWMethodArgument?
+    
+    // MARK:- Initializers
+    
+    /**
+     Creates a SwaggerMethodArgument with the given |name| and |type|.
+     */
     init(name: String, type: SwaggerDataType)
     {
         self.argumentName = name
         self.argumentType = type
     }
     
+    /**
+     Creates a SwaggerMethodArgument that populates itself based on the data in the
+     given SwaggerMethodArgument object.
+     */
+    convenience init?(avatarOf: SWMethodArgument)
+    {
+        // Create the object using the standard init.
+        guard
+            let argName = avatarOf.argName,
+            let swArgType = avatarOf.argType,
+            let argType = SwaggerDataType(avatarOf: swArgType) else
+        {
+            return nil
+        }
+       self.init(name: argName, type: argType)
+        self.avatarOf = avatarOf
+        
+        // Copy each property over.
+        if let format = avatarOf.argFormat
+        {
+            self.argumentFormat = SwaggerDataTypeFormatEnum(rawValue: format)
+        }
+        self.isArgumentRequired = avatarOf.argIsRequired
+        self.argumentDescription = avatarOf.argDescription
+    }
+    
+    // MARK:- Swagger Generation
+    
+    /**
+     Generates a dictionary that represents this object in a format appropriate for Electrode
+     Native's swagger/json implementation.
+     */
     func generateSwaggerJson() -> [String : Any]
     {
         var argumentJson: [String : Any] = [:]
@@ -31,5 +70,12 @@ class SwaggerMethodArgument
         argumentJson["schema"] = self.argumentType.generateSwaggerSchemaSection()
         argumentJson["format"] = self.argumentFormat?.stringValue()
         return argumentJson
+    }
+    
+    // MARK:- CoreDataAvatarDelegate
+    
+    func saveToCoreData()
+    {
+        
     }
 }
