@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import CoreData
 
-class SwaggerModelProperty
+class SwaggerModelProperty: CoreDataAvatarDelegate
 {
     var propertyName: String
     var propertyDataType: SwaggerDataType
@@ -29,5 +30,35 @@ class SwaggerModelProperty
         swaggerBody["format"] = self.propertyFormat?.stringValue()
         swaggerBody["description"] = self.propertyDescription
         return swaggerBody
+    }
+    
+    // MARK:- CoreDataAvatarDelegate
+    
+    var avatarOf: SWModelProperty?
+    
+    convenience required init?(avatarOf: NSManagedObject)
+    {
+        guard
+            let avatarOf = avatarOf as? SWModelProperty,
+            let propertyName = avatarOf.propertyName,
+            let swPropertyType = avatarOf.propertyDataType,
+            let propertyType = SwaggerDataType(avatarOf: swPropertyType) else
+        {
+            return nil
+        }
+        
+        self.init(name: propertyName, dataType: propertyType)
+        self.avatarOf = avatarOf
+        self.propertyDescription = avatarOf.propertyDesciption
+        self.propertyIsRequired = avatarOf.propertyIsRequired
+        if let format = avatarOf.propertyFormat
+        {
+            self.propertyFormat = SwaggerDataTypeFormatEnum(rawValue: format)
+        }
+    }
+    
+    func saveToCoreData()
+    {
+        
     }
 }

@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import CoreData
 
-class SwaggerDataType
+class SwaggerDataType: CoreDataAvatarDelegate
 {
     private(set) var primitiveDataType: SwaggerDataTypeEnum?
     private(set) var objectModel: SwaggerObjectModel?
@@ -50,5 +51,42 @@ class SwaggerDataType
         }
         
         return schemaJson
+    }
+    
+    // MARK:- CoreDataAvatarDelegate
+    
+    var avatarOf: SWDataType?
+    
+    required convenience init?(avatarOf: NSManagedObject)
+    {
+        guard let avatarOf = avatarOf as? SWDataType else
+        {
+            return nil
+        }
+
+        if let primitiveType = avatarOf.primitiveDataType, let primitiveTypeEnum = SwaggerDataTypeEnum(rawValue: primitiveType)
+        {
+            self.init(primitiveType: primitiveTypeEnum)
+            self.avatarOf = avatarOf
+        }
+        else if let swArrayType = avatarOf.dataTypeArrayDataType, let arrayType = SwaggerDataType(avatarOf: swArrayType)
+        {
+            self.init(asArrayOf: arrayType)
+            self.avatarOf = avatarOf
+        }
+        else if let swModel = avatarOf.parentModel, let model = SwaggerObjectModel(avatarOf: swModel)
+        {
+            self.init(withObject: model)
+            self.avatarOf = avatarOf
+        }
+        else
+        {
+            return nil
+        }
+    }
+    
+    func saveToCoreData()
+    {
+        
     }
 }

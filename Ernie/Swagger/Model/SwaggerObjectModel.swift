@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import CoreData
 
-class SwaggerObjectModel
+class SwaggerObjectModel: CoreDataAvatarDelegate
 {
     var objectName: String
     var properties: [SwaggerModelProperty] = []
@@ -41,5 +42,31 @@ class SwaggerObjectModel
         swaggerBody["required"] = requiredProperties
         swaggerBody["properties"] = propertySections
         return swaggerBody
+    }
+    
+    // MARK:- CoreDataAvatarDelegate
+    
+    var avatarOf: SWObjectModel?
+    
+    required convenience init?(avatarOf: NSManagedObject)
+    {
+        guard let avatarOf = avatarOf as? SWObjectModel, let modelName = avatarOf.modelName else
+        {
+            return nil
+        }
+        
+        self.init(name: modelName)
+        for swProperty in avatarOf.modelProperties?.allObjects as? [SWModelProperty] ?? []
+        {
+            if let property = SwaggerModelProperty(avatarOf: swProperty)
+            {
+                self.properties.append(property)
+            }
+        }
+    }
+    
+    func saveToCoreData()
+    {
+        
     }
 }
