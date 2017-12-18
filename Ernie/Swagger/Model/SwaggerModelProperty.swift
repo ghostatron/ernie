@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class SwaggerModelProperty: CoreDataAvatarDelegate
+class SwaggerModelProperty
 {
     var propertyName: String
     var propertyDataType: SwaggerDataType
@@ -94,12 +94,5 @@ class SwaggerModelProperty: CoreDataAvatarDelegate
         }
         
         return self.avatarOf
-    }
-    
-    // MARK:- CoreDataAvatarDelegate
-
-    func saveToCoreData()
-    {
-        
     }
 }

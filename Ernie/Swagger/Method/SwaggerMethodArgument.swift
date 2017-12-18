@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class SwaggerMethodArgument: CoreDataAvatarDelegate
+class SwaggerMethodArgument
 {
     var argumentName: String
     var argumentType: SwaggerDataType
@@ -96,12 +96,5 @@ class SwaggerMethodArgument: CoreDataAvatarDelegate
             argumentToReturn.argFormat = self.argumentFormat?.rawValue
         }
         return self.avatarOf
-    }
-    
-    // MARK:- CoreDataAvatarDelegate
-    
-    func saveToCoreData()
-    {
-        
     }
 }

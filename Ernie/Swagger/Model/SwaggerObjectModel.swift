@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class SwaggerObjectModel: CoreDataAvatarDelegate
+class SwaggerObjectModel
 {
     var objectName: String
     var properties: [SwaggerModelProperty] = []
@@ -49,6 +49,23 @@ class SwaggerObjectModel: CoreDataAvatarDelegate
         }
     }
     
+    class func getAllModels() -> [SwaggerObjectModel]
+    {
+        var allModels: [SwaggerObjectModel] = []
+        
+        let request: NSFetchRequest<SWObjectModel> = SWObjectModel.fetchRequest()
+        let swModels = try? AppDelegate.mainManagedObjectContext().fetch(request)
+        for swModel in swModels ?? []
+        {
+            if let model = SwaggerObjectModel(avatarOf: swModel)
+            {
+                allModels.append(model)
+            }
+        }
+        
+        return allModels
+    }
+    
     // MARK:- Swagger Generation
     
     /**
@@ -79,9 +96,7 @@ class SwaggerObjectModel: CoreDataAvatarDelegate
         swaggerBody["properties"] = propertySections
         return swaggerBody
     }
-    
-    // MARK:- CoreDataAvatarDelegate
-    
+        
     func refreshCoreDataObject() -> SWObjectModel?
     {
         let moc = AppDelegate.mainManagedObjectContext()
@@ -113,10 +128,5 @@ class SwaggerObjectModel: CoreDataAvatarDelegate
         }
         
         return self.avatarOf
-    }
-    
-    func saveToCoreData()
-    {
-        
     }
 }

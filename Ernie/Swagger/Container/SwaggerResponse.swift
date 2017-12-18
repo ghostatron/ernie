@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class SwaggerResponse: CoreDataAvatarDelegate
+class SwaggerResponse
 {
     var responseHttpCode: String
     var responseDataType: SwaggerDataType
@@ -46,6 +46,23 @@ class SwaggerResponse: CoreDataAvatarDelegate
         
         // Copy the properties over.
         self.responseDescription = avatarOf.responseDescription
+    }
+    
+    class func getAllResponses() -> [SwaggerResponse]
+    {
+        var allResponses: [SwaggerResponse] = []
+        
+        let request: NSFetchRequest<SWResponse> = SWResponse.fetchRequest()
+        let swResponses = try? AppDelegate.mainManagedObjectContext().fetch(request)
+        for swResponse in swResponses ?? []
+        {
+            if let response = SwaggerResponse(avatarOf: swResponse)
+            {
+                allResponses.append(response)
+            }
+        }
+        
+        return allResponses
     }
     
     // MARK:- Swagger Generation
@@ -87,12 +104,5 @@ class SwaggerResponse: CoreDataAvatarDelegate
         }
         
         return self.avatarOf
-    }
-    
-    // MARK:- CoreDataAvatarDelegate
-    
-    func saveToCoreData()
-    {
-        
     }
 }

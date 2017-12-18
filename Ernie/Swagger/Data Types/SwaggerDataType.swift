@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class SwaggerDataType: CoreDataAvatarDelegate
+class SwaggerDataType
 {
     private(set) var primitiveDataType: SwaggerDataTypeEnum?
     private(set) var objectModel: SwaggerObjectModel?
@@ -123,12 +123,5 @@ class SwaggerDataType: CoreDataAvatarDelegate
         }
         
         return self.avatarOf
-    }
-    
-    // MARK:- CoreDataAvatarDelegate
-    
-    func saveToCoreData()
-    {
-        
     }
 }

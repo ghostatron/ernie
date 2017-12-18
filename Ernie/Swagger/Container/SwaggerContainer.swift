@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class SwaggerContainer: CoreDataAvatarDelegate
+class SwaggerContainer
 {
     var containerDescription: String?
     var containerTitle: String?
@@ -60,6 +60,23 @@ class SwaggerContainer: CoreDataAvatarDelegate
                 self.containerProducts.append(product)
             }
         }
+    }
+    
+    class func getAllContainers() -> [SwaggerContainer]
+    {
+        var allContainers: [SwaggerContainer] = []
+        
+        let request: NSFetchRequest<SWContainer> = SWContainer.fetchRequest()
+        let swContainers = try? AppDelegate.mainManagedObjectContext().fetch(request)
+        for swContainer in swContainers ?? []
+        {
+            if let container = SwaggerContainer(avatarOf: swContainer)
+            {
+                allContainers.append(container)
+            }
+        }
+
+        return allContainers
     }
 
     // MARK:- Swagger Generation
@@ -178,8 +195,6 @@ class SwaggerContainer: CoreDataAvatarDelegate
         return definitionsForSection
     }
     
-    // MARK:- CoreDataAvatarDelegate
-    
     func refreshCoreDataObject() -> SWContainer?
     {
         let moc = AppDelegate.mainManagedObjectContext()
@@ -244,10 +259,5 @@ class SwaggerContainer: CoreDataAvatarDelegate
         }
         
         return self.avatarOf
-    }
-    
-    func saveToCoreData()
-    {
-        
     }
 }

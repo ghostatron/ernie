@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class SwaggerMethod: CoreDataAvatarDelegate
+class SwaggerMethod
 {
     /// The name of the method.
     var methodName: String
@@ -99,6 +99,23 @@ class SwaggerMethod: CoreDataAvatarDelegate
         }
     }
     
+    class func getAllMethods() -> [SwaggerMethod]
+    {
+        var allMethods: [SwaggerMethod] = []
+        
+        let request: NSFetchRequest<SWMethod> = SWMethod.fetchRequest()
+        let swMethods = try? AppDelegate.mainManagedObjectContext().fetch(request)
+        for swMethod in swMethods ?? []
+        {
+            if let method = SwaggerMethod(avatarOf: swMethod)
+            {
+                allMethods.append(method)
+            }
+        }
+        
+        return allMethods
+    }
+    
     // MARK:- Swagger Generation
     
     /**
@@ -177,8 +194,6 @@ class SwaggerMethod: CoreDataAvatarDelegate
         return [self.methodType.toString() : swaggerBody]
     }
     
-    // MARK:- CoreDataAvatarDelegate
-    
     func refreshCoreDataObject() -> SWMethod?
     {
         let moc = AppDelegate.mainManagedObjectContext()
@@ -254,10 +269,5 @@ class SwaggerMethod: CoreDataAvatarDelegate
         }
         
         return self.avatarOf
-    }
-    
-    func saveToCoreData()
-    {
-        
     }
 }
