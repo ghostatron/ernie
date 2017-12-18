@@ -70,6 +70,32 @@ class SwaggerModelProperty: CoreDataAvatarDelegate
         return swaggerBody
     }
     
+    func refreshCoreDataObject() -> SWModelProperty?
+    {
+        let moc = AppDelegate.mainManagedObjectContext()
+        moc.performAndWait {
+            
+            // Figure out if we already have an object, or need to create a new one now.
+            if self.avatarOf == nil
+            {
+                self.avatarOf = NSEntityDescription.insertNewObject(forEntityName: "SWModelProperty", into: moc) as? SWModelProperty
+            }
+            guard let propertyToReturn = self.avatarOf else
+            {
+                return
+            }
+            
+            // Copy over the property properties properly (probably).
+            propertyToReturn.propertyName = self.propertyName
+            propertyToReturn.propertyDesciption = self.propertyDescription
+            propertyToReturn.propertyIsRequired = self.propertyIsRequired
+            propertyToReturn.propertyFormat = self.propertyFormat?.rawValue
+            propertyToReturn.propertyDataType = self.propertyDataType.refreshCoreDataObject()
+        }
+        
+        return self.avatarOf
+    }
+    
     // MARK:- CoreDataAvatarDelegate
 
     func saveToCoreData()

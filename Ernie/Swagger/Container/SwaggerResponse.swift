@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class SwaggerResponse: CoreDataAvatarDelegate
 {
@@ -62,6 +63,30 @@ class SwaggerResponse: CoreDataAvatarDelegate
             swaggerBody["description"] = description
         }
         return swaggerBody
+    }
+    
+    func refreshCoreDataObject() -> SWResponse?
+    {
+        let moc = AppDelegate.mainManagedObjectContext()
+        moc.performAndWait {
+            
+            // Figure out if we already have an object, or need to create a new one now.
+            if self.avatarOf == nil
+            {
+                self.avatarOf = NSEntityDescription.insertNewObject(forEntityName: "SWResponse", into: moc) as? SWResponse
+            }
+            guard let responseToReturn = self.avatarOf else
+            {
+                return
+            }
+            
+            // Copy over the properties.
+            responseToReturn.responseCode = self.responseHttpCode
+            responseToReturn.responseDescription = self.responseDescription
+            responseToReturn.responseType = self.responseDataType.refreshCoreDataObject()
+        }
+        
+        return self.avatarOf
     }
     
     // MARK:- CoreDataAvatarDelegate

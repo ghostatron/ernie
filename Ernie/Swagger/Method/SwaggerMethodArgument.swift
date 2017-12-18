@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class SwaggerMethodArgument: CoreDataAvatarDelegate
 {
@@ -70,6 +71,31 @@ class SwaggerMethodArgument: CoreDataAvatarDelegate
         argumentJson["schema"] = self.argumentType.generateSwaggerSchemaSection()
         argumentJson["format"] = self.argumentFormat?.stringValue()
         return argumentJson
+    }
+    
+    func refreshCoreDataObject() -> SWMethodArgument?
+    {
+        let moc = AppDelegate.mainManagedObjectContext()
+        moc.performAndWait {
+            
+            // Figure out if we already have an object, or need to create a new one now.
+            if self.avatarOf == nil
+            {
+                self.avatarOf = NSEntityDescription.insertNewObject(forEntityName: "SWMethodArgument", into: moc) as? SWMethodArgument
+            }
+            guard let argumentToReturn = self.avatarOf else
+            {
+                return
+            }
+            
+            // Copy over the properties.
+            argumentToReturn.argName = self.argumentName
+            argumentToReturn.argDescription = self.argumentDescription
+            argumentToReturn.argIsRequired = self.isArgumentRequired
+            argumentToReturn.argType = self.argumentType.refreshCoreDataObject()
+            argumentToReturn.argFormat = self.argumentFormat?.rawValue
+        }
+        return self.avatarOf
     }
     
     // MARK:- CoreDataAvatarDelegate

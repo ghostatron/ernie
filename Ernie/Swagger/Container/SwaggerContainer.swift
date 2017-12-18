@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class SwaggerContainer: CoreDataAvatarDelegate
 {
@@ -15,6 +16,7 @@ class SwaggerContainer: CoreDataAvatarDelegate
     var containerOwner: String?
     var containerMethods: [SwaggerMethod] = []
     var containerModels: [SwaggerObjectModel] = []
+    private let parsingDelimiter = ";;"
 
     /// A list of the type of files that can be created with by the methods in this container.
     var containerProducts: [SwaggerProductEnum] = []
@@ -49,6 +51,13 @@ class SwaggerContainer: CoreDataAvatarDelegate
             if let model = SwaggerObjectModel(avatarOf: swModel)
             {
                 self.containerModels.append(model)
+            }
+        }
+        for productString in avatarOf.containerProducts?.components(separatedBy: self.parsingDelimiter) ?? []
+        {
+            if let product = SwaggerProductEnum(rawValue: productString)
+            {
+                self.containerProducts.append(product)
             }
         }
     }
@@ -170,6 +179,72 @@ class SwaggerContainer: CoreDataAvatarDelegate
     }
     
     // MARK:- CoreDataAvatarDelegate
+    
+    func refreshCoreDataObject() -> SWContainer?
+    {
+        let moc = AppDelegate.mainManagedObjectContext()
+        moc.performAndWait {
+            
+            // Figure out if we already have an object, or need to create a new one now.
+            if self.avatarOf == nil
+            {
+                self.avatarOf = NSEntityDescription.insertNewObject(forEntityName: "SWContainer", into: moc) as? SWContainer
+            }
+            guard let containerToReturn = self.avatarOf else
+            {
+                return
+            }
+            
+            // Copy over the simple properties first.
+            containerToReturn.containerName = self.containerTitle
+            containerToReturn.containerDescription = self.containerDescription
+            containerToReturn.containerOwner = self.containerOwner
+            
+            // Wipe out any pre-existing models and rebuild that set.
+            if let oldModels = containerToReturn.containerModels
+            {
+                containerToReturn.removeFromContainerModels(oldModels)
+            }
+            for model in self.containerModels
+            {
+                if let swModel = model.refreshCoreDataObject()
+                {
+                    containerToReturn.addToContainerModels(swModel)
+                }
+            }
+            
+            // Wipe out any pre-existing methods and rebuild that set.
+            if let oldMethods = containerToReturn.containerMethods
+            {
+                containerToReturn.removeFromContainerMethods(oldMethods)
+            }
+            for method in self.containerMethods
+            {
+                if let swMethod = method.refreshCoreDataObject()
+                {
+                    containerToReturn.addToContainerMethods(swMethod)
+                }
+            }
+            
+            // Build and assign the products string.
+            if self.containerProducts.count > 0
+            {
+                var productStrings: [String] = []
+                for product in self.containerProducts
+                {
+                    productStrings.append(product.rawValue)
+                }
+                containerToReturn.containerProducts = productStrings.joined(separator: self.parsingDelimiter)
+            }
+            else
+            {
+                containerToReturn.containerProducts = nil
+            }
+            
+        }
+        
+        return self.avatarOf
+    }
     
     func saveToCoreData()
     {

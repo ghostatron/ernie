@@ -72,15 +72,16 @@
         <attribute name="containerDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="containerName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="containerOwner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="containerProducts" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="containerMethods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SWMethod" inverseName="methodContainer" inverseEntity="SWMethod" syncable="YES"/>
         <relationship name="containerModels" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SWObjectModel" inverseName="modelContainer" inverseEntity="SWObjectModel" syncable="YES"/>
     </entity>
     <entity name="SWDataType" representedClassName="SWDataType" syncable="YES" codeGenerationType="class">
         <attribute name="primitiveDataType" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="dataTypeArrayDataType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWDataType" inverseName="parentDataType" inverseEntity="SWDataType" syncable="YES"/>
+        <relationship name="dataTypeModel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWObjectModel" inverseName="dataTypeReferences" inverseEntity="SWObjectModel" syncable="YES"/>
         <relationship name="parentDataType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWDataType" inverseName="dataTypeArrayDataType" inverseEntity="SWDataType" syncable="YES"/>
         <relationship name="parentMethodArg" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWMethodArgument" inverseName="argType" inverseEntity="SWMethodArgument" syncable="YES"/>
-        <relationship name="parentModel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWObjectModel" inverseName="dataTypeReferences" inverseEntity="SWObjectModel" syncable="YES"/>
         <relationship name="parentProperty" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWModelProperty" inverseName="propertyDataType" inverseEntity="SWModelProperty" syncable="YES"/>
         <relationship name="parentResponse" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWResponse" inverseName="responseType" inverseEntity="SWResponse" syncable="YES"/>
     </entity>
@@ -114,7 +115,7 @@
     </entity>
     <entity name="SWObjectModel" representedClassName="SWObjectModel" syncable="YES" codeGenerationType="class">
         <attribute name="modelName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="dataTypeReferences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SWDataType" inverseName="parentModel" inverseEntity="SWDataType" syncable="YES"/>
+        <relationship name="dataTypeReferences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SWDataType" inverseName="dataTypeModel" inverseEntity="SWDataType" syncable="YES"/>
         <relationship name="modelContainer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWContainer" inverseName="containerModels" inverseEntity="SWContainer" syncable="YES"/>
         <relationship name="modelProperties" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SWModelProperty" inverseName="parentModel" inverseEntity="SWModelProperty" syncable="YES"/>
     </entity>
@@ -142,6 +143,6 @@
         <element name="SWMethodArgument" positionX="0" positionY="153" width="128" height="135"/>
         <element name="SWMethod" positionX="9" positionY="162" width="128" height="195"/>
         <element name="SWResponse" positionX="18" positionY="180" width="128" height="105"/>
-        <element name="SWContainer" positionX="36" positionY="189" width="128" height="120"/>
+        <element name="SWContainer" positionX="36" positionY="189" width="128" height="135"/>
     </elements>
 </model>

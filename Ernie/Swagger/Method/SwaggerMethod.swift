@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class SwaggerMethod: CoreDataAvatarDelegate
 {
@@ -177,6 +178,83 @@ class SwaggerMethod: CoreDataAvatarDelegate
     }
     
     // MARK:- CoreDataAvatarDelegate
+    
+    func refreshCoreDataObject() -> SWMethod?
+    {
+        let moc = AppDelegate.mainManagedObjectContext()
+        moc.performAndWait {
+            
+            // Figure out if we already have an object, or need to create a new one now.
+            if self.avatarOf == nil
+            {
+                self.avatarOf = NSEntityDescription.insertNewObject(forEntityName: "SWMethod", into: moc) as? SWMethod
+            }
+            guard let methodToReturn = self.avatarOf else
+            {
+                return
+            }
+            
+            // Copy over the properties.
+            methodToReturn.methodName = self.methodName
+            methodToReturn.methodType = self.methodType.rawValue
+            methodToReturn.methodDescription = self.methodDescription
+            methodToReturn.methodSummary = self.methodSummary
+            methodToReturn.methodOperationId = self.methodOperationId
+            
+            // The tags are stored as a delimited string.
+            if self.methodTags.count > 0
+            {
+                methodToReturn.methodTags = self.methodTags.joined(separator: self.parsingDelimiter)
+            }
+            else
+            {
+                methodToReturn.methodTags = nil
+            }
+            
+            // Wipe out any pre-existing arguments and rebuild that set.
+            if let oldArguments = methodToReturn.methodArguments
+            {
+                methodToReturn.removeFromMethodArguments(oldArguments)
+            }
+            for argument in self.methodArguments
+            {
+                if let argumentAvatar = argument.refreshCoreDataObject()
+                {
+                    methodToReturn.addToMethodArguments(argumentAvatar)
+                }
+            }
+            
+            // Wipe out any pre-existing responses and rebuild that set.
+            if let oldResponses = methodToReturn.methodResponses
+            {
+                methodToReturn.removeFromMethodResponses(oldResponses)
+            }
+            for response in self.methodResponses
+            {
+                if let responseAvatar = response.refreshCoreDataObject()
+                {
+                    methodToReturn.addToMethodResponses(responseAvatar)
+                }
+            }
+            
+            // The products are stored as a delimited string.
+            if self.methodProducts.count > 0
+            {
+                var productsAsString: [String] = []
+                for product in self.methodProducts
+                {
+                    productsAsString.append(product.rawValue)
+                }
+                methodToReturn.methodProducts = productsAsString.joined(separator: self.parsingDelimiter)
+            }
+            else
+            {
+                methodToReturn.methodProducts = nil
+            }
+        }
+        
+        return self.avatarOf
+    }
     
     func saveToCoreData()
     {

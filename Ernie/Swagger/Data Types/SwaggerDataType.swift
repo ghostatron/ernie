@@ -63,7 +63,7 @@ class SwaggerDataType: CoreDataAvatarDelegate
             self.init(asArrayOf: arrayType)
             self.avatarOf = avatarOf
         }
-        else if let swModel = avatarOf.parentModel, let model = SwaggerObjectModel(avatarOf: swModel)
+        else if let swModel = avatarOf.dataTypeModel, let model = SwaggerObjectModel(avatarOf: swModel)
         {
             self.init(withObject: model)
             self.avatarOf = avatarOf
@@ -99,6 +99,30 @@ class SwaggerDataType: CoreDataAvatarDelegate
         }
         
         return schemaJson
+    }
+    
+    func refreshCoreDataObject() -> SWDataType?
+    {
+        let moc = AppDelegate.mainManagedObjectContext()
+        moc.performAndWait {
+            
+            // Figure out if we already have an object, or need to create a new one now.
+            if self.avatarOf == nil
+            {
+                self.avatarOf = NSEntityDescription.insertNewObject(forEntityName: "SWDataType", into: moc) as? SWDataType
+            }
+            guard let dataTypeToReturn = self.avatarOf else
+            {
+                return
+            }
+            
+            // Copy over the properties.
+            dataTypeToReturn.primitiveDataType = self.primitiveDataType?.rawValue
+            dataTypeToReturn.dataTypeArrayDataType = self.arrayDataType?.refreshCoreDataObject()
+            dataTypeToReturn.dataTypeModel = self.objectModel?.refreshCoreDataObject()
+        }
+        
+        return self.avatarOf
     }
     
     // MARK:- CoreDataAvatarDelegate
