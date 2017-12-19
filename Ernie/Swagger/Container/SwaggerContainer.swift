@@ -195,7 +195,7 @@ class SwaggerContainer
         return definitionsForSection
     }
     
-    func refreshCoreDataObject() -> SWContainer?
+    @discardableResult func refreshCoreDataObject(autoSave: Bool = false) -> SWContainer?
     {
         let moc = AppDelegate.mainManagedObjectContext()
         moc.performAndWait {
@@ -256,6 +256,11 @@ class SwaggerContainer
                 containerToReturn.containerProducts = nil
             }
             
+            // Save if requested.
+            if autoSave
+            {
+                try? moc.save()
+            }
         }
         
         return self.avatarOf

@@ -97,7 +97,7 @@ class SwaggerObjectModel
         return swaggerBody
     }
         
-    func refreshCoreDataObject() -> SWObjectModel?
+    @discardableResult func refreshCoreDataObject(autoSave: Bool = false) -> SWObjectModel?
     {
         let moc = AppDelegate.mainManagedObjectContext()
         moc.performAndWait {
@@ -124,6 +124,12 @@ class SwaggerObjectModel
                 {
                     modelToReturn.addToModelProperties(propertyAvatar)
                 }
+            }
+            
+            // Save if requested.
+            if autoSave
+            {
+                try? moc.save()
             }
         }
         

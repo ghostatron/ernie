@@ -101,7 +101,7 @@ class SwaggerDataType
         return schemaJson
     }
     
-    func refreshCoreDataObject() -> SWDataType?
+    @discardableResult func refreshCoreDataObject(autoSave: Bool = false) -> SWDataType?
     {
         let moc = AppDelegate.mainManagedObjectContext()
         moc.performAndWait {
@@ -120,6 +120,12 @@ class SwaggerDataType
             dataTypeToReturn.primitiveDataType = self.primitiveDataType?.rawValue
             dataTypeToReturn.dataTypeArrayDataType = self.arrayDataType?.refreshCoreDataObject()
             dataTypeToReturn.dataTypeModel = self.objectModel?.refreshCoreDataObject()
+            
+            // Save if requested.
+            if autoSave
+            {
+                try? moc.save()
+            }
         }
         
         return self.avatarOf

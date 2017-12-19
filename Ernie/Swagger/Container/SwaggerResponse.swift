@@ -82,7 +82,7 @@ class SwaggerResponse
         return swaggerBody
     }
     
-    func refreshCoreDataObject() -> SWResponse?
+    @discardableResult func refreshCoreDataObject(autoSave: Bool = false) -> SWResponse?
     {
         let moc = AppDelegate.mainManagedObjectContext()
         moc.performAndWait {
@@ -101,6 +101,12 @@ class SwaggerResponse
             responseToReturn.responseCode = self.responseHttpCode
             responseToReturn.responseDescription = self.responseDescription
             responseToReturn.responseType = self.responseDataType.refreshCoreDataObject()
+            
+            // Save if requested.
+            if autoSave
+            {
+                try? moc.save()
+            }
         }
         
         return self.avatarOf

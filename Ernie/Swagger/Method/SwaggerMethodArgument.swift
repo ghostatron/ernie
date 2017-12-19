@@ -73,7 +73,7 @@ class SwaggerMethodArgument
         return argumentJson
     }
     
-    func refreshCoreDataObject() -> SWMethodArgument?
+    @discardableResult func refreshCoreDataObject(autoSave: Bool = false) -> SWMethodArgument?
     {
         let moc = AppDelegate.mainManagedObjectContext()
         moc.performAndWait {
@@ -94,6 +94,12 @@ class SwaggerMethodArgument
             argumentToReturn.argIsRequired = self.isArgumentRequired
             argumentToReturn.argType = self.argumentType.refreshCoreDataObject()
             argumentToReturn.argFormat = self.argumentFormat?.rawValue
+            
+            // Save if requested.
+            if autoSave
+            {
+                try? moc.save()
+            }
         }
         return self.avatarOf
     }

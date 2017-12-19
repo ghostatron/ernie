@@ -194,7 +194,7 @@ class SwaggerMethod
         return [self.methodType.toString() : swaggerBody]
     }
     
-    func refreshCoreDataObject() -> SWMethod?
+    @discardableResult func refreshCoreDataObject(autoSave: Bool = false) -> SWMethod?
     {
         let moc = AppDelegate.mainManagedObjectContext()
         moc.performAndWait {
@@ -265,6 +265,12 @@ class SwaggerMethod
             else
             {
                 methodToReturn.methodProducts = nil
+            }
+            
+            // Save if requested.
+            if autoSave
+            {
+                try? moc.save()
             }
         }
         

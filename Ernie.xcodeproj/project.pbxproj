@@ -18,6 +18,8 @@
 		C118CC6E1FE87921008C4DB5 /* SwaggerModelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118CC6D1FE87921008C4DB5 /* SwaggerModelTableViewCell.swift */; };
 		C118CC701FE87A5B008C4DB5 /* SwaggerPropertyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118CC6F1FE87A5B008C4DB5 /* SwaggerPropertyTableViewCell.swift */; };
 		C118CC741FE991A3008C4DB5 /* SwaggerModelEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118CC731FE991A3008C4DB5 /* SwaggerModelEditorViewController.swift */; };
+		C118CC761FE9BA05008C4DB5 /* SwaggerPropertyDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118CC751FE9BA05008C4DB5 /* SwaggerPropertyDetailTableViewCell.swift */; };
+		C118CC781FE9BF3D008C4DB5 /* SwaggerModelReferenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118CC771FE9BF3D008C4DB5 /* SwaggerModelReferenceTableViewCell.swift */; };
 		C1341BE61FCCE336000A338F /* CauldronWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1341BE51FCCE336000A338F /* CauldronWrapper.swift */; };
 		C144CE981FD9D44400E47EED /* SwaggerObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144CE971FD9D44400E47EED /* SwaggerObjectModel.swift */; };
 		C144CE9A1FD9D82500E47EED /* SwaggerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144CE991FD9D82500E47EED /* SwaggerContainer.swift */; };
@@ -86,6 +88,8 @@
 		C118CC6D1FE87921008C4DB5 /* SwaggerModelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerModelTableViewCell.swift; sourceTree = "<group>"; };
 		C118CC6F1FE87A5B008C4DB5 /* SwaggerPropertyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerPropertyTableViewCell.swift; sourceTree = "<group>"; };
 		C118CC731FE991A3008C4DB5 /* SwaggerModelEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerModelEditorViewController.swift; sourceTree = "<group>"; };
+		C118CC751FE9BA05008C4DB5 /* SwaggerPropertyDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerPropertyDetailTableViewCell.swift; sourceTree = "<group>"; };
+		C118CC771FE9BF3D008C4DB5 /* SwaggerModelReferenceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerModelReferenceTableViewCell.swift; sourceTree = "<group>"; };
 		C1341BE51FCCE336000A338F /* CauldronWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CauldronWrapper.swift; sourceTree = "<group>"; };
 		C144CE971FD9D44400E47EED /* SwaggerObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerObjectModel.swift; sourceTree = "<group>"; };
 		C144CE991FD9D82500E47EED /* SwaggerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerContainer.swift; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 			isa = PBXGroup;
 			children = (
 				C118CC731FE991A3008C4DB5 /* SwaggerModelEditorViewController.swift */,
+				C118CC751FE9BA05008C4DB5 /* SwaggerPropertyDetailTableViewCell.swift */,
+				C118CC771FE9BF3D008C4DB5 /* SwaggerModelReferenceTableViewCell.swift */,
 			);
 			path = Editor;
 			sourceTree = "<group>";
@@ -517,6 +523,7 @@
 			files = (
 				C190D4571FACD3FA002EFA5B /* ElectrodeRequirement.swift in Sources */,
 				C190D45B1FAD21EC002EFA5B /* ErnWrapper.swift in Sources */,
+				C118CC761FE9BA05008C4DB5 /* SwaggerPropertyDetailTableViewCell.swift in Sources */,
 				C101C19C1FBE243F00AE02C6 /* NativeAppTableViewCell.swift in Sources */,
 				C101C1A11FBE490900AE02C6 /* RegisterNativeAppViewController.swift in Sources */,
 				C144CE9A1FD9D82500E47EED /* SwaggerContainer.swift in Sources */,
@@ -526,6 +533,7 @@
 				C1CD70041FCCA1C5002C7CBB /* MiniAppEditorViewController.swift in Sources */,
 				C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */,
 				C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */,
+				C118CC781FE9BF3D008C4DB5 /* SwaggerModelReferenceTableViewCell.swift in Sources */,
 				C1341BE61FCCE336000A338F /* CauldronWrapper.swift in Sources */,
 				C144CEA81FDB5AD000E47EED /* SwaggerDataTypeFormatEnum.swift in Sources */,
 				C118CC6E1FE87921008C4DB5 /* SwaggerModelTableViewCell.swift in Sources */,

@@ -74,7 +74,7 @@
         <attribute name="containerOwner" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="containerProducts" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="containerMethods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SWMethod" inverseName="methodContainer" inverseEntity="SWMethod" syncable="YES"/>
-        <relationship name="containerModels" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SWObjectModel" inverseName="modelContainer" inverseEntity="SWObjectModel" syncable="YES"/>
+        <relationship name="containerModels" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SWObjectModel" inverseName="modelContainers" inverseEntity="SWObjectModel" syncable="YES"/>
     </entity>
     <entity name="SWDataType" representedClassName="SWDataType" syncable="YES" codeGenerationType="class">
         <attribute name="primitiveDataType" optional="YES" attributeType="String" syncable="YES"/>
@@ -116,7 +116,7 @@
     <entity name="SWObjectModel" representedClassName="SWObjectModel" syncable="YES" codeGenerationType="class">
         <attribute name="modelName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="dataTypeReferences" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SWDataType" inverseName="dataTypeModel" inverseEntity="SWDataType" syncable="YES"/>
-        <relationship name="modelContainer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SWContainer" inverseName="containerModels" inverseEntity="SWContainer" syncable="YES"/>
+        <relationship name="modelContainers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SWContainer" inverseName="containerModels" inverseEntity="SWContainer" syncable="YES"/>
         <relationship name="modelProperties" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SWModelProperty" inverseName="parentModel" inverseEntity="SWModelProperty" syncable="YES"/>
     </entity>
     <entity name="SWResponse" representedClassName="SWResponse" syncable="YES" codeGenerationType="class">
