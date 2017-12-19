@@ -91,7 +91,7 @@ class SwaggerDataType
         }
         else if let model = self.objectModel
         {
-            schemaJson["$ref"] = "#/definitions/\(model.objectName)"
+            schemaJson["$ref"] = "#/definitions/\(model.modelName)"
         }
         else if let primitiveType = self.primitiveDataType
         {

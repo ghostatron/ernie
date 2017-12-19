@@ -190,7 +190,7 @@ class SwaggerContainer
         var definitionsForSection: [String : Any] = [:]
         for definition in self.containerModels
         {
-            definitionsForSection[definition.objectName] = definition.generateSwaggerSection()
+            definitionsForSection[definition.modelName] = definition.generateSwaggerSection()
         }
         return definitionsForSection
     }

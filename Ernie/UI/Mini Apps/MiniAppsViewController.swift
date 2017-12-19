@@ -133,6 +133,7 @@ class MiniAppsViewController: NSViewController, NSTableViewDataSource, NSTableVi
         // Reload the table.
         self.allMiniAppsAlphabetized = self.allMiniApps() ?? []
         self.miniAppsTableView.reloadData()
+        self.configureViewForSelectedMiniApp()
     }
     
     func dismissedWithCancel(dialog: NSViewController)
@@ -232,6 +233,10 @@ class MiniAppsViewController: NSViewController, NSTableViewDataSource, NSTableVi
                 if let containersArray = self.selectedMiniApp?.containers?.allObjects as? [Container]
                 {
                     self.selectedMiniAppContainersAlphabetized = containersArray.sorted { $0.containerName ?? "" < $1.containerName ?? "" }
+                }
+                else
+                {
+                    self.selectedMiniAppContainersAlphabetized = []
                 }
                 self.editButton.isEnabled = true
             }

@@ -11,8 +11,8 @@ import CoreData
 
 class SwaggerObjectModel
 {
-    var objectName: String
-    var properties: [SwaggerModelProperty] = []
+    var modelName: String
+    var modelProperties: [SwaggerModelProperty] = []
     private(set) var avatarOf: SWObjectModel?
 
     // MARK:- Initializers
@@ -22,7 +22,7 @@ class SwaggerObjectModel
      */
     init(name: String)
     {
-        self.objectName = name
+        self.modelName = name
     }
     
     /**
@@ -44,7 +44,7 @@ class SwaggerObjectModel
         {
             if let property = SwaggerModelProperty(avatarOf: swProperty)
             {
-                self.properties.append(property)
+                self.modelProperties.append(property)
             }
         }
     }
@@ -82,7 +82,7 @@ class SwaggerObjectModel
         // track of which ones are required.
         var requiredProperties: [String] = []
         var propertySections: [String : Any] = [:]
-        for property in self.properties
+        for property in self.modelProperties
         {
             propertySections[property.propertyName] = property.generateSwaggerSection()
             if property.propertyIsRequired
@@ -113,12 +113,12 @@ class SwaggerObjectModel
             }
             
             // Copy over the properties.
-            modelToReturn.modelName = self.objectName
+            modelToReturn.modelName = self.modelName
             if let oldProperties = modelToReturn.modelProperties
             {
                 modelToReturn.removeFromModelProperties(oldProperties)
             }
-            for property in self.properties
+            for property in self.modelProperties
             {
                 if let propertyAvatar = property.refreshCoreDataObject()
                 {
