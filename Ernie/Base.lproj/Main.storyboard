@@ -6,6 +6,19 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Swagger Property Editor View Controller-->
+        <scene sceneID="kaw-kX-aSd">
+            <objects>
+                <viewController id="9JO-D1-lMf" customClass="SwaggerPropertyEditorViewController" customModule="Ernie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="DXm-ZE-g5s">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="UYa-sj-mep" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-298" y="-1177"/>
+        </scene>
         <!--Swagger Model Editor View Controller-->
         <scene sceneID="NkG-PO-Syv">
             <objects>
@@ -92,6 +105,29 @@
                                                                 <outlet property="deleteButton" destination="79c-UE-ARn" id="PKx-au-KZZ"/>
                                                                 <outlet property="editButton" destination="N2J-th-zGp" id="0tn-rc-DJH"/>
                                                                 <outlet property="propertyInfoLabel" destination="gCd-RS-kxO" id="uP2-Se-p2V"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                        <tableCellView identifier="swaggerNewPropertyCell" id="aXa-7B-1Kk" customClass="SwaggerModelNewPropertyTableCell" customModule="Ernie" customModuleProvider="target">
+                                                            <rect key="frame" x="1" y="28" width="191" height="25"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bfA-Sv-OHT">
+                                                                    <rect key="frame" x="34" y="-5" width="124" height="32"/>
+                                                                    <buttonCell key="cell" type="push" title="New Property" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NEq-e7-rCr">
+                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                        <font key="font" metaFont="system"/>
+                                                                    </buttonCell>
+                                                                    <connections>
+                                                                        <action selector="newButtonPressed:" target="aXa-7B-1Kk" id="Nyq-Fp-iiF"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="bfA-Sv-OHT" firstAttribute="centerX" secondItem="aXa-7B-1Kk" secondAttribute="centerX" id="B4f-D9-uc6"/>
+                                                                <constraint firstItem="bfA-Sv-OHT" firstAttribute="centerY" secondItem="aXa-7B-1Kk" secondAttribute="centerY" id="DsI-Dz-h0u"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="newButton" destination="bfA-Sv-OHT" id="17f-fR-vKr"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
@@ -251,6 +287,7 @@ Gw
                         <outlet property="propertiesTableView" destination="P50-Yl-ieZ" id="XTM-uv-pHk"/>
                         <outlet property="referencesTableView" destination="BYE-WK-Cb2" id="PJZ-gy-mUD"/>
                         <outlet property="saveButton" destination="VLy-q4-fvH" id="l08-eY-2Ez"/>
+                        <segue destination="9JO-D1-lMf" kind="modal" identifier="toPropertyEditor" id="pPb-HV-jwy"/>
                     </connections>
                 </viewController>
                 <customObject id="T6N-Uc-g3x" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
