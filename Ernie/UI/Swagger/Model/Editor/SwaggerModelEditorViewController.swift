@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-class SwaggerModelEditorViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate
+class SwaggerModelEditorViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, SwaggerPropertyDetailTableViewCellDelegate
 {
     var modalDelegate: ModalDialogDelegate?
     var model: SwaggerObjectModel?
@@ -18,6 +18,7 @@ class SwaggerModelEditorViewController: NSViewController, NSTableViewDataSource,
     
     @IBOutlet weak var referencesTableView: NSTableView!
     @IBOutlet weak var propertiesTableView: NSTableView!
+    @IBOutlet weak var modelNameTextField: NSTextField!
     @IBOutlet weak var saveButton: NSButton!
     @IBOutlet weak var cancelButton: NSButton!
     
@@ -111,11 +112,17 @@ class SwaggerModelEditorViewController: NSViewController, NSTableViewDataSource,
     
     @IBAction func saveButtonPressed(_ sender: NSButton)
     {
+        guard self.modelNameTextField.stringValue.count > 0 else
+        {
+            return
+        }
+        
         // Save the changes that were made.
         if self.model == nil
         {
-            self.model = SwaggerObjectModel(name: "")
+            self.model = SwaggerObjectModel(name: self.modelNameTextField.stringValue)
         }
+        self.model?.modelName = self.modelNameTextField.stringValue
         self.model?.modelProperties = self.sortedProperties
         self.model?.refreshCoreDataObject(autoSave: true)
         
@@ -141,5 +148,36 @@ class SwaggerModelEditorViewController: NSViewController, NSTableViewDataSource,
             }
             self.sortedReferences = unsortedContainers.sorted  { $0.containerTitle ?? "" < $1.containerTitle ?? "" }
         }
+    }
+    
+    // MARK:- SwaggerPropertyDetailTableViewCellDelegate
+    
+    func editButtonPressed(sender: SwaggerPropertyDetailTableViewCell, property: SwaggerModelProperty?)
+    {
+        // Update the UI.
+        self.propertiesTableView.reloadData()
+    }
+    
+    func deleteButtonPressed(sender: SwaggerPropertyDetailTableViewCell, property: SwaggerModelProperty?)
+    {
+        // Locate the property in our data source.
+        var indexOfDeletion = 0
+        for existingProperty in self.sortedProperties
+        {
+            if existingProperty === property
+            {
+                break
+            }
+            indexOfDeletion += 1
+        }
+        
+        // Remove the property from our data source.
+        if indexOfDeletion < self.sortedProperties.count
+        {
+            self.sortedProperties.remove(at: indexOfDeletion)
+        }
+        
+        // Update the UI.
+        self.propertiesTableView.reloadData()
     }
 }

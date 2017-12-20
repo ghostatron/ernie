@@ -11,8 +11,12 @@ import Cocoa
 
 class SwaggerModelReferenceTableViewCell: NSTableCellView
 {
+    @IBOutlet weak var containerInfoLabel: NSTextField!
+    private(set) var container: SwaggerContainer?
+    
     func configureForContainer(_ container: SwaggerContainer)
     {
-        
+        self.container = container
+        self.containerInfoLabel.stringValue = container.containerTitle ?? "<No Name>"
     }
 }

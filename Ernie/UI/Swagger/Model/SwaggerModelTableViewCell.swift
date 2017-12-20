@@ -11,8 +11,12 @@ import Cocoa
 
 class SwaggerModelTableViewCell: NSTableCellView
 {
+    private(set) var model: SwaggerObjectModel?
+    @IBOutlet weak var modelInfoLabel: NSTextField!
+    
     func configureForModel(_ model: SwaggerObjectModel)
     {
-        
+        self.model = model
+        self.modelInfoLabel.stringValue = model.modelName
     }
 }

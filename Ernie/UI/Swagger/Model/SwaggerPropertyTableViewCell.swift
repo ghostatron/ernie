@@ -11,8 +11,12 @@ import Cocoa
 
 class SwaggerPropertyTableViewCell: NSTableCellView
 {
+    private(set) var property: SwaggerModelProperty?
+    @IBOutlet weak var propertyInfoLabel: NSTextField!
+    
     func configureForProperty(_ property: SwaggerModelProperty)
     {
-        
+        self.property = property
+        self.propertyInfoLabel.stringValue = "\(property.propertyIsRequired ? "* " : "")\(property.propertyName)"
     }
 }

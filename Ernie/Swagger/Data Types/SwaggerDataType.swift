@@ -130,4 +130,26 @@ class SwaggerDataType
         
         return self.avatarOf
     }
+    
+    /**
+     Provides a relatively human readable string for this data type.
+     (This is intended for UI display, and isn't used in swagger generation.)
+     */
+    func stringValue() -> String
+    {
+        if let arrayType = self.arrayDataType
+        {
+            return "array of \(arrayType.stringValue())"
+        }
+        else if let model = self.objectModel
+        {
+            return model.modelName
+        }
+        else if let primitiveType = self.primitiveDataType
+        {
+            return primitiveType.stringValue()
+        }
+        
+        return ""
+    }
 }
