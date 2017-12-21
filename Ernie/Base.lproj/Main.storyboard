@@ -61,25 +61,23 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ltd-ra-ANE">
+                            <button verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ltd-ra-ANE">
                                 <rect key="frame" x="88" y="141" width="73" height="18"/>
                                 <buttonCell key="cell" type="check" title="Array Of" bezelStyle="regularSquare" imagePosition="left" inset="2" id="PB3-QE-Kur">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
-                            <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OgM-H9-Lu3">
+                            <comboBox verticalHuggingPriority="750" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OgM-H9-Lu3">
                                 <rect key="frame" x="174" y="136" width="261" height="26"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="98U-nh-omS">
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" usesDataSource="YES" numberOfVisibleItems="5" id="98U-nh-omS">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Item 1</string>
-                                        <string>Item 2</string>
-                                        <string>Item 3</string>
-                                    </objectValues>
                                 </comboBoxCell>
+                                <connections>
+                                    <outlet property="dataSource" destination="9JO-D1-lMf" id="gN3-kx-4zl"/>
+                                </connections>
                             </comboBox>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bEP-XM-AFG">
                                 <rect key="frame" x="18" y="109" width="47" height="17"/>
@@ -98,6 +96,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="okButtonPressed:" target="9JO-D1-lMf" id="bGX-Ik-8WT"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lAE-O0-3lc">
                                 <rect key="frame" x="266" y="13" width="82" height="32"/>
@@ -108,19 +109,20 @@
 Gw
 </string>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" target="9JO-D1-lMf" id="Cgj-Wn-oAv"/>
+                                </connections>
                             </button>
                             <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WPg-3U-7Qs">
                                 <rect key="frame" x="100" y="103" width="335" height="26"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="2dL-9Q-umE">
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" usesDataSource="YES" numberOfVisibleItems="5" id="2dL-9Q-umE">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Item 1</string>
-                                        <string>Item 2</string>
-                                        <string>Item 3</string>
-                                    </objectValues>
                                 </comboBoxCell>
+                                <connections>
+                                    <outlet property="dataSource" destination="9JO-D1-lMf" id="jcx-t0-DZr"/>
+                                </connections>
                             </comboBox>
                         </subviews>
                         <constraints>
@@ -162,6 +164,16 @@ Gw
                             <constraint firstItem="RAJ-ED-UmO" firstAttribute="width" secondItem="keN-KG-Qeg" secondAttribute="width" id="zlw-MS-j8l"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="arrayCheckBox" destination="Ltd-ra-ANE" id="B0b-ui-AKN"/>
+                        <outlet property="cancelButton" destination="lAE-O0-3lc" id="9wo-H0-P5f"/>
+                        <outlet property="dataTypeComboBox" destination="OgM-H9-Lu3" id="JHI-vR-bUW"/>
+                        <outlet property="descriptionTextField" destination="RAJ-ED-UmO" id="4r6-dT-5g7"/>
+                        <outlet property="formatComboBox" destination="WPg-3U-7Qs" id="EIT-hQ-8Ey"/>
+                        <outlet property="nameTextField" destination="keN-KG-Qeg" id="sm6-XV-tKV"/>
+                        <outlet property="okButton" destination="DS1-gH-gZE" id="gJD-AH-SvD"/>
+                        <outlet property="requiredCheckBox" destination="33b-Fw-koc" id="zQp-zu-sO5"/>
+                    </connections>
                 </viewController>
                 <customObject id="UYa-sj-mep" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -178,7 +190,7 @@ Gw
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="27" horizontalPageScroll="10" verticalLineScroll="27" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oL3-Gz-TB5">
                                 <rect key="frame" x="20" y="61" width="196" height="219"/>
                                 <clipView key="contentView" id="8wu-aC-s14">
-                                    <rect key="frame" x="1" y="23" width="194" height="195"/>
+                                    <rect key="frame" x="1" y="0.0" width="194" height="218"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="25" rowSizeStyle="automatic" headerView="cPr-rS-oOj" viewBased="YES" id="P50-Yl-ieZ">
@@ -304,7 +316,7 @@ Gw
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z62-C8-Ecn">
                                 <rect key="frame" x="236" y="61" width="196" height="219"/>
                                 <clipView key="contentView" id="lLp-xr-PT7">
-                                    <rect key="frame" x="1" y="23" width="194" height="195"/>
+                                    <rect key="frame" x="1" y="0.0" width="194" height="218"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" enabled="NO" rowSizeStyle="automatic" headerView="FRb-AO-SVM" viewBased="YES" id="BYE-WK-Cb2">
@@ -356,7 +368,7 @@ Gw
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="60R-zX-mTG">
-                                    <rect key="frame" x="1" y="118.95476078987122" width="237.90016174316406" height="15"/>
+                                    <rect key="frame" x="1" y="118" width="237.90016174316406" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="YfT-xq-bGj">
@@ -453,7 +465,7 @@ Gw
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwU-06-4KY">
                                 <rect key="frame" x="20" y="20" width="197" height="260"/>
                                 <clipView key="contentView" id="fBS-DO-dUw">
-                                    <rect key="frame" x="1" y="23" width="195" height="236"/>
+                                    <rect key="frame" x="1" y="0.0" width="195" height="259"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="K46-fP-I98" viewBased="YES" id="Lql-Cg-MIv">
@@ -543,7 +555,7 @@ Gw
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zyw-kt-8df">
                                 <rect key="frame" x="234" y="66" width="196" height="214"/>
                                 <clipView key="contentView" id="U0e-tJ-9xc">
-                                    <rect key="frame" x="1" y="23" width="194" height="190"/>
+                                    <rect key="frame" x="1" y="0.0" width="194" height="213"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" enabled="NO" rowSizeStyle="automatic" headerView="MM5-Jx-JM5" viewBased="YES" id="cf2-bv-Bzh">
