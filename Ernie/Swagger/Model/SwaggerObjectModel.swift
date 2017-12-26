@@ -49,11 +49,16 @@ class SwaggerObjectModel
         }
     }
     
-    class func getAllModels() -> [SwaggerObjectModel]
+    class func getAllModels(sorted: Bool = false) -> [SwaggerObjectModel]
     {
         var allModels: [SwaggerObjectModel] = []
         
         let request: NSFetchRequest<SWObjectModel> = SWObjectModel.fetchRequest()
+        if sorted
+        {
+            let nameSorter = NSSortDescriptor(key: "modelName", ascending: true)
+            request.sortDescriptors = [nameSorter]
+        }
         let swModels = try? AppDelegate.mainManagedObjectContext().fetch(request)
         for swModel in swModels ?? []
         {

@@ -10,7 +10,7 @@ import Foundation
 
 enum SwaggerDataTypeFormatEnum: String
 {
-    case Float, Double, Int32, Int64, DateTime, Date, Password
+    case None, Float, Double, Int32, Int64, DateTime, Date, Password
     
     func stringValue() -> String
     {
@@ -30,6 +30,8 @@ enum SwaggerDataTypeFormatEnum: String
             return "date"
         case .Password:
             return "password"
+        case .None:
+            return ""
         }
     }
 }

@@ -147,7 +147,7 @@ class SwaggerDataType
         }
         else if let primitiveType = self.primitiveDataType
         {
-            return primitiveType.stringValue()
+            return primitiveType.rawValue
         }
         
         return ""
