@@ -30,6 +30,7 @@ class SwaggerModelEditorViewController: NSViewController, NSTableViewDataSource,
     {
         super.viewDidLoad()
         self.buildDataSources()
+        self.modelNameTextField.stringValue = self.model?.modelName ?? ""
     }
     
     override func viewDidAppear()
@@ -88,6 +89,7 @@ class SwaggerModelEditorViewController: NSViewController, NSTableViewDataSource,
                 }
                 
                 // Configure the view and return it.
+                propertyCell.buttonDelegate = self
                 propertyCell.configureForProperty(self.sortedProperties[row])
                 return propertyCell
             }
@@ -155,7 +157,10 @@ class SwaggerModelEditorViewController: NSViewController, NSTableViewDataSource,
         {
             self.model = SwaggerObjectModel(name: self.modelNameTextField.stringValue)
         }
-        self.model?.modelName = self.modelNameTextField.stringValue
+        if self.modelNameTextField.stringValue.count > 0
+        {
+            self.model?.modelName = self.modelNameTextField.stringValue
+        }
         self.model?.modelProperties = self.sortedProperties
         self.model?.refreshCoreDataObject(autoSave: true)
         
@@ -166,7 +171,7 @@ class SwaggerModelEditorViewController: NSViewController, NSTableViewDataSource,
     
     // MARK:- Private Methods
     
-    func buildDataSources()
+    private func buildDataSources()
     {
         if let model = self.model
         {

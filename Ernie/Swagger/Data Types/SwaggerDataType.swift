@@ -53,7 +53,7 @@ class SwaggerDataType
     convenience init?(avatarOf: SWDataType)
     {
         // Figure out which basic init to call and create the object.
-        if let primitiveType = avatarOf.primitiveDataType, let primitiveTypeEnum = SwaggerDataTypeEnum(rawValue: primitiveType)
+        if let primitiveType = avatarOf.simpleDataType, let primitiveTypeEnum = SwaggerDataTypeEnum(rawValue: primitiveType)
         {
             self.init(primitiveType: primitiveTypeEnum)
             self.avatarOf = avatarOf
@@ -117,7 +117,7 @@ class SwaggerDataType
             }
             
             // Copy over the properties.
-            dataTypeToReturn.primitiveDataType = self.primitiveDataType?.rawValue
+            dataTypeToReturn.simpleDataType = self.primitiveDataType?.rawValue
             dataTypeToReturn.dataTypeArrayDataType = self.arrayDataType?.refreshCoreDataObject()
             dataTypeToReturn.dataTypeModel = self.objectModel?.refreshCoreDataObject()
             

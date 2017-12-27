@@ -35,6 +35,20 @@ class SwaggerPropertyEditorViewController: NSViewController, NSComboBoxDataSourc
         self.buildDataTypeDataSource()
         self.buildFormatDataSource()
         self.comboBoxesInitialized = true
+        self.configureForProperty()
+    }
+    
+    private func configureForProperty()
+    {
+        if let property = self.property
+        {
+            self.nameTextField.stringValue = property.propertyName
+            self.descriptionTextField.stringValue = property.propertyDescription ?? ""
+            self.requiredCheckBox.state = property.propertyIsRequired ? NSControl.StateValue.on : NSControl.StateValue.off
+            self.arrayCheckBox.state = property.propertyDataType.arrayDataType == nil ? NSControl.StateValue.off : NSControl.StateValue.on
+            self.dataTypeComboBox.stringValue = property.propertyDataType.primitiveDataType?.rawValue ?? ""
+            self.formatComboBox.stringValue = property.propertyFormat?.rawValue ?? ""
+        }
     }
     
     // MARK:- Event Handlers
@@ -47,7 +61,7 @@ class SwaggerPropertyEditorViewController: NSViewController, NSComboBoxDataSourc
     
     @IBAction func okButtonPressed(_ sender: NSButton)
     {
-        guard self.nameTextField.stringValue.count > 0 else
+        guard self.nameTextField.stringValue.count > 0, self.dataTypeComboBox.indexOfSelectedItem > -1 else
         {
             return
         }
@@ -93,7 +107,11 @@ class SwaggerPropertyEditorViewController: NSViewController, NSComboBoxDataSourc
         self.property?.propertyDescription = self.descriptionTextField.stringValue
         self.property?.propertyIsRequired = self.requiredCheckBox.state == NSControl.StateValue.on
         let formatIndex = self.formatComboBox.indexOfSelectedItem
-        if formatIndex < self.sortedFormats.count
+        if formatIndex < 0
+        {
+            self.property?.propertyFormat = SwaggerDataTypeFormatEnum.None
+        }
+        else if formatIndex < self.sortedFormats.count
         {
             self.property?.propertyFormat = SwaggerDataTypeFormatEnum(rawValue: self.sortedFormats[formatIndex])
         }
@@ -119,7 +137,7 @@ class SwaggerPropertyEditorViewController: NSViewController, NSComboBoxDataSourc
         ]
     }
     
-    func buildDataTypeDataSource()
+    private func buildDataTypeDataSource()
     {
         // The data type combo box data source.
         self.orderedDataTypeNames = []

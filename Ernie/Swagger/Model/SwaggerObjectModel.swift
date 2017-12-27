@@ -119,7 +119,7 @@ class SwaggerObjectModel
             
             // Copy over the properties.
             modelToReturn.modelName = self.modelName
-            if let oldProperties = modelToReturn.modelProperties
+            if let oldProperties = modelToReturn.modelProperties, oldProperties.count > 0
             {
                 modelToReturn.removeFromModelProperties(oldProperties)
             }
