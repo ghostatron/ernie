@@ -46,8 +46,19 @@ class SwaggerPropertyEditorViewController: NSViewController, NSComboBoxDataSourc
             self.descriptionTextField.stringValue = property.propertyDescription ?? ""
             self.requiredCheckBox.state = property.propertyIsRequired ? NSControl.StateValue.on : NSControl.StateValue.off
             self.arrayCheckBox.state = property.propertyDataType.arrayDataType == nil ? NSControl.StateValue.off : NSControl.StateValue.on
-            self.dataTypeComboBox.stringValue = property.propertyDataType.primitiveDataType?.rawValue ?? ""
-            self.formatComboBox.stringValue = property.propertyFormat?.rawValue ?? ""
+            
+            // Special case for array, we want to select the type of the array rather than use the "Array"
+            // primitive type directly.
+            if let arrayDataType = property.propertyDataType.arrayDataType
+            {
+                self.dataTypeComboBox.stringValue = arrayDataType.primitiveDataType?.rawValue ?? ""
+            }
+            else
+            {
+                self.dataTypeComboBox.stringValue = property.propertyDataType.primitiveDataType?.rawValue ?? ""
+            }
+            
+            self.formatComboBox.stringValue = self.property?.propertyFormat?.rawValue ?? ""
         }
     }
     
@@ -61,14 +72,25 @@ class SwaggerPropertyEditorViewController: NSViewController, NSComboBoxDataSourc
     
     @IBAction func okButtonPressed(_ sender: NSButton)
     {
-        guard self.nameTextField.stringValue.count > 0, self.dataTypeComboBox.indexOfSelectedItem > -1 else
+        // Must have a property name and property data type.
+        guard self.nameTextField.stringValue.count > 0, self.dataTypeComboBox.stringValue.count > 0 else
+        {
+            return
+        }
+        
+        // Determine the index to use when looking up the data type.
+        var dataTypeIndex = self.dataTypeComboBox.indexOfSelectedItem
+        if dataTypeIndex < 0
+        {
+            dataTypeIndex = self.orderedDataTypeNames.index(of: self.dataTypeComboBox.stringValue) ?? -1
+        }
+        guard dataTypeIndex > -1 else
         {
             return
         }
         
         // Figure out what data type they have selected.
         var baseDataType: SwaggerDataType!
-        let dataTypeIndex = self.dataTypeComboBox.indexOfSelectedItem
         if dataTypeIndex < self.sortedPrimitiveTypes.count
         {
             // It's a primitive type
@@ -106,14 +128,15 @@ class SwaggerPropertyEditorViewController: NSViewController, NSComboBoxDataSourc
         self.property?.propertyName = self.nameTextField.stringValue
         self.property?.propertyDescription = self.descriptionTextField.stringValue
         self.property?.propertyIsRequired = self.requiredCheckBox.state == NSControl.StateValue.on
-        let formatIndex = self.formatComboBox.indexOfSelectedItem
-        if formatIndex < 0
+        self.property?.propertyDataType = dataTypeForProperty
+
+        if self.formatComboBox.stringValue.count == 0
         {
             self.property?.propertyFormat = SwaggerDataTypeFormatEnum.None
         }
-        else if formatIndex < self.sortedFormats.count
+        else
         {
-            self.property?.propertyFormat = SwaggerDataTypeFormatEnum(rawValue: self.sortedFormats[formatIndex])
+            self.property?.propertyFormat = SwaggerDataTypeFormatEnum(rawValue: self.formatComboBox.stringValue)
         }
         
         self.modalDelegate?.dismissedWithOK(dialog: self)
@@ -185,7 +208,11 @@ class SwaggerPropertyEditorViewController: NSViewController, NSComboBoxDataSourc
     
     func comboBox(_ comboBox: NSComboBox, objectValueForItemAt index: Int) -> Any?
     {
-        if comboBox == self.dataTypeComboBox
+        if index < 0
+        {
+            return nil
+        }
+        else if comboBox == self.dataTypeComboBox
         {
             guard index < self.orderedDataTypeNames.count else
             {
@@ -204,6 +231,21 @@ class SwaggerPropertyEditorViewController: NSViewController, NSComboBoxDataSourc
         else
         {
             return nil
+        }
+    }
+    
+    func comboBox(_ comboBox: NSComboBox, indexOfItemWithStringValue string: String) -> Int
+    {
+        switch comboBox
+        {
+        case self.formatComboBox:
+            return self.sortedFormats.index(of: string) ?? -1
+            
+        case self.dataTypeComboBox:
+            return self.orderedDataTypeNames.index(of: string) ?? -1
+            
+        default:
+            return -1
         }
     }
 }

@@ -53,12 +53,7 @@ class SwaggerDataType
     convenience init?(avatarOf: SWDataType)
     {
         // Figure out which basic init to call and create the object.
-        if let primitiveType = avatarOf.simpleDataType, let primitiveTypeEnum = SwaggerDataTypeEnum(rawValue: primitiveType)
-        {
-            self.init(primitiveType: primitiveTypeEnum)
-            self.avatarOf = avatarOf
-        }
-        else if let swArrayType = avatarOf.dataTypeArrayDataType, let arrayType = SwaggerDataType(avatarOf: swArrayType)
+        if let swArrayType = avatarOf.dataTypeArrayDataType, let arrayType = SwaggerDataType(avatarOf: swArrayType)
         {
             self.init(asArrayOf: arrayType)
             self.avatarOf = avatarOf
@@ -66,6 +61,11 @@ class SwaggerDataType
         else if let swModel = avatarOf.dataTypeModel, let model = SwaggerObjectModel(avatarOf: swModel)
         {
             self.init(withObject: model)
+            self.avatarOf = avatarOf
+        }
+        else if let primitiveType = avatarOf.simpleDataType, let primitiveTypeEnum = SwaggerDataTypeEnum(rawValue: primitiveType)
+        {
+            self.init(primitiveType: primitiveTypeEnum)
             self.avatarOf = avatarOf
         }
         else
