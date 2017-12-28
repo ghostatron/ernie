@@ -103,7 +103,12 @@ class SwaggerPropertyEditorViewController: NSViewController, NSComboBoxDataSourc
         else if dataTypeIndex < self.sortedPrimitiveTypes.count + self.sortedModels.count
         {
             // It's a model
-            baseDataType = SwaggerDataType(withObject: self.sortedModels[dataTypeIndex])
+            let modelIndex = dataTypeIndex - self.sortedPrimitiveTypes.count
+            guard modelIndex < self.sortedModels.count else
+            {
+                return
+            }
+            baseDataType = SwaggerDataType(withObject: self.sortedModels[modelIndex])
         }
         else
         {
@@ -180,7 +185,10 @@ class SwaggerPropertyEditorViewController: NSViewController, NSComboBoxDataSourc
         self.sortedModels = SwaggerObjectModel.getAllModels(sorted: true)
         for model in self.sortedModels
         {
-            self.orderedDataTypeNames.append(model.modelName)
+            if model.modelName != self.property?.model?.modelName
+            {
+                self.orderedDataTypeNames.append(model.modelName)
+            }
         }
     }
     

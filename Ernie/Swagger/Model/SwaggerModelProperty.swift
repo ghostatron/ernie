@@ -16,6 +16,7 @@ class SwaggerModelProperty
     var propertyIsRequired = false
     var propertyDescription: String?
     var propertyFormat: SwaggerDataTypeFormatEnum?
+    var model: SwaggerObjectModel?
     private(set) var avatarOf: SWModelProperty?
 
     // MARK:- Initializers
