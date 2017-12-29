@@ -13,48 +13,6 @@ class SwaggerObjectModel
 {
     var modelName: String
     var modelProperties: [SwaggerModelProperty] = []
-    {
-        willSet
-        {
-            // Capture the old values for the array.
-            var oldModelProperties: [String : SwaggerModelProperty] = [:]
-            for property in modelProperties
-            {
-                oldModelProperties[property.propertyName] = property
-            }
-            let oldModelPropertiesSet = Set(oldModelProperties.keys)
-            
-            // Capture the new values for the array.
-            var newModelProperties: [String : SwaggerModelProperty] = [:]
-            for property in newValue
-            {
-                newModelProperties[property.propertyName] = property
-            }
-            let newModelPropertiesSet = Set(newModelProperties.keys)
-            
-            // Figure out which properties were just added, and set those properties to
-            // point to this model.
-            let addedModelPropertiesSet = newModelPropertiesSet.subtracting(oldModelPropertiesSet)
-            for propertyName in addedModelPropertiesSet
-            {
-                if let property = newModelProperties[propertyName]
-                {
-                    property.model = self
-                }
-            }
-            
-            // Figure out which properties were just removed, and set those properties to
-            // no longer point to this model.
-            let removedModelPropertiesSet = oldModelPropertiesSet.subtracting(newModelPropertiesSet)
-            for propertyName in removedModelPropertiesSet
-            {
-                if let property = oldModelProperties[propertyName]
-                {
-                    property.model = nil
-                }
-            }
-        }
-    }
     private(set) var avatarOf: SWObjectModel?
 
     // MARK:- Initializers
