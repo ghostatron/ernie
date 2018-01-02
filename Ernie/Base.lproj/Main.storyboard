@@ -652,10 +652,23 @@ Gw
             </objects>
             <point key="canvasLocation" x="-297" y="-388"/>
         </scene>
+        <!--Swagger Method Editor View Controller-->
+        <scene sceneID="iTU-ri-VlV">
+            <objects>
+                <viewController id="uAp-nV-0GM" customClass="SwaggerMethodEditorViewController" customModule="Ernie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="5gy-GI-qzH">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="iOr-KB-c1c" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="286" y="-781"/>
+        </scene>
         <!--Swagger Methods-->
         <scene sceneID="atX-ee-RMP">
             <objects>
-                <viewController title="Swagger Methods" id="faa-VI-91V" customClass="SwaggerMethodsViewConstroller" customModule="Ernie" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Swagger Methods" id="faa-VI-91V" customClass="SwaggerMethodsViewController" customModule="Ernie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="BvO-PB-qMw">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -686,7 +699,7 @@ Gw
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="cSI-cN-sEl">
+                                                        <tableCellView identifier="swaggerMethodRow" id="cSI-cN-sEl" customClass="SwaggerMethodTableViewCell" customModule="Ernie" customModuleProvider="target">
                                                             <rect key="frame" x="1" y="1" width="192" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -707,6 +720,10 @@ Gw
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="faa-VI-91V" id="ZM2-se-q7v"/>
+                                                <outlet property="delegate" destination="faa-VI-91V" id="efZ-6p-fDC"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>
@@ -749,7 +766,7 @@ Gw
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="LbB-Wt-OXG">
+                                                        <tableCellView identifier="swaggerArgumentRow" id="LbB-Wt-OXG" customClass="SwaggerArgumentTableViewCell" customModule="Ernie" customModuleProvider="target">
                                                             <rect key="frame" x="1" y="1" width="191" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -770,6 +787,9 @@ Gw
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="faa-VI-91V" id="Cgc-cO-bma"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>
@@ -795,6 +815,9 @@ Gw
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="editButtonPressed:" target="faa-VI-91V" id="DyS-DL-HK1"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zJv-JA-tEF">
                                 <rect key="frame" x="274" y="13" width="78" height="32"/>
@@ -802,6 +825,9 @@ Gw
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="newButtonPressed:" target="faa-VI-91V" id="G0W-MB-FHU"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -824,6 +850,13 @@ Gw
                             <constraint firstItem="zJv-JA-tEF" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xbe-l4-6ur" secondAttribute="trailing" constant="20" id="zYq-aa-7wv"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="argumentsTableView" destination="NdU-uF-y6Y" id="DVE-SI-dqF"/>
+                        <outlet property="editButton" destination="j1R-N1-eRg" id="hpC-xG-yTX"/>
+                        <outlet property="methodsTableView" destination="Kcf-Z4-xwT" id="qnj-Te-iIC"/>
+                        <outlet property="newButton" destination="zJv-JA-tEF" id="vyF-mt-mNX"/>
+                        <segue destination="uAp-nV-0GM" kind="modal" identifier="toMethodEditor" id="t7h-QX-LCd"/>
+                    </connections>
                 </viewController>
                 <customObject id="0uu-cP-Tif" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

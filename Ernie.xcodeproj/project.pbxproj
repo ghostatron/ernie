@@ -22,7 +22,10 @@
 		C118CC781FE9BF3D008C4DB5 /* SwaggerModelReferenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118CC771FE9BF3D008C4DB5 /* SwaggerModelReferenceTableViewCell.swift */; };
 		C118CC7A1FEADD71008C4DB5 /* SwaggerModelNewPropertyTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118CC791FEADD71008C4DB5 /* SwaggerModelNewPropertyTableCell.swift */; };
 		C118CC7C1FEAE2E0008C4DB5 /* SwaggerPropertyEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118CC7B1FEAE2E0008C4DB5 /* SwaggerPropertyEditorViewController.swift */; };
-		C12B8C331FF6C0DA007A03B0 /* SwaggerMethodsViewConstroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B8C321FF6C0DA007A03B0 /* SwaggerMethodsViewConstroller.swift */; };
+		C12B8C331FF6C0DA007A03B0 /* SwaggerMethodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B8C321FF6C0DA007A03B0 /* SwaggerMethodsViewController.swift */; };
+		C12B8C361FFBFD7F007A03B0 /* SwaggerMethodEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B8C351FFBFD7F007A03B0 /* SwaggerMethodEditorViewController.swift */; };
+		C12B8C381FFC0272007A03B0 /* SwaggerMethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B8C371FFC0272007A03B0 /* SwaggerMethodTableViewCell.swift */; };
+		C12B8C3A1FFC0411007A03B0 /* SwaggerArgumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B8C391FFC0411007A03B0 /* SwaggerArgumentTableViewCell.swift */; };
 		C1341BE61FCCE336000A338F /* CauldronWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1341BE51FCCE336000A338F /* CauldronWrapper.swift */; };
 		C144CE981FD9D44400E47EED /* SwaggerObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144CE971FD9D44400E47EED /* SwaggerObjectModel.swift */; };
 		C144CE9A1FD9D82500E47EED /* SwaggerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144CE991FD9D82500E47EED /* SwaggerContainer.swift */; };
@@ -95,7 +98,10 @@
 		C118CC771FE9BF3D008C4DB5 /* SwaggerModelReferenceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerModelReferenceTableViewCell.swift; sourceTree = "<group>"; };
 		C118CC791FEADD71008C4DB5 /* SwaggerModelNewPropertyTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerModelNewPropertyTableCell.swift; sourceTree = "<group>"; };
 		C118CC7B1FEAE2E0008C4DB5 /* SwaggerPropertyEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerPropertyEditorViewController.swift; sourceTree = "<group>"; };
-		C12B8C321FF6C0DA007A03B0 /* SwaggerMethodsViewConstroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerMethodsViewConstroller.swift; sourceTree = "<group>"; };
+		C12B8C321FF6C0DA007A03B0 /* SwaggerMethodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerMethodsViewController.swift; sourceTree = "<group>"; };
+		C12B8C351FFBFD7F007A03B0 /* SwaggerMethodEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerMethodEditorViewController.swift; sourceTree = "<group>"; };
+		C12B8C371FFC0272007A03B0 /* SwaggerMethodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerMethodTableViewCell.swift; sourceTree = "<group>"; };
+		C12B8C391FFC0411007A03B0 /* SwaggerArgumentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerArgumentTableViewCell.swift; sourceTree = "<group>"; };
 		C1341BE51FCCE336000A338F /* CauldronWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CauldronWrapper.swift; sourceTree = "<group>"; };
 		C144CE971FD9D44400E47EED /* SwaggerObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerObjectModel.swift; sourceTree = "<group>"; };
 		C144CE991FD9D82500E47EED /* SwaggerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerContainer.swift; sourceTree = "<group>"; };
@@ -262,9 +268,20 @@
 		C12B8C311FF6C0A7007A03B0 /* Method */ = {
 			isa = PBXGroup;
 			children = (
-				C12B8C321FF6C0DA007A03B0 /* SwaggerMethodsViewConstroller.swift */,
+				C12B8C341FFBFD61007A03B0 /* Editor */,
+				C12B8C321FF6C0DA007A03B0 /* SwaggerMethodsViewController.swift */,
+				C12B8C371FFC0272007A03B0 /* SwaggerMethodTableViewCell.swift */,
+				C12B8C391FFC0411007A03B0 /* SwaggerArgumentTableViewCell.swift */,
 			);
 			path = Method;
+			sourceTree = "<group>";
+		};
+		C12B8C341FFBFD61007A03B0 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				C12B8C351FFBFD7F007A03B0 /* SwaggerMethodEditorViewController.swift */,
+			);
+			path = Editor;
 			sourceTree = "<group>";
 		};
 		C144CEAB1FDB5B1300E47EED /* Method */ = {
@@ -550,7 +567,7 @@
 				C1CD70041FCCA1C5002C7CBB /* MiniAppEditorViewController.swift in Sources */,
 				C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */,
 				C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */,
-				C12B8C331FF6C0DA007A03B0 /* SwaggerMethodsViewConstroller.swift in Sources */,
+				C12B8C331FF6C0DA007A03B0 /* SwaggerMethodsViewController.swift in Sources */,
 				C118CC781FE9BF3D008C4DB5 /* SwaggerModelReferenceTableViewCell.swift in Sources */,
 				C1341BE61FCCE336000A338F /* CauldronWrapper.swift in Sources */,
 				C144CEA81FDB5AD000E47EED /* SwaggerDataTypeFormatEnum.swift in Sources */,
@@ -571,6 +588,8 @@
 				C101C1A91FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift in Sources */,
 				C144CE981FD9D44400E47EED /* SwaggerObjectModel.swift in Sources */,
 				C19E0F6C1FBA611B00EC727B /* RequirementsTableViewCell.swift in Sources */,
+				C12B8C361FFBFD7F007A03B0 /* SwaggerMethodEditorViewController.swift in Sources */,
+				C12B8C3A1FFC0411007A03B0 /* SwaggerArgumentTableViewCell.swift in Sources */,
 				C144CEA61FDB5AB600E47EED /* SwaggerDataTypeEnum.swift in Sources */,
 				C190D45F1FB0FD80002EFA5B /* HomebrewRequirement.swift in Sources */,
 				C144CEA21FDB5A0B00E47EED /* SwaggerResponse.swift in Sources */,
@@ -591,6 +610,7 @@
 				C101C1A31FBE491E00AE02C6 /* NativeAppDetailsViewController.swift in Sources */,
 				C118CC701FE87A5B008C4DB5 /* SwaggerPropertyTableViewCell.swift in Sources */,
 				C144CE9C1FDB591500E47EED /* SwaggerDataType.swift in Sources */,
+				C12B8C381FFC0272007A03B0 /* SwaggerMethodTableViewCell.swift in Sources */,
 				C101C15C1FBD021600AE02C6 /* NativeAppsViewController.swift in Sources */,
 				C1C774D41FA3E28300AD269F /* Ernie.xcdatamodeld in Sources */,
 				C190D4551FABD803002EFA5B /* XcodeRequirement.swift in Sources */,

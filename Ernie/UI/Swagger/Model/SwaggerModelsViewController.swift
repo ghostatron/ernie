@@ -94,7 +94,7 @@ class SwaggerModelsViewController: NSViewController, NSTableViewDataSource, NSTa
             return self.allModels.count
             
         case self.propertiesTableView:
-            // One row per container for the selected mini app.
+            // One row per property for the selected model.
             return self.selectedModelProperties.count
             
         default:
@@ -123,7 +123,7 @@ class SwaggerModelsViewController: NSViewController, NSTableViewDataSource, NSTa
             }
             
             // Configure the view and return it.
-            modelCell.configureForModel(self.allModels[row])
+            modelCell.configureFor(model: self.allModels[row])
             return modelCell
             
         case self.propertiesTableView:
