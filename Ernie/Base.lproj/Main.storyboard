@@ -652,6 +652,45 @@ Gw
             </objects>
             <point key="canvasLocation" x="-297" y="-388"/>
         </scene>
+        <!--Swagger Method Products View Controller-->
+        <scene sceneID="mJG-MA-cHg">
+            <objects>
+                <viewController id="6Xb-Cv-y2P" customClass="SwaggerMethodProductsViewController" customModule="Ernie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="0sM-mS-dvo">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="mdQ-p9-8fw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="966" y="-1234"/>
+        </scene>
+        <!--Swagger Method Responses View Controller-->
+        <scene sceneID="5Om-at-BHV">
+            <objects>
+                <viewController id="GIu-s7-nNy" customClass="SwaggerMethodResponsesViewController" customModule="Ernie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="UI1-Lb-zAH">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="WgS-z0-Wd9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="966" y="-859"/>
+        </scene>
+        <!--Swagger Method Tags View Controller-->
+        <scene sceneID="psy-pM-T81">
+            <objects>
+                <viewController id="MZK-1j-kqh" customClass="SwaggerMethodTagsViewController" customModule="Ernie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="0s7-wY-v0s">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="j4S-va-JcH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="966" y="-486"/>
+        </scene>
         <!--Swagger Method Editor View Controller-->
         <scene sceneID="iTU-ri-VlV">
             <objects>
@@ -698,6 +737,9 @@ Gw
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="saveButtonPressed:" target="uAp-nV-0GM" id="N4q-0g-RaF"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dA1-gp-V01">
                                 <rect key="frame" x="315" y="13" width="82" height="32"/>
@@ -708,6 +750,9 @@ Gw
 Gw
 </string>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" target="uAp-nV-0GM" id="ZBo-gX-U2I"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aJs-ji-yu0">
                                 <rect key="frame" x="14" y="46" width="118" height="32"/>
@@ -715,6 +760,9 @@ Gw
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="responsesButtonPressed:" target="uAp-nV-0GM" id="sPT-Qb-7q2"/>
+                                </connections>
                             </button>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9x-6N-Gtw">
                                 <rect key="frame" x="258" y="66" width="221" height="274"/>
@@ -763,6 +811,10 @@ Gw
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="uAp-nV-0GM" id="tJl-zZ-Wf1"/>
+                                                <outlet property="delegate" destination="uAp-nV-0GM" id="weT-jw-h0E"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>
@@ -815,16 +867,14 @@ Gw
                             </button>
                             <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nLJ-hY-ZWI">
                                 <rect key="frame" x="62" y="139" width="182" height="26"/>
-                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="DOP-bs-X5E">
+                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" usesDataSource="YES" numberOfVisibleItems="5" id="DOP-bs-X5E">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <objectValues>
-                                        <string>Item 1</string>
-                                        <string>Item 2</string>
-                                        <string>Item 3</string>
-                                    </objectValues>
                                 </comboBoxCell>
+                                <connections>
+                                    <outlet property="dataSource" destination="uAp-nV-0GM" id="XuM-nh-K5V"/>
+                                </connections>
                             </comboBox>
                             <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="wxL-0J-8O2">
                                 <rect key="frame" x="247" y="12" width="5" height="336"/>
@@ -835,6 +885,9 @@ Gw
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="productsButtonPressed:" target="uAp-nV-0GM" id="NkQ-aA-9EI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -886,6 +939,20 @@ Gw
                             <constraint firstItem="Oqs-ZB-bhC" firstAttribute="top" secondItem="aJs-ji-yu0" secondAttribute="bottom" constant="12" id="zBc-rQ-cXh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="argumentsTableView" destination="xgi-RV-SvF" id="I2c-sk-Rix"/>
+                        <outlet property="cancelButton" destination="dA1-gp-V01" id="MZ6-PF-3Oa"/>
+                        <outlet property="methodDescriptionTextField" destination="aD9-Ul-tIU" id="Qom-l6-Xa0"/>
+                        <outlet property="methodNameTextField" destination="I42-ig-g4c" id="NYI-xO-tOC"/>
+                        <outlet property="methodSummaryTextField" destination="hyD-Ng-fAE" id="3Bm-G6-qvM"/>
+                        <outlet property="methodTypeComboBox" destination="nLJ-hY-ZWI" id="5Bc-rv-wMG"/>
+                        <outlet property="productsButton" destination="LIV-0B-p4b" id="Cql-Ng-Dzo"/>
+                        <outlet property="responsesButton" destination="aJs-ji-yu0" id="Ckl-NH-0LY"/>
+                        <outlet property="saveButton" destination="cT9-v3-9PC" id="1ev-J0-K7Z"/>
+                        <segue destination="6Xb-Cv-y2P" kind="modal" identifier="toMethodProducts" id="kbE-jx-SL0"/>
+                        <segue destination="GIu-s7-nNy" kind="modal" identifier="toMethodResponses" id="7k6-Pl-am3"/>
+                        <segue destination="MZK-1j-kqh" kind="modal" identifier="toMethodTags" id="EQd-FT-0sK"/>
+                    </connections>
                 </viewController>
                 <customObject id="iOr-KB-c1c" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

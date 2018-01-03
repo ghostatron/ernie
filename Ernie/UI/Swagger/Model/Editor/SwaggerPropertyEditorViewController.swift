@@ -23,11 +23,11 @@ class SwaggerPropertyEditorViewController: NSViewController, NSComboBoxDataSourc
     var property: SwaggerModelProperty?
     var modalDelegate: ModalDialogDelegate?
     
-    var sortedPrimitiveTypes: [String] = []
-    var sortedModels: [SwaggerObjectModel] = []
-    var orderedDataTypeNames: [String] = []
-    var sortedFormats: [String] = []
-    var comboBoxesInitialized = false
+    private var sortedPrimitiveTypes: [String] = []
+    private var sortedModels: [SwaggerObjectModel] = []
+    private var orderedDataTypeNames: [String] = []
+    private var sortedFormats: [String] = []
+    private var comboBoxesInitialized = false
     
     override func viewDidLoad()
     {
