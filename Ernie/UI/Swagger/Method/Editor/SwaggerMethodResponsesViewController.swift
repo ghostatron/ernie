@@ -12,5 +12,5 @@ import Cocoa
 class SwaggerMethodResponsesViewController: NSViewController
 {
     var modalDelegate: ModalDialogDelegate?
-    var method: SwaggerMethod?
+    var responses: [SwaggerResponse]?
 }

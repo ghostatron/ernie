@@ -12,5 +12,5 @@ import Cocoa
 class SwaggerMethodTagsViewController: NSViewController
 {
     var modalDelegate: ModalDialogDelegate?
-    var method: SwaggerMethod?
+    var tags: [String]?
 }

@@ -18,6 +18,9 @@ class SwaggerMethodEditorViewController: NSViewController, NSTableViewDataSource
     private var sortedMethodTypes: [SwaggerMethodTypeEnum] = [.DELETE, .EVENT, .GET, .POST, .PUT]
     private var launchEditorInEditMode = false
     private var argumentForEditor: SwaggerMethodArgument?
+    private var productsForEditor: [SwaggerProductEnum] = []
+    private var responsesForEditor: [SwaggerResponse] = []
+    private var tagsForEditor: [String] = []
 
     @IBOutlet weak var methodNameTextField: NSTextField!
     @IBOutlet weak var methodDescriptionTextField: NSTextField!
@@ -50,17 +53,17 @@ class SwaggerMethodEditorViewController: NSViewController, NSTableViewDataSource
         if let editorVC = segue.destinationController as? SwaggerMethodProductsViewController
         {
             editorVC.modalDelegate = self
-            editorVC.method = self.method
+            editorVC.products = self.productsForEditor
         }
         else if let editorVC = segue.destinationController as? SwaggerMethodResponsesViewController
         {
             editorVC.modalDelegate = self
-            editorVC.method = self.method
+            editorVC.responses = self.responsesForEditor
         }
         else if let editorVC = segue.destinationController as? SwaggerMethodTagsViewController
         {
             editorVC.modalDelegate = self
-            editorVC.method = self.method
+            editorVC.tags = self.tagsForEditor
         }
         else if let editorVC = segue.destinationController as? SwaggerMethodArgumentEditorViewController
         {
@@ -73,6 +76,9 @@ class SwaggerMethodEditorViewController: NSViewController, NSTableViewDataSource
     
     private func configureForMethod()
     {
+        self.productsForEditor = self.method?.methodProducts ?? []
+        self.responsesForEditor = self.method?.methodResponses ?? []
+        self.tagsForEditor = self.method?.methodTags ?? []
         self.methodNameTextField.stringValue = self.method?.methodName ?? ""
         self.methodDescriptionTextField.stringValue = self.method?.methodDescription ?? ""
         self.methodSummaryTextField.stringValue = self.method?.methodSummary ?? ""
@@ -257,7 +263,39 @@ class SwaggerMethodEditorViewController: NSViewController, NSTableViewDataSource
     
     @IBAction func saveButtonPressed(_ sender: NSButton)
     {
-        // TODO: save to core data
+        // Must have a method name.
+        guard self.methodNameTextField.stringValue.count > 0 else
+        {
+            return
+        }
+        let methodName = self.methodNameTextField.stringValue
+        
+        // Must have a method type.
+        guard let methodType = SwaggerMethodTypeEnum(rawValue: methodName) else
+        {
+            return
+        }
+        
+        // Create a new method object if needed.
+        if self.method == nil
+        {
+            self.method = SwaggerMethod(name: methodName, type: methodType)
+        }
+        
+        // Copy the UI info over to the method object.
+        self.method?.methodName = methodName
+        self.method?.methodType = methodType
+        self.method?.methodDescription = self.methodDescriptionTextField.stringValue
+        self.method?.methodSummary = self.methodSummaryTextField.stringValue
+        self.method?.methodArguments = self.sortedArguments
+        self.method?.methodTags = self.tagsForEditor
+        self.method?.methodProducts = self.productsForEditor
+        self.method?.methodResponses = self.responsesForEditor
+        
+        // Save the changes to core data.
+        self.method?.refreshCoreDataObject(autoSave: true)
+        
+        // Leave and inform the delegate.
         self.modalDelegate?.dismissedWithOK(dialog: self)
         self.dismiss(self)
     }
