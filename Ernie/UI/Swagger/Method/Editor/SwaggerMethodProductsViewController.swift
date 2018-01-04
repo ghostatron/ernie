@@ -11,5 +11,6 @@ import Cocoa
 
 class SwaggerMethodProductsViewController: NSViewController
 {
-    
+    var modalDelegate: ModalDialogDelegate?
+    var method: SwaggerMethod?
 }
