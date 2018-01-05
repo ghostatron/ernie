@@ -131,6 +131,10 @@ class SwaggerMethod
         for argument in self.methodArguments
         {
             signature += "\(argument.argumentName): \(argument.argumentType.stringValue())"
+            if !argument.isArgumentRequired
+            {
+                signature += "?"
+            }
         }
         signature += ")"
         

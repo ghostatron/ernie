@@ -170,8 +170,15 @@ class SwaggerMethodEditorViewController: NSViewController, NSTableViewDataSource
     func dismissedWithOK(dialog: NSViewController)
     {
         // If we're coming back from the arguments editor, then reload the arguments table.
-        if let _ = dialog as? SwaggerMethodArgumentEditorViewController
+        if let argumentEditor = dialog as? SwaggerMethodArgumentEditorViewController, let argument = argumentEditor.argument
         {
+            if !self.launchEditorInEditMode
+            {
+                self.sortedArguments.append(argument)
+                self.sortedArguments.sort(by: { (arg1, arg2) -> Bool in
+                    return arg1.argumentName < arg2.argumentName
+                })
+            }
             self.argumentsTableView.reloadData()
         }
     }
