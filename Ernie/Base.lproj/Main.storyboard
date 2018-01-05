@@ -95,6 +95,9 @@
                                 <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jvM-Hx-pyf">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="okButtonPressed:" target="9JO-D1-lMf" id="bGX-Ik-8WT"/>
@@ -385,6 +388,9 @@ Gw
                                 <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uCS-HE-nSD">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="saveButtonPressed:" target="HLN-5G-bcS" id="ATN-ZP-2JB"/>
@@ -746,7 +752,7 @@ Gw
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cT9-v3-9PC">
                                 <rect key="frame" x="403" y="13" width="82" height="32"/>
-                                <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xUj-Ru-0C2">
+                                <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xUj-Ru-0C2">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                     <string key="keyEquivalent" base64-UTF8="YES">
@@ -780,13 +786,13 @@ Gw
                                     <action selector="responsesButtonPressed:" target="uAp-nV-0GM" id="sPT-Qb-7q2"/>
                                 </connections>
                             </button>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9x-6N-Gtw">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="27" horizontalPageScroll="10" verticalLineScroll="27" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U9x-6N-Gtw">
                                 <rect key="frame" x="258" y="66" width="221" height="274"/>
                                 <clipView key="contentView" id="36d-qg-Ku7">
                                     <rect key="frame" x="1" y="0.0" width="219" height="273"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="K9d-KP-gNI" viewBased="YES" id="xgi-RV-SvF">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="25" rowSizeStyle="automatic" headerView="K9d-KP-gNI" viewBased="YES" id="xgi-RV-SvF">
                                             <rect key="frame" x="0.0" y="0.0" width="219" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -807,11 +813,11 @@ Gw
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="swaggerMethodArgumentTableViewCell" id="53H-6F-fHK" customClass="SwaggerMethodArgumentTableViewCell" customModule="Ernie" customModuleProvider="target">
-                                                            <rect key="frame" x="1" y="1" width="216" height="17"/>
+                                                            <rect key="frame" x="1" y="1" width="216" height="25"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3qu-04-nM8" userLabel="Delete Button">
-                                                                    <rect key="frame" x="8" y="0.0" width="11" height="17"/>
+                                                                    <rect key="frame" x="8" y="4" width="11" height="17"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="15" id="ugk-Os-XOA"/>
                                                                         <constraint firstAttribute="width" constant="11" id="wuf-yg-4D8"/>
@@ -825,7 +831,7 @@ Gw
                                                                     </connections>
                                                                 </button>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="iq8-O5-UFR" userLabel="Property Info TextField">
-                                                                    <rect key="frame" x="25" y="0.0" width="166" height="17"/>
+                                                                    <rect key="frame" x="25" y="4" width="166" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Argument Info" id="8CX-ri-Ad3">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -833,7 +839,7 @@ Gw
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hpG-YD-I4Y" userLabel="Edit Button">
-                                                                    <rect key="frame" x="197" y="0.0" width="11" height="17"/>
+                                                                    <rect key="frame" x="197" y="4" width="11" height="17"/>
                                                                     <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSGoForwardTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ctV-Pe-viq">
                                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                         <font key="font" metaFont="system"/>
@@ -854,6 +860,29 @@ Gw
                                                                 <constraint firstAttribute="trailing" secondItem="hpG-YD-I4Y" secondAttribute="trailing" constant="8" id="qng-B2-yHS"/>
                                                                 <constraint firstItem="hpG-YD-I4Y" firstAttribute="width" secondItem="3qu-04-nM8" secondAttribute="width" id="rsS-o3-PAP"/>
                                                             </constraints>
+                                                        </tableCellView>
+                                                        <tableCellView identifier="swaggerNewPropertyCell" id="Wef-U6-X4t" customClass="SwaggerModelNewPropertyTableCell" customModule="Ernie" customModuleProvider="target">
+                                                            <rect key="frame" x="1" y="28" width="216" height="25"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="it6-3x-LdW">
+                                                                    <rect key="frame" x="46" y="-5" width="124" height="32"/>
+                                                                    <buttonCell key="cell" type="push" title="New Property" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="IJL-Gi-1Lu">
+                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                        <font key="font" metaFont="system"/>
+                                                                    </buttonCell>
+                                                                    <connections>
+                                                                        <action selector="newButtonPressed:" target="Wef-U6-X4t" id="9Rk-r0-Hzp"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="it6-3x-LdW" firstAttribute="centerX" secondItem="Wef-U6-X4t" secondAttribute="centerX" id="AUN-lv-1f9"/>
+                                                                <constraint firstItem="it6-3x-LdW" firstAttribute="centerY" secondItem="Wef-U6-X4t" secondAttribute="centerY" id="jUU-xl-j9H"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="newButton" destination="it6-3x-LdW" id="6DO-3g-yot"/>
+                                                            </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
@@ -2916,6 +2945,9 @@ Gw
                                 <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fO6-fm-QMR">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="saveButtonPressed:" target="ytm-bU-xpF" id="4nu-pm-kzb"/>
@@ -3161,6 +3193,9 @@ Gw
                                 <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ddp-bF-yas">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="saveButtonPressed:" target="Ka1-bE-VMX" id="ZcX-nY-iXw"/>

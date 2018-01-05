@@ -86,14 +86,6 @@ class SwaggerMethodEditorViewController: NSViewController, NSTableViewDataSource
         self.methodTypeComboBox.stringValue = self.method?.methodType.rawValue ?? "GET"
     }
     
-    // MARK:- NSTableViewDataSource
-    
-    func numberOfRows(in tableView: NSTableView) -> Int
-    {
-        // One row per method argument.
-        return self.sortedArguments.count
-    }
-    
     // MARK:- NSComboBoxDataSource
     
     func numberOfItems(in comboBox: NSComboBox) -> Int
@@ -124,6 +116,14 @@ class SwaggerMethodEditorViewController: NSViewController, NSTableViewDataSource
             }
         }
         return -1
+    }
+    
+    // MARK:- NSTableViewDataSource
+    
+    func numberOfRows(in tableView: NSTableView) -> Int
+    {
+        // One row per method argument + 1 for the "new argument" row.
+        return self.sortedArguments.count + 1
     }
     
     // MARK:- NSTableViewDelegate
@@ -271,7 +271,7 @@ class SwaggerMethodEditorViewController: NSViewController, NSTableViewDataSource
         let methodName = self.methodNameTextField.stringValue
         
         // Must have a method type.
-        guard let methodType = SwaggerMethodTypeEnum(rawValue: methodName) else
+        guard let methodType = SwaggerMethodTypeEnum(rawValue: self.methodTypeComboBox.stringValue) else
         {
             return
         }
