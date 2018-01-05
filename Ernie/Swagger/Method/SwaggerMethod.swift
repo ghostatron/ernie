@@ -116,6 +116,39 @@ class SwaggerMethod
         return allMethods
     }
     
+    // MARK:- Misc.
+    
+    /**
+     Returns a Swift style function signature for this SwaggerMethod object.
+     */
+    func swiftSignature() -> String
+    {
+        // Start things off with the method name.
+        var signature = self.methodName
+        
+        // Add the arguments.
+        signature += "("
+        for argument in self.methodArguments
+        {
+            signature += "\(argument.argumentName): \(argument.argumentType.stringValue())"
+        }
+        signature += ")"
+        
+        // Add the return part.  There could be multiple response options, so just
+        // insert the first and then add an indicator for how many are not displayed.
+        if let firstResponse = self.methodResponses.first
+        {
+            signature += " -> \(firstResponse.responseDataType.stringValue())"
+            if self.methodResponses.count > 1
+            {
+                signature += " [+ \(self.methodResponses.count - 1)]"
+            }
+        }
+        
+        // Swiftitized!
+        return signature
+    }
+    
     // MARK:- Swagger Generation
     
     /**
