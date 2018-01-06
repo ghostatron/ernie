@@ -130,11 +130,7 @@ class SwaggerMethod
         signature += "("
         for argument in self.methodArguments
         {
-            signature += "\(argument.argumentName): \(argument.argumentType.stringValue())"
-            if !argument.isArgumentRequired
-            {
-                signature += "?"
-            }
+            signature += argument.swiftSignature()
         }
         signature += ")"
         

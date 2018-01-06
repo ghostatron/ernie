@@ -17,12 +17,14 @@ protocol SwaggerArgumentDetailTableViewCellDelegate
 
 class SwaggerMethodArgumentTableViewCell: NSTableCellView
 {
+    @IBOutlet weak var argumentInfoLabel: NSTextField!
     private(set) var argument: SwaggerMethodArgument?
     var delegate: SwaggerArgumentDetailTableViewCellDelegate?
     
     func configureFor(argument: SwaggerMethodArgument)
     {
         self.argument = argument
+        self.argumentInfoLabel.stringValue = argument.swiftSignature()
     }
     
     @IBAction func deleteButtonPressed(_ sender: NSButton)

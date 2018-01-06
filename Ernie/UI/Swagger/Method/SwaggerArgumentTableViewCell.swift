@@ -11,9 +11,12 @@ import Cocoa
 
 class SwaggerArgumentTableViewCell: NSTableCellView
 {
+    @IBOutlet weak var argumentInfoLabel: NSTextField!
     private(set) var argument: SwaggerMethodArgument?
+    
     func configureFor(argument: SwaggerMethodArgument)
     {
         self.argument = argument
+        self.argumentInfoLabel.stringValue = argument.swiftSignature()
     }
 }

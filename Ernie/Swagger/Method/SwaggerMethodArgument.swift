@@ -55,6 +55,18 @@ class SwaggerMethodArgument
         self.argumentDescription = avatarOf.argDescription
     }
     
+    // MARK:- Misc.
+    
+    func swiftSignature() -> String
+    {
+        var swiftArgument = "\(self.argumentName): \(self.argumentType.stringValue())"
+        if !self.isArgumentRequired
+        {
+            swiftArgument += "?"
+        }
+        return swiftArgument
+    }
+    
     // MARK:- Swagger Generation
     
     /**

@@ -817,7 +817,7 @@ Gw
                                                                         <action selector="deleteButtonPressed:" target="53H-6F-fHK" id="pN5-pu-j96"/>
                                                                     </connections>
                                                                 </button>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="iq8-O5-UFR" userLabel="Property Info TextField">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="iq8-O5-UFR" userLabel="Argument Info Label">
                                                                     <rect key="frame" x="25" y="4" width="166" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Argument Info" id="8CX-ri-Ad3">
                                                                         <font key="font" metaFont="system"/>
@@ -847,6 +847,9 @@ Gw
                                                                 <constraint firstAttribute="trailing" secondItem="hpG-YD-I4Y" secondAttribute="trailing" constant="8" id="qng-B2-yHS"/>
                                                                 <constraint firstItem="hpG-YD-I4Y" firstAttribute="width" secondItem="3qu-04-nM8" secondAttribute="width" id="rsS-o3-PAP"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <outlet property="argumentInfoLabel" destination="iq8-O5-UFR" id="npK-ad-onp"/>
+                                                            </connections>
                                                         </tableCellView>
                                                         <tableCellView identifier="swaggerNewPropertyCell" id="Wef-U6-X4t" customClass="SwaggerModelNewPropertyTableCell" customModule="Ernie" customModuleProvider="target">
                                                             <rect key="frame" x="1" y="28" width="216" height="25"/>
@@ -1142,7 +1145,7 @@ Gw
                                                                 </textField>
                                                             </subviews>
                                                             <connections>
-                                                                <outlet property="textField" destination="0D7-WB-YRs" id="lqP-MS-KWX"/>
+                                                                <outlet property="argumentInfoLabel" destination="0D7-WB-YRs" id="WY0-7u-gAo"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
@@ -1150,6 +1153,7 @@ Gw
                                             </tableColumns>
                                             <connections>
                                                 <outlet property="dataSource" destination="faa-VI-91V" id="Cgc-cO-bma"/>
+                                                <outlet property="delegate" destination="faa-VI-91V" id="EYb-ta-xiE"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
