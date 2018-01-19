@@ -181,6 +181,10 @@ class SwaggerMethodEditorViewController: NSViewController, NSTableViewDataSource
             }
             self.argumentsTableView.reloadData()
         }
+        if let productsEditor = dialog as? SwaggerMethodProductsViewController
+        {
+            self.productsForEditor = productsEditor.products
+        }
     }
     
     /**
