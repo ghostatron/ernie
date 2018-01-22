@@ -63,7 +63,7 @@ class SwaggerMethodEditorViewController: NSViewController, NSTableViewDataSource
         else if let editorVC = segue.destinationController as? SwaggerMethodTagsViewController
         {
             editorVC.modalDelegate = self
-            editorVC.tags = self.tagsForEditor
+            editorVC.configureWithTags(self.tagsForEditor)
         }
         else if let editorVC = segue.destinationController as? SwaggerMethodArgumentEditorViewController
         {
@@ -181,9 +181,13 @@ class SwaggerMethodEditorViewController: NSViewController, NSTableViewDataSource
             }
             self.argumentsTableView.reloadData()
         }
-        if let productsEditor = dialog as? SwaggerMethodProductsViewController
+        else if let productsEditor = dialog as? SwaggerMethodProductsViewController
         {
             self.productsForEditor = productsEditor.products
+        }
+        else if let tagsEditor = dialog as? SwaggerMethodTagsViewController
+        {
+            self.tagsForEditor = tagsEditor.sortedTags
         }
     }
     

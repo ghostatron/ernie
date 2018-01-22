@@ -67,6 +67,7 @@
 		C1CD70061FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD70051FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift */; };
 		C1CD70091FCCDCD0002C7CBB /* CauldronHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD70081FCCDCD0002C7CBB /* CauldronHomeViewController.swift */; };
 		C1CD700B1FCCE14D002C7CBB /* CauldronAnalyzeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD700A1FCCE14D002C7CBB /* CauldronAnalyzeViewController.swift */; };
+		C1DE4154201661DF00E15A5F /* SwaggerMethodTagTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DE4153201661DF00E15A5F /* SwaggerMethodTagTableCell.swift */; };
 		C1E854F71FC396FF00CE90DD /* ContainersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854F61FC396FF00CE90DD /* ContainersViewController.swift */; };
 		C1E854F91FC3972D00CE90DD /* ContainersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854F81FC3972D00CE90DD /* ContainersTableViewCell.swift */; };
 		C1E854FB1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854FA1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift */; };
@@ -153,6 +154,7 @@
 		C1CD70051FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		C1CD70081FCCDCD0002C7CBB /* CauldronHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CauldronHomeViewController.swift; sourceTree = "<group>"; };
 		C1CD700A1FCCE14D002C7CBB /* CauldronAnalyzeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CauldronAnalyzeViewController.swift; sourceTree = "<group>"; };
+		C1DE4153201661DF00E15A5F /* SwaggerMethodTagTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerMethodTagTableCell.swift; sourceTree = "<group>"; };
 		C1E854F61FC396FF00CE90DD /* ContainersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersViewController.swift; sourceTree = "<group>"; };
 		C1E854F81FC3972D00CE90DD /* ContainersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersTableViewCell.swift; sourceTree = "<group>"; };
 		C1E854FA1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersMiniAppTableViewCell.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				C12B8C3B1FFD5621007A03B0 /* SwaggerMethodProductsViewController.swift */,
 				C12B8C3D1FFD5638007A03B0 /* SwaggerMethodResponsesViewController.swift */,
 				C12B8C3F1FFD564A007A03B0 /* SwaggerMethodTagsViewController.swift */,
+				C1DE4153201661DF00E15A5F /* SwaggerMethodTagTableCell.swift */,
 			);
 			path = Editor;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				C1CD70011FCC9AF8002C7CBB /* MiniAppsContainerTableViewCell.swift in Sources */,
 				C1C774F11FA3EA7900AD269F /* EnvironmentRequirementDelegate.swift in Sources */,
 				C1E854FF1FC4E69F00CE90DD /* MiniAppSelectionTableViewCell.swift in Sources */,
+				C1DE4154201661DF00E15A5F /* SwaggerMethodTagTableCell.swift in Sources */,
 				C1CD70041FCCA1C5002C7CBB /* MiniAppEditorViewController.swift in Sources */,
 				C1C774F51FA3ECFB00AD269F /* CommandLineHelper.swift in Sources */,
 				C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */,
