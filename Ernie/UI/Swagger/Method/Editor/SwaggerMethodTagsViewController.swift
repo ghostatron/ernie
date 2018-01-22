@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-class SwaggerMethodTagsViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource
+class SwaggerMethodTagsViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, SwaggerMethodTagTableCellDelegate
 {
     @IBOutlet weak var tagTextField: NSTextField!
     @IBOutlet weak var addTagButton: NSButton!
@@ -73,6 +73,7 @@ class SwaggerMethodTagsViewController: NSViewController, NSTableViewDelegate, NS
             }
 
             // Configure the view and return it.
+            tagCell.delegate = self
             tagCell.configureForTag(self.sortedTags[row])
             return tagCell
         }
@@ -80,5 +81,17 @@ class SwaggerMethodTagsViewController: NSViewController, NSTableViewDelegate, NS
         {
             return nil
         }
+    }
+    
+    // MARK:- SwaggerMethodTagTableCellDelegate
+    
+    func deleteButtonPressedForTagInCell(_ tagCell: SwaggerMethodTagTableCell, tag: String)
+    {
+        guard let index = self.sortedTags.index(of: tag) else
+        {
+            return
+        }
+        self.sortedTags.remove(at: index)
+        self.tagsTable.reloadData()
     }
 }
