@@ -189,6 +189,10 @@ class SwaggerMethodEditorViewController: NSViewController, NSTableViewDataSource
         {
             self.tagsForEditor = tagsEditor.sortedTags
         }
+        else if let responsesEditor = dialog as? SwaggerMethodResponsesViewController
+        {
+            self.responsesForEditor = responsesEditor.responses ?? []
+        }
     }
     
     /**

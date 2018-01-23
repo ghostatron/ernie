@@ -42,6 +42,8 @@
 		C144CEA61FDB5AB600E47EED /* SwaggerDataTypeEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144CEA51FDB5AB600E47EED /* SwaggerDataTypeEnum.swift */; };
 		C144CEA81FDB5AD000E47EED /* SwaggerDataTypeFormatEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144CEA71FDB5AD000E47EED /* SwaggerDataTypeFormatEnum.swift */; };
 		C144CEAA1FDB5AEC00E47EED /* SwaggerProductEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C144CEA91FDB5AEC00E47EED /* SwaggerProductEnum.swift */; };
+		C154A2852017C23700EC6B3B /* SwaggerMethodResponseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154A2842017C23700EC6B3B /* SwaggerMethodResponseTableCell.swift */; };
+		C154A2872017C25F00EC6B3B /* SwaggerMethodNewResponseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154A2862017C25F00EC6B3B /* SwaggerMethodNewResponseTableCell.swift */; };
 		C187C7DB1FD7632B00C26311 /* CauldronHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C187C7DA1FD7632B00C26311 /* CauldronHomeTableViewCell.swift */; };
 		C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */; };
 		C190D4531FABD61B002EFA5B /* YarnRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4521FABD61B002EFA5B /* YarnRequirement.swift */; };
@@ -124,6 +126,8 @@
 		C144CEA51FDB5AB600E47EED /* SwaggerDataTypeEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerDataTypeEnum.swift; sourceTree = "<group>"; };
 		C144CEA71FDB5AD000E47EED /* SwaggerDataTypeFormatEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerDataTypeFormatEnum.swift; sourceTree = "<group>"; };
 		C144CEA91FDB5AEC00E47EED /* SwaggerProductEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerProductEnum.swift; sourceTree = "<group>"; };
+		C154A2842017C23700EC6B3B /* SwaggerMethodResponseTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerMethodResponseTableCell.swift; sourceTree = "<group>"; };
+		C154A2862017C25F00EC6B3B /* SwaggerMethodNewResponseTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerMethodNewResponseTableCell.swift; sourceTree = "<group>"; };
 		C187C7DA1FD7632B00C26311 /* CauldronHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CauldronHomeTableViewCell.swift; sourceTree = "<group>"; };
 		C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPMRequirement.swift; sourceTree = "<group>"; };
 		C190D4521FABD61B002EFA5B /* YarnRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YarnRequirement.swift; sourceTree = "<group>"; };
@@ -296,6 +300,8 @@
 				C13631021FFEA4A50085A008 /* SwaggerMethodArgumentEditorViewController.swift */,
 				C12B8C3B1FFD5621007A03B0 /* SwaggerMethodProductsViewController.swift */,
 				C12B8C3D1FFD5638007A03B0 /* SwaggerMethodResponsesViewController.swift */,
+				C154A2842017C23700EC6B3B /* SwaggerMethodResponseTableCell.swift */,
+				C154A2862017C25F00EC6B3B /* SwaggerMethodNewResponseTableCell.swift */,
 				C12B8C3F1FFD564A007A03B0 /* SwaggerMethodTagsViewController.swift */,
 				C1DE4153201661DF00E15A5F /* SwaggerMethodTagTableCell.swift */,
 			);
@@ -600,6 +606,7 @@
 				C190D4531FABD61B002EFA5B /* YarnRequirement.swift in Sources */,
 				C19E0F681FBA1ED400EC727B /* AndroidStudioRequirement.swift in Sources */,
 				C1CD70061FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift in Sources */,
+				C154A2872017C25F00EC6B3B /* SwaggerMethodNewResponseTableCell.swift in Sources */,
 				C1C774F31FA3EC5E00AD269F /* NodeJSRequirement.swift in Sources */,
 				C1E855031FC633FC00CE90DD /* MiniAppsViewController.swift in Sources */,
 				C1E854F91FC3972D00CE90DD /* ContainersTableViewCell.swift in Sources */,
@@ -624,6 +631,7 @@
 				C1C774CF1FA3E28300AD269F /* AppDelegate.swift in Sources */,
 				C1E854FB1FC4AFBD00CE90DD /* ContainersMiniAppTableViewCell.swift in Sources */,
 				C1CD700B1FCCE14D002C7CBB /* CauldronAnalyzeViewController.swift in Sources */,
+				C154A2852017C23700EC6B3B /* SwaggerMethodResponseTableCell.swift in Sources */,
 				C19E0F6A1FBA562E00EC727B /* RequirementsViewController.swift in Sources */,
 				C144CE9E1FDB599B00E47EED /* SwaggerMethodTypeEnum.swift in Sources */,
 				C144CEA01FDB59DD00E47EED /* SwaggerMethodArgument.swift in Sources */,

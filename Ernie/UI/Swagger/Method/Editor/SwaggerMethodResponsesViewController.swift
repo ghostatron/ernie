@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-class SwaggerMethodResponsesViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, NSComboBoxDataSource
+class SwaggerMethodResponsesViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, NSComboBoxDataSource, SwaggerMethodResponseTableCellDelegate, SwaggerMethodNewResponseTableCellDelegate
 {
     @IBOutlet weak var responsesTableView: NSTableView!
     @IBOutlet weak var httpCodeTextField: NSTextField!
@@ -187,6 +187,8 @@ class SwaggerMethodResponsesViewController: NSViewController, NSTableViewDelegat
         
         // Toggle the edit mode.
         self.configureForEditing(!self.isEditEnabled)
+        
+        self.responsesTableView.reloadData()
     }
     
     @IBAction func cancelButtonPressed(_ sender: NSButton)
@@ -206,55 +208,42 @@ class SwaggerMethodResponsesViewController: NSViewController, NSTableViewDelegat
     
     func numberOfRows(in tableView: NSTableView) -> Int
     {
-        return self.sortedResponses.count
+        // One row per response plus one for the "new" row.
+        return self.sortedResponses.count + 1
     }
     
     // MARK:- NSTableViewDelegate
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView?
     {
-        return nil
-//        switch tableView
-//        {
-//        case self.miniAppsTableView:
-//
-//            // No out-of-bounds crashes please.
-//            guard row < self.allMiniAppsAlphabetized.count else
-//            {
-//                return nil
-//            }
-//
-//            // Instantiate a view for the cell.
-//            guard let miniAppCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "miniAppRow"), owner: self) as? MiniAppsTableViewCell else
-//            {
-//                return nil
-//            }
-//
-//            // Configure the view and return it.
-//            miniAppCell.configureForMiniApp(self.allMiniAppsAlphabetized[row])
-//            return miniAppCell
-//
-//        case self.containersTableView:
-//
-//            // No out-of-bounds crashes please.
-//            guard row < self.selectedMiniAppContainersAlphabetized.count else
-//            {
-//                return nil
-//            }
-//
-//            // Instantiate a view for the cell.
-//            guard let containerCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "containerMiniAppRow"), owner: self) as? MiniAppsContainerTableViewCell else
-//            {
-//                return nil
-//            }
-//
-//            // Configure the view and return it.
-//            containerCell.configureForContainer(self.selectedMiniAppContainersAlphabetized[row])
-//            return containerCell
-//
-//        default:
-//            return nil
-//        }
+        // No out-of-bounds crashes please.
+        if row < self.sortedResponses.count
+        {
+            // Instantiate a view for the cell.
+            guard let responseCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "swaggerMethodResponseTableCell"), owner: self) as? SwaggerMethodResponseTableCell else
+            {
+                return nil
+            }
+            
+            // Configure the view and return it.
+            responseCell.delegate = self
+            responseCell.configureForResponse(self.sortedResponses[row])
+            return responseCell
+        }
+        else if row == self.sortedResponses.count
+        {
+            // Instantiate a view for the cell.
+            guard let newResponseCell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "swaggerMethodNewResponseTableCell"), owner: self) as? SwaggerMethodNewResponseTableCell else
+            {
+                return nil
+            }
+            newResponseCell.delegate = self
+            return newResponseCell
+        }
+        else
+        {
+            return nil
+        }
     }
     
     func tableViewSelectionDidChange(_ notification: Notification)
@@ -266,7 +255,7 @@ class SwaggerMethodResponsesViewController: NSViewController, NSTableViewDelegat
         }
         
         // Figure out which response was just selected.
-        if tableView.selectedRow < 0 || tableView.selectedRow >= self.responses?.count ?? 0
+        if tableView.selectedRow < 0 || tableView.selectedRow >= self.sortedResponses.count
         {
             // No response selected.
             self.selectedResponse = nil
@@ -274,12 +263,51 @@ class SwaggerMethodResponsesViewController: NSViewController, NSTableViewDelegat
         else
         {
             // Update the selected response.
-            self.selectedResponse = self.responses?[tableView.selectedRow]
+            self.selectedResponse = self.sortedResponses[tableView.selectedRow]
         }
         
         // Update the UI for that newly selected response.
         self.configureForEditing(false)
         self.configureForSelectedResponse()
+    }
+    
+    // MARK:- SwaggerMethodResponseTableCellDelegate
+    
+    func deleteButtonPressed(sender: SwaggerMethodResponseTableCell, response: SwaggerResponse?)
+    {
+        // Locate the response in our data source.
+        var indexOfDeletion = 0
+        for existingResponse in self.sortedResponses
+        {
+            if existingResponse === response
+            {
+                break
+            }
+            indexOfDeletion += 1
+        }
+        
+        // Remove the response from our data source.
+        if indexOfDeletion < self.sortedResponses.count
+        {
+            self.sortedResponses.remove(at: indexOfDeletion)
+        }
+        
+        // Update the UI.
+        self.responsesTableView.reloadData()
+    }
+    
+    // MARK:- SwaggerMethodNewResponseTableCellDelegate
+    
+    func newButtonPressed(sender: SwaggerMethodNewResponseTableCell)
+    {
+        let responseDataType = SwaggerDataType(primitiveType: SwaggerDataTypeEnum.String)
+        let response = SwaggerResponse(code: "", type: responseDataType)
+        self.selectedResponse = response
+        self.sortedResponses.append(response)
+        self.responsesTableView.reloadData()
+        self.responsesTableView.selectRowIndexes(NSIndexSet(index: self.sortedResponses.count - 1) as IndexSet, byExtendingSelection: false)
+        //self.configureForSelectedResponse()
+        self.configureForEditing(true)
     }
     
     // MARK:- NSComboBoxDataSource
