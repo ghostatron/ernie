@@ -28,6 +28,8 @@ class SwaggerMethodArgumentEditorViewController: NSViewController, NSComboBoxDat
     private var sortedFormats: [String] = []
     private var comboBoxesInitialized = false
     
+    // View Lifecycle
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -36,6 +38,8 @@ class SwaggerMethodArgumentEditorViewController: NSViewController, NSComboBoxDat
         self.comboBoxesInitialized = true
         self.configureForArgument()
     }
+    
+    // MARK:- Private Methods
     
     private func configureForArgument()
     {
