@@ -45,6 +45,7 @@
 		C154A2852017C23700EC6B3B /* SwaggerMethodResponseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154A2842017C23700EC6B3B /* SwaggerMethodResponseTableCell.swift */; };
 		C154A2872017C25F00EC6B3B /* SwaggerMethodNewResponseTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154A2862017C25F00EC6B3B /* SwaggerMethodNewResponseTableCell.swift */; };
 		C154A28A2017FD1500EC6B3B /* SwaggerContainersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154A2892017FD1500EC6B3B /* SwaggerContainersViewController.swift */; };
+		C154A28D201907D600EC6B3B /* SwaggerContainerEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C154A28C201907D600EC6B3B /* SwaggerContainerEditorViewController.swift */; };
 		C187C7DB1FD7632B00C26311 /* CauldronHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C187C7DA1FD7632B00C26311 /* CauldronHomeTableViewCell.swift */; };
 		C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */; };
 		C190D4531FABD61B002EFA5B /* YarnRequirement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C190D4521FABD61B002EFA5B /* YarnRequirement.swift */; };
@@ -130,6 +131,7 @@
 		C154A2842017C23700EC6B3B /* SwaggerMethodResponseTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerMethodResponseTableCell.swift; sourceTree = "<group>"; };
 		C154A2862017C25F00EC6B3B /* SwaggerMethodNewResponseTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerMethodNewResponseTableCell.swift; sourceTree = "<group>"; };
 		C154A2892017FD1500EC6B3B /* SwaggerContainersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerContainersViewController.swift; sourceTree = "<group>"; };
+		C154A28C201907D600EC6B3B /* SwaggerContainerEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerContainerEditorViewController.swift; sourceTree = "<group>"; };
 		C187C7DA1FD7632B00C26311 /* CauldronHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CauldronHomeTableViewCell.swift; sourceTree = "<group>"; };
 		C190D4501FABBFA7002EFA5B /* NPMRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPMRequirement.swift; sourceTree = "<group>"; };
 		C190D4521FABD61B002EFA5B /* YarnRequirement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YarnRequirement.swift; sourceTree = "<group>"; };
@@ -353,9 +355,18 @@
 		C154A2882017FCD900EC6B3B /* Container */ = {
 			isa = PBXGroup;
 			children = (
+				C154A28B201907B700EC6B3B /* Editor */,
 				C154A2892017FD1500EC6B3B /* SwaggerContainersViewController.swift */,
 			);
 			path = Container;
+			sourceTree = "<group>";
+		};
+		C154A28B201907B700EC6B3B /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				C154A28C201907D600EC6B3B /* SwaggerContainerEditorViewController.swift */,
+			);
+			path = Editor;
 			sourceTree = "<group>";
 		};
 		C190D4581FACEBDE002EFA5B /* Utilities */ = {
@@ -631,6 +642,7 @@
 				C13631031FFEA4A50085A008 /* SwaggerMethodArgumentEditorViewController.swift in Sources */,
 				C12B8C361FFBFD7F007A03B0 /* SwaggerMethodEditorViewController.swift in Sources */,
 				C12B8C3A1FFC0411007A03B0 /* SwaggerArgumentTableViewCell.swift in Sources */,
+				C154A28D201907D600EC6B3B /* SwaggerContainerEditorViewController.swift in Sources */,
 				C144CEA61FDB5AB600E47EED /* SwaggerDataTypeEnum.swift in Sources */,
 				C190D45F1FB0FD80002EFA5B /* HomebrewRequirement.swift in Sources */,
 				C144CEA21FDB5A0B00E47EED /* SwaggerResponse.swift in Sources */,
