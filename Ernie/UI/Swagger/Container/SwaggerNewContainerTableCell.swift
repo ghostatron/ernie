@@ -16,4 +16,11 @@ protocol SwaggerNewContainerTableCellDelegate
 class SwaggerNewContainerTableCell: NSTableCellView
 {
     var delegate: SwaggerNewContainerTableCellDelegate?
+    
+    // MARK:- Event Handlers
+    
+    @IBAction func newButtonPressed(_ sender: NSButton)
+    {
+        self.delegate?.newButtonPressed(sender: self)
+    }
 }

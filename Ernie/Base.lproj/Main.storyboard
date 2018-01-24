@@ -1221,13 +1221,13 @@ DQ
                                     <action selector="doneButtonPressed:" target="1e9-FV-eIX" id="QWL-ye-U2v"/>
                                 </connections>
                             </button>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zow-JQ-sGu">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="27" horizontalPageScroll="10" verticalLineScroll="27" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zow-JQ-sGu">
                                 <rect key="frame" x="20" y="20" width="185" height="260"/>
                                 <clipView key="contentView" id="7f8-um-uOk">
                                     <rect key="frame" x="1" y="23" width="183" height="236"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" enabled="NO" rowSizeStyle="automatic" headerView="3Nf-C3-ZoE" viewBased="YES" id="DgL-II-VIN">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" enabled="NO" rowHeight="25" rowSizeStyle="automatic" headerView="3Nf-C3-ZoE" viewBased="YES" id="DgL-II-VIN">
                                             <rect key="frame" x="0.0" y="0.0" width="183" height="236"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -1248,40 +1248,58 @@ DQ
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="swaggerContainerTableCell" id="dsi-mN-LAU" customClass="SwaggerContainerTableCell" customModule="Ernie" customModuleProvider="target">
-                                                            <rect key="frame" x="1" y="1" width="180" height="17"/>
+                                                            <rect key="frame" x="1" y="1" width="180" height="25"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gf9-RU-TqD">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="V6m-qD-dzw">
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Gf9-RU-TqD">
+                                                                    <rect key="frame" x="5" y="4" width="90" height="17"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Container Info" id="V6m-qD-dzw">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
+                                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kcO-ar-yOx">
+                                                                    <rect key="frame" x="123" y="4" width="53" height="16"/>
+                                                                    <buttonCell key="cell" type="push" title="Delete" bezelStyle="rounded" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="uez-iy-8sv">
+                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                        <font key="font" metaFont="miniSystem"/>
+                                                                    </buttonCell>
+                                                                    <connections>
+                                                                        <action selector="deleteButtonPressed:" target="dsi-mN-LAU" id="BsE-A6-fqI"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="kcO-ar-yOx" secondAttribute="trailing" constant="5" id="AXl-a0-Mp6"/>
+                                                                <constraint firstItem="kcO-ar-yOx" firstAttribute="centerY" secondItem="dsi-mN-LAU" secondAttribute="centerY" id="Gos-4q-xv2"/>
+                                                                <constraint firstItem="Gf9-RU-TqD" firstAttribute="leading" secondItem="dsi-mN-LAU" secondAttribute="leading" constant="7" id="Teq-8m-ySN"/>
+                                                                <constraint firstItem="kcO-ar-yOx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Gf9-RU-TqD" secondAttribute="trailing" constant="5" id="XFh-vv-RKg"/>
+                                                                <constraint firstItem="Gf9-RU-TqD" firstAttribute="centerY" secondItem="dsi-mN-LAU" secondAttribute="centerY" id="oHx-wA-gaA"/>
+                                                            </constraints>
                                                             <connections>
-                                                                <outlet property="textField" destination="Gf9-RU-TqD" id="PRf-x4-XCj"/>
+                                                                <outlet property="containerInfoLabel" destination="Gf9-RU-TqD" id="DvY-NX-Rm3"/>
                                                             </connections>
                                                         </tableCellView>
                                                         <tableCellView identifier="swaggerNewContainerTableCell" id="BDN-0P-eNb" customClass="SwaggerNewContainerTableCell" customModule="Ernie" customModuleProvider="target">
-                                                            <rect key="frame" x="1" y="20" width="180" height="17"/>
+                                                            <rect key="frame" x="1" y="28" width="180" height="25"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWQ-2r-fPq">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="TFP-xo-PLy">
-                                                                        <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textFieldCell>
-                                                                </textField>
+                                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jFn-zV-aFA">
+                                                                    <rect key="frame" x="46" y="4" width="89" height="16"/>
+                                                                    <buttonCell key="cell" type="push" title="New Container" bezelStyle="rounded" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Q3Y-Cz-v4v">
+                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                        <font key="font" metaFont="miniSystem"/>
+                                                                    </buttonCell>
+                                                                    <connections>
+                                                                        <action selector="newButtonPressed:" target="BDN-0P-eNb" id="Wbb-3t-Cgc"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
-                                                            <connections>
-                                                                <outlet property="textField" destination="GWQ-2r-fPq" id="9kd-E2-p55"/>
-                                                            </connections>
+                                                            <constraints>
+                                                                <constraint firstItem="jFn-zV-aFA" firstAttribute="centerX" secondItem="BDN-0P-eNb" secondAttribute="centerX" id="SJU-nn-NOB"/>
+                                                                <constraint firstItem="jFn-zV-aFA" firstAttribute="centerY" secondItem="BDN-0P-eNb" secondAttribute="centerY" id="aMC-Df-ZOl"/>
+                                                            </constraints>
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>

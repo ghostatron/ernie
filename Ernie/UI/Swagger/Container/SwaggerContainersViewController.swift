@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class SwaggerContainersViewController: NSViewController, NSTabViewDelegate, NSTableViewDataSource, SwaggerContainerTableCellDelegate, SwaggerNewContainerTableCellDelegate, ModalDialogDelegate
+class SwaggerContainersViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, SwaggerContainerTableCellDelegate, SwaggerNewContainerTableCellDelegate, ModalDialogDelegate
 {
     @IBOutlet weak var containersTableView: NSTableView!
     @IBOutlet weak var methodListLabel: NSTextField!
@@ -127,16 +127,41 @@ class SwaggerContainersViewController: NSViewController, NSTabViewDelegate, NSTa
     
     // MARK:- SwaggerContainerTableCellDelegate
     
-    func deleteButtonPressedForContainerInCell(_ containerCell: SwaggerContainerTableCell, container: SwaggerContainer)
+    func deleteButtonPressedForContainerInCell(_ containerCell: SwaggerContainerTableCell, container: SwaggerContainer?)
     {
-        // TODO
+        guard let container = container else
+        {
+            return
+        }
+        
+        // Locate the container in our data source.
+        var indexOfDeletion = 0
+        for existingContainer in self.sortedContainers
+        {
+            if existingContainer === container
+            {
+                break
+            }
+            indexOfDeletion += 1
+        }
+        
+        // Remove the container from our data source.
+        if indexOfDeletion < self.sortedContainers.count
+        {
+            self.sortedContainers.remove(at: indexOfDeletion)
+        }
+        
+        // Update the UI.
+        self.containersTableView.reloadData()
     }
     
     // MARK:- SwaggerNewContainerTableCellDelegate
     
     func newButtonPressed(sender: SwaggerNewContainerTableCell)
     {
-        // TODO
+        self.selectedContainer = nil
+        self.launchEditorInEditMode = false
+        self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toContainerEditor"), sender: self)
     }
     
     
@@ -144,7 +169,7 @@ class SwaggerContainersViewController: NSViewController, NSTabViewDelegate, NSTa
     
     @IBAction func doneButtonPressed(_ sender: NSButton)
     {
-        self.dismiss(self)
+        self.dismissViewController(self)
     }
     
     @IBAction func editButtonPressed(_ sender: NSButton)
