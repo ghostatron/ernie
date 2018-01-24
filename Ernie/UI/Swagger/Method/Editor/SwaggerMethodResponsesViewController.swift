@@ -199,9 +199,33 @@ class SwaggerMethodResponsesViewController: NSViewController, NSTableViewDelegat
     
     @IBAction func okButtonPressed(_ sender: NSButton)
     {
-        self.responses = self.sortedResponses
-        self.modalDelegate?.dismissedWithOK(dialog: self)
-        self.dismiss(self)
+        if self.isEditEnabled
+        {
+            let alert = NSAlert()
+            alert.messageText = "Unsaved Changes!"
+            alert.informativeText = "You have unsaved changes. Are you sure you want to close this editor without saving?"
+            alert.addButton(withTitle: "Yes, close without save")
+            alert.addButton(withTitle: "No, let me save")
+            alert.alertStyle = .warning
+            if alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn
+            {
+                // They clicked on "Yes"
+                self.responses = self.sortedResponses
+                self.modalDelegate?.dismissedWithOK(dialog: self)
+                self.dismiss(self)
+            }
+            else
+            {
+                // They clicked on "No"
+                return
+            }
+        }
+        else
+        {
+            self.responses = self.sortedResponses
+            self.modalDelegate?.dismissedWithOK(dialog: self)
+            self.dismiss(self)
+        }
     }
     
     // MARK:- NSTableViewDataSource
