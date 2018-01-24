@@ -1213,7 +1213,13 @@ Gw
                                 <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aub-Lj-Uzv">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="doneButtonPressed:" target="1e9-FV-eIX" id="QWL-ye-U2v"/>
+                                </connections>
                             </button>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zow-JQ-sGu">
                                 <rect key="frame" x="20" y="20" width="185" height="260"/>
@@ -1241,7 +1247,7 @@ Gw
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="dsi-mN-LAU">
+                                                        <tableCellView identifier="swaggerContainerTableCell" id="dsi-mN-LAU" customClass="SwaggerContainerTableCell" customModule="Ernie" customModuleProvider="target">
                                                             <rect key="frame" x="1" y="1" width="180" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -1259,9 +1265,31 @@ Gw
                                                                 <outlet property="textField" destination="Gf9-RU-TqD" id="PRf-x4-XCj"/>
                                                             </connections>
                                                         </tableCellView>
+                                                        <tableCellView identifier="swaggerNewContainerTableCell" id="BDN-0P-eNb" customClass="SwaggerNewContainerTableCell" customModule="Ernie" customModuleProvider="target">
+                                                            <rect key="frame" x="1" y="20" width="180" height="17"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWQ-2r-fPq">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="17"/>
+                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="TFP-xo-PLy">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                            </subviews>
+                                                            <connections>
+                                                                <outlet property="textField" destination="GWQ-2r-fPq" id="9kd-E2-p55"/>
+                                                            </connections>
+                                                        </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="1e9-FV-eIX" id="7Ou-Wf-Zmf"/>
+                                                <outlet property="delegate" destination="1e9-FV-eIX" id="5iO-oa-e6V"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>
@@ -1307,12 +1335,12 @@ Gw
                             </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oEM-Q3-aZv">
                                 <rect key="frame" x="240" y="13" width="72" height="32"/>
-                                <buttonCell key="cell" type="push" title="Edit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1gr-oK-R1b">
+                                <buttonCell key="cell" type="push" title="Edit" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1gr-oK-R1b">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <segue destination="YEB-gt-5f9" kind="modal" id="MI1-8o-Jlp"/>
+                                    <action selector="editButtonPressed:" target="1e9-FV-eIX" id="cOh-gb-PGe"/>
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N1m-Yt-tg1">
@@ -1353,6 +1381,13 @@ Gw
                             <constraint firstItem="oEM-Q3-aZv" firstAttribute="leading" secondItem="MJU-DL-hMb" secondAttribute="trailing" constant="20" id="wLI-85-KC7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="containersTableView" destination="DgL-II-VIN" id="Uab-wo-Fza"/>
+                        <outlet property="editButton" destination="oEM-Q3-aZv" id="o61-P9-X5V"/>
+                        <outlet property="methodListLabel" destination="M07-uR-F0c" id="vKI-wp-9mu"/>
+                        <outlet property="modelListLabel" destination="N1m-Yt-tg1" id="tO2-nW-WS2"/>
+                        <segue destination="YEB-gt-5f9" kind="modal" identifier="toContainerEditor" id="zx8-Ii-DVk"/>
+                    </connections>
                 </viewController>
                 <customObject id="YdL-ab-tbA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2428,6 +2463,10 @@ Gw
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="YEB-gt-5f9" id="Oeq-pq-vFj"/>
+                                                <outlet property="delegate" destination="YEB-gt-5f9" id="A2T-bb-w1H"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>
@@ -2491,6 +2530,10 @@ Gw
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="YEB-gt-5f9" id="fT5-8s-OwF"/>
+                                                <outlet property="delegate" destination="YEB-gt-5f9" id="52o-2o-6Gr"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>
@@ -2513,6 +2556,9 @@ Gw
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="addMethodButtonPressed:" target="YEB-gt-5f9" id="w1s-yq-zB6"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kJ8-4o-kNy">
                                 <rect key="frame" x="275" y="54" width="115" height="32"/>
@@ -2520,6 +2566,9 @@ Gw
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="addModelButtonPressed:" target="YEB-gt-5f9" id="tZa-Ax-pJS"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uhf-Fu-2Bl">
                                 <rect key="frame" x="354" y="13" width="82" height="32"/>
@@ -2530,6 +2579,9 @@ Gw
 DQ
 </string>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="saveButtonPressed:" target="YEB-gt-5f9" id="dop-gX-6Uf"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Xjs-16-p18">
                                 <rect key="frame" x="264" y="13" width="82" height="32"/>
@@ -2540,6 +2592,9 @@ DQ
 Gw
 </string>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" target="YEB-gt-5f9" id="H75-JC-4hY"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cok-M8-2jX">
                                 <rect key="frame" x="41" y="13" width="153" height="32"/>
@@ -2547,6 +2602,9 @@ Gw
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="generateSwaggerButtonPressed:" target="YEB-gt-5f9" id="VjM-Sg-Uz1"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rSB-o0-Voz">
                                 <rect key="frame" x="18" y="329" width="40" height="17"/>
@@ -2636,6 +2694,13 @@ Gw
                             <constraint firstItem="Cjd-LS-Ghx" firstAttribute="top" secondItem="mjz-Ci-tqW" secondAttribute="bottom" constant="12" id="xJt-Jp-Qxp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="descriptionTextField" destination="mjz-Ci-tqW" id="3xL-mC-ycf"/>
+                        <outlet property="methodsTableView" destination="1QE-kU-CFR" id="s9B-RG-5GJ"/>
+                        <outlet property="modelsTableView" destination="xkh-kD-WMW" id="88o-FR-93a"/>
+                        <outlet property="nameTextField" destination="ajS-qa-B8B" id="lGY-WI-Ykf"/>
+                        <outlet property="ownerTextField" destination="dxZ-N3-qpm" id="ETG-P4-hl3"/>
+                    </connections>
                 </viewController>
                 <customObject id="fb9-kj-pRH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
