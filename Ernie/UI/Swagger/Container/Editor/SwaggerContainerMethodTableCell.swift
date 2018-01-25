@@ -10,23 +10,42 @@ import Cocoa
 
 protocol SwaggerContainerMethodTableCellDelegate
 {
-    func deleteButtonPressedForMethodInCell(_ containerCell: SwaggerContainerMethodTableCell, method: SwaggerMethod?)
+    func swaggerContainerMethodCell(_ cell: SwaggerContainerMethodTableCell, method: SwaggerMethod?, wasSelected: Bool)
 }
 
 class SwaggerContainerMethodTableCell: NSTableCellView
 {
     var delegate: SwaggerContainerMethodTableCellDelegate?
     private(set) var method: SwaggerMethod?
+    @IBOutlet weak var methodCheckBox: NSButton!
     
-    func configureFor(method: SwaggerMethod)
+    // Helps decide how the checkbox button should appear initially.
+    var initialCheckState = NSControl.StateValue.off
+    var initialCheckStateHasBeenSet = false
+    
+    // MARK:- View Lifecycle
+    
+    override func layout()
+    {
+        super.layout()
+        if !self.initialCheckStateHasBeenSet
+        {
+            self.methodCheckBox.title = self.method?.methodName ?? "<No Method Name>"
+            self.methodCheckBox.state = self.initialCheckState
+            self.initialCheckStateHasBeenSet = true
+        }
+    }
+    
+    func configureFor(method: SwaggerMethod, isSelected: Bool)
     {
         self.method = method
+        self.initialCheckState = isSelected ? NSControl.StateValue.on : NSControl.StateValue.off
     }
     
     // MARK:- Event Handlers
     
-    @IBAction func deleteButtonPressed(_ sender: NSButton)
+    @IBAction func methodCheckBoxToggled(_ sender: NSButton)
     {
-        self.delegate?.deleteButtonPressedForMethodInCell(self, method: self.method)
+        self.delegate?.swaggerContainerMethodCell(self, method: self.method, wasSelected: sender.state == NSControl.StateValue.on)
     }
 }

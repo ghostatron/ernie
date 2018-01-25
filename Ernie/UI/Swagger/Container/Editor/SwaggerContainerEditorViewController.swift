@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class SwaggerContainerEditorViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource
+class SwaggerContainerEditorViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource, SwaggerContainerMethodTableCellDelegate, SwaggerContainerModelTableCellDelegate
 {
     @IBOutlet weak var nameTextField: NSTextField!
     @IBOutlet weak var ownerTextField: NSTextField!
@@ -19,7 +19,9 @@ class SwaggerContainerEditorViewController: NSViewController, NSTableViewDelegat
     var modalDelegate: ModalDialogDelegate?
     var container: SwaggerContainer?
     private var sortedMethods: [SwaggerMethod] = []
+    private var selectedMethodsLookupByName: [String : Bool] = [:]
     private var sortedModels: [SwaggerObjectModel] = []
+    private var selectedModelsLookupByName: [String : Bool] = [:]
     
     // MARK:- View Lifecycle
     
@@ -33,16 +35,35 @@ class SwaggerContainerEditorViewController: NSViewController, NSTableViewDelegat
     
     private func configureForContainer()
     {
-        guard let container = self.container else
+        var container: SwaggerContainer! = self.container
+        if container == nil
         {
-            return
+            container = SwaggerContainer()
         }
         
         self.nameTextField.stringValue = container.containerTitle ?? ""
         self.ownerTextField.stringValue = container.containerOwner ?? ""
         self.descriptionTextField.stringValue = container.containerDescription ?? ""
-        self.sortedMethods = container.containerMethods.sorted { $0.methodName < $1.methodName }
-        self.sortedModels = container.containerModels.sorted { $0.modelName < $1.modelName }
+        
+        self.sortedMethods = SwaggerMethod.getAllMethods().sorted  { $0.methodName < $1.methodName }
+        for method in self.sortedMethods
+        {
+            self.selectedMethodsLookupByName[method.methodName] = false
+        }
+        for method in container.containerMethods
+        {
+            self.selectedMethodsLookupByName[method.methodName] = true
+        }
+        
+        self.sortedModels = SwaggerObjectModel.getAllModels(sorted: true)
+        for model in self.sortedModels
+        {
+            self.selectedModelsLookupByName[model.modelName] = false
+        }
+        for model in container.containerModels
+        {
+            self.selectedModelsLookupByName[model.modelName] = true
+        }
     }
     
     // MARK:- NSTableViewDataSource
@@ -84,8 +105,9 @@ class SwaggerContainerEditorViewController: NSViewController, NSTableViewDelegat
             }
             
             // Configure the view and return it.
-            //containerCell.delegate = self
-            //containerCell.configureFor(container: self.sortedContainers[row])
+            methodCell.delegate = self
+            let methodForCell = self.sortedMethods[row]
+            methodCell.configureFor(method: methodForCell, isSelected: self.selectedMethodsLookupByName[methodForCell.methodName] ?? false)
             return methodCell
 
         case self.modelsTableView:
@@ -102,26 +124,39 @@ class SwaggerContainerEditorViewController: NSViewController, NSTableViewDelegat
             }
             
             // Configure the view and return it.
-            //containerCell.delegate = self
-            //containerCell.configureFor(container: self.sortedContainers[row])
+            modelCell.delegate = self
+            let modelForCell = self.sortedModels[row]
+            modelCell.configureFor(model: modelForCell, isSelected: self.selectedModelsLookupByName[modelForCell.modelName] ?? false)
             return modelCell
 
         default:
             return nil
         }
-        
-        
+    }
+    
+    // MARK:- SwaggerContainerMethodTableCellDelegate
+    
+    func swaggerContainerMethodCell(_ cell: SwaggerContainerMethodTableCell, method: SwaggerMethod?, wasSelected: Bool)
+    {
+        guard let toggledMethod = method else
+        {
+            return
+        }
+        self.selectedMethodsLookupByName[toggledMethod.methodName] = wasSelected
+    }
+    
+    // MARK:- SwaggerContainerModelTableCellDelegate
+    
+    func swaggerContainerModelCell(_ cell: SwaggerContainerModelTableCell, model: SwaggerObjectModel?, wasSelected: Bool)
+    {
+        guard let toggledModel = model else
+        {
+            return
+        }
+        self.selectedModelsLookupByName[toggledModel.modelName] = wasSelected
     }
     
     // MARK:- Event Handlers
-    
-    @IBAction func addMethodButtonPressed(_ sender: NSButton)
-    {
-    }
-    
-    @IBAction func addModelButtonPressed(_ sender: NSButton)
-    {
-    }
     
     @IBAction func generateSwaggerButtonPressed(_ sender: NSButton)
     {
@@ -135,7 +170,6 @@ class SwaggerContainerEditorViewController: NSViewController, NSTableViewDelegat
     
     @IBAction func saveButtonPressed(_ sender: NSButton)
     {
-        self.modalDelegate?.dismissedWithOK(dialog: self)
-        self.dismiss(self)
+        // TODO: Save
     }
 }
