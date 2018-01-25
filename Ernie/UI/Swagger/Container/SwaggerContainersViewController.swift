@@ -114,15 +114,15 @@ class SwaggerContainersViewController: NSViewController, NSTableViewDelegate, NS
     // If the "Edit" or "New" dialog returns with "OK", then we need to refresh the page.
     func dismissedWithOK(dialog: NSViewController)
     {
-        // Reload the table.
-        self.buildContainersDataSource()
-        self.containersTableView.reloadData()
-        self.configureViewForSelectedContainer()
+        // N/A
     }
     
     func dismissedWithCancel(dialog: NSViewController)
     {
-        // Don't care
+        // Reload the table.
+        self.buildContainersDataSource()
+        self.containersTableView.reloadData()
+        self.configureViewForSelectedContainer()
     }
     
     // MARK:- SwaggerContainerTableCellDelegate
@@ -169,7 +169,7 @@ class SwaggerContainersViewController: NSViewController, NSTableViewDelegate, NS
     
     @IBAction func doneButtonPressed(_ sender: NSButton)
     {
-        self.dismissViewController(self)
+        self.dismiss(self)
     }
     
     @IBAction func editButtonPressed(_ sender: NSButton)

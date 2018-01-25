@@ -22,6 +22,7 @@ class SwaggerContainerTableCell: NSTableCellView
     func configureFor(container: SwaggerContainer)
     {
         self.container = container
+        self.containerInfoLabel.stringValue = "\(container.containerTitle ?? "<No Name>") [\(container.containerMethods.count) methods, \(container.containerModels.count) models]"
     }
     
     // MARK:- Event Handlers

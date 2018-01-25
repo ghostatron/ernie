@@ -30,7 +30,7 @@ class SwaggerContainerMethodTableCell: NSTableCellView
         super.layout()
         if !self.initialCheckStateHasBeenSet
         {
-            self.methodCheckBox.title = self.method?.methodName ?? "<No Method Name>"
+            self.methodCheckBox.title = self.method?.swiftSignature() ?? "<No Method Name>"
             self.methodCheckBox.state = self.initialCheckState
             self.initialCheckStateHasBeenSet = true
         }
