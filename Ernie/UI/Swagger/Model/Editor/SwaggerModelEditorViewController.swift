@@ -47,6 +47,11 @@ class SwaggerModelEditorViewController: NSViewController, NSTableViewDataSource,
             if self.launchEditorInEditMode
             {
                 editorVC.property = self.propertyForEditor
+                editorVC.title = "\(self.propertyForEditor?.propertyName ?? "Property") [Edit]"
+            }
+            else
+            {
+                editorVC.title = "Property [New]"
             }
             editorVC.modalDelegate = self
         }

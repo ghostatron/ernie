@@ -79,7 +79,6 @@ class ContainerEditorViewController: NSViewController, NSTableViewDataSource, NS
     override func viewDidAppear()
     {
         super.viewDidAppear()
-        self.view.window?.title = self.container?.containerName ?? "New Container"
     }
     
     private func configureForNewMode()

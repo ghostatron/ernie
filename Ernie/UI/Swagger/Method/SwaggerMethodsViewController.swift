@@ -45,6 +45,11 @@ class SwaggerMethodsViewController: NSViewController, NSTableViewDataSource, NST
             if self.launchEditorInEditMode
             {
                 editorVC.method = self.selectedMethod
+                editorVC.title = "\(self.selectedMethod?.methodName ?? "Method") [Edit]"
+            }
+            else
+            {
+                editorVC.title = "Method [New]"
             }
             editorVC.modalDelegate = self
         }

@@ -36,6 +36,7 @@ class SwaggerContainerEditorViewController: NSViewController, NSTableViewDelegat
         if let editorVC = segue.destinationController as? SwaggerBodyViewController
         {
             editorVC.configureForContainer(self.container)
+            editorVC.title = "\(self.container?.containerTitle ?? "Container") JSON"
         }
     }
     

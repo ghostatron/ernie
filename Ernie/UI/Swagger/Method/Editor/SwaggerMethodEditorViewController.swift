@@ -45,7 +45,6 @@ class SwaggerMethodEditorViewController: NSViewController, NSTableViewDataSource
     override func viewDidAppear()
     {
         super.viewDidAppear()
-        self.view.window?.title = self.method?.methodName ?? "New Method"
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?)
@@ -54,21 +53,25 @@ class SwaggerMethodEditorViewController: NSViewController, NSTableViewDataSource
         {
             editorVC.modalDelegate = self
             editorVC.products = self.productsForEditor
+            editorVC.title = "\(self.method?.methodName ?? "") Products"
         }
         else if let editorVC = segue.destinationController as? SwaggerMethodResponsesViewController
         {
             editorVC.modalDelegate = self
             editorVC.responses = self.responsesForEditor
+            editorVC.title = "\(self.method?.methodName ?? "") Responses"
         }
         else if let editorVC = segue.destinationController as? SwaggerMethodTagsViewController
         {
             editorVC.modalDelegate = self
             editorVC.configureWithTags(self.tagsForEditor)
+            editorVC.title = "\(self.method?.methodName ?? "") Tags"
         }
         else if let editorVC = segue.destinationController as? SwaggerMethodArgumentEditorViewController
         {
             editorVC.modalDelegate = self
             editorVC.argument = self.argumentForEditor
+            editorVC.title = "\(self.method?.methodName ?? "") Arguments"
         }
     }
     

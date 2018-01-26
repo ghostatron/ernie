@@ -55,6 +55,14 @@ class ContainersViewController: NSViewController, NSTableViewDataSource, NSTable
             editorVC.mode = self.editorMode
             editorVC.container = self.selectedContainer
             editorVC.modalDelegate = self
+            if let container = self.selectedContainer
+            {
+                editorVC.title = container.containerName ?? "Container [Edit]"
+            }
+            else
+            {
+                editorVC.title = "Container [New]"
+            }
         }
     }
     

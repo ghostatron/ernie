@@ -36,6 +36,11 @@ class SwaggerContainersViewController: NSViewController, NSTableViewDelegate, NS
             if self.launchEditorInEditMode
             {
                 editorVC.container = self.selectedContainer
+                editorVC.title = "\(self.selectedContainer?.containerTitle ?? "Container") [Edit]"
+            }
+            else
+            {
+                editorVC.title = "Container [New]"
             }
             editorVC.modalDelegate = self
         }

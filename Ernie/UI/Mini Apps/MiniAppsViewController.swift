@@ -56,6 +56,14 @@ class MiniAppsViewController: NSViewController, NSTableViewDataSource, NSTableVi
             editorVC.mode = self.editorMode
             editorVC.miniApp = self.selectedMiniApp
             editorVC.modalDelegate = self
+            if let miniApp = self.selectedMiniApp
+            {
+                editorVC.title = "\(miniApp.miniAppName ?? "MiniApp") [Edit]"
+            }
+            else
+            {
+                editorVC.title = "MiniApp [New]"
+            }
         }
     }
     

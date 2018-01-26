@@ -37,7 +37,6 @@ class SwaggerMethodResponsesViewController: NSViewController, NSTableViewDelegat
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.title = "Responses"
         self.configureForResponses()
         self.configureForEditing(false)
         self.buildDataTypeDataSource()

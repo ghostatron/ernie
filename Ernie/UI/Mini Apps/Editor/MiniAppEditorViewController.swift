@@ -65,7 +65,6 @@ class MiniAppEditorViewController: NSViewController
     override func viewDidAppear()
     {
         super.viewDidAppear()
-        self.view.window?.title = self.miniApp?.miniAppName ?? "New Mini App"
     }
     
     private func configureForNewMode()

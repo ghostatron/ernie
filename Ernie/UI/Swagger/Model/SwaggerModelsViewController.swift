@@ -45,6 +45,11 @@ class SwaggerModelsViewController: NSViewController, NSTableViewDataSource, NSTa
             if self.launchEditorInEditMode
             {
                 editorVC.model = self.selectedModel
+                editorVC.title = "\(self.selectedModel?.modelName ?? "Model") [Edit]"
+            }
+            else
+            {
+                editorVC.title = "Model [New]"
             }
             editorVC.modalDelegate = self
         }
