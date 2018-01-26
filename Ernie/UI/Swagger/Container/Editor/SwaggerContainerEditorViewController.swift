@@ -31,6 +31,14 @@ class SwaggerContainerEditorViewController: NSViewController, NSTableViewDelegat
         self.configureForContainer()
     }
     
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?)
+    {
+        if let editorVC = segue.destinationController as? SwaggerBodyViewController
+        {
+            editorVC.configureForContainer(self.container)
+        }
+    }
+    
     // MARK:- Private Methods
     
     private func configureForContainer()
@@ -166,6 +174,11 @@ class SwaggerContainerEditorViewController: NSViewController, NSTableViewDelegat
     
     @IBAction func generateSwaggerButtonPressed(_ sender: NSButton)
     {
+        if let jsonSwagger = self.container?.generateSwaggerJson()
+        {
+            let jsonString = (jsonSwagger as NSDictionary).description
+            print(jsonString)
+        }
     }
     
     @IBAction func cancelButtonPressed(_ sender: NSButton)

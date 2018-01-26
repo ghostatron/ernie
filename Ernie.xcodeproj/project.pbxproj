@@ -75,6 +75,7 @@
 		C1CD70061FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD70051FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift */; };
 		C1CD70091FCCDCD0002C7CBB /* CauldronHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD70081FCCDCD0002C7CBB /* CauldronHomeViewController.swift */; };
 		C1CD700B1FCCE14D002C7CBB /* CauldronAnalyzeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD700A1FCCE14D002C7CBB /* CauldronAnalyzeViewController.swift */; };
+		C1D45861201BACB30009A876 /* SwaggerBodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D45860201BACB30009A876 /* SwaggerBodyViewController.swift */; };
 		C1DE4154201661DF00E15A5F /* SwaggerMethodTagTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DE4153201661DF00E15A5F /* SwaggerMethodTagTableCell.swift */; };
 		C1E854F71FC396FF00CE90DD /* ContainersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854F61FC396FF00CE90DD /* ContainersViewController.swift */; };
 		C1E854F91FC3972D00CE90DD /* ContainersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854F81FC3972D00CE90DD /* ContainersTableViewCell.swift */; };
@@ -170,6 +171,7 @@
 		C1CD70051FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		C1CD70081FCCDCD0002C7CBB /* CauldronHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CauldronHomeViewController.swift; sourceTree = "<group>"; };
 		C1CD700A1FCCE14D002C7CBB /* CauldronAnalyzeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CauldronAnalyzeViewController.swift; sourceTree = "<group>"; };
+		C1D45860201BACB30009A876 /* SwaggerBodyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerBodyViewController.swift; sourceTree = "<group>"; };
 		C1DE4153201661DF00E15A5F /* SwaggerMethodTagTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerMethodTagTableCell.swift; sourceTree = "<group>"; };
 		C1E854F61FC396FF00CE90DD /* ContainersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersViewController.swift; sourceTree = "<group>"; };
 		C1E854F81FC3972D00CE90DD /* ContainersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersTableViewCell.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				C154A28C201907D600EC6B3B /* SwaggerContainerEditorViewController.swift */,
 				C154A2922019598100EC6B3B /* SwaggerContainerMethodTableCell.swift */,
 				C154A2942019599F00EC6B3B /* SwaggerContainerModelTableCell.swift */,
+				C1D45860201BACB30009A876 /* SwaggerBodyViewController.swift */,
 			);
 			path = Editor;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C190D4571FACD3FA002EFA5B /* ElectrodeRequirement.swift in Sources */,
+				C1D45861201BACB30009A876 /* SwaggerBodyViewController.swift in Sources */,
 				C190D45B1FAD21EC002EFA5B /* ErnWrapper.swift in Sources */,
 				C12B8C421FFD5CC2007A03B0 /* SwaggerMethodArgumentTableViewCell.swift in Sources */,
 				C118CC761FE9BA05008C4DB5 /* SwaggerPropertyDetailTableViewCell.swift in Sources */,
