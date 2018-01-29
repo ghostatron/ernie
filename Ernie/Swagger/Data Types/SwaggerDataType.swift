@@ -46,6 +46,44 @@ class SwaggerDataType
         self.arrayDataType = arrayType
     }
     
+    class func dataTypeFromString(_ dataTypeString: String) -> SwaggerDataType?
+    {
+        // Check for the primitive data types first.
+        switch dataTypeString.lowercased()
+        {
+        case "bool":
+            return SwaggerDataType(primitiveType: .Boolean)
+        case "int":
+            return SwaggerDataType(primitiveType: .Integer)
+        case "string":
+            return SwaggerDataType(primitiveType: .String)
+        default:
+            break
+        }
+        
+        // It's either an array, an object model, or trash...
+        
+        // Check if it's an array.
+        if dataTypeString.first == "[" && dataTypeString.last == "]"
+        {
+            let arrayDataTypeString = dataTypeString.trimmingCharacters(in: CharacterSet(charactersIn: "[]"))
+            guard let arrayDataType = SwaggerDataType.dataTypeFromString(arrayDataTypeString) else
+            {
+                return nil
+            }
+            return SwaggerDataType(asArrayOf: arrayDataType)
+        }
+        
+        // Check if it's an object model.
+        if let model = SwaggerObjectModel.getModelNamed(dataTypeString)
+        {
+            return SwaggerDataType(withObject: model)
+        }
+        
+        // It's trash.
+        return nil
+    }
+    
     /**
      Creates a SwaggerDataType that populates itself based on the data in the
      given SWDataType object.

@@ -99,6 +99,82 @@ class SwaggerMethod
         }
     }
     
+    /**
+     Parses the given swift method signature and creates a representative SwaggerMethod object.
+     e.g. "func myMethod(myFirstArgument: String, mySecondArgument: SomeModel) -> Int"
+     */
+    class func methodFromSwiftMethodSignature(_ swiftString: String) -> SwaggerMethod?
+    {
+        guard swiftString.hasPrefix("func "), let funcIndex = swiftString.index(of: " ") else
+        {
+            return nil
+        }
+        
+        // Locate the method name.
+        var remainingString = swiftString.suffix(from: funcIndex).trimmingCharacters(in: .whitespaces)
+        guard let indexOfOpeningParenthesis = remainingString.index(of: "(") else
+        {
+            return nil
+        }
+        let methodNameSubstring = remainingString.prefix(upTo: indexOfOpeningParenthesis)
+        let methodName = String(methodNameSubstring)
+
+        // Locate the arguments list.
+        remainingString = String(remainingString.suffix(from: indexOfOpeningParenthesis))
+        remainingString.remove(at: remainingString.startIndex)
+        guard let indexOfClosingParenthesis = remainingString.index(of: ")") else
+        {
+            return nil
+        }
+        let argumentString = remainingString.prefix(upTo: indexOfClosingParenthesis)
+        
+        // Parse the argument list to create SwaggerMethodArgument objects.
+        var argumentObjects: [SwaggerMethodArgument] = []
+        let argumentArray = argumentString.components(separatedBy: ",")
+        for argument in argumentArray
+        {
+            // Must have exactly 2 parts: the argument name, and the argument type.
+            let argNameAndType = argument.components(separatedBy: ":")
+            guard argNameAndType.count == 2 else
+            {
+                return nil
+            }
+            
+            // Must have non-empty name and type strings.
+            let argName = argNameAndType[0].trimmingCharacters(in: .whitespaces)
+            let argTypeString = argNameAndType[1].trimmingCharacters(in: .whitespaces)
+            guard let argType = SwaggerDataType.dataTypeFromString(argTypeString), argName.count > 0, argName != "_" else
+            {
+                return nil
+            }
+            
+            // Create and add an actual argument object.
+            argumentObjects.append(SwaggerMethodArgument(name: argName, type: argType))
+        }
+
+        // Locate the return type.
+        remainingString = String(remainingString.suffix(from: indexOfClosingParenthesis))
+        remainingString.remove(at: remainingString.startIndex)
+        var result: SwaggerResponse?
+        if let indexOfArrow = remainingString.index(of: ">")
+        {
+            let resultString = remainingString.suffix(from: indexOfArrow).trimmingCharacters(in: .whitespaces)
+            guard let resultDataType = SwaggerDataType.dataTypeFromString(resultString) else
+            {
+                return nil
+            }
+            result = SwaggerResponse(code: "200", type: resultDataType)
+        }
+        
+        let method = SwaggerMethod(name: methodName, type: result == nil ? .POST : .GET)
+        method.methodArguments = argumentObjects
+        if let result = result
+        {
+            method.methodResponses = [result]
+        }
+        return method
+    }
+    
     class func getAllMethods() -> [SwaggerMethod]
     {
         var allMethods: [SwaggerMethod] = []

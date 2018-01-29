@@ -79,6 +79,18 @@ class SwaggerObjectModel
         return allModels
     }
     
+    class func getModelNamed(_ modelName: String) -> SwaggerObjectModel?
+    {
+        let request: NSFetchRequest<SWObjectModel> = SWObjectModel.fetchRequest()
+        request.predicate = NSPredicate(format: "modelName = %k", argumentArray: [modelName])
+        let swModels = try? AppDelegate.mainManagedObjectContext().fetch(request)
+        guard let swModel = swModels?.first else
+        {
+            return nil
+        }
+        return SwaggerObjectModel(avatarOf: swModel)
+    }
+    
     // MARK:- Swagger Generation
     
     /**

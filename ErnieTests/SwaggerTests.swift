@@ -58,7 +58,7 @@ class SwaggerTests: XCTestCase
         boolProperty.propertyDescription = "Please be yes, please be yes"
         boolProperty.propertyIsRequired = true
         let model = SwaggerObjectModel(name: "TestModel")
-        model.properties = [passwordProperty, boolProperty]
+        model.modelProperties = [passwordProperty, boolProperty]
         let modelJson = model.generateSwaggerSection()
         XCTAssert(modelJson.count == 3)
         XCTAssert(modelJson["type"] as? String == "object")
@@ -138,7 +138,7 @@ class SwaggerTests: XCTestCase
         boolProperty.propertyDescription = "Please be yes, please be yes"
         boolProperty.propertyIsRequired = true
         let model = SwaggerObjectModel(name: "TestModel")
-        model.properties = [boolProperty]
+        model.modelProperties = [boolProperty]
         container.containerModels = [model]
         
         let containerJson = container.generateSwaggerJson()
@@ -148,5 +148,13 @@ class SwaggerTests: XCTestCase
         XCTAssertNotNil(containerJson["paths"] as? [String : Any])
         XCTAssertNotNil(containerJson["produces"] as? [String])
         XCTAssertNotNil(containerJson["definitions"] as? [String : Any])
+    }
+    
+    func testStringToSwaggerMethod()
+    {
+        var methodObject = SwaggerMethod.methodFromSwiftMethodSignature("")
+        XCTAssertNil(methodObject)
+        methodObject = SwaggerMethod.methodFromSwiftMethodSignature("func test(firstArg: Int)")
+        XCTAssertNotNil(methodObject)
     }
 }
