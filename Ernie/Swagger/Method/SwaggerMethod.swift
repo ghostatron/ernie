@@ -130,26 +130,29 @@ class SwaggerMethod
         
         // Parse the argument list to create SwaggerMethodArgument objects.
         var argumentObjects: [SwaggerMethodArgument] = []
-        let argumentArray = argumentString.components(separatedBy: ",")
-        for argument in argumentArray
+        if argumentString.count > 0
         {
-            // Must have exactly 2 parts: the argument name, and the argument type.
-            let argNameAndType = argument.components(separatedBy: ":")
-            guard argNameAndType.count == 2 else
+            let argumentArray = argumentString.components(separatedBy: ",")
+            for argument in argumentArray
             {
-                return nil
+                // Must have exactly 2 parts: the argument name, and the argument type.
+                let argNameAndType = argument.components(separatedBy: ":")
+                guard argNameAndType.count == 2 else
+                {
+                    return nil
+                }
+                
+                // Must have non-empty name and type strings.
+                let argName = argNameAndType[0].trimmingCharacters(in: .whitespaces)
+                let argTypeString = argNameAndType[1].trimmingCharacters(in: .whitespaces)
+                guard let argType = SwaggerDataType.dataTypeFromString(argTypeString), argName.count > 0, argName != "_" else
+                {
+                    return nil
+                }
+                
+                // Create and add an actual argument object.
+                argumentObjects.append(SwaggerMethodArgument(name: argName, type: argType))
             }
-            
-            // Must have non-empty name and type strings.
-            let argName = argNameAndType[0].trimmingCharacters(in: .whitespaces)
-            let argTypeString = argNameAndType[1].trimmingCharacters(in: .whitespaces)
-            guard let argType = SwaggerDataType.dataTypeFromString(argTypeString), argName.count > 0, argName != "_" else
-            {
-                return nil
-            }
-            
-            // Create and add an actual argument object.
-            argumentObjects.append(SwaggerMethodArgument(name: argName, type: argType))
         }
 
         // Locate the return type.
@@ -158,7 +161,10 @@ class SwaggerMethod
         var result: SwaggerResponse?
         if let indexOfArrow = remainingString.index(of: ">")
         {
-            let resultString = remainingString.suffix(from: indexOfArrow).trimmingCharacters(in: .whitespaces)
+            var trimSet = CharacterSet.whitespaces
+            trimSet.insert("-")
+            trimSet.insert(">")
+            let resultString = remainingString.suffix(from: indexOfArrow).trimmingCharacters(in: trimSet)
             guard let resultDataType = SwaggerDataType.dataTypeFromString(resultString) else
             {
                 return nil

@@ -152,9 +152,42 @@ class SwaggerTests: XCTestCase
     
     func testStringToSwaggerMethod()
     {
+        // Nil tests
         var methodObject = SwaggerMethod.methodFromSwiftMethodSignature("")
         XCTAssertNil(methodObject)
-        methodObject = SwaggerMethod.methodFromSwiftMethodSignature("func test(firstArg: Int)")
+        methodObject = SwaggerMethod.methodFromSwiftMethodSignature("funk fail()")
+        XCTAssertNil(methodObject)
+        
+        // No arg, no return value
+        methodObject = SwaggerMethod.methodFromSwiftMethodSignature("func methodNoArgs()")
         XCTAssertNotNil(methodObject)
+        XCTAssert(methodObject?.methodName == "methodNoArgs")
+        XCTAssert(methodObject?.methodArguments.count == 0)
+        XCTAssert(methodObject?.methodResponses.count == 0)
+        XCTAssert(methodObject?.methodType == .POST)
+
+        // One arg, no return value
+        methodObject = SwaggerMethod.methodFromSwiftMethodSignature("func methodOneArg(firstArg: Int)")
+        XCTAssertNotNil(methodObject)
+        XCTAssert(methodObject?.methodName == "methodOneArg")
+        XCTAssert(methodObject?.methodArguments.count == 1)
+        XCTAssert(methodObject?.methodResponses.count == 0)
+        XCTAssert(methodObject?.methodType == .POST)
+        
+        // Two args, no return value
+        methodObject = SwaggerMethod.methodFromSwiftMethodSignature("func methodTwoArgs(firstArg: Int, secondArg: Bool)")
+        XCTAssertNotNil(methodObject)
+        XCTAssert(methodObject?.methodName == "methodTwoArgs")
+        XCTAssert(methodObject?.methodArguments.count == 2)
+        XCTAssert(methodObject?.methodResponses.count == 0)
+        XCTAssert(methodObject?.methodType == .POST)
+        
+        // One arg, with return value
+        methodObject = SwaggerMethod.methodFromSwiftMethodSignature("func methodOneArg(firstArg: Int) -> Bool")
+        XCTAssertNotNil(methodObject)
+        XCTAssert(methodObject?.methodName == "methodOneArg")
+        XCTAssert(methodObject?.methodArguments.count == 1)
+        XCTAssert(methodObject?.methodResponses.count == 1)
+        XCTAssert(methodObject?.methodType == .GET)
     }
 }
