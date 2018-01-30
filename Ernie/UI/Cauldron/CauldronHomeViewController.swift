@@ -461,36 +461,39 @@ class CauldronHomeViewController: NSViewController, NSOutlineViewDataSource, NSO
     
     func outlineViewSelectionDidChange(_ notification: Notification)
     {
-        guard let outlineView = notification.object as? NSOutlineView else
-        {
-            return
-        }
-
-        let selectedIndex = outlineView.selectedRow
-        let selectedItem = outlineView.item(atRow: selectedIndex)
-        if let repository = selectedItem as? CHVCRepository
-        {
-        }
-        else if let nativeApp = selectedItem as? CHVCNativeApp
-        {
-        }
-        else if let platform = selectedItem as? CHVCPlatform
-        {
-        }
-        else if let version = selectedItem as? CHVCVersion
-        {
-        }
-        else if let miniApp = selectedItem as? CHVCMiniApp
-        {
-        }
-        else if let dependency = selectedItem as? CHVCDependency
-        {
-        }
-        else if let codePush = selectedItem as? CHVCCodePush
-        {
-        }
-        else if let lineItem = selectedItem as? CHVCCodePushLineItem
-        {
-        }
+        // The commented out stuff below is valid, but I'm tired of seeing warnings...so...
+        // TODO: Do this
+        
+//        guard let outlineView = notification.object as? NSOutlineView else
+//        {
+//            return
+//        }
+//
+//        let selectedIndex = outlineView.selectedRow
+//        let selectedItem = outlineView.item(atRow: selectedIndex)
+//        if let repository = selectedItem as? CHVCRepository
+//        {
+//        }
+//        else if let nativeApp = selectedItem as? CHVCNativeApp
+//        {
+//        }
+//        else if let platform = selectedItem as? CHVCPlatform
+//        {
+//        }
+//        else if let version = selectedItem as? CHVCVersion
+//        {
+//        }
+//        else if let miniApp = selectedItem as? CHVCMiniApp
+//        {
+//        }
+//        else if let dependency = selectedItem as? CHVCDependency
+//        {
+//        }
+//        else if let codePush = selectedItem as? CHVCCodePush
+//        {
+//        }
+//        else if let lineItem = selectedItem as? CHVCCodePushLineItem
+//        {
+//        }
     }
 }
