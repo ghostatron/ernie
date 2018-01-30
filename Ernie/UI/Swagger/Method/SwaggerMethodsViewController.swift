@@ -41,16 +41,12 @@ class SwaggerMethodsViewController: NSViewController, NSTableViewDataSource, NST
     {
         if let editorVC = segue.destinationController as? SwaggerMethodEditorViewController
         {
-            // We need to know when the editor dialog is completed.
-            if self.launchEditorInEditMode
-            {
-                editorVC.method = self.selectedMethod
-                editorVC.title = "\(self.selectedMethod?.methodName ?? "Method") [Edit]"
-            }
-            else
-            {
-                editorVC.title = "Method [New]"
-            }
+            editorVC.method = self.selectedMethod
+            editorVC.title = self.launchEditorInEditMode ? "\(self.selectedMethod?.methodName ?? "Method") [Edit]" : "Method [New]"
+            editorVC.modalDelegate = self
+        }
+        else if let editorVC = segue.destinationController as? SwaggerMethodFromSwiftViewController
+        {
             editorVC.modalDelegate = self
         }
     }
@@ -60,7 +56,7 @@ class SwaggerMethodsViewController: NSViewController, NSTableViewDataSource, NST
     @IBAction func newButtonPressed(_ sender: NSButton)
     {
         self.launchEditorInEditMode = false
-        self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toMethodEditor"), sender: self)
+        self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toSwiftMethodSignature"), sender: self)
     }
     
     @IBAction func editButtonPressed(_ sender: NSButton)
@@ -77,15 +73,26 @@ class SwaggerMethodsViewController: NSViewController, NSTableViewDataSource, NST
     // If the "Edit" or "New" dialog returns with "OK", then we need to refresh the page.
     func dismissedWithOK(dialog: NSViewController)
     {
-        // Reload the table.
-        self.buildMethodDataSource()
-        self.methodsTableView.reloadData()
-        self.configureViewForSelectedMethod()
+        if let dialog = dialog as? SwaggerMethodFromSwiftViewController
+        {
+            self.selectedMethod = dialog.method
+            self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toMethodEditor"), sender: self)
+        }
+        else
+        {
+            // Reload the table.
+            self.buildMethodDataSource()
+            self.methodsTableView.reloadData()
+            self.configureViewForSelectedMethod()
+        }
     }
     
     func dismissedWithCancel(dialog: NSViewController)
     {
-        // Don't care
+        if dialog is SwaggerMethodFromSwiftViewController
+        {
+            self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toMethodEditor"), sender: self)
+        }
     }
     
     // MARK:- NSTableViewDataSource

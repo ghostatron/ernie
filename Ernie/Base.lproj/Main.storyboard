@@ -659,6 +659,91 @@ Gw
             </objects>
             <point key="canvasLocation" x="-297" y="-388"/>
         </scene>
+        <!--Swagger Method From Swift View Controller-->
+        <scene sceneID="5SQ-Mw-6FB">
+            <objects>
+                <viewController id="S77-iO-MVV" customClass="SwaggerMethodFromSwiftViewController" customModule="Ernie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="job-J7-miP">
+                        <rect key="frame" x="0.0" y="0.0" width="451" height="202"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YbI-lP-CYE">
+                                <rect key="frame" x="355" y="13" width="82" height="32"/>
+                                <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ius-YL-bOF">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="okButtonPressed:" target="S77-iO-MVV" id="ypF-8t-QMp"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bu2-cc-BDz">
+                                <rect key="frame" x="265" y="13" width="82" height="32"/>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OPA-Xp-9F9">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" target="S77-iO-MVV" id="Xkx-YK-wt5"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="u0U-A5-26r">
+                                <rect key="frame" x="18" y="165" width="163" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Swift Method Signature" id="kvP-1f-iU7">
+                                    <font key="font" metaFont="systemHeavy" size="13"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="roO-fh-p00">
+                                <rect key="frame" x="18" y="111" width="404" height="34"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="You can get a head start on your swagger method by specifying a valid Swift function signature." id="zZj-rT-rka">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OZO-Ug-vto">
+                                <rect key="frame" x="20" y="69" width="411" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="func myMethod(myArg: Int) -&gt; Bool" drawsBackground="YES" id="NkK-aG-3sv">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="u0U-A5-26r" firstAttribute="leading" secondItem="job-J7-miP" secondAttribute="leading" constant="20" id="7MG-Lz-9ab"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="u0U-A5-26r" secondAttribute="trailing" constant="20" id="Gwd-if-RmI"/>
+                            <constraint firstAttribute="bottom" secondItem="bu2-cc-BDz" secondAttribute="bottom" constant="20" id="PAc-9U-owt"/>
+                            <constraint firstAttribute="bottom" secondItem="YbI-lP-CYE" secondAttribute="bottom" constant="20" id="UGM-w6-oiJ"/>
+                            <constraint firstItem="u0U-A5-26r" firstAttribute="top" secondItem="job-J7-miP" secondAttribute="top" constant="20" id="UYD-HE-jov"/>
+                            <constraint firstItem="bu2-cc-BDz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="job-J7-miP" secondAttribute="leading" constant="20" id="ar1-iZ-ain"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="roO-fh-p00" secondAttribute="trailing" constant="20" id="bHD-9j-OEz"/>
+                            <constraint firstAttribute="trailing" secondItem="OZO-Ug-vto" secondAttribute="trailing" constant="20" id="e0r-68-a9D"/>
+                            <constraint firstAttribute="trailing" secondItem="YbI-lP-CYE" secondAttribute="trailing" constant="20" id="hmz-Bx-CtG"/>
+                            <constraint firstItem="roO-fh-p00" firstAttribute="top" secondItem="u0U-A5-26r" secondAttribute="bottom" constant="20" id="kGm-ZH-ocO"/>
+                            <constraint firstItem="roO-fh-p00" firstAttribute="leading" secondItem="job-J7-miP" secondAttribute="leading" constant="20" id="kS5-hc-EW2"/>
+                            <constraint firstItem="YbI-lP-CYE" firstAttribute="leading" secondItem="bu2-cc-BDz" secondAttribute="trailing" constant="20" id="kgm-aR-CnS"/>
+                            <constraint firstItem="bu2-cc-BDz" firstAttribute="width" secondItem="YbI-lP-CYE" secondAttribute="width" id="oO3-Qx-mS5"/>
+                            <constraint firstItem="OZO-Ug-vto" firstAttribute="top" secondItem="roO-fh-p00" secondAttribute="bottom" constant="20" id="ovj-Wj-cEt"/>
+                            <constraint firstItem="OZO-Ug-vto" firstAttribute="leading" secondItem="job-J7-miP" secondAttribute="leading" constant="20" id="qdE-fO-hDM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="swiftMethodTextField" destination="OZO-Ug-vto" id="Alg-pe-hBZ"/>
+                    </connections>
+                </viewController>
+                <customObject id="zif-NL-gYg" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="965" y="-316"/>
+        </scene>
         <!--Swagger Method Products View Controller-->
         <scene sceneID="mJG-MA-cHg">
             <objects>
@@ -764,7 +849,7 @@ Gw
                 </viewController>
                 <customObject id="mdQ-p9-8fw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="966" y="-1234"/>
+            <point key="canvasLocation" x="967" y="-1392"/>
         </scene>
         <!--Swagger Method Responses View Controller-->
         <scene sceneID="5Om-at-BHV">
@@ -1036,7 +1121,7 @@ Gw
                 </viewController>
                 <customObject id="WgS-z0-Wd9" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="966" y="-846.5"/>
+            <point key="canvasLocation" x="965" y="-1010"/>
         </scene>
         <!--Swagger Method Tags View Controller-->
         <scene sceneID="psy-pM-T81">
@@ -1200,7 +1285,7 @@ Gw
                 </viewController>
                 <customObject id="j4S-va-JcH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="965" y="-486"/>
+            <point key="canvasLocation" x="966" y="-638"/>
         </scene>
         <!--Swagger Containers View Controller-->
         <scene sceneID="fNq-pJ-Tct">
@@ -1925,6 +2010,7 @@ Gw
                         <outlet property="methodsTableView" destination="Kcf-Z4-xwT" id="qnj-Te-iIC"/>
                         <outlet property="newButton" destination="zJv-JA-tEF" id="vyF-mt-mNX"/>
                         <segue destination="uAp-nV-0GM" kind="modal" identifier="toMethodEditor" id="t7h-QX-LCd"/>
+                        <segue destination="S77-iO-MVV" kind="modal" identifier="toSwiftMethodSignature" id="yqX-Hg-kWa"/>
                     </connections>
                 </viewController>
                 <customObject id="0uu-cP-Tif" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -4531,7 +4617,7 @@ Gw
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="BOv-3b-7eP">
-                                    <rect key="frame" x="1" y="-14" width="0.0" height="15"/>
+                                    <rect key="frame" x="1" y="-15" width="0.0" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="vYp-gI-5n8">
@@ -4551,7 +4637,7 @@ Gw
             <objects>
                 <viewController id="pW6-uo-HdX" customClass="SwaggerMethodArgumentEditorViewController" customModule="Ernie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="kRZ-Nv-r3P">
-                        <rect key="frame" x="0.0" y="0.0" width="452" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="499" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="arH-vW-jh6">
@@ -4578,7 +4664,7 @@ Gw
                                 </buttonCell>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vyV-dR-LYs">
-                                <rect key="frame" x="100" y="258" width="332" height="22"/>
+                                <rect key="frame" x="100" y="258" width="379" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="DoW-wP-zyE">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -4586,7 +4672,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Sx-Vl-TLY">
-                                <rect key="frame" x="100" y="223" width="332" height="22"/>
+                                <rect key="frame" x="100" y="223" width="379" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="4QF-Jx-8Nc">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -4609,7 +4695,7 @@ Gw
                                 </buttonCell>
                             </button>
                             <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ufZ-Dw-GF3">
-                                <rect key="frame" x="174" y="136" width="261" height="26"/>
+                                <rect key="frame" x="174" y="136" width="308" height="26"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" usesDataSource="YES" numberOfVisibleItems="5" id="oaO-lQ-sdJ">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -4628,10 +4714,10 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="zvf-A2-Zvp">
-                                <rect key="frame" x="20" y="178" width="412" height="5"/>
+                                <rect key="frame" x="20" y="178" width="459" height="5"/>
                             </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dLf-Pf-jMn">
-                                <rect key="frame" x="356" y="13" width="82" height="32"/>
+                                <rect key="frame" x="403" y="13" width="82" height="32"/>
                                 <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="m5a-aN-Tkm">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -4644,7 +4730,7 @@ DQ
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EMo-tb-Ybf">
-                                <rect key="frame" x="266" y="13" width="82" height="32"/>
+                                <rect key="frame" x="313" y="13" width="82" height="32"/>
                                 <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="797-BM-vga">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -4657,7 +4743,7 @@ Gw
                                 </connections>
                             </button>
                             <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dD8-KC-jpG">
-                                <rect key="frame" x="100" y="103" width="335" height="26"/>
+                                <rect key="frame" x="100" y="103" width="382" height="26"/>
                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" usesDataSource="YES" numberOfVisibleItems="5" id="eFC-SA-XBN">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -4720,7 +4806,7 @@ Gw
                 </viewController>
                 <customObject id="2af-0Y-OWT" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="280" y="-1234"/>
+            <point key="canvasLocation" x="287" y="-1241"/>
         </scene>
     </scenes>
     <resources>

@@ -75,6 +75,7 @@
 		C1CD70061FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD70051FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift */; };
 		C1CD70091FCCDCD0002C7CBB /* CauldronHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD70081FCCDCD0002C7CBB /* CauldronHomeViewController.swift */; };
 		C1CD700B1FCCE14D002C7CBB /* CauldronAnalyzeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CD700A1FCCE14D002C7CBB /* CauldronAnalyzeViewController.swift */; };
+		C1CF8AC02020F80A00B67548 /* SwaggerMethodFromSwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CF8ABF2020F80A00B67548 /* SwaggerMethodFromSwiftViewController.swift */; };
 		C1D45861201BACB30009A876 /* SwaggerBodyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D45860201BACB30009A876 /* SwaggerBodyViewController.swift */; };
 		C1DE4154201661DF00E15A5F /* SwaggerMethodTagTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DE4153201661DF00E15A5F /* SwaggerMethodTagTableCell.swift */; };
 		C1E854F71FC396FF00CE90DD /* ContainersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E854F61FC396FF00CE90DD /* ContainersViewController.swift */; };
@@ -171,6 +172,7 @@
 		C1CD70051FCCA1FA002C7CBB /* ContainerSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		C1CD70081FCCDCD0002C7CBB /* CauldronHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CauldronHomeViewController.swift; sourceTree = "<group>"; };
 		C1CD700A1FCCE14D002C7CBB /* CauldronAnalyzeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CauldronAnalyzeViewController.swift; sourceTree = "<group>"; };
+		C1CF8ABF2020F80A00B67548 /* SwaggerMethodFromSwiftViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerMethodFromSwiftViewController.swift; sourceTree = "<group>"; };
 		C1D45860201BACB30009A876 /* SwaggerBodyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerBodyViewController.swift; sourceTree = "<group>"; };
 		C1DE4153201661DF00E15A5F /* SwaggerMethodTagTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerMethodTagTableCell.swift; sourceTree = "<group>"; };
 		C1E854F61FC396FF00CE90DD /* ContainersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainersViewController.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				C12B8C351FFBFD7F007A03B0 /* SwaggerMethodEditorViewController.swift */,
+				C1CF8ABF2020F80A00B67548 /* SwaggerMethodFromSwiftViewController.swift */,
 				C12B8C411FFD5CC2007A03B0 /* SwaggerMethodArgumentTableViewCell.swift */,
 				C13631021FFEA4A50085A008 /* SwaggerMethodArgumentEditorViewController.swift */,
 				C12B8C3B1FFD5621007A03B0 /* SwaggerMethodProductsViewController.swift */,
@@ -635,6 +638,7 @@
 				C190D4511FABBFA7002EFA5B /* NPMRequirement.swift in Sources */,
 				C12B8C331FF6C0DA007A03B0 /* SwaggerMethodsViewController.swift in Sources */,
 				C118CC781FE9BF3D008C4DB5 /* SwaggerModelReferenceTableViewCell.swift in Sources */,
+				C1CF8AC02020F80A00B67548 /* SwaggerMethodFromSwiftViewController.swift in Sources */,
 				C1341BE61FCCE336000A338F /* CauldronWrapper.swift in Sources */,
 				C144CEA81FDB5AD000E47EED /* SwaggerDataTypeFormatEnum.swift in Sources */,
 				C12B8C3C1FFD5621007A03B0 /* SwaggerMethodProductsViewController.swift in Sources */,

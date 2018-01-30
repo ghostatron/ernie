@@ -102,6 +102,10 @@ class SwaggerMethod
     /**
      Parses the given swift method signature and creates a representative SwaggerMethod object.
      e.g. "func myMethod(myFirstArgument: String, mySecondArgument: SomeModel) -> Int"
+     Does not support "_" (or other arg labels).
+     Does not support class methods.
+     Does not support tuples.
+     Does not support model objects that haven't been defined yet.
      */
     class func methodFromSwiftMethodSignature(_ swiftString: String) -> SwaggerMethod?
     {
@@ -151,7 +155,9 @@ class SwaggerMethod
                 }
                 
                 // Create and add an actual argument object.
-                argumentObjects.append(SwaggerMethodArgument(name: argName, type: argType))
+                let argumentObject = SwaggerMethodArgument(name: argName, type: argType)
+                argumentObject.isArgumentRequired = !argTypeString.hasSuffix("?")
+                argumentObjects.append(argumentObject)
             }
         }
 
