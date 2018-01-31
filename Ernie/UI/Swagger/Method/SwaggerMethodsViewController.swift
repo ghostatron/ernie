@@ -55,6 +55,8 @@ class SwaggerMethodsViewController: NSViewController, NSTableViewDataSource, NST
     
     @IBAction func newButtonPressed(_ sender: NSButton)
     {
+        self.selectedMethod = nil
+        self.methodsTableView.deselectAll(self)
         self.launchEditorInEditMode = false
         self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toSwiftMethodSignature"), sender: self)
     }
