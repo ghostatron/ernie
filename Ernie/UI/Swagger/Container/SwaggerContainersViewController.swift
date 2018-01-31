@@ -171,10 +171,9 @@ class SwaggerContainersViewController: NSViewController, NSTableViewDelegate, NS
     
     
     // MARK:- Event Handlers
-    
-    @IBAction func doneButtonPressed(_ sender: NSButton)
+    @IBAction func rowDoubleClicked(_ sender: NSTableView)
     {
-        self.dismiss(self)
+        self.editButtonPressed(self.editButton)
     }
     
     @IBAction func editButtonPressed(_ sender: NSButton)

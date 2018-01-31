@@ -1374,6 +1374,7 @@ Gw
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action trigger="doubleAction" selector="rowDoubleClicked:" target="1e9-FV-eIX" id="vFe-NW-DY1"/>
                                                 <outlet property="dataSource" destination="1e9-FV-eIX" id="7Ou-Wf-Zmf"/>
                                                 <outlet property="delegate" destination="1e9-FV-eIX" id="5iO-oa-e6V"/>
                                             </connections>
