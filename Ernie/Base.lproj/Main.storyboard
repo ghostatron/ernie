@@ -293,6 +293,7 @@ Gw
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action trigger="doubleAction" selector="rowDoubleClicked:" target="HLN-5G-bcS" id="1az-FF-ASV"/>
                                                 <outlet property="dataSource" destination="HLN-5G-bcS" id="S65-zm-W4L"/>
                                                 <outlet property="delegate" destination="HLN-5G-bcS" id="KUi-ni-62R"/>
                                             </connections>
@@ -512,6 +513,7 @@ Gw
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action trigger="doubleAction" selector="rowDoubleClicked:" target="hdS-nH-2Eh" id="LpO-9a-j8X"/>
                                                 <outlet property="dataSource" destination="hdS-nH-2Eh" id="i4C-Yg-bSv"/>
                                                 <outlet property="delegate" destination="hdS-nH-2Eh" id="PGK-xl-Dsr"/>
                                             </connections>
@@ -1658,6 +1660,7 @@ Gw
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action trigger="doubleAction" selector="rowDoubleClicked:" target="uAp-nV-0GM" id="B5Z-73-FtG"/>
                                                 <outlet property="dataSource" destination="uAp-nV-0GM" id="tJl-zZ-Wf1"/>
                                                 <outlet property="delegate" destination="uAp-nV-0GM" id="weT-jw-h0E"/>
                                             </connections>
@@ -1865,6 +1868,7 @@ Gw
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action trigger="doubleAction" selector="rowDoubleClicked:" target="faa-VI-91V" id="hXD-xG-abx"/>
                                                 <outlet property="dataSource" destination="faa-VI-91V" id="ZM2-se-q7v"/>
                                                 <outlet property="delegate" destination="faa-VI-91V" id="efZ-6p-fDC"/>
                                             </connections>

@@ -56,7 +56,12 @@ class SwaggerModelsViewController: NSViewController, NSTableViewDataSource, NSTa
     }
     
     // MARK:- Event Handlers
-
+    
+    @IBAction func rowDoubleClicked(_ sender: NSTableView)
+    {
+        self.editButtonPressed(self.editButton)
+    }
+    
     @IBAction func newButtonPressed(_ sender: NSButton)
     {
         self.launchEditorInEditMode = false

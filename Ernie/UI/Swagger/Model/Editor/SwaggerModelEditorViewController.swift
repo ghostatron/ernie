@@ -138,6 +138,20 @@ class SwaggerModelEditorViewController: NSViewController, NSTableViewDataSource,
     
     // MARK:- Event Handlers
     
+    @IBAction func rowDoubleClicked(_ sender: NSTableView)
+    {
+        // Out-of-range protection before selecting which property to launch the editor for.
+        guard self.propertiesTableView.selectedRow < self.sortedProperties.count else
+        {
+            return
+        }
+        
+        // Launch the editor for the property that was double-clicked.
+        self.launchEditorInEditMode = true
+        self.propertyForEditor = self.sortedProperties[self.propertiesTableView.selectedRow]
+        self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toPropertyEditor"), sender: self)
+    }
+    
     /**
      Dismiss and don't save any changes to the model if the user cancels.
      */

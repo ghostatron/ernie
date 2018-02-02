@@ -171,6 +171,7 @@ class SwaggerContainersViewController: NSViewController, NSTableViewDelegate, NS
     
     
     // MARK:- Event Handlers
+    
     @IBAction func rowDoubleClicked(_ sender: NSTableView)
     {
         self.editButtonPressed(self.editButton)

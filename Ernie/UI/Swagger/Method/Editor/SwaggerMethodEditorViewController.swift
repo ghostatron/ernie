@@ -262,6 +262,20 @@ class SwaggerMethodEditorViewController: NSViewController, NSTableViewDataSource
     
     // MARK:- Event Handlers
     
+    @IBAction func rowDoubleClicked(_ sender: NSTableView)
+    {
+        // Out-of-range protection before selecting which argument to launch the editor for.
+        guard self.argumentsTableView.selectedRow < self.sortedArguments.count else
+        {
+            return
+        }
+        
+        // Launch the editor for the argument that was double-clicked.
+        self.launchEditorInEditMode = true
+        self.argumentForEditor = self.sortedArguments[self.argumentsTableView.selectedRow]
+        self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toArgumentEditor"), sender: self)
+    }
+    
     @IBAction func productsButtonPressed(_ sender: NSButton)
     {
         self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toMethodProducts"), sender: self)

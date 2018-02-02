@@ -53,6 +53,11 @@ class SwaggerMethodsViewController: NSViewController, NSTableViewDataSource, NST
     
     // MARK:- Event Handlers
     
+    @IBAction func rowDoubleClicked(_ sender: NSTableView)
+    {
+        self.editButtonPressed(self.editButton)
+    }
+    
     @IBAction func newButtonPressed(_ sender: NSButton)
     {
         self.selectedMethod = nil
