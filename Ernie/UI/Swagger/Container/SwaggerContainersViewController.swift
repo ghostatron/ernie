@@ -150,6 +150,10 @@ class SwaggerContainersViewController: NSViewController, NSTableViewDelegate, NS
             indexOfDeletion += 1
         }
         
+        // Remove the container from core data.
+        let containerToDelete = self.sortedContainers[indexOfDeletion]
+        containerToDelete.removeFromCoreData()
+        
         // Remove the container from our data source.
         if indexOfDeletion < self.sortedContainers.count
         {
