@@ -9,14 +9,14 @@
 import Foundation
 import Cocoa
 
-class SwaggerModelsViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, ModalDialogDelegate
+class SwaggerModelsViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, ModalDialogDelegate, SwaggerModelTableViewCellDelegate
 {
     @IBOutlet weak var modelsTableView: NSTableView!
     @IBOutlet weak var propertiesTableView: NSTableView!
     @IBOutlet weak var newButton: NSButton!
     @IBOutlet weak var editButton: NSButton!
     
-    private var allModels: [SwaggerObjectModel] = []
+    private var sortedModels: [SwaggerObjectModel] = []
     private var selectedModel: SwaggerObjectModel?
     private var selectedModelProperties: [SwaggerModelProperty] = []
     private var launchEditorInEditMode = false
@@ -101,7 +101,7 @@ class SwaggerModelsViewController: NSViewController, NSTableViewDataSource, NSTa
         {
         case self.modelsTableView:
             // One row per model
-            return self.allModels.count
+            return self.sortedModels.count
             
         case self.propertiesTableView:
             // One row per property for the selected model.
@@ -121,7 +121,7 @@ class SwaggerModelsViewController: NSViewController, NSTableViewDataSource, NSTa
         case self.modelsTableView:
             
             // No out-of-bounds crashes please.
-            guard row < self.allModels.count else
+            guard row < self.sortedModels.count else
             {
                 return nil
             }
@@ -133,7 +133,8 @@ class SwaggerModelsViewController: NSViewController, NSTableViewDataSource, NSTa
             }
             
             // Configure the view and return it.
-            modelCell.configureFor(model: self.allModels[row])
+            modelCell.delegate = self
+            modelCell.configureFor(model: self.sortedModels[row])
             return modelCell
             
         case self.propertiesTableView:
@@ -171,7 +172,7 @@ class SwaggerModelsViewController: NSViewController, NSTableViewDataSource, NSTa
         if tableView == self.modelsTableView
         {
             // Figure out which model was just selected.
-            if tableView.selectedRow < 0 || tableView.selectedRow >= self.allModels.count
+            if tableView.selectedRow < 0 || tableView.selectedRow >= self.sortedModels.count
             {
                 // No model selected, make sure to wipe out the models data source.
                 self.selectedModel = nil
@@ -181,7 +182,7 @@ class SwaggerModelsViewController: NSViewController, NSTableViewDataSource, NSTa
             else
             {
                 // Update the selected model and update the properties data source.
-                self.selectedModel = self.allModels[tableView.selectedRow]
+                self.selectedModel = self.sortedModels[tableView.selectedRow]
                 if let propertiesArray = self.selectedModel?.modelProperties
                 {
                     self.selectedModelProperties = propertiesArray.sorted { $0.propertyName < $1.propertyName }
@@ -198,12 +199,46 @@ class SwaggerModelsViewController: NSViewController, NSTableViewDataSource, NSTa
         }
     }
     
+    // MARK:- SwaggerModelTableViewCellDelegate
+    
+    func deleteButtonPressed(sender: SwaggerModelTableViewCell, model: SwaggerObjectModel?)
+    {
+        guard let model = model else
+        {
+            return
+        }
+        
+        // Locate the model in our data source.
+        var indexOfDeletion = 0
+        for existingModel in self.sortedModels
+        {
+            if existingModel === model
+            {
+                break
+            }
+            indexOfDeletion += 1
+        }
+        
+        // Remove the model from core data.
+        let modelToDelete = self.sortedModels[indexOfDeletion]
+        modelToDelete.removeFromCoreData()
+        
+        // Remove the model from our data source.
+        if indexOfDeletion < self.sortedModels.count
+        {
+            self.sortedModels.remove(at: indexOfDeletion)
+        }
+        
+        // Update the UI.
+        self.modelsTableView.reloadData()
+    }
+    
     // MARK:- Private Methods
     
     private func buildModelDataSource()
     {
         let unsortedModels = SwaggerObjectModel.getAllModels()
-        self.allModels = unsortedModels.sorted { $0.modelName < $1.modelName }
+        self.sortedModels = unsortedModels.sorted { $0.modelName < $1.modelName }
     }
     
     private func configureViewForSelectedModel()

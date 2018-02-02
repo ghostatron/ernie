@@ -397,4 +397,26 @@ class SwaggerMethod
         
         return self.avatarOf
     }
+    
+    func removeFromCoreData(save: Bool = true)
+    {
+        // Make sure we have something to delete.
+        guard let coreDataObject = self.avatarOf else
+        {
+            return
+        }
+        
+        // Delete it.
+        let moc = AppDelegate.mainManagedObjectContext()
+        moc.delete(coreDataObject)
+        
+        // Save if asked too.
+        if save
+        {
+            try? moc.save()
+        }
+        
+        // Clean up any reference to the object.
+        self.avatarOf = nil
+    }
 }

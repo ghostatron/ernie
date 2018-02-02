@@ -465,13 +465,13 @@ Gw
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwU-06-4KY">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="27" horizontalPageScroll="10" verticalLineScroll="27" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nwU-06-4KY">
                                 <rect key="frame" x="20" y="20" width="197" height="260"/>
                                 <clipView key="contentView" id="fBS-DO-dUw">
                                     <rect key="frame" x="1" y="0.0" width="195" height="259"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="K46-fP-I98" viewBased="YES" id="Lql-Cg-MIv">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="25" rowSizeStyle="automatic" headerView="K46-fP-I98" viewBased="YES" id="Lql-Cg-MIv">
                                             <rect key="frame" x="0.0" y="0.0" width="195" height="236"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -492,19 +492,35 @@ Gw
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="swaggerModelRow" id="8ni-Za-mCV" customClass="SwaggerModelTableViewCell" customModule="Ernie" customModuleProvider="target">
-                                                            <rect key="frame" x="1" y="1" width="192" height="17"/>
+                                                            <rect key="frame" x="1" y="1" width="192" height="25"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="57q-cZ-WM2">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="192" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="57q-cZ-WM2">
+                                                                    <rect key="frame" x="3" y="4" width="81" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Model Name" id="cDx-2a-PFY">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
+                                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U3V-dh-yct">
+                                                                    <rect key="frame" x="135" y="4" width="53" height="16"/>
+                                                                    <buttonCell key="cell" type="push" title="Delete" bezelStyle="rounded" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="RlG-0h-tOT">
+                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                        <font key="font" metaFont="miniSystem"/>
+                                                                    </buttonCell>
+                                                                    <connections>
+                                                                        <action selector="deleteButtonPressed:" target="8ni-Za-mCV" id="Gjl-ie-qBv"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="U3V-dh-yct" firstAttribute="centerY" secondItem="8ni-Za-mCV" secondAttribute="centerY" id="2rv-He-7jO"/>
+                                                                <constraint firstItem="57q-cZ-WM2" firstAttribute="centerY" secondItem="8ni-Za-mCV" secondAttribute="centerY" id="5js-QP-zmq"/>
+                                                                <constraint firstAttribute="trailing" secondItem="U3V-dh-yct" secondAttribute="trailing" constant="5" id="AGG-SL-hbk"/>
+                                                                <constraint firstItem="U3V-dh-yct" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="57q-cZ-WM2" secondAttribute="trailing" constant="5" id="MKe-iV-DhV"/>
+                                                                <constraint firstItem="57q-cZ-WM2" firstAttribute="leading" secondItem="8ni-Za-mCV" secondAttribute="leading" constant="5" id="mjB-E3-h1h"/>
+                                                            </constraints>
                                                             <connections>
                                                                 <outlet property="modelInfoLabel" destination="57q-cZ-WM2" id="x3R-Us-atR"/>
                                                             </connections>
