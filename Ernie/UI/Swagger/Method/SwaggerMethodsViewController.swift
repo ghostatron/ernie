@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-class SwaggerMethodsViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, ModalDialogDelegate
+class SwaggerMethodsViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, ModalDialogDelegate, SwaggerMethodTableViewCellDelegate
 {
     @IBOutlet weak var methodsTableView: NSTableView!
     @IBOutlet weak var argumentsTableView: NSTableView!
@@ -142,6 +142,7 @@ class SwaggerMethodsViewController: NSViewController, NSTableViewDataSource, NST
             }
             
             // Configure the view and return it.
+            methodlCell.delegate = self
             methodlCell.configureFor(method: self.sortedMethods[row])
             return methodlCell
             
@@ -205,6 +206,40 @@ class SwaggerMethodsViewController: NSViewController, NSTableViewDataSource, NST
             // Update the UI for that newly selected container.
             self.configureViewForSelectedMethod()
         }
+    }
+    
+    // MARK:- SwaggerMethodTableViewCellDelegate
+    
+    func deleteButtonPressedForMethodInCell(_ methodCell: SwaggerMethodTableViewCell, method: SwaggerMethod?)
+    {
+        guard let method = method else
+        {
+            return
+        }
+        
+        // Locate the method in our data source.
+        var indexOfDeletion = 0
+        for existingMethod in self.sortedMethods
+        {
+            if existingMethod === method
+            {
+                break
+            }
+            indexOfDeletion += 1
+        }
+        
+        // Remove the method from core data.
+        let methodToDelete = self.sortedMethods[indexOfDeletion]
+        methodToDelete.removeFromCoreData()
+        
+        // Remove the method from our data source.
+        if indexOfDeletion < self.sortedMethods.count
+        {
+            self.sortedMethods.remove(at: indexOfDeletion)
+        }
+        
+        // Update the UI.
+        self.methodsTableView.reloadData()
     }
     
     // MARK:- Private Methods

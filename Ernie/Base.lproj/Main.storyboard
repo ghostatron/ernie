@@ -1836,13 +1836,13 @@ Gw
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SiL-Ck-OEX">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="27" horizontalPageScroll="10" verticalLineScroll="27" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SiL-Ck-OEX">
                                 <rect key="frame" x="20" y="20" width="197" height="260"/>
                                 <clipView key="contentView" id="Yq1-OU-X2X">
                                     <rect key="frame" x="1" y="0.0" width="195" height="259"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="sQb-rV-Ibf" viewBased="YES" id="Kcf-Z4-xwT">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="25" rowSizeStyle="automatic" headerView="sQb-rV-Ibf" viewBased="YES" id="Kcf-Z4-xwT">
                                             <rect key="frame" x="0.0" y="0.0" width="195" height="236"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -1863,19 +1863,35 @@ Gw
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="swaggerMethodRow" id="cSI-cN-sEl" customClass="SwaggerMethodTableViewCell" customModule="Ernie" customModuleProvider="target">
-                                                            <rect key="frame" x="1" y="1" width="192" height="17"/>
+                                                            <rect key="frame" x="1" y="1" width="192" height="25"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cf3-k4-RsH">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="192" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="cf3-k4-RsH">
+                                                                    <rect key="frame" x="3" y="4" width="77" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Method Info" id="Cdf-Pj-Z15">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
+                                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dAW-Py-iCz">
+                                                                    <rect key="frame" x="135" y="4" width="53" height="16"/>
+                                                                    <buttonCell key="cell" type="push" title="Delete" bezelStyle="rounded" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ifn-rT-WL0">
+                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                        <font key="font" metaFont="miniSystem"/>
+                                                                    </buttonCell>
+                                                                    <connections>
+                                                                        <action selector="deleteButtonPressed:" target="cSI-cN-sEl" id="ZcP-2q-N5p"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="cf3-k4-RsH" firstAttribute="centerY" secondItem="cSI-cN-sEl" secondAttribute="centerY" id="E0q-OK-nqg"/>
+                                                                <constraint firstAttribute="trailing" secondItem="dAW-Py-iCz" secondAttribute="trailing" constant="5" id="QWw-ML-GeJ"/>
+                                                                <constraint firstItem="cf3-k4-RsH" firstAttribute="leading" secondItem="cSI-cN-sEl" secondAttribute="leading" constant="5" id="dKU-x6-m0K"/>
+                                                                <constraint firstItem="dAW-Py-iCz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cf3-k4-RsH" secondAttribute="trailing" constant="5" id="ky0-JW-8L6"/>
+                                                                <constraint firstItem="dAW-Py-iCz" firstAttribute="centerY" secondItem="cSI-cN-sEl" secondAttribute="centerY" id="zNE-l9-GGy"/>
+                                                            </constraints>
                                                             <connections>
                                                                 <outlet property="methodInfoLabel" destination="cf3-k4-RsH" id="UXv-AQ-dod"/>
                                                             </connections>
