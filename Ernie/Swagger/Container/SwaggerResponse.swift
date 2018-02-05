@@ -48,7 +48,7 @@ class SwaggerResponse
         self.responseDescription = avatarOf.responseDescription
     }
     
-    class func generateResponseFromJSON(_ json: String) -> SwaggerResponse?
+    class func generateResponseFromDictionary(_ jsonDictionary: [String : Any]) -> SwaggerResponse?
     {
         return nil
     }

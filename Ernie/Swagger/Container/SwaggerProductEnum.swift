@@ -28,4 +28,23 @@ enum SwaggerProductEnum: String
             return "image/pdf"
         }
     }
+    
+    static func enumFromString(_ enumString: String) -> SwaggerProductEnum?
+    {
+        switch enumString.lowercased()
+        {
+        case "application/json":
+            return .JSON
+        case "image/png":
+            return .PNG
+        case "image/gif":
+            return .GIF
+        case "image/jpeg":
+            return .JPG
+        case "image/pdf":
+            return .PDF
+        default:
+            return nil
+        }
+    }
 }

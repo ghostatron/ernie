@@ -55,7 +55,7 @@ class SwaggerMethodArgument
         self.argumentDescription = avatarOf.argDescription
     }
     
-    class func generateArgumentFromJSON(_ json: String) -> SwaggerMethodArgument?
+    class func generateArgumentFromDictionary(_ jsonDictionary: [String : Any]) -> SwaggerMethodArgument?
     {
         return nil
     }

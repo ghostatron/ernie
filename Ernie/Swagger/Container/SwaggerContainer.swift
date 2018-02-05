@@ -79,9 +79,75 @@ class SwaggerContainer
         return allContainers
     }
     
-    class func generateContainerFromJSON(_ json: String) -> SwaggerContainer?
+    class func generateContainerFromDictionary(_ jsonDictionary: [String : Any]) -> SwaggerContainer?
     {
-        return nil
+        // Create the container and start parsing it.
+        let container = SwaggerContainer()
+        
+        // Add the simple info like title, description and owner.
+        if let infoSection = jsonDictionary["info"] as? [String : Any]
+        {
+            container.containerTitle = infoSection["title"] as? String
+            container.containerDescription = infoSection["description"] as? String
+            if let contactSection = infoSection[""] as? [String : Any]
+            {
+                container.containerOwner = contactSection["name"] as? String
+            }
+        }
+        
+        // Add the products.
+        if let producesSection = jsonDictionary["produces"] as? [String]
+        {
+            var products: [SwaggerProductEnum] = []
+            for productString in producesSection
+            {
+                if let product = SwaggerProductEnum.enumFromString(productString)
+                {
+                    products.append(product)
+                }
+            }
+            if products.count > 0
+            {
+                container.containerProducts = products
+            }
+        }
+        
+        // Add the methods.
+        if let pathsSection = jsonDictionary["paths"] as? [String : Any]
+        {
+            var methods: [SwaggerMethod] = []
+            for (methodName, methodJSON) in pathsSection
+            {
+                if let methodObject = SwaggerMethod.generateMethodFromDictionary([methodName : methodJSON])
+                {
+                    methods.append(methodObject)
+                }
+            }
+            if methods.count > 0
+            {
+                container.containerMethods = methods
+            }
+        }
+        
+        // Add the models.
+        if let definitionsSection = jsonDictionary["definitions"] as? [String : Any]
+        {
+            var models: [SwaggerObjectModel] = []
+            for (modelName, modelJSON) in definitionsSection
+            {
+                if let modelObject = SwaggerObjectModel.generateModelFromDictionary([modelName : modelJSON])
+                {
+                    models.append(modelObject)
+                }
+            }
+            if models.count > 0
+            {
+                container.containerModels = models
+            }
+        }
+        
+        // Done!
+        return container
     }
 
     // MARK:- Swagger Generation

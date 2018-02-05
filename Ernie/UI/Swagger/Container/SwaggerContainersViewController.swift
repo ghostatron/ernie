@@ -217,13 +217,17 @@ class SwaggerContainersViewController: NSViewController, NSTableViewDelegate, NS
                 // Pull the content of the file into a string...
                 if let fileBody = try?  String(contentsOf: fileLocation, encoding: String.Encoding.utf8)
                 {
-                    // Convert the JSON into a container object.
-                    if let container = SwaggerContainer.generateContainerFromJSON(fileBody)
+                    // Parse the string into a JSON dictionary...
+                    if let fileJsonDictionary = fileBody.jsonDictionary()
                     {
-                        // Send the user to the import confirmation screen.
-                        self.containersTableView.deselectAll(self)
-                        self.selectedContainer = container
-                        self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toImportConfirmation"), sender: self)
+                        // Convert the JSON into a container object.
+                        if let container = SwaggerContainer.generateContainerFromDictionary(fileJsonDictionary)
+                        {
+                            // Send the user to the import confirmation screen.
+                            self.containersTableView.deselectAll(self)
+                            self.selectedContainer = container
+                            self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toImportConfirmation"), sender: self)
+                        }
                     }
                 }
             }

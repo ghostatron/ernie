@@ -56,7 +56,7 @@ class SwaggerModelProperty
         }
     }
     
-    class func generatePropertyFromJSON(_ json: String) -> SwaggerModelProperty?
+    class func generatePropertyFromDictionary(_ jsonDictionary: [String : Any]) -> SwaggerModelProperty?
     {
         return nil
     }

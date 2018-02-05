@@ -99,7 +99,7 @@ class SwaggerMethod
         }
     }
     
-    class func generateMethodFromJSON(_ json: String) -> SwaggerMethod?
+    class func generateMethodFromDictionary(_ jsonDictionary: [String : Any]) -> SwaggerMethod?
     {
         return nil
     }

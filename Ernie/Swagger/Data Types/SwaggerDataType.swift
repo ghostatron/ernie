@@ -46,7 +46,7 @@ class SwaggerDataType
         self.arrayDataType = arrayType
     }
     
-    class func generateDataTypeFromJSON(_ json: String) -> SwaggerDataType?
+    class func generateDataTypeFromDictionary(_ jsonDictionary: [String : Any]) -> SwaggerDataType?
     {
         return nil
     }
