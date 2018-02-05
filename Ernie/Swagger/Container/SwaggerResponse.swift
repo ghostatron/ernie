@@ -48,6 +48,11 @@ class SwaggerResponse
         self.responseDescription = avatarOf.responseDescription
     }
     
+    class func generateResponseFromJSON(_ json: String) -> SwaggerResponse?
+    {
+        return nil
+    }
+    
     class func getAllResponses() -> [SwaggerResponse]
     {
         var allResponses: [SwaggerResponse] = []

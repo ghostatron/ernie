@@ -57,6 +57,11 @@ class SwaggerObjectModel
         }
     }
     
+    class func generateModelFromJSON(_ json: String) -> SwaggerObjectModel?
+    {
+        return nil
+    }
+    
     class func getAllModels(sorted: Bool = false) -> [SwaggerObjectModel]
     {
         var allModels: [SwaggerObjectModel] = []

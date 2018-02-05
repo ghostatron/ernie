@@ -46,6 +46,11 @@ class SwaggerDataType
         self.arrayDataType = arrayType
     }
     
+    class func generateDataTypeFromJSON(_ json: String) -> SwaggerDataType?
+    {
+        return nil
+    }
+    
     class func dataTypeFromString(_ dataTypeString: String) -> SwaggerDataType?
     {
         // Check for the primitive data types first.

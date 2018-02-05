@@ -78,6 +78,11 @@ class SwaggerContainer
 
         return allContainers
     }
+    
+    class func generateContainerFromJSON(_ json: String) -> SwaggerContainer?
+    {
+        return nil
+    }
 
     // MARK:- Swagger Generation
     

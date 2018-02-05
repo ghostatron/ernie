@@ -99,6 +99,11 @@ class SwaggerMethod
         }
     }
     
+    class func generateMethodFromJSON(_ json: String) -> SwaggerMethod?
+    {
+        return nil
+    }
+    
     /**
      Parses the given swift method signature and creates a representative SwaggerMethod object.
      e.g. "func myMethod(myFirstArgument: String, mySecondArgument: SomeModel) -> Int"

@@ -56,6 +56,11 @@ class SwaggerModelProperty
         }
     }
     
+    class func generatePropertyFromJSON(_ json: String) -> SwaggerModelProperty?
+    {
+        return nil
+    }
+    
     // MARK:- Swagger Generation
     
     /**

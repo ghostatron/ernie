@@ -44,6 +44,11 @@ class SwaggerContainersViewController: NSViewController, NSTableViewDelegate, NS
             }
             editorVC.modalDelegate = self
         }
+        else if let editorVC = segue.destinationController as? SwaggerContainerImportConfirmViewController
+        {
+            editorVC.container = self.selectedContainer
+            editorVC.modalDelegate = self
+        }
     }
     
     // MARK:- NSTableViewDataSource
@@ -116,18 +121,36 @@ class SwaggerContainersViewController: NSViewController, NSTableViewDelegate, NS
     
     // MARK:- ModalDialogDelegate
     
-    // If the "Edit" or "New" dialog returns with "OK", then we need to refresh the page.
     func dismissedWithOK(dialog: NSViewController)
     {
-        // N/A
+        switch dialog
+        {
+        case is SwaggerContainerImportConfirmViewController:
+            // Reload b/c we just imported a new container.
+            self.buildContainersDataSource()
+            self.containersTableView.reloadData()
+            self.configureViewForSelectedContainer()
+            
+        default:
+            // N/A
+            break
+        }
     }
     
     func dismissedWithCancel(dialog: NSViewController)
     {
-        // Reload the table.
-        self.buildContainersDataSource()
-        self.containersTableView.reloadData()
-        self.configureViewForSelectedContainer()
+        switch dialog
+        {
+        case is SwaggerContainerImportConfirmViewController:
+            // Nothing to do if import screen was canceled.
+            break
+            
+        default:
+            // Reload if we come back from the editor screen.
+            self.buildContainersDataSource()
+            self.containersTableView.reloadData()
+            self.configureViewForSelectedContainer()
+        }
     }
     
     // MARK:- SwaggerContainerTableCellDelegate
@@ -175,6 +198,37 @@ class SwaggerContainersViewController: NSViewController, NSTableViewDelegate, NS
     
     
     // MARK:- Event Handlers
+    
+    @IBAction func importButtonPressed(_ sender: NSButton)
+    {
+        // Display a file browser that only allows the user to select non-hidden files (no folders).
+        let dialog = NSOpenPanel()
+        dialog.showsResizeIndicator = true
+        dialog.showsHiddenFiles = false
+        dialog.canChooseFiles = true
+        dialog.canChooseDirectories = false
+        dialog.canCreateDirectories = false
+        dialog.allowsMultipleSelection = false
+        if dialog.runModal() == NSApplication.ModalResponse.OK
+        {
+            // Grab the URL selected by the user...
+            if let fileLocation = dialog.url
+            {
+                // Pull the content of the file into a string...
+                if let fileBody = try?  String(contentsOf: fileLocation, encoding: String.Encoding.utf8)
+                {
+                    // Convert the JSON into a container object.
+                    if let container = SwaggerContainer.generateContainerFromJSON(fileBody)
+                    {
+                        // Send the user to the import confirmation screen.
+                        self.containersTableView.deselectAll(self)
+                        self.selectedContainer = container
+                        self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: "toImportConfirmation"), sender: self)
+                    }
+                }
+            }
+        }
+    }
     
     @IBAction func rowDoubleClicked(_ sender: NSTableView)
     {

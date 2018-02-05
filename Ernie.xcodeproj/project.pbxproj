@@ -13,6 +13,7 @@
 		C101C1A31FBE491E00AE02C6 /* NativeAppDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C1A21FBE491E00AE02C6 /* NativeAppDetailsViewController.swift */; };
 		C101C1A51FBE602E00AE02C6 /* ModalDialogDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C1A41FBE602E00AE02C6 /* ModalDialogDelegate.swift */; };
 		C101C1A91FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C1A81FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift */; };
+		C10CB6292028EFA70015E9F2 /* SwaggerContainerImportConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CB6282028EFA70015E9F2 /* SwaggerContainerImportConfirmViewController.swift */; };
 		C118CC671FDF4C71008C4DB5 /* SwaggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118CC661FDF4C71008C4DB5 /* SwaggerTests.swift */; };
 		C118CC6C1FE8727E008C4DB5 /* SwaggerModelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118CC6B1FE8727E008C4DB5 /* SwaggerModelsViewController.swift */; };
 		C118CC6E1FE87921008C4DB5 /* SwaggerModelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118CC6D1FE87921008C4DB5 /* SwaggerModelTableViewCell.swift */; };
@@ -105,6 +106,7 @@
 		C101C1A21FBE491E00AE02C6 /* NativeAppDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAppDetailsViewController.swift; sourceTree = "<group>"; };
 		C101C1A41FBE602E00AE02C6 /* ModalDialogDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDialogDelegate.swift; sourceTree = "<group>"; };
 		C101C1A81FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAppDetailTableViewCell.swift; sourceTree = "<group>"; };
+		C10CB6282028EFA70015E9F2 /* SwaggerContainerImportConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerContainerImportConfirmViewController.swift; sourceTree = "<group>"; };
 		C118CC661FDF4C71008C4DB5 /* SwaggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerTests.swift; sourceTree = "<group>"; };
 		C118CC6B1FE8727E008C4DB5 /* SwaggerModelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerModelsViewController.swift; sourceTree = "<group>"; };
 		C118CC6D1FE87921008C4DB5 /* SwaggerModelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerModelTableViewCell.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 				C154A2892017FD1500EC6B3B /* SwaggerContainersViewController.swift */,
 				C154A28E20191E2C00EC6B3B /* SwaggerContainerTableCell.swift */,
 				C154A29020191E4900EC6B3B /* SwaggerNewContainerTableCell.swift */,
+				C10CB6282028EFA70015E9F2 /* SwaggerContainerImportConfirmViewController.swift */,
 			);
 			path = Container;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				C144CE9E1FDB599B00E47EED /* SwaggerMethodTypeEnum.swift in Sources */,
 				C144CEA01FDB59DD00E47EED /* SwaggerMethodArgument.swift in Sources */,
 				C118CC741FE991A3008C4DB5 /* SwaggerModelEditorViewController.swift in Sources */,
+				C10CB6292028EFA70015E9F2 /* SwaggerContainerImportConfirmViewController.swift in Sources */,
 				C154A28A2017FD1500EC6B3B /* SwaggerContainersViewController.swift in Sources */,
 				C187C7DB1FD7632B00C26311 /* CauldronHomeTableViewCell.swift in Sources */,
 				C190D45D1FB0FD6D002EFA5B /* NVMRequirement.swift in Sources */,

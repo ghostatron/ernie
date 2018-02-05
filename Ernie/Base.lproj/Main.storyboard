@@ -1443,7 +1443,7 @@ Gw
                                 <rect key="frame" x="225" y="59" width="225" height="5"/>
                             </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oEM-Q3-aZv">
-                                <rect key="frame" x="305" y="13" width="64" height="32"/>
+                                <rect key="frame" x="291" y="13" width="92" height="32"/>
                                 <buttonCell key="cell" type="push" title="Edit" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1gr-oK-R1b">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1460,13 +1460,25 @@ Gw
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hLc-pf-BkQ">
+                                <rect key="frame" x="291" y="75" width="92" height="32"/>
+                                <buttonCell key="cell" type="push" title="Import..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5AW-NV-83U">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="importButtonPressed:" target="1e9-FV-eIX" id="uQ7-og-yZ6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="zow-JQ-sGu" firstAttribute="leading" secondItem="KmG-Ag-8iG" secondAttribute="leading" constant="20" id="1iQ-ny-zpr"/>
+                            <constraint firstItem="hLc-pf-BkQ" firstAttribute="centerX" secondItem="oEM-Q3-aZv" secondAttribute="centerX" id="2H7-X8-kK5"/>
                             <constraint firstItem="M07-uR-F0c" firstAttribute="leading" secondItem="MJU-DL-hMb" secondAttribute="trailing" constant="20" id="8wa-Ns-Fmk"/>
                             <constraint firstItem="MJU-DL-hMb" firstAttribute="top" secondItem="KmG-Ag-8iG" secondAttribute="top" constant="20" id="B5o-AO-RxR"/>
                             <constraint firstItem="6wM-hp-G8X" firstAttribute="leading" secondItem="MJU-DL-hMb" secondAttribute="leading" id="CqC-Vt-HYn"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uJ3-vV-5Yt" secondAttribute="trailing" constant="20" id="DlC-xP-Znl"/>
+                            <constraint firstItem="6wM-hp-G8X" firstAttribute="top" secondItem="hLc-pf-BkQ" secondAttribute="bottom" constant="20" id="EdW-XZ-Bvg"/>
                             <constraint firstItem="MJU-DL-hMb" firstAttribute="centerX" secondItem="KmG-Ag-8iG" secondAttribute="centerX" id="FSa-bA-hb2"/>
                             <constraint firstAttribute="bottom" secondItem="MJU-DL-hMb" secondAttribute="bottom" constant="20" id="LqC-hB-1bl"/>
                             <constraint firstItem="1ol-H0-WwB" firstAttribute="leading" secondItem="MJU-DL-hMb" secondAttribute="trailing" constant="20" id="McR-bD-u0x"/>
@@ -1480,6 +1492,7 @@ Gw
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="M07-uR-F0c" secondAttribute="trailing" constant="20" id="bTd-aB-D6f"/>
                             <constraint firstItem="MJU-DL-hMb" firstAttribute="leading" secondItem="zow-JQ-sGu" secondAttribute="trailing" constant="20" id="bfg-kf-Wuv"/>
                             <constraint firstItem="N1m-Yt-tg1" firstAttribute="leading" secondItem="MJU-DL-hMb" secondAttribute="trailing" constant="20" id="cMN-RC-zLK"/>
+                            <constraint firstItem="hLc-pf-BkQ" firstAttribute="width" secondItem="oEM-Q3-aZv" secondAttribute="width" id="ey3-qJ-pLc"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1ol-H0-WwB" secondAttribute="trailing" constant="20" id="fA9-4x-x98"/>
                             <constraint firstAttribute="trailing" secondItem="6wM-hp-G8X" secondAttribute="trailing" id="hdS-cs-gFk"/>
                             <constraint firstItem="M07-uR-F0c" firstAttribute="top" secondItem="1ol-H0-WwB" secondAttribute="bottom" constant="8" id="jq6-n6-3jQ"/>
@@ -1494,6 +1507,7 @@ Gw
                         <outlet property="methodListLabel" destination="M07-uR-F0c" id="vKI-wp-9mu"/>
                         <outlet property="modelListLabel" destination="N1m-Yt-tg1" id="tO2-nW-WS2"/>
                         <segue destination="YEB-gt-5f9" kind="modal" identifier="toContainerEditor" id="zx8-Ii-DVk"/>
+                        <segue destination="iuC-Jw-ZWS" kind="modal" identifier="toImportConfirmation" id="KQl-8b-M5e"/>
                     </connections>
                 </viewController>
                 <customObject id="YdL-ab-tbA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -2967,6 +2981,19 @@ Gw
                 <customObject id="Hey-Rd-ewA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1335" y="66"/>
+        </scene>
+        <!--Swagger Container Import Confirm View Controller-->
+        <scene sceneID="VHC-lF-swN">
+            <objects>
+                <viewController id="iuC-Jw-ZWS" customClass="SwaggerContainerImportConfirmViewController" customModule="Ernie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="noi-Jo-1VS">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="C70-jz-yds" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2134" y="-372"/>
         </scene>
         <!--Cauldron Home-->
         <scene sceneID="luy-Un-yoj">

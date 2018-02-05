@@ -55,6 +55,11 @@ class SwaggerMethodArgument
         self.argumentDescription = avatarOf.argDescription
     }
     
+    class func generateArgumentFromJSON(_ json: String) -> SwaggerMethodArgument?
+    {
+        return nil
+    }
+    
     // MARK:- Misc.
     
     func swiftSignature() -> String
