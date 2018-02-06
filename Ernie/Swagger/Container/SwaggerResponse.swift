@@ -48,9 +48,24 @@ class SwaggerResponse
         self.responseDescription = avatarOf.responseDescription
     }
     
-    class func generateResponseFromDictionary(_ jsonDictionary: [String : Any]) -> SwaggerResponse?
+    class func generateResponseForCode(_ code: String, fromDictionary jsonDictionary: [String : Any]) -> SwaggerResponse?
     {
-        return nil
+        // Can't have an empty code.
+        guard code.count > 0 else
+        {
+            return nil
+        }
+        
+        // Must have a data type and non-empty code.
+        guard let schemaSection = jsonDictionary["schema"] as? [String : Any], let dataType = SwaggerDataType.generateDataTypeFromDictionary(schemaSection) else
+        {
+            return nil
+        }
+        let response = SwaggerResponse(code: code, type: dataType)
+        
+        // Add the description and we're done.
+        response.responseDescription = jsonDictionary["description"] as? String
+        return response
     }
     
     class func getAllResponses() -> [SwaggerResponse]

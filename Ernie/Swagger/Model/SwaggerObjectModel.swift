@@ -57,7 +57,7 @@ class SwaggerObjectModel
         }
     }
     
-    class func generateModelFromDictionary(_ jsonDictionary: [String : Any]) -> SwaggerObjectModel?
+    class func generateModelNamed(_ modelName: String, fromDictionary jsonDictionary: [String : Any]) -> SwaggerObjectModel?
     {
         return nil
     }

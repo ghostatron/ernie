@@ -48,6 +48,92 @@ class SwaggerDataType
     
     class func generateDataTypeFromDictionary(_ jsonDictionary: [String : Any]) -> SwaggerDataType?
     {
+        // Must have a basic type.
+        guard let dataTypeString = jsonDictionary["type"] as? String else
+        {
+            return nil
+        }
+        
+        // The primitive types are easy.
+        var isArray = false
+        var modelRef: String?
+        switch dataTypeString.lowercased()
+        {
+        case "boolean":
+            return SwaggerDataType(primitiveType: .Boolean)
+        case "integer":
+            return SwaggerDataType(primitiveType: .Integer)
+        case "string":
+            return SwaggerDataType(primitiveType: .String)
+        case "array":
+            isArray = true
+        default:
+            modelRef = jsonDictionary["$ref"] as? String
+            break
+        }
+        
+        // It's either an array, an object model, or trash...
+        if isArray
+        {
+            // Array
+            guard let itemsSection = jsonDictionary["items"] as? [String : String] else
+            {
+                return nil
+            }
+
+            // Check for "type" which means the array has primitive elements.
+            if let arrayTypeString = itemsSection["type"]
+            {
+                guard let arrayType = SwaggerDataType.dataTypeFromString(arrayTypeString) else
+                {
+                    return nil
+                }
+                return SwaggerDataType(asArrayOf: arrayType)
+            }
+            
+            // Check for "$ref" which means the array has model elements.
+            if let refString = itemsSection["$ref"]
+            {
+                // This string will look something like "#/definitions/ErnCookie" where the model name is the last component.
+                guard let modelName = refString.components(separatedBy: "/").last else
+                {
+                    return nil
+                }
+                
+                // Check for an existing model with that name and create one in memory if not found.
+                var modelForArrayType: SwaggerObjectModel! = SwaggerObjectModel.getModelNamed(modelName)
+                if modelForArrayType == nil
+                {
+                    modelForArrayType = SwaggerObjectModel(name: modelName)
+                }
+                
+                // Return a data type that is an array of that model.
+                let dataTypeForArray = SwaggerDataType(withObject: modelForArrayType)
+                return SwaggerDataType(asArrayOf: dataTypeForArray)
+            }
+        }
+        else if let modelRef = modelRef
+        {
+            // Model
+            guard let modelName = modelRef.components(separatedBy: "/").last else
+            {
+                return nil
+            }
+            
+            var modelForType: SwaggerObjectModel! = SwaggerObjectModel.getModelNamed(modelName)
+            if modelForType == nil
+            {
+                modelForType = SwaggerObjectModel(name: modelName)
+            }
+            return SwaggerDataType(withObject: modelForType)
+        }
+        else
+        {
+            // Trash
+            return nil
+        }
+        
+        // You lose
         return nil
     }
     
@@ -56,9 +142,9 @@ class SwaggerDataType
         // Check for the primitive data types first.
         switch dataTypeString.lowercased()
         {
-        case "bool":
+        case "bool", "boolean":
             return SwaggerDataType(primitiveType: .Boolean)
-        case "int":
+        case "int", "integer":
             return SwaggerDataType(primitiveType: .Integer)
         case "string":
             return SwaggerDataType(primitiveType: .String)

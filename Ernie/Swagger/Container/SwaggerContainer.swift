@@ -113,12 +113,12 @@ class SwaggerContainer
         }
         
         // Add the methods.
-        if let pathsSection = jsonDictionary["paths"] as? [String : Any]
+        if let pathsSection = jsonDictionary["paths"] as? [String : [String : Any]]
         {
             var methods: [SwaggerMethod] = []
             for (methodName, methodJSON) in pathsSection
             {
-                if let methodObject = SwaggerMethod.generateMethodFromDictionary([methodName : methodJSON])
+                if let methodObject = SwaggerMethod.generateMethodNamed(methodName, fromDictionary: methodJSON)
                 {
                     methods.append(methodObject)
                 }
@@ -130,12 +130,12 @@ class SwaggerContainer
         }
         
         // Add the models.
-        if let definitionsSection = jsonDictionary["definitions"] as? [String : Any]
+        if let definitionsSection = jsonDictionary["definitions"] as? [String : [String : Any]]
         {
             var models: [SwaggerObjectModel] = []
             for (modelName, modelJSON) in definitionsSection
             {
-                if let modelObject = SwaggerObjectModel.generateModelFromDictionary([modelName : modelJSON])
+                if let modelObject = SwaggerObjectModel.generateModelNamed(modelName, fromDictionary: modelJSON)
                 {
                     models.append(modelObject)
                 }
