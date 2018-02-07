@@ -99,9 +99,60 @@ class SwaggerMethod
         }
     }
     
-    class func generateMethodNamed(_ methodName: String, fromDictionary jsonDictionary: [String : Any]) -> SwaggerMethod?
+    // Returns an array b/c the swagger json can define get/post/etc. under one method name section.
+    class func generateMethodNamed(_ methodName: String, fromDictionary jsonDictionary: [String : [String : Any]]) -> [SwaggerMethod]?
     {
-        return nil
+        var methods: [SwaggerMethod] = []
+        
+        for (httpMethodString, swaggerMethodBody) in jsonDictionary
+        {
+            // Pull out a valid HTTP method type.
+            guard let httpMethodType = SwaggerMethodTypeEnum.typeFromString(httpMethodString) else
+            {
+                return nil
+            }
+            
+            // Get the method object started by copying over the easy top level stuff.
+            let methodObject = SwaggerMethod(name: methodName, type: httpMethodType)
+            methodObject.methodDescription = swaggerMethodBody["description"] as? String
+            methodObject.methodSummary = swaggerMethodBody["summary"] as? String
+            methodObject.methodOperationId = swaggerMethodBody["operationId"] as? String ?? methodName
+            methodObject.methodTags = swaggerMethodBody["tags"] as? [String] ?? []
+            
+            // Enumerate the products and add them to the method.
+            for productString in swaggerMethodBody["produces"] as? [String] ?? []
+            {
+                guard let productEnum = SwaggerProductEnum.enumFromString(productString) else
+                {
+                    return nil
+                }
+                methodObject.methodProducts.append(productEnum)
+            }
+            
+            // Enumerate the arguments and add them to the method.
+            for parameterBody in swaggerMethodBody["parameters"] as? [[String : Any]] ?? [[:]]
+            {
+                guard let argument = SwaggerMethodArgument.generateArgumentFromDictionary(parameterBody) else
+                {
+                    return nil
+                }
+                methodObject.methodArguments.append(argument)
+            }
+
+            // Enumerate the responses and add them to the method.
+            for (responseCode, responseBody) in swaggerMethodBody["responses"] as? [String : [String : Any]] ?? [:]
+            {
+                guard let response = SwaggerResponse.generateResponseForCode(responseCode, fromDictionary: responseBody) else
+                {
+                    return nil
+                }
+                methodObject.methodResponses.append(response)
+            }
+            
+            methods.append(methodObject)
+        }
+        
+        return methods
     }
     
     /**

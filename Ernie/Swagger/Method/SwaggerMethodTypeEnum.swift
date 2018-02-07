@@ -28,4 +28,23 @@ enum SwaggerMethodTypeEnum: String
             return "event"
         }
     }
+    
+    static func typeFromString(_ type: String) -> SwaggerMethodTypeEnum?
+    {
+        switch type.lowercased()
+        {
+        case "get":
+            return .GET
+        case "post":
+            return .POST
+        case "put":
+            return .PUT
+        case "delete":
+            return .DELETE
+        case "event":
+            return .EVENT
+        default:
+            return nil
+        }
+    }
 }

@@ -113,14 +113,14 @@ class SwaggerContainer
         }
         
         // Add the methods.
-        if let pathsSection = jsonDictionary["paths"] as? [String : [String : Any]]
+        if let pathsSection = jsonDictionary["paths"] as? [String : [String : [String : Any]]]
         {
             var methods: [SwaggerMethod] = []
             for (methodName, methodJSON) in pathsSection
             {
-                if let methodObject = SwaggerMethod.generateMethodNamed(methodName, fromDictionary: methodJSON)
+                if let methodObjects = SwaggerMethod.generateMethodNamed(methodName, fromDictionary: methodJSON)
                 {
-                    methods.append(methodObject)
+                    methods.append(contentsOf: methodObjects)
                 }
             }
             if methods.count > 0
