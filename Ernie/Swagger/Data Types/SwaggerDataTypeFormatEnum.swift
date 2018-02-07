@@ -34,4 +34,27 @@ enum SwaggerDataTypeFormatEnum: String
             return ""
         }
     }
+    
+    static func enumFromString(_ enumString: String) -> SwaggerDataTypeFormatEnum
+    {
+        switch enumString.lowercased()
+        {
+        case "float":
+            return .Float
+        case "double":
+            return .Double
+        case "int32":
+            return .Int32
+        case "int64":
+            return .Int64
+        case "date-time":
+            return .DateTime
+        case "date":
+            return .Date
+        case "password":
+            return .Password
+        default:
+            return .None
+        }
+    }
 }

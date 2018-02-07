@@ -57,7 +57,47 @@ class SwaggerMethodArgument
     
     class func generateArgumentFromDictionary(_ jsonDictionary: [String : Any]) -> SwaggerMethodArgument?
     {
-        return nil
+        // Must have a name for the argument.
+        guard let argName = jsonDictionary["name"] as? String else
+        {
+            return nil
+        }
+        
+        // Must have a type for the argument.  This could be provided via "schema" or "type".
+        let schemaBody =  jsonDictionary["schema"] as? [String : Any]
+        let typeString = jsonDictionary["type"] as? String
+        let argType: SwaggerDataType?
+        if let schemaBody = schemaBody
+        {
+            argType = SwaggerDataType.generateDataTypeFromDictionary(schemaBody)
+            guard argType != nil else
+            {
+                return nil
+            }
+        }
+        else if let typeString = typeString
+        {
+            argType = SwaggerDataType.dataTypeFromString(typeString)
+            guard argType != nil else
+            {
+                return nil
+            }
+        }
+        else
+        {
+            return nil
+        }
+        
+        // Create the argument object and copy the info into it.
+        let argument = SwaggerMethodArgument(name: argName, type: argType!)
+        argument.argumentDescription = jsonDictionary["description"] as? String
+        argument.isArgumentRequired = jsonDictionary["required"] as? Bool ?? false
+        if let formatString = jsonDictionary["format"] as? String
+        {
+            argument.argumentFormat = SwaggerDataTypeFormatEnum.enumFromString(formatString)
+        }
+        
+        return argument
     }
     
     // MARK:- Misc.

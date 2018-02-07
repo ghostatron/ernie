@@ -56,9 +56,43 @@ class SwaggerModelProperty
         }
     }
     
-    class func generatePropertyFromDictionary(_ jsonDictionary: [String : Any]) -> SwaggerModelProperty?
+    class func generatePropertyNamed(_ name: String, fromDictionary jsonDictionary: [String : Any]) -> SwaggerModelProperty?
     {
-        return nil
+        // Must have a type for the property.  This could be provided via "schema" or "type".
+        let schemaBody =  jsonDictionary["schema"] as? [String : Any]
+        let typeString = jsonDictionary["type"] as? String
+        let propertyType: SwaggerDataType?
+        if let schemaBody = schemaBody
+        {
+            propertyType = SwaggerDataType.generateDataTypeFromDictionary(schemaBody)
+            guard propertyType != nil else
+            {
+                return nil
+            }
+        }
+        else if let typeString = typeString
+        {
+            propertyType = SwaggerDataType.dataTypeFromString(typeString)
+            guard propertyType != nil else
+            {
+                return nil
+            }
+        }
+        else
+        {
+            return nil
+        }
+        
+        // Create the property object and copy the info into it.
+        let property = SwaggerModelProperty(name: name, dataType: propertyType!)
+        property.propertyDescription = jsonDictionary["description"] as? String
+        property.propertyIsRequired = jsonDictionary["required"] as? Bool ?? false
+        if let formatString = jsonDictionary["format"] as? String
+        {
+            property.propertyFormat = SwaggerDataTypeFormatEnum.enumFromString(formatString)
+        }
+        
+        return property
     }
     
     // MARK:- Swagger Generation

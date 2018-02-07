@@ -59,7 +59,24 @@ class SwaggerObjectModel
     
     class func generateModelNamed(_ modelName: String, fromDictionary jsonDictionary: [String : Any]) -> SwaggerObjectModel?
     {
-        return nil
+        // Create the model that will be returned using the given name.
+        let model = SwaggerObjectModel(name: modelName)
+        
+        // Enumerate the properties section to generate the model properties.
+        if let propertiesSection = jsonDictionary["properties"] as? [String : [String : Any]]
+        {
+            for (propertyName, propertyBody) in propertiesSection
+            {
+                guard let propertyObject = SwaggerModelProperty.generatePropertyNamed(propertyName, fromDictionary: propertyBody) else
+                {
+                    return nil
+                }
+                propertyObject.model = model
+                model.modelProperties.append(propertyObject)
+            }
+        }
+        
+        return model
     }
     
     class func getAllModels(sorted: Bool = false) -> [SwaggerObjectModel]
