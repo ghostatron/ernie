@@ -15,6 +15,7 @@
 		C101C1A91FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C101C1A81FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift */; };
 		C10CB6292028EFA70015E9F2 /* SwaggerContainerImportConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CB6282028EFA70015E9F2 /* SwaggerContainerImportConfirmViewController.swift */; };
 		C10CB62B2029052F0015E9F2 /* String+Ernie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CB62A2029052F0015E9F2 /* String+Ernie.swift */; };
+		C10CB62D202BB4AB0015E9F2 /* SwaggerImportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10CB62C202BB4AB0015E9F2 /* SwaggerImportTests.swift */; };
 		C118CC671FDF4C71008C4DB5 /* SwaggerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118CC661FDF4C71008C4DB5 /* SwaggerTests.swift */; };
 		C118CC6C1FE8727E008C4DB5 /* SwaggerModelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118CC6B1FE8727E008C4DB5 /* SwaggerModelsViewController.swift */; };
 		C118CC6E1FE87921008C4DB5 /* SwaggerModelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C118CC6D1FE87921008C4DB5 /* SwaggerModelTableViewCell.swift */; };
@@ -109,6 +110,7 @@
 		C101C1A81FC386F600AE02C6 /* NativeAppDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeAppDetailTableViewCell.swift; sourceTree = "<group>"; };
 		C10CB6282028EFA70015E9F2 /* SwaggerContainerImportConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerContainerImportConfirmViewController.swift; sourceTree = "<group>"; };
 		C10CB62A2029052F0015E9F2 /* String+Ernie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ernie.swift"; sourceTree = "<group>"; };
+		C10CB62C202BB4AB0015E9F2 /* SwaggerImportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerImportTests.swift; sourceTree = "<group>"; };
 		C118CC661FDF4C71008C4DB5 /* SwaggerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerTests.swift; sourceTree = "<group>"; };
 		C118CC6B1FE8727E008C4DB5 /* SwaggerModelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerModelsViewController.swift; sourceTree = "<group>"; };
 		C118CC6D1FE87921008C4DB5 /* SwaggerModelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwaggerModelTableViewCell.swift; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 			children = (
 				C1C774E41FA3E28300AD269F /* ErnieTests.swift */,
 				C118CC661FDF4C71008C4DB5 /* SwaggerTests.swift */,
+				C10CB62C202BB4AB0015E9F2 /* SwaggerImportTests.swift */,
 				C1C774E61FA3E28300AD269F /* Info.plist */,
 			);
 			path = ErnieTests;
@@ -709,6 +712,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C10CB62D202BB4AB0015E9F2 /* SwaggerImportTests.swift in Sources */,
 				C118CC671FDF4C71008C4DB5 /* SwaggerTests.swift in Sources */,
 				C1C774E51FA3E28300AD269F /* ErnieTests.swift in Sources */,
 			);

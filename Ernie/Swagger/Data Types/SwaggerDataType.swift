@@ -48,8 +48,16 @@ class SwaggerDataType
     
     class func generateDataTypeFromDictionary(_ jsonDictionary: [String : Any]) -> SwaggerDataType?
     {
+        // Sometimes the "type" key is ommitted and the "$ref" key is used directly (for a model).  In order to
+        // let both scenarios pass through identical logic, we'll massage the json to put "type" in there.
+        var jsonToParse = jsonDictionary
+        if let _ = jsonDictionary["$ref"] as? String
+        {
+            jsonToParse["type"] = "object"
+        }
+        
         // Must have a basic type.
-        guard let dataTypeString = jsonDictionary["type"] as? String else
+        guard let dataTypeString = jsonToParse["type"] as? String else
         {
             return nil
         }
@@ -68,7 +76,7 @@ class SwaggerDataType
         case "array":
             isArray = true
         default:
-            modelRef = jsonDictionary["$ref"] as? String
+            modelRef = jsonToParse["$ref"] as? String
             break
         }
         
@@ -76,7 +84,7 @@ class SwaggerDataType
         if isArray
         {
             // Array
-            guard let itemsSection = jsonDictionary["items"] as? [String : String] else
+            guard let itemsSection = jsonToParse["items"] as? [String : String] else
             {
                 return nil
             }
