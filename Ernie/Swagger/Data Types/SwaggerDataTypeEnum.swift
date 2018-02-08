@@ -10,12 +10,14 @@ import Foundation
 
 enum SwaggerDataTypeEnum: String
 {
-    case Integer, String, Boolean, Array, Object
+    case Number, Integer, String, Boolean, Array, Object
     
     func stringValue() -> String
     {
         switch self
         {
+        case .Number:
+            return "number"
         case .Integer:
             return "integer"
         case .String:

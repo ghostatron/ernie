@@ -106,6 +106,7 @@ class SwaggerMethodResponsesViewController: NSViewController, NSTableViewDelegat
         self.sortedPrimitiveTypes = [
             SwaggerDataTypeEnum.Boolean.rawValue,
             SwaggerDataTypeEnum.Integer.rawValue,
+            SwaggerDataTypeEnum.Number.rawValue,
             SwaggerDataTypeEnum.String.rawValue
         ]
         for typeName in self.sortedPrimitiveTypes

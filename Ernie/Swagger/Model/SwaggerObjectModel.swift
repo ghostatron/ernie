@@ -63,6 +63,7 @@ class SwaggerObjectModel
         let model = SwaggerObjectModel(name: modelName)
         
         // Enumerate the properties section to generate the model properties.
+        var propertyLookupByName: [String : SwaggerModelProperty] = [:]
         if let propertiesSection = jsonDictionary["properties"] as? [String : [String : Any]]
         {
             for (propertyName, propertyBody) in propertiesSection
@@ -73,6 +74,17 @@ class SwaggerObjectModel
                 }
                 propertyObject.model = model
                 model.modelProperties.append(propertyObject)
+                propertyLookupByName[propertyObject.propertyName] = propertyObject
+            }
+        }
+        
+        // The json indicates which properties are required by specifying them in a "required" section.  Enumerate that and turn
+        // on the required flag for those properties.
+        if let requiredPropertiesSection = jsonDictionary["required"] as? [String]
+        {
+            for requiredPropertyName in requiredPropertiesSection
+            {
+                propertyLookupByName[requiredPropertyName]?.propertyIsRequired = true
             }
         }
         

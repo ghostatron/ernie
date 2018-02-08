@@ -11,9 +11,16 @@ import XCTest
 
 class SwaggerImportTests: XCTestCase
 {
-    private let primitiveDataTypeDictionary = ["type" : "boolean"]
+    private let primitiveDataTypeDictionary = ["type" : "string", "format" : "password"]
     private let modelDataTypeDictionary = ["$ref" : "#/definitions/someModel"]
     private let arrayDataTypeDictionary: [String : Any] = ["type" : "array", "items" : ["type" : "string"]]
+    
+    private func primitiveModelPropertyDictionary() -> [String : Any]
+    {
+        var propertyDictionary = self.primitiveDataTypeDictionary
+        propertyDictionary["description"] = "somePropertyDescription"
+        return propertyDictionary
+    }
     
     override func setUp()
     {
@@ -44,7 +51,13 @@ class SwaggerImportTests: XCTestCase
     
     func testSwaggerModelProperty()
     {
-        
+        let primitiveProperty = SwaggerModelProperty.generatePropertyNamed("someProperty", fromDictionary: self.primitiveModelPropertyDictionary())
+        XCTAssertNotNil(primitiveProperty)
+        XCTAssertTrue(primitiveProperty?.propertyName == "someProperty")
+        XCTAssertTrue(primitiveProperty?.propertyFormat == .Password)
+        XCTAssertFalse(primitiveProperty?.propertyIsRequired ?? false)
+        XCTAssertTrue(primitiveProperty?.propertyDescription == "somePropertyDescription")
+        XCTAssertTrue(primitiveProperty?.propertyDataType.primitiveDataType == .String)
     }
     
     func testSwaggerModel()

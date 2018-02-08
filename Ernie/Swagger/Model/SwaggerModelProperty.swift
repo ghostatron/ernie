@@ -86,7 +86,6 @@ class SwaggerModelProperty
         // Create the property object and copy the info into it.
         let property = SwaggerModelProperty(name: name, dataType: propertyType!)
         property.propertyDescription = jsonDictionary["description"] as? String
-        property.propertyIsRequired = jsonDictionary["required"] as? Bool ?? false
         if let formatString = jsonDictionary["format"] as? String
         {
             property.propertyFormat = SwaggerDataTypeFormatEnum.enumFromString(formatString)
