@@ -22,6 +22,13 @@ class SwaggerImportTests: XCTestCase
         return propertyDictionary
     }
     
+    private func simpleModelDictionary() -> [String : Any]
+    {
+        let properties: [String : Any] = ["someProperty" : self.primitiveModelPropertyDictionary()]
+        let required = ["someProperty"]
+        return ["type" : "object", "properties" : properties, "required" : required]
+    }
+    
     override func setUp()
     {
         super.setUp()
@@ -62,7 +69,11 @@ class SwaggerImportTests: XCTestCase
     
     func testSwaggerModel()
     {
-        
+        let simpleModel = SwaggerObjectModel.generateModelNamed("someModel", fromDictionary: self.simpleModelDictionary())
+        XCTAssertNotNil(simpleModel)
+        XCTAssertTrue(simpleModel?.modelName == "someModel")
+        XCTAssertTrue(simpleModel?.modelProperties.count == 1)
+        XCTAssertTrue(simpleModel?.modelProperties.first?.propertyIsRequired ?? false)
     }
     
     func testSwaggerResponse()

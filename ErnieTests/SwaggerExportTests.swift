@@ -9,7 +9,7 @@
 import XCTest
 @testable import Ernie
 
-class SwaggerTests: XCTestCase
+class SwaggerExportTests: XCTestCase
 {
     override func setUp()
     {
