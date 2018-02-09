@@ -36,6 +36,16 @@ class SwaggerImportTests: XCTestCase
         return ["description" : "A 200 response is good", "schema" : self.primitiveDataTypeDictionary]
     }
     
+    private func primitiveMethodArgumentDictionary(required: Bool = false) -> [String : Any]
+    {
+        var argDictionary: [String : Any] = [:]
+        argDictionary["name"] = "SomePrimitiveArgument"
+        argDictionary["description"] = "The name kinda says it all"
+        argDictionary["required"] = required
+        argDictionary["schema"] = self.primitiveDataTypeDictionary
+        return argDictionary
+    }
+    
     // MARK:- Alpha and Omega
     
     override func setUp()
@@ -99,7 +109,13 @@ class SwaggerImportTests: XCTestCase
     
     func testSwaggerMethodArgument()
     {
-        
+        let argument = SwaggerMethodArgument.generateArgumentFromDictionary(self.primitiveMethodArgumentDictionary(required: true))
+        XCTAssertNotNil(argument)
+        XCTAssertTrue(argument?.argumentName == "SomePrimitiveArgument")
+        XCTAssertTrue(argument?.argumentDescription == "The name kinda says it all")
+        XCTAssertTrue(argument?.isArgumentRequired ?? false)
+        XCTAssertNotNil(argument?.argumentType)
+        XCTAssertTrue(argument?.argumentType.primitiveDataType == .String)
     }
     
     func testSwaggerMethod()
