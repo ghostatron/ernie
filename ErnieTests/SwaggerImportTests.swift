@@ -11,6 +11,8 @@ import XCTest
 
 class SwaggerImportTests: XCTestCase
 {
+    // MARK:- Test Dictionaries
+    
     private let primitiveDataTypeDictionary = ["type" : "string", "format" : "password"]
     private let modelDataTypeDictionary = ["$ref" : "#/definitions/someModel"]
     private let arrayDataTypeDictionary: [String : Any] = ["type" : "array", "items" : ["type" : "string"]]
@@ -29,6 +31,13 @@ class SwaggerImportTests: XCTestCase
         return ["type" : "object", "properties" : properties, "required" : required]
     }
     
+    private func response200Dictionary() -> [String : Any]
+    {
+        return ["description" : "A 200 response is good", "schema" : self.primitiveDataTypeDictionary]
+    }
+    
+    // MARK:- Alpha and Omega
+    
     override func setUp()
     {
         super.setUp()
@@ -38,6 +47,8 @@ class SwaggerImportTests: XCTestCase
     {
         super.tearDown()
     }
+    
+    // MARK:- Test Methods
     
     func testSwaggerDataType()
     {
@@ -78,7 +89,12 @@ class SwaggerImportTests: XCTestCase
     
     func testSwaggerResponse()
     {
-        
+        let response = SwaggerResponse.generateResponseForCode("200", fromDictionary: self.response200Dictionary())
+        XCTAssertNotNil(response)
+        XCTAssertTrue(response?.responseHttpCode == "200")
+        XCTAssertTrue(response?.responseDescription == "A 200 response is good")
+        XCTAssertNotNil(response?.responseDataType)
+        XCTAssertTrue(response?.responseDataType.primitiveDataType == .String)
     }
     
     func testSwaggerMethodArgument()
