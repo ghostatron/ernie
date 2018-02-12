@@ -16,6 +16,7 @@ class SwaggerMethodProductsViewController: NSViewController
     @IBOutlet weak var jsonCheckBox: NSButton!
     @IBOutlet weak var pdfCheckBox: NSButton!
     @IBOutlet weak var pngCheckBox: NSButton!
+    @IBOutlet weak var xmlCheckBox: NSButton!
     
     var modalDelegate: ModalDialogDelegate?
     var products: [SwaggerProductEnum] = []
@@ -36,6 +37,7 @@ class SwaggerMethodProductsViewController: NSViewController
         self.jsonCheckBox.state = NSControl.StateValue.off
         self.pdfCheckBox.state = NSControl.StateValue.off
         self.pngCheckBox.state = NSControl.StateValue.off
+        self.xmlCheckBox.state = NSControl.StateValue.off
         
         // Turn them back on if they have an entry in |self.products|.
         for product in self.products
@@ -52,6 +54,8 @@ class SwaggerMethodProductsViewController: NSViewController
                 self.pdfCheckBox.state = NSControl.StateValue.on
             case .PNG:
                 self.pngCheckBox.state = NSControl.StateValue.on
+            case .XML:
+                self.xmlCheckBox.state = NSControl.StateValue.on
             }
         }
     }
@@ -87,6 +91,10 @@ class SwaggerMethodProductsViewController: NSViewController
         if self.pngCheckBox.state == NSControl.StateValue.on
         {
             self.products.append(.PNG)
+        }
+        if self.xmlCheckBox.state == NSControl.StateValue.on
+        {
+            self.products.append(.XML)
         }
         
         // Tell the delegate we're done. K byeee

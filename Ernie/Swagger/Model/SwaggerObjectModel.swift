@@ -116,7 +116,7 @@ class SwaggerObjectModel
     class func getModelNamed(_ modelName: String) -> SwaggerObjectModel?
     {
         let request: NSFetchRequest<SWObjectModel> = SWObjectModel.fetchRequest()
-        request.predicate = NSPredicate(format: "modelName = %k", argumentArray: [modelName])
+        request.predicate = NSPredicate(format: "modelName = %@", argumentArray: [modelName])
         let swModels = try? AppDelegate.mainManagedObjectContext().fetch(request)
         guard let swModel = swModels?.first else
         {

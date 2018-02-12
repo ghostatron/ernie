@@ -156,6 +156,8 @@ class SwaggerDataType
             return SwaggerDataType(primitiveType: .Integer)
         case "string":
             return SwaggerDataType(primitiveType: .String)
+        case "number":
+            return SwaggerDataType(primitiveType: .Number)
         default:
             break
         }

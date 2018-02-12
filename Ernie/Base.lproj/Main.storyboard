@@ -826,9 +826,17 @@ Gw
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gh6-AI-XhZ">
+                                <rect key="frame" x="18" y="94" width="50" height="18"/>
+                                <buttonCell key="cell" type="check" title="XML" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="sYF-Gy-ZZd">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="saR-Bq-HXq" firstAttribute="top" secondItem="0Xq-xh-FcA" secondAttribute="bottom" constant="20" id="0C0-YZ-fEX"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gh6-AI-XhZ" secondAttribute="trailing" constant="20" id="2O7-Li-gQ9"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="saR-Bq-HXq" secondAttribute="trailing" constant="20" id="4tX-ey-24r"/>
                             <constraint firstItem="saR-Bq-HXq" firstAttribute="leading" secondItem="0sM-mS-dvo" secondAttribute="leading" constant="20" id="53a-hN-GIF"/>
                             <constraint firstItem="0Xq-xh-FcA" firstAttribute="leading" secondItem="0sM-mS-dvo" secondAttribute="leading" constant="20" id="5sD-iI-a2J"/>
@@ -836,7 +844,6 @@ Gw
                             <constraint firstItem="uLR-hY-9lF" firstAttribute="top" secondItem="saR-Bq-HXq" secondAttribute="bottom" constant="20" id="92T-DP-Zt8"/>
                             <constraint firstItem="3kR-Ck-lch" firstAttribute="top" secondItem="uLR-hY-9lF" secondAttribute="bottom" constant="20" id="9H7-Ks-NeU"/>
                             <constraint firstItem="pDe-jr-gXO" firstAttribute="width" secondItem="3oV-Ha-o1c" secondAttribute="width" id="ClD-AZ-eSE"/>
-                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="3kR-Ck-lch" secondAttribute="bottom" constant="20" id="GVw-gw-okQ"/>
                             <constraint firstItem="3kR-Ck-lch" firstAttribute="leading" secondItem="0sM-mS-dvo" secondAttribute="leading" constant="20" id="IFn-fx-ag8"/>
                             <constraint firstItem="3oV-Ha-o1c" firstAttribute="leading" secondItem="pDe-jr-gXO" secondAttribute="trailing" constant="20" id="InA-CW-Ka7"/>
                             <constraint firstItem="0Xq-xh-FcA" firstAttribute="top" secondItem="Etw-Cf-SOG" secondAttribute="bottom" constant="20" id="J20-N5-1Fj"/>
@@ -845,10 +852,13 @@ Gw
                             <constraint firstItem="uLR-hY-9lF" firstAttribute="leading" secondItem="0sM-mS-dvo" secondAttribute="leading" constant="20" id="U1U-ly-45M"/>
                             <constraint firstAttribute="bottom" secondItem="3oV-Ha-o1c" secondAttribute="bottom" constant="20" id="Yzi-gf-n3d"/>
                             <constraint firstAttribute="bottom" secondItem="pDe-jr-gXO" secondAttribute="bottom" constant="20" id="aAE-pd-n75"/>
+                            <constraint firstItem="gh6-AI-XhZ" firstAttribute="leading" secondItem="0sM-mS-dvo" secondAttribute="leading" constant="20" id="cBh-wL-jsl"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0Xq-xh-FcA" secondAttribute="trailing" constant="20" id="cE9-U6-8sp"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uLR-hY-9lF" secondAttribute="trailing" constant="20" id="cT2-Wy-mjS"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Etw-Cf-SOG" secondAttribute="trailing" constant="20" id="etE-BA-VdR"/>
                             <constraint firstItem="pDe-jr-gXO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0sM-mS-dvo" secondAttribute="leading" constant="20" id="f63-hY-Qd3"/>
+                            <constraint firstItem="gh6-AI-XhZ" firstAttribute="top" secondItem="3kR-Ck-lch" secondAttribute="bottom" constant="20" id="gUP-Zb-IsH"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gh6-AI-XhZ" secondAttribute="bottom" constant="20" id="jgl-si-c2j"/>
                             <constraint firstAttribute="trailing" secondItem="3oV-Ha-o1c" secondAttribute="trailing" constant="20" id="w7P-Hq-fGs"/>
                         </constraints>
                     </view>
@@ -858,6 +868,7 @@ Gw
                         <outlet property="jsonCheckBox" destination="saR-Bq-HXq" id="nli-aq-gTg"/>
                         <outlet property="pdfCheckBox" destination="uLR-hY-9lF" id="bAX-Y4-WeX"/>
                         <outlet property="pngCheckBox" destination="3kR-Ck-lch" id="Ssz-zL-xbY"/>
+                        <outlet property="xmlCheckBox" destination="gh6-AI-XhZ" id="yGQ-uR-Y3e"/>
                     </connections>
                 </viewController>
                 <customObject id="mdQ-p9-8fw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -4673,7 +4684,7 @@ Gw
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="BOv-3b-7eP">
-                                    <rect key="frame" x="1" y="-14" width="0.0" height="15"/>
+                                    <rect key="frame" x="1" y="-15" width="0.0" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="vYp-gI-5n8">

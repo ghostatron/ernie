@@ -101,11 +101,10 @@ class SwaggerImportTests: XCTestCase
     {
         let primitiveType = SwaggerDataType.generateDataTypeFromDictionary(self.primitiveDataTypeDictionary)
         XCTAssertNotNil(primitiveType)
-        XCTAssertTrue(primitiveType?.primitiveDataType == .Boolean)
+        XCTAssertTrue(primitiveType?.primitiveDataType == .String)
         
-        // TODO: I think this works, but the model logic tries to hit core data which isn't available in unit tests.
-//        let modelType = SwaggerDataType.generateDataTypeFromDictionary(self.modelDataTypeDictionary)
-//        XCTAssertNotNil(modelType)
+        let modelType = SwaggerDataType.generateDataTypeFromDictionary(self.modelDataTypeDictionary)
+        XCTAssertNotNil(modelType)
         
         let arrayType = SwaggerDataType.generateDataTypeFromDictionary(self.arrayDataTypeDictionary)
         XCTAssertNotNil(arrayType)

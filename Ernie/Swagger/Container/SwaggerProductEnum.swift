@@ -10,7 +10,7 @@ import Foundation
 
 enum SwaggerProductEnum: String
 {
-    case JSON, PNG, GIF, JPG, PDF
+    case JSON, PNG, GIF, JPG, PDF, XML
     
     func stringValue() -> String
     {
@@ -26,6 +26,8 @@ enum SwaggerProductEnum: String
             return "image/jpeg"
         case .PDF:
             return "image/pdf"
+        case .XML:
+            return "application/xml"
         }
     }
     
@@ -43,6 +45,8 @@ enum SwaggerProductEnum: String
             return .JPG
         case "image/pdf":
             return .PDF
+        case "application/xml":
+            return .XML
         default:
             return nil
         }
