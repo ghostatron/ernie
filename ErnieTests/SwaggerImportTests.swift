@@ -69,6 +69,20 @@ class SwaggerImportTests: XCTestCase
         return ["post" : postBody]
     }
     
+    private func containerDictionary() -> [String : Any]
+    {
+        var containerBody: [String : Any] = [:]
+        containerBody["paths"] = ["AwesomeMethod" : self.simpleGetMethodDictionary()]
+        containerBody["definitions"] = ["someModel" : self.simpleModelDictionary()]
+        containerBody["produces"] =  ["application/json"]
+        var infoBody: [String : Any] = [:]
+        infoBody["description"] = "myDescription"
+        infoBody["title"] = "myTitle"
+        infoBody["contact"] = ["name" : "Randy"]
+        containerBody["info"] = infoBody
+        return containerBody
+    }
+    
     // MARK:- Alpha and Omega
     
     override func setUp()
@@ -158,6 +172,13 @@ class SwaggerImportTests: XCTestCase
     
     func testSwaggerContainer()
     {
-        
+        let container = SwaggerContainer.generateContainerFromDictionary(self.containerDictionary())
+        XCTAssertNotNil(container)
+        XCTAssertTrue(container?.containerTitle == "myTitle")
+        XCTAssertTrue(container?.containerDescription == "myDescription")
+        XCTAssertTrue(container?.containerOwner == "Randy")
+        XCTAssertTrue(container?.containerMethods.count == 1)
+        XCTAssertTrue(container?.containerModels.count == 1)
+        XCTAssertTrue(container?.containerProducts.count == 1)
     }
 }

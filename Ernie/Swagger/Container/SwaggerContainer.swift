@@ -89,7 +89,7 @@ class SwaggerContainer
         {
             container.containerTitle = infoSection["title"] as? String
             container.containerDescription = infoSection["description"] as? String
-            if let contactSection = infoSection[""] as? [String : Any]
+            if let contactSection = infoSection["contact"] as? [String : Any]
             {
                 container.containerOwner = contactSection["name"] as? String
             }
