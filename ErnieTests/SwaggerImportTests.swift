@@ -46,6 +46,29 @@ class SwaggerImportTests: XCTestCase
         return argDictionary
     }
     
+    private func simpleGetMethodDictionary() -> [String : [String : Any]]
+    {
+        var getBody: [String : Any] = [:]
+        getBody["tags"] = ["tag1", "tag2"]
+        getBody["summary"] = "My awesome method summary"
+        getBody["description"] = "My even more awesome description"
+        getBody["produces"] = ["application/json"]
+        getBody["responses"] = ["200" : self.response200Dictionary()]
+        return ["get" : getBody]
+    }
+    
+    private func simplePostMethodDictionary() -> [String : [String : Any]]
+    {
+        var postBody: [String : Any] = [:]
+        postBody["tags"] = ["tag1", "tag2"]
+        postBody["summary"] = "My awesome method summary"
+        postBody["description"] = "My even more awesome description"
+        postBody["produces"] = ["application/json"]
+        postBody["responses"] = ["200" : self.response200Dictionary()]
+        postBody["parameters"] = [self.primitiveMethodArgumentDictionary()]
+        return ["post" : postBody]
+    }
+    
     // MARK:- Alpha and Omega
     
     override func setUp()
@@ -120,7 +143,17 @@ class SwaggerImportTests: XCTestCase
     
     func testSwaggerMethod()
     {
-        
+        let methodArray = SwaggerMethod.generateMethodNamed("AwesomeMethod", fromDictionary: self.simpleGetMethodDictionary())
+        XCTAssertNotNil(methodArray)
+        XCTAssertTrue(methodArray?.count == 1)
+        let method = methodArray?.first!
+        XCTAssertTrue(method?.methodSummary == "My awesome method summary")
+        XCTAssertTrue(method?.methodDescription == "My even more awesome description")
+        XCTAssertTrue(method?.methodName == "AwesomeMethod")
+        XCTAssertTrue(method?.methodTags.count == 2)
+        XCTAssertTrue(method?.methodProducts.count == 1)
+        XCTAssertTrue(method?.methodArguments.count == 0)
+        XCTAssertTrue(method?.methodResponses.count == 1)
     }
     
     func testSwaggerContainer()

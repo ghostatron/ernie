@@ -130,23 +130,29 @@ class SwaggerMethod
             }
             
             // Enumerate the arguments and add them to the method.
-            for parameterBody in swaggerMethodBody["parameters"] as? [[String : Any]] ?? [[:]]
+            if let parametersSection = swaggerMethodBody["parameters"] as? [[String : Any]]
             {
-                guard let argument = SwaggerMethodArgument.generateArgumentFromDictionary(parameterBody) else
+                for parameterBody in parametersSection
                 {
-                    return nil
+                    guard let argument = SwaggerMethodArgument.generateArgumentFromDictionary(parameterBody) else
+                    {
+                        return nil
+                    }
+                    methodObject.methodArguments.append(argument)
                 }
-                methodObject.methodArguments.append(argument)
             }
-
+            
             // Enumerate the responses and add them to the method.
-            for (responseCode, responseBody) in swaggerMethodBody["responses"] as? [String : [String : Any]] ?? [:]
+            if let responsesSection = swaggerMethodBody["responses"] as? [String : [String : Any]]
             {
-                guard let response = SwaggerResponse.generateResponseForCode(responseCode, fromDictionary: responseBody) else
+                for (responseCode, responseBody) in responsesSection
                 {
-                    return nil
+                    guard let response = SwaggerResponse.generateResponseForCode(responseCode, fromDictionary: responseBody) else
+                    {
+                        return nil
+                    }
+                    methodObject.methodResponses.append(response)
                 }
-                methodObject.methodResponses.append(response)
             }
             
             methods.append(methodObject)
