@@ -100,7 +100,7 @@ class SwaggerMethod
     }
     
     // Returns an array b/c the swagger json can define get/post/etc. under one method name section.
-    class func generateMethodNamed(_ methodName: String, fromDictionary jsonDictionary: [String : [String : Any]]) -> [SwaggerMethod]?
+    class func generateMethodNamed(_ methodName: String, fromDictionary jsonDictionary: [String : [String : Any]], renameUsingOperationId: Bool = false) -> [SwaggerMethod]?
     {
         var methods: [SwaggerMethod] = []
         
@@ -118,6 +118,12 @@ class SwaggerMethod
             methodObject.methodSummary = swaggerMethodBody["summary"] as? String
             methodObject.methodOperationId = swaggerMethodBody["operationId"] as? String ?? methodName
             methodObject.methodTags = swaggerMethodBody["tags"] as? [String] ?? []
+            
+            // It's possible for the body to indicate that it wants another name for the method.
+            if renameUsingOperationId && methodObject.methodOperationId.count > 0
+            {
+                methodObject.methodName = methodObject.methodOperationId
+            }
             
             // Enumerate the products and add them to the method.
             for productString in swaggerMethodBody["produces"] as? [String] ?? []

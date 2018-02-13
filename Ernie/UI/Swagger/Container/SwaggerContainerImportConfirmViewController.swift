@@ -12,4 +12,13 @@ class SwaggerContainerImportConfirmViewController: NSViewController
 {
     var container: SwaggerContainer?
     var modalDelegate: ModalDialogDelegate?
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        if let jsonDictionary = self.container?.generateSwaggerJson()
+        {
+            print((jsonDictionary as NSDictionary).description)
+        }
+    }
 }
