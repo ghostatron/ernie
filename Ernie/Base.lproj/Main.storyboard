@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
@@ -3016,13 +3016,13 @@ Gw
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pn9-ee-Pog">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="27" horizontalPageScroll="10" verticalLineScroll="27" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pn9-ee-Pog">
                                 <rect key="frame" x="20" y="61" width="185" height="148"/>
                                 <clipView key="contentView" id="PT7-Ew-0hl">
                                     <rect key="frame" x="1" y="23" width="183" height="124"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" enabled="NO" rowSizeStyle="automatic" headerView="JUb-gy-czk" viewBased="YES" id="ytG-ce-rpA">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" enabled="NO" rowHeight="25" rowSizeStyle="automatic" headerView="JUb-gy-czk" viewBased="YES" id="ytG-ce-rpA">
                                             <rect key="frame" x="0.0" y="0.0" width="183" height="124"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -3042,27 +3042,37 @@ Gw
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="5M4-WH-QwN">
-                                                            <rect key="frame" x="1" y="1" width="180" height="17"/>
+                                                        <tableCellView identifier="swaggerContainerMethodTableCell" id="5M4-WH-QwN" customClass="SwaggerContainerMethodTableCell" customModule="Ernie" customModuleProvider="target">
+                                                            <rect key="frame" x="1" y="1" width="180" height="25"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sqj-wT-zSs">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="UsF-Y2-A2B">
+                                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dy1-wa-jIP">
+                                                                    <rect key="frame" x="6" y="4" width="108" height="18"/>
+                                                                    <buttonCell key="cell" type="check" title="Method Name" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="sl0-Pm-85a">
+                                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                         <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textFieldCell>
-                                                                </textField>
+                                                                    </buttonCell>
+                                                                    <connections>
+                                                                        <action selector="methodCheckBoxToggled:" target="5M4-WH-QwN" id="far-cu-Qtq"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="Dy1-wa-jIP" firstAttribute="centerY" secondItem="5M4-WH-QwN" secondAttribute="centerY" id="GIC-65-TSw"/>
+                                                                <constraint firstItem="Dy1-wa-jIP" firstAttribute="leading" secondItem="5M4-WH-QwN" secondAttribute="leading" constant="8" id="Rv6-xm-86e"/>
+                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Dy1-wa-jIP" secondAttribute="trailing" constant="8" id="vZx-MI-62h"/>
+                                                            </constraints>
                                                             <connections>
-                                                                <outlet property="textField" destination="sqj-wT-zSs" id="xef-bB-xTL"/>
+                                                                <outlet property="methodCheckBox" destination="Dy1-wa-jIP" id="UDd-QT-QUm"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="iuC-Jw-ZWS" id="Hnk-Db-EJ2"/>
+                                                <outlet property="delegate" destination="iuC-Jw-ZWS" id="zO4-Ft-6JA"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>
@@ -3090,7 +3100,13 @@ Gw
                                 <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kmc-jS-prC">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="saveButtonPressed:" target="iuC-Jw-ZWS" id="AmY-s4-HRh"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0E6-s0-nEa">
                                 <rect key="frame" x="265" y="13" width="82" height="32"/>
@@ -3101,14 +3117,17 @@ Gw
 Gw
 </string>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" target="iuC-Jw-ZWS" id="BgG-ss-EFa"/>
+                                </connections>
                             </button>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbi-i0-hhe">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="27" horizontalPageScroll="10" verticalLineScroll="27" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbi-i0-hhe">
                                 <rect key="frame" x="246" y="61" width="185" height="148"/>
                                 <clipView key="contentView" id="uKb-sT-4VP">
                                     <rect key="frame" x="1" y="23" width="183" height="124"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" enabled="NO" rowSizeStyle="automatic" headerView="eNa-DN-yPA" viewBased="YES" id="1V2-9l-wgi">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" enabled="NO" rowHeight="25" rowSizeStyle="automatic" headerView="eNa-DN-yPA" viewBased="YES" id="1V2-9l-wgi">
                                             <rect key="frame" x="0.0" y="0.0" width="183" height="124"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -3128,27 +3147,37 @@ Gw
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="rg7-Jk-HnJ">
-                                                            <rect key="frame" x="1" y="1" width="180" height="17"/>
+                                                        <tableCellView identifier="swaggerContainerModelTableCell" id="rg7-Jk-HnJ" customClass="SwaggerContainerModelTableCell" customModule="Ernie" customModuleProvider="target">
+                                                            <rect key="frame" x="1" y="1" width="180" height="25"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dkR-zZ-yne">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="17"/>
-                                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="hch-Hx-8x5">
+                                                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WJt-Nb-nJN">
+                                                                    <rect key="frame" x="6" y="4" width="99" height="18"/>
+                                                                    <buttonCell key="cell" type="check" title="Model Name" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="KNK-Vp-QOS">
+                                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                         <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textFieldCell>
-                                                                </textField>
+                                                                    </buttonCell>
+                                                                    <connections>
+                                                                        <action selector="modelNameCheckBoxToggled:" target="rg7-Jk-HnJ" id="OIO-il-463"/>
+                                                                    </connections>
+                                                                </button>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="WJt-Nb-nJN" firstAttribute="centerY" secondItem="rg7-Jk-HnJ" secondAttribute="centerY" id="E7I-1U-9F0"/>
+                                                                <constraint firstItem="WJt-Nb-nJN" firstAttribute="leading" secondItem="rg7-Jk-HnJ" secondAttribute="leading" constant="8" id="eqh-f6-mdb"/>
+                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WJt-Nb-nJN" secondAttribute="trailing" constant="8" id="vDf-eD-1Ys"/>
+                                                            </constraints>
                                                             <connections>
-                                                                <outlet property="textField" destination="dkR-zZ-yne" id="wsM-Ba-xS0"/>
+                                                                <outlet property="modelNameCheckBox" destination="WJt-Nb-nJN" id="Bct-g1-4ss"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="iuC-Jw-ZWS" id="6Li-4J-8Ej"/>
+                                                <outlet property="delegate" destination="iuC-Jw-ZWS" id="hSC-uD-8Yh"/>
+                                            </connections>
                                         </tableView>
                                     </subviews>
                                 </clipView>
@@ -3190,10 +3219,15 @@ Gw
                             <constraint firstAttribute="bottom" secondItem="3xI-aU-3cJ" secondAttribute="bottom" constant="20" id="vQF-As-d1w"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="containerCheckBox" destination="r33-0t-akO" id="0x5-FZ-c5N"/>
+                        <outlet property="methodsTableView" destination="ytG-ce-rpA" id="4Qn-Ux-6gG"/>
+                        <outlet property="modelsTableView" destination="1V2-9l-wgi" id="Ewo-bu-nQq"/>
+                    </connections>
                 </viewController>
                 <customObject id="C70-jz-yds" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2177" y="-372"/>
+            <point key="canvasLocation" x="2176.5" y="-372"/>
         </scene>
         <!--Cauldron Home-->
         <scene sceneID="luy-Un-yoj">
