@@ -2554,6 +2554,195 @@ Gw
             </objects>
             <point key="canvasLocation" x="494" y="66"/>
         </scene>
+        <!--Implementation Generation View Controller-->
+        <scene sceneID="Guf-R4-Dcz">
+            <objects>
+                <viewController id="w6G-rN-hsc" customClass="ImplementationGenerationViewController" customModule="Ernie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="wUk-Ee-xRu">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="zoN-Bh-GDq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2177" y="-1258"/>
+        </scene>
+        <!--Generation View Controller-->
+        <scene sceneID="bEK-wr-7Gu">
+            <objects>
+                <viewController id="tP7-Kz-2Yl" customClass="APIGenerationViewController" customModule="Ernie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="Z8r-Vr-hNZ">
+                        <rect key="frame" x="0.0" y="0.0" width="451" height="482"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rGQ-Wa-08l">
+                                <rect key="frame" x="18" y="445" width="64" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="API Name" id="CYO-73-flm">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FOf-Q1-ZlX">
+                                <rect key="frame" x="18" y="378" width="75" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="NPM Scope" id="X6l-K5-SIp">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="W1B-Yu-L0n">
+                                <rect key="frame" x="18" y="311" width="127" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="NPM Package Name" id="isr-uw-2vb">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ary-L0-PcQ">
+                                <rect key="frame" x="18" y="244" width="73" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="API Version" id="p88-7C-ZB7">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ESh-1m-o2w">
+                                <rect key="frame" x="18" y="177" width="45" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Author" id="SJP-k8-gXd">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D1A-HQ-Vao">
+                                <rect key="frame" x="18" y="110" width="82" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Swagger File" id="cTm-5M-aIU">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Iex-GR-ROE">
+                                <rect key="frame" x="20" y="415" width="411" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="The name to use for this API (defaut is the container name)" drawsBackground="YES" id="48B-Qr-j7q">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B1s-c3-dg0">
+                                <rect key="frame" x="20" y="348" width="411" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="NPM scope for the package (default is unscoped)" drawsBackground="YES" id="8vb-7R-2cF">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="B6k-k1-z3m">
+                                <rect key="frame" x="20" y="281" width="411" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Name of NPM package to use for API (ignored if empty)" drawsBackground="YES" id="FzP-AY-dPf">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QLV-N7-rU5">
+                                <rect key="frame" x="20" y="214" width="411" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Initial version of the API (default is 0.0.1)" drawsBackground="YES" id="0gW-wH-6io">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Qqi-ME-X6U">
+                                <rect key="frame" x="20" y="147" width="411" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="The author of the API (default is empty)" drawsBackground="YES" id="xQD-he-0mt">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5bu-Wm-HTj">
+                                <rect key="frame" x="237" y="13" width="96" height="32"/>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4OK-BD-LQl">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mKh-6y-ORf">
+                                <rect key="frame" x="341" y="13" width="96" height="32"/>
+                                <buttonCell key="cell" type="push" title="Generate" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="CgV-tW-10D">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                            </button>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dmW-YR-pop">
+                                <rect key="frame" x="20" y="80" width="411" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Location of swagger file to generate API (default is generic starter template)" drawsBackground="YES" id="pcw-Ey-AZL">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ESh-1m-o2w" secondAttribute="trailing" constant="20" id="0fp-wk-EeC"/>
+                            <constraint firstItem="Iex-GR-ROE" firstAttribute="top" secondItem="rGQ-Wa-08l" secondAttribute="bottom" constant="8" id="2FO-GU-T48"/>
+                            <constraint firstItem="5bu-Wm-HTj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Z8r-Vr-hNZ" secondAttribute="leading" constant="20" id="7MY-Hc-bUU"/>
+                            <constraint firstAttribute="trailing" secondItem="QLV-N7-rU5" secondAttribute="trailing" constant="20" id="8tu-TD-Q70"/>
+                            <constraint firstAttribute="trailing" secondItem="Qqi-ME-X6U" secondAttribute="trailing" constant="20" id="9Xm-wY-XNj"/>
+                            <constraint firstItem="ESh-1m-o2w" firstAttribute="leading" secondItem="Z8r-Vr-hNZ" secondAttribute="leading" constant="20" id="BpX-DR-YiQ"/>
+                            <constraint firstItem="ESh-1m-o2w" firstAttribute="top" secondItem="QLV-N7-rU5" secondAttribute="bottom" constant="20" id="CQa-8E-HAw"/>
+                            <constraint firstItem="Iex-GR-ROE" firstAttribute="leading" secondItem="Z8r-Vr-hNZ" secondAttribute="leading" constant="20" id="DUd-U2-f6g"/>
+                            <constraint firstItem="D1A-HQ-Vao" firstAttribute="top" secondItem="Qqi-ME-X6U" secondAttribute="bottom" constant="20" id="Gw6-9O-3v3"/>
+                            <constraint firstItem="B1s-c3-dg0" firstAttribute="top" secondItem="FOf-Q1-ZlX" secondAttribute="bottom" constant="8" id="HCI-2k-AAv"/>
+                            <constraint firstItem="ary-L0-PcQ" firstAttribute="top" secondItem="B6k-k1-z3m" secondAttribute="bottom" constant="20" id="Hce-4A-akZ"/>
+                            <constraint firstItem="mKh-6y-ORf" firstAttribute="leading" secondItem="5bu-Wm-HTj" secondAttribute="trailing" constant="20" id="Isz-yR-a1P"/>
+                            <constraint firstAttribute="bottom" secondItem="5bu-Wm-HTj" secondAttribute="bottom" constant="20" id="KEq-Yh-b3U"/>
+                            <constraint firstItem="D1A-HQ-Vao" firstAttribute="leading" secondItem="Z8r-Vr-hNZ" secondAttribute="leading" constant="20" id="KMG-sV-Ydz"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FOf-Q1-ZlX" secondAttribute="trailing" constant="20" id="L2M-qa-ime"/>
+                            <constraint firstItem="W1B-Yu-L0n" firstAttribute="leading" secondItem="Z8r-Vr-hNZ" secondAttribute="leading" constant="20" id="Lkb-HA-Xex"/>
+                            <constraint firstItem="Qqi-ME-X6U" firstAttribute="top" secondItem="ESh-1m-o2w" secondAttribute="bottom" constant="8" id="PLP-TB-Ryp"/>
+                            <constraint firstItem="QLV-N7-rU5" firstAttribute="leading" secondItem="Z8r-Vr-hNZ" secondAttribute="leading" constant="20" id="Qnx-8q-lzY"/>
+                            <constraint firstAttribute="trailing" secondItem="dmW-YR-pop" secondAttribute="trailing" constant="20" id="QuY-4X-6lR"/>
+                            <constraint firstItem="QLV-N7-rU5" firstAttribute="top" secondItem="ary-L0-PcQ" secondAttribute="bottom" constant="8" id="SCP-Oh-TLx"/>
+                            <constraint firstItem="rGQ-Wa-08l" firstAttribute="top" secondItem="Z8r-Vr-hNZ" secondAttribute="top" constant="20" id="VJs-LL-zQa"/>
+                            <constraint firstAttribute="trailing" secondItem="mKh-6y-ORf" secondAttribute="trailing" constant="20" id="X2x-NY-OBB"/>
+                            <constraint firstItem="dmW-YR-pop" firstAttribute="leading" secondItem="Z8r-Vr-hNZ" secondAttribute="leading" constant="20" id="Xgv-nJ-dme"/>
+                            <constraint firstItem="rGQ-Wa-08l" firstAttribute="leading" secondItem="Z8r-Vr-hNZ" secondAttribute="leading" constant="20" id="acD-QV-lsp"/>
+                            <constraint firstItem="5bu-Wm-HTj" firstAttribute="width" secondItem="mKh-6y-ORf" secondAttribute="width" id="ajp-sK-pww"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rGQ-Wa-08l" secondAttribute="trailing" constant="20" id="cD0-nB-h7Y"/>
+                            <constraint firstAttribute="trailing" secondItem="B1s-c3-dg0" secondAttribute="trailing" constant="20" id="dqP-mz-t7N"/>
+                            <constraint firstItem="B6k-k1-z3m" firstAttribute="top" secondItem="W1B-Yu-L0n" secondAttribute="bottom" constant="8" id="fp3-bx-XXR"/>
+                            <constraint firstAttribute="trailing" secondItem="B6k-k1-z3m" secondAttribute="trailing" constant="20" id="gZh-H2-Nvk"/>
+                            <constraint firstItem="FOf-Q1-ZlX" firstAttribute="leading" secondItem="Z8r-Vr-hNZ" secondAttribute="leading" constant="20" id="gin-8Y-cTN"/>
+                            <constraint firstAttribute="bottom" secondItem="mKh-6y-ORf" secondAttribute="bottom" constant="20" id="huW-Y5-lJd"/>
+                            <constraint firstItem="dmW-YR-pop" firstAttribute="top" secondItem="D1A-HQ-Vao" secondAttribute="bottom" constant="8" id="ibU-W9-PE7"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ary-L0-PcQ" secondAttribute="trailing" constant="20" id="j3R-wC-J6Q"/>
+                            <constraint firstItem="ary-L0-PcQ" firstAttribute="leading" secondItem="Z8r-Vr-hNZ" secondAttribute="leading" constant="20" id="mFI-X8-c53"/>
+                            <constraint firstItem="Qqi-ME-X6U" firstAttribute="leading" secondItem="Z8r-Vr-hNZ" secondAttribute="leading" constant="20" id="mZI-ze-5RD"/>
+                            <constraint firstItem="mKh-6y-ORf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="dmW-YR-pop" secondAttribute="bottom" constant="20" id="nZJ-qS-v4Z"/>
+                            <constraint firstItem="B1s-c3-dg0" firstAttribute="leading" secondItem="Z8r-Vr-hNZ" secondAttribute="leading" constant="20" id="qTG-yB-HRQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Iex-GR-ROE" secondAttribute="trailing" constant="20" id="s0e-v8-wRM"/>
+                            <constraint firstItem="W1B-Yu-L0n" firstAttribute="top" secondItem="B1s-c3-dg0" secondAttribute="bottom" constant="20" id="sDC-1E-1jd"/>
+                            <constraint firstItem="B6k-k1-z3m" firstAttribute="leading" secondItem="Z8r-Vr-hNZ" secondAttribute="leading" constant="20" id="tle-aT-roh"/>
+                            <constraint firstItem="FOf-Q1-ZlX" firstAttribute="top" secondItem="Iex-GR-ROE" secondAttribute="bottom" constant="20" id="wun-Vn-x3L"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="W1B-Yu-L0n" secondAttribute="trailing" constant="20" id="zMe-mK-e0v"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="D1A-HQ-Vao" secondAttribute="trailing" constant="20" id="zbe-km-2kS"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="Ldi-l1-EVE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1560.5" y="-1349"/>
+        </scene>
         <!--Swagger Body View Controller-->
         <scene sceneID="xLA-eh-EfO">
             <objects>
@@ -2630,7 +2819,7 @@ Gw
                 </viewController>
                 <customObject id="Ieb-jZ-zmU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1561" y="-1234"/>
+            <point key="canvasLocation" x="2177" y="-799"/>
         </scene>
         <!--Swagger Container Editor View Controller-->
         <scene sceneID="VLe-wM-s5g">
@@ -2920,6 +3109,8 @@ Gw
                         <outlet property="nameTextField" destination="ajS-qa-B8B" id="lGY-WI-Ykf"/>
                         <outlet property="ownerTextField" destination="dxZ-N3-qpm" id="ETG-P4-hl3"/>
                         <segue destination="fcq-IN-5ss" kind="modal" identifier="toSwaggerViewer" id="aaV-1o-xVl"/>
+                        <segue destination="tP7-Kz-2Yl" kind="modal" identifier="toGenerateAPI" id="FeZ-eo-zep"/>
+                        <segue destination="w6G-rN-hsc" kind="modal" identifier="toGenerateImplementation" id="vC3-1z-Scf"/>
                     </connections>
                 </viewController>
                 <customObject id="fb9-kj-pRH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
