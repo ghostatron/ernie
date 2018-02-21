@@ -55,7 +55,7 @@ class SwaggerMethodArgument
         self.argumentDescription = avatarOf.argDescription
     }
     
-    class func generateArgumentFromDictionary(_ jsonDictionary: [String : Any]) -> SwaggerMethodArgument?
+    class func generateArgumentFromDictionary(_ jsonDictionary: [String : Any], models: [SwaggerObjectModel] = []) -> SwaggerMethodArgument?
     {
         // Must have a name for the argument.
         guard let argName = jsonDictionary["name"] as? String else
@@ -69,7 +69,7 @@ class SwaggerMethodArgument
         let argType: SwaggerDataType?
         if let schemaBody = schemaBody
         {
-            argType = SwaggerDataType.generateDataTypeFromDictionary(schemaBody)
+            argType = SwaggerDataType.generateDataTypeFromDictionary(schemaBody, models: models)
             guard argType != nil else
             {
                 return nil

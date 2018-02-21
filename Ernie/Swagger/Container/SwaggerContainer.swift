@@ -112,24 +112,7 @@ class SwaggerContainer
             }
         }
         
-        // Add the methods.
-        if let pathsSection = jsonDictionary["paths"] as? [String : [String : [String : Any]]]
-        {
-            var methods: [SwaggerMethod] = []
-            for (methodName, methodJSON) in pathsSection
-            {
-                if let methodObjects = SwaggerMethod.generateMethodNamed(methodName, fromDictionary: methodJSON)
-                {
-                    methods.append(contentsOf: methodObjects)
-                }
-            }
-            if methods.count > 0
-            {
-                container.containerMethods = methods
-            }
-        }
-        
-        // Add the models.
+        // Add the models before the methods because the methods will almost certainly reference them.
         if let definitionsSection = jsonDictionary["definitions"] as? [String : [String : Any]]
         {
             var models: [SwaggerObjectModel] = []
@@ -143,6 +126,23 @@ class SwaggerContainer
             if models.count > 0
             {
                 container.containerModels = models
+            }
+        }
+        
+        // Add the methods.
+        if let pathsSection = jsonDictionary["paths"] as? [String : [String : [String : Any]]]
+        {
+            var methods: [SwaggerMethod] = []
+            for (methodName, methodJSON) in pathsSection
+            {
+                if let methodObjects = SwaggerMethod.generateMethodNamed(methodName, fromDictionary: methodJSON, models: container.containerModels)
+                {
+                    methods.append(contentsOf: methodObjects)
+                }
+            }
+            if methods.count > 0
+            {
+                container.containerMethods = methods
             }
         }
         

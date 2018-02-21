@@ -46,7 +46,7 @@ class SwaggerDataType
         self.arrayDataType = arrayType
     }
     
-    class func generateDataTypeFromDictionary(_ jsonDictionary: [String : Any]) -> SwaggerDataType?
+    class func generateDataTypeFromDictionary(_ jsonDictionary: [String : Any], models: [SwaggerObjectModel] = []) -> SwaggerDataType?
     {
         // Sometimes the "type" key is ommitted and the "$ref" key is used directly (for a model).  In order to
         // let both scenarios pass through identical logic, we'll massage the json to put "type" in there.
@@ -112,7 +112,21 @@ class SwaggerDataType
                 var modelForArrayType: SwaggerObjectModel! = SwaggerObjectModel.getModelNamed(modelName)
                 if modelForArrayType == nil
                 {
-                    modelForArrayType = SwaggerObjectModel(name: modelName)
+                    // We don't have a model in core data yet, did we get one passed in to us?
+                    for inputModel in models
+                    {
+                        if inputModel.modelName == modelName
+                        {
+                            modelForArrayType = inputModel
+                            break
+                        }
+                    }
+                    
+                    // If no match in core data or in the passed in models, so make a new one.
+                    if modelForArrayType == nil
+                    {
+                        modelForArrayType = SwaggerObjectModel(name: modelName)
+                    }
                 }
                 
                 // Return a data type that is an array of that model.
@@ -128,10 +142,25 @@ class SwaggerDataType
                 return nil
             }
             
+            // Check for an existing model with that name and create one in memory if not found.
             var modelForType: SwaggerObjectModel! = SwaggerObjectModel.getModelNamed(modelName)
             if modelForType == nil
             {
-                modelForType = SwaggerObjectModel(name: modelName)
+                // We don't have a model in core data yet, did we get one passed in to us?
+                for inputModel in models
+                {
+                    if inputModel.modelName == modelName
+                    {
+                        modelForType = inputModel
+                        break
+                    }
+                }
+                
+                // If no match in core data or in the passed in models, so make a new one.
+                if modelForType == nil
+                {
+                    modelForType = SwaggerObjectModel(name: modelName)
+                }
             }
             return SwaggerDataType(withObject: modelForType)
         }

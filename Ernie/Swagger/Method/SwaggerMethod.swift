@@ -100,7 +100,7 @@ class SwaggerMethod
     }
     
     // Returns an array b/c the swagger json can define get/post/etc. under one method name section.
-    class func generateMethodNamed(_ methodName: String, fromDictionary jsonDictionary: [String : [String : Any]], renameUsingOperationId: Bool = false) -> [SwaggerMethod]?
+    class func generateMethodNamed(_ methodName: String, fromDictionary jsonDictionary: [String : [String : Any]], models: [SwaggerObjectModel] = []) -> [SwaggerMethod]?
     {
         var methods: [SwaggerMethod] = []
         
@@ -119,12 +119,6 @@ class SwaggerMethod
             methodObject.methodOperationId = swaggerMethodBody["operationId"] as? String ?? methodName
             methodObject.methodTags = swaggerMethodBody["tags"] as? [String] ?? []
             
-            // It's possible for the body to indicate that it wants another name for the method.
-            if renameUsingOperationId && methodObject.methodOperationId.count > 0
-            {
-                methodObject.methodName = methodObject.methodOperationId
-            }
-            
             // Enumerate the products and add them to the method.
             for productString in swaggerMethodBody["produces"] as? [String] ?? []
             {
@@ -140,7 +134,7 @@ class SwaggerMethod
             {
                 for parameterBody in parametersSection
                 {
-                    guard let argument = SwaggerMethodArgument.generateArgumentFromDictionary(parameterBody) else
+                    guard let argument = SwaggerMethodArgument.generateArgumentFromDictionary(parameterBody, models: models) else
                     {
                         return nil
                     }
@@ -153,7 +147,7 @@ class SwaggerMethod
             {
                 for (responseCode, responseBody) in responsesSection
                 {
-                    guard let response = SwaggerResponse.generateResponseForCode(responseCode, fromDictionary: responseBody) else
+                    guard let response = SwaggerResponse.generateResponseForCode(responseCode, fromDictionary: responseBody, models: models) else
                     {
                         return nil
                     }
