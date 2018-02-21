@@ -15,6 +15,7 @@ class SwaggerContainerEditorViewController: NSViewController, NSTableViewDelegat
     @IBOutlet weak var descriptionTextField: NSTextField!
     @IBOutlet weak var methodsTableView: NSTableView!
     @IBOutlet weak var modelsTableView: NSTableView!
+    @IBOutlet weak var actionPopUpButton: NSPopUpButton!
     
     var modalDelegate: ModalDialogDelegate?
     var container: SwaggerContainer?
@@ -172,14 +173,24 @@ class SwaggerContainerEditorViewController: NSViewController, NSTableViewDelegat
     }
     
     // MARK:- Event Handlers
-    
-    @IBAction func generateSwaggerButtonPressed(_ sender: NSButton)
+    @IBAction func actionButtonSelectedAction(_ sender: NSPopUpButton)
     {
-        if let jsonSwagger = self.container?.generateSwaggerJson()
+        var segueIdentifierString: String!
+        switch sender.indexOfSelectedItem
         {
-            let jsonString = (jsonSwagger as NSDictionary).description
-            print(jsonString)
+        case 0:
+            // Generate Swagger
+            segueIdentifierString = "toSwaggerViewer"
+        case 1:
+            // Generate API
+            segueIdentifierString = "toGenerateAPI"
+        case 2:
+            // Generate Implementation
+            segueIdentifierString = "toGenerateImplementation"
+        default:
+            return
         }
+        self.performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: segueIdentifierString), sender: self)
     }
     
     @IBAction func cancelButtonPressed(_ sender: NSButton)

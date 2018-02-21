@@ -28,10 +28,6 @@ class SwaggerContainerImportConfirmViewController: NSViewController, NSTableView
         super.viewDidLoad()
         self.buildDataSources()
         self.refreshUIForContainer()
-        if let jsonDictionary = self.container?.generateSwaggerJson()
-        {
-            print((jsonDictionary as NSDictionary).description)
-        }
     }
     
     // MARK:- Event Handlers

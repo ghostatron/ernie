@@ -2812,17 +2812,6 @@ Gw
                                     <action selector="cancelButtonPressed:" target="YEB-gt-5f9" id="H75-JC-4hY"/>
                                 </connections>
                             </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cok-M8-2jX">
-                                <rect key="frame" x="41" y="13" width="153" height="32"/>
-                                <buttonCell key="cell" type="push" title="Generate Swagger" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2nR-yQ-LLj">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="generateSwaggerButtonPressed:" target="YEB-gt-5f9" id="VjM-Sg-Uz1"/>
-                                    <segue destination="fcq-IN-5ss" kind="modal" id="MWC-st-H9g"/>
-                                </connections>
-                            </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rSB-o0-Voz">
                                 <rect key="frame" x="18" y="329" width="40" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Name" id="3Pg-1K-nmy">
@@ -2871,12 +2860,30 @@ Gw
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="o08-Lh-t1f">
+                                <rect key="frame" x="18" y="17" width="202" height="26"/>
+                                <popUpButtonCell key="cell" type="push" title="Generate Swagger" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="R2a-zk-qiU" id="S41-hD-dXl">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="Uv5-i3-oZF">
+                                        <items>
+                                            <menuItem title="Generate Swagger" state="on" id="R2a-zk-qiU"/>
+                                            <menuItem title="Generate API..." id="TcC-fo-Jys"/>
+                                            <menuItem title="Generate Implementation..." id="GQY-uA-9hN"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="actionButtonSelectedAction:" target="YEB-gt-5f9" id="JFP-7c-CMR"/>
+                                </connections>
+                            </popUpButton>
                         </subviews>
                         <constraints>
                             <constraint firstItem="mjz-Ci-tqW" firstAttribute="top" secondItem="ajS-qa-B8B" secondAttribute="bottom" constant="10" id="06d-aK-sKy"/>
                             <constraint firstItem="osY-2d-iSK" firstAttribute="leading" secondItem="Cjd-LS-Ghx" secondAttribute="leading" id="7L6-KB-ksv"/>
                             <constraint firstItem="lh8-nv-Y5V" firstAttribute="top" secondItem="mjz-Ci-tqW" secondAttribute="bottom" constant="12" id="A4J-Ff-Bhv"/>
                             <constraint firstAttribute="bottom" secondItem="Xjs-16-p18" secondAttribute="bottom" constant="20" id="CDf-8T-kWq"/>
+                            <constraint firstAttribute="bottom" secondItem="o08-Lh-t1f" secondAttribute="bottom" constant="20" id="Dds-Ki-jv0"/>
                             <constraint firstItem="ajS-qa-B8B" firstAttribute="trailing" secondItem="lh8-nv-Y5V" secondAttribute="trailing" id="Jel-Dx-SMN"/>
                             <constraint firstItem="Xjs-16-p18" firstAttribute="width" secondItem="uhf-Fu-2Bl" secondAttribute="width" id="LMl-Z9-bkM"/>
                             <constraint firstItem="rSB-o0-Voz" firstAttribute="leading" secondItem="x3y-lA-Lji" secondAttribute="leading" constant="20" id="LWi-0g-BqY"/>
@@ -2886,12 +2893,11 @@ Gw
                             <constraint firstItem="ajS-qa-B8B" firstAttribute="top" secondItem="x3y-lA-Lji" secondAttribute="top" constant="20" id="Mwq-sM-Zym"/>
                             <constraint firstItem="Cjd-LS-Ghx" firstAttribute="width" secondItem="lh8-nv-Y5V" secondAttribute="width" id="N6F-RR-THB"/>
                             <constraint firstItem="dxZ-N3-qpm" firstAttribute="leading" secondItem="osY-2d-iSK" secondAttribute="trailing" constant="10" id="Nov-W3-47Y"/>
+                            <constraint firstItem="Xjs-16-p18" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="o08-Lh-t1f" secondAttribute="trailing" constant="20" id="Phv-gm-DGN"/>
                             <constraint firstItem="lh8-nv-Y5V" firstAttribute="leading" secondItem="x3y-lA-Lji" secondAttribute="leading" constant="20" id="T98-oW-GBl"/>
                             <constraint firstAttribute="bottom" secondItem="uhf-Fu-2Bl" secondAttribute="bottom" constant="20" id="THt-eb-Irb"/>
-                            <constraint firstItem="cok-M8-2jX" firstAttribute="top" secondItem="lh8-nv-Y5V" secondAttribute="bottom" constant="20" id="UIk-U2-dEj"/>
                             <constraint firstItem="uhf-Fu-2Bl" firstAttribute="leading" secondItem="Xjs-16-p18" secondAttribute="trailing" constant="20" id="Ynm-4K-91e"/>
                             <constraint firstAttribute="trailing" secondItem="Cjd-LS-Ghx" secondAttribute="trailing" constant="20" id="ZJy-uI-KdK"/>
-                            <constraint firstItem="Xjs-16-p18" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cok-M8-2jX" secondAttribute="trailing" constant="20" id="bv8-2o-n1M"/>
                             <constraint firstItem="Ics-r0-6PQ" firstAttribute="centerY" secondItem="mjz-Ci-tqW" secondAttribute="centerY" id="cJF-wM-dEK"/>
                             <constraint firstItem="uhf-Fu-2Bl" firstAttribute="top" secondItem="Cjd-LS-Ghx" secondAttribute="bottom" constant="20" id="eDa-2h-go2"/>
                             <constraint firstAttribute="trailing" secondItem="uhf-Fu-2Bl" secondAttribute="trailing" constant="20" id="fAJ-26-xgg"/>
@@ -2902,16 +2908,18 @@ Gw
                             <constraint firstItem="ajS-qa-B8B" firstAttribute="leading" secondItem="rSB-o0-Voz" secondAttribute="trailing" constant="10" id="skY-Cf-hZz"/>
                             <constraint firstAttribute="trailing" secondItem="mjz-Ci-tqW" secondAttribute="trailing" constant="20" id="uTG-hR-DjE"/>
                             <constraint firstItem="rSB-o0-Voz" firstAttribute="centerY" secondItem="ajS-qa-B8B" secondAttribute="centerY" id="uoI-M5-Xln"/>
-                            <constraint firstItem="cok-M8-2jX" firstAttribute="centerX" secondItem="lh8-nv-Y5V" secondAttribute="centerX" id="w0L-iS-u3s"/>
+                            <constraint firstItem="o08-Lh-t1f" firstAttribute="leading" secondItem="x3y-lA-Lji" secondAttribute="leading" constant="20" id="xG8-HV-Xhw"/>
                             <constraint firstItem="Cjd-LS-Ghx" firstAttribute="top" secondItem="mjz-Ci-tqW" secondAttribute="bottom" constant="12" id="xJt-Jp-Qxp"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="actionPopUpButton" destination="o08-Lh-t1f" id="i7t-oB-dOB"/>
                         <outlet property="descriptionTextField" destination="mjz-Ci-tqW" id="3xL-mC-ycf"/>
                         <outlet property="methodsTableView" destination="1QE-kU-CFR" id="s9B-RG-5GJ"/>
                         <outlet property="modelsTableView" destination="xkh-kD-WMW" id="88o-FR-93a"/>
                         <outlet property="nameTextField" destination="ajS-qa-B8B" id="lGY-WI-Ykf"/>
                         <outlet property="ownerTextField" destination="dxZ-N3-qpm" id="ETG-P4-hl3"/>
+                        <segue destination="fcq-IN-5ss" kind="modal" identifier="toSwaggerViewer" id="aaV-1o-xVl"/>
                     </connections>
                 </viewController>
                 <customObject id="fb9-kj-pRH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -3019,7 +3027,7 @@ Gw
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="27" horizontalPageScroll="10" verticalLineScroll="27" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pn9-ee-Pog">
                                 <rect key="frame" x="20" y="61" width="185" height="148"/>
                                 <clipView key="contentView" id="PT7-Ew-0hl">
-                                    <rect key="frame" x="1" y="23" width="183" height="124"/>
+                                    <rect key="frame" x="1" y="0.0" width="183" height="147"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" enabled="NO" rowHeight="25" rowSizeStyle="automatic" headerView="JUb-gy-czk" viewBased="YES" id="ytG-ce-rpA">
@@ -3124,7 +3132,7 @@ Gw
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="27" horizontalPageScroll="10" verticalLineScroll="27" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbi-i0-hhe">
                                 <rect key="frame" x="246" y="61" width="185" height="148"/>
                                 <clipView key="contentView" id="uKb-sT-4VP">
-                                    <rect key="frame" x="1" y="23" width="183" height="124"/>
+                                    <rect key="frame" x="1" y="0.0" width="183" height="147"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" enabled="NO" rowHeight="25" rowSizeStyle="automatic" headerView="eNa-DN-yPA" viewBased="YES" id="1V2-9l-wgi">
@@ -4907,7 +4915,7 @@ Gw
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="BOv-3b-7eP">
-                                    <rect key="frame" x="1" y="-15" width="0.0" height="16"/>
+                                    <rect key="frame" x="1" y="-14" width="0.0" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="vYp-gI-5n8">
