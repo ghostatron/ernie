@@ -2672,6 +2672,9 @@ Gw
 Gw
 </string>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" target="tP7-Kz-2Yl" id="YUH-bX-YxT"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mKh-6y-ORf">
                                 <rect key="frame" x="341" y="13" width="96" height="32"/>
@@ -2682,15 +2685,28 @@ Gw
 DQ
 </string>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="generateButtonPressed:" target="tP7-Kz-2Yl" id="n7g-Sz-zaB"/>
+                                </connections>
                             </button>
                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dmW-YR-pop">
-                                <rect key="frame" x="20" y="80" width="411" height="22"/>
+                                <rect key="frame" x="60" y="80" width="371" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Location of swagger file to generate API (default is generic starter template)" drawsBackground="YES" id="pcw-Ey-AZL">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xzz-Tg-ruB">
+                                <rect key="frame" x="20" y="75" width="32" height="32"/>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSFolder" imagePosition="overlaps" alignment="center" controlSize="mini" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="hit-O9-OHW">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="miniSystem"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="folderButtonPressed:" target="tP7-Kz-2Yl" id="8mY-GF-Qc6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ESh-1m-o2w" secondAttribute="trailing" constant="20" id="0fp-wk-EeC"/>
@@ -2701,6 +2717,7 @@ DQ
                             <constraint firstItem="ESh-1m-o2w" firstAttribute="leading" secondItem="Z8r-Vr-hNZ" secondAttribute="leading" constant="20" id="BpX-DR-YiQ"/>
                             <constraint firstItem="ESh-1m-o2w" firstAttribute="top" secondItem="QLV-N7-rU5" secondAttribute="bottom" constant="20" id="CQa-8E-HAw"/>
                             <constraint firstItem="Iex-GR-ROE" firstAttribute="leading" secondItem="Z8r-Vr-hNZ" secondAttribute="leading" constant="20" id="DUd-U2-f6g"/>
+                            <constraint firstItem="xzz-Tg-ruB" firstAttribute="leading" secondItem="Z8r-Vr-hNZ" secondAttribute="leading" constant="20" id="GOC-EQ-UEs"/>
                             <constraint firstItem="D1A-HQ-Vao" firstAttribute="top" secondItem="Qqi-ME-X6U" secondAttribute="bottom" constant="20" id="Gw6-9O-3v3"/>
                             <constraint firstItem="B1s-c3-dg0" firstAttribute="top" secondItem="FOf-Q1-ZlX" secondAttribute="bottom" constant="8" id="HCI-2k-AAv"/>
                             <constraint firstItem="ary-L0-PcQ" firstAttribute="top" secondItem="B6k-k1-z3m" secondAttribute="bottom" constant="20" id="Hce-4A-akZ"/>
@@ -2715,7 +2732,8 @@ DQ
                             <constraint firstItem="QLV-N7-rU5" firstAttribute="top" secondItem="ary-L0-PcQ" secondAttribute="bottom" constant="8" id="SCP-Oh-TLx"/>
                             <constraint firstItem="rGQ-Wa-08l" firstAttribute="top" secondItem="Z8r-Vr-hNZ" secondAttribute="top" constant="20" id="VJs-LL-zQa"/>
                             <constraint firstAttribute="trailing" secondItem="mKh-6y-ORf" secondAttribute="trailing" constant="20" id="X2x-NY-OBB"/>
-                            <constraint firstItem="dmW-YR-pop" firstAttribute="leading" secondItem="Z8r-Vr-hNZ" secondAttribute="leading" constant="20" id="Xgv-nJ-dme"/>
+                            <constraint firstItem="xzz-Tg-ruB" firstAttribute="top" secondItem="D1A-HQ-Vao" secondAttribute="bottom" constant="3" id="Xjw-Bz-WfA"/>
+                            <constraint firstItem="dmW-YR-pop" firstAttribute="leading" secondItem="xzz-Tg-ruB" secondAttribute="trailing" constant="8" id="Y3B-Jc-cfq"/>
                             <constraint firstItem="rGQ-Wa-08l" firstAttribute="leading" secondItem="Z8r-Vr-hNZ" secondAttribute="leading" constant="20" id="acD-QV-lsp"/>
                             <constraint firstItem="5bu-Wm-HTj" firstAttribute="width" secondItem="mKh-6y-ORf" secondAttribute="width" id="ajp-sK-pww"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rGQ-Wa-08l" secondAttribute="trailing" constant="20" id="cD0-nB-h7Y"/>
@@ -2738,6 +2756,14 @@ DQ
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="D1A-HQ-Vao" secondAttribute="trailing" constant="20" id="zbe-km-2kS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="apiNameTextField" destination="Iex-GR-ROE" id="7Ev-BB-eQ6"/>
+                        <outlet property="apiVersionTextField" destination="QLV-N7-rU5" id="xy9-o1-yd8"/>
+                        <outlet property="authorTextField" destination="Qqi-ME-X6U" id="i3Z-30-hY0"/>
+                        <outlet property="npmPackageNameTextField" destination="B6k-k1-z3m" id="Oju-ci-Url"/>
+                        <outlet property="npmScopeTextField" destination="B1s-c3-dg0" id="FSE-qa-lNA"/>
+                        <outlet property="swaggerFileLocationTextField" destination="dmW-YR-pop" id="VWQ-Hn-542"/>
+                    </connections>
                 </viewController>
                 <customObject id="Ldi-l1-EVE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
